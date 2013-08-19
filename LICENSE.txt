@@ -1,0 +1,56 @@
+The contents of this repository are ©
+osp member a, osp member b, osp member c, osp member d
+for OSP Open Source Publishing
+unless noted otherwise.
+
+As the copyright holders, we open up these materials for your to use if you 
+want to.
+
+Different types of materials have different licenses. This is to be 
+accomodating to different use cases and cultures that have arisen around 
+different digital formats.
+
+The licenses we use are copyleft. That means that you are free to reuse, 
+modify and redistribute our materials, and that you are also allowed to make 
+money doing so. You have to, however, redistribute your own variants under 
+the same license. This means that the ecology of sharing is stimulated.
+
+All code written in programming languages is licensed under the Affero GPL 
+v3. This is a variant of the GPLv3 copyleft license, that makes sure that 
+deploying your code online also counts as distribution, and thus, as an 
+incentive to re-share your modified code.
+
+Consult the Affero GPL v3 online: 
+
+All texts written in natural languages, and all drawings and visual designs, 
+are dual licensed under the Free Art License 1.3 and Creative Commons 
+Attribution-ShareAlike 3.0 Unported.
+
+- The Free Art License, because we feel that the spirit of it is beautiful 
+and simple seems the closest to the way we think creation can be shared. 
+
+- Creative Commons, because a lot of people take part in this ecosystem. 
+If you modify our work, you are free to license your version under either of 
+them (or both).
+
+Consult the Free Art License online: 
+All original typefaces are licensed under the SIL Open Font License. This 
+copyleft license is the first license written specifically for fonts. If we 
+base our font on an existing font, we reutilise the original license. The 
+metadata of the font is conclusive in this case.
+
+Not all files in the repository might be copyrighted by us. For example, 
+posters often include logos from supporting institutions. Folders with 
+documentation might include images made by others. In these cases, a separate 
+README.txt in the folder will inform you of the rights situation.
+
+Also note that while we are the owners of the copyright of all the original 
+works contained in the repository, there are other rights that we can’t 
+necessarily control. For instance, a copyleft photograph can still be subject 
+to the personality rights of the persons depicted. In certain jurisdictions, 
+original work might still be subject to trademark laws (as our friends Lafkon 
+state).
+
+If  you are not certain of the license of a file that you want to re-use,  
+please feel free to ask us directly by email: mail@osp.constantvzw.org.
+

@@ -1,0 +1,76 @@
+# OSP Open Source Publishing .gitignore #
+# Geared towards doing graphic design with Free Software
+# You can add this to a file ~/.gitignore_global
+# and then run: git config --global core.excludesfile ~/.gitignore_global
+# cf https://help.github.com/articles/ignoring-files
+
+
+# project specific #
+run.sh
+
+# Scribus autosave #
+*.autosave
+
+# LibreOffice Lock #
+.~lock.*
+
+# IDE / Editor files #
+*~
+*.kate-swp
+*.swo
+*.swp
+*.tmp
+.project
+.pydevproject
+.settings
+
+# Context / Latex / Metafont Intermediate files #
+*.mp
+*.log
+*.tuc
+*.tuo
+*.top
+*.tui
+
+# Virtual environment #
+venv
+
+# Some handy defaults courtesy of GitHub #
+
+# Compiled source #
+*.com
+*.class
+*.dll
+*.exe
+*.o
+*.so
+*.pyc
+
+# Packages #
+# it's better to unpack these files and commit the raw source
+# git has its own built in compression methods
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.tar
+*.zip
+
+# Logs and databases #
+*.log
+*.sql
+*.sqlite
+
+# OS generated files #
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+
+
