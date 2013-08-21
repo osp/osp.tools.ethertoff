@@ -4,16 +4,22 @@ from django.conf.urls import patterns, include, url
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns('',
-    url(r'^', include('etherpadlite.urls')),
-    # Examples:
-    # url(r'^$', 'relearn.views.home', name='home'),
-    # url(r'^relearn/', include('relearn.foo.urls')),
+from etherpadlite.models import *
 
-    # Uncomment the admin/doc line below to enable admin documentation:
-    # url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
-
-    # Uncomment the next line to enable the admin:
+urlpatterns = patterns(
+    '',
+    url(r'^$', 'django.contrib.auth.views.login',
+        {'template_name': 'etherpad-lite/login.html'}),
+    url(r'^etherpad$', 'django.contrib.auth.views.login',
+        {'template_name': 'etherpad-lite/login.html'}),
+    url(r'^logout$', 'django.contrib.auth.views.logout',
+        {'template_name': 'etherpad-lite/logout.html'}),
+    url(r'^accounts/profile/$', 'relearn.views.profile'),
+    url(r'^etherpad/(?P<pk>\d+)/$', 'relearn.views.pad'),
+    url(r'^etherpad/create/(?P<pk>\d+)/$', 'relearn.views.padCreate'),
+    url(r'^etherpad/delete/(?P<pk>\d+)/$', 'relearn.views.padDelete'),
+    url(r'^group/create/$', 'relearn.views.groupCreate'),
+    
     url(r'^admin/', include(admin.site.urls)),
 )
 

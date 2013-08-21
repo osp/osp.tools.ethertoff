@@ -8,6 +8,7 @@
 # project specific #
 run.sh
 local_settings.py
+sqlite.db
 
 # Scribus autosave #
 *.autosave
