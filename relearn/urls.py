@@ -22,9 +22,9 @@ urlpatterns = patterns(
     url(r'^group/create/$', 'relearn.views.groupCreate'),
     
     # That needs to change to a special view for rendering:
-    url(r'r/(?P<slug>[\w\.\-_]+)/$', 'relearn.views.pad', name='pad-read'),
+    url(r'r/(?P<slug>[\w\.\-_\:]+)/$', 'relearn.views.pad', name='pad-read'),
     
-    url(r'w/(?P<slug>[\w\.\-_]+)/$', 'relearn.views.pad', name='pad-write'),
+    url(r'w/(?P<slug>[\w\.\-_\:]+)/$', 'relearn.views.pad', name='pad-write'),
     
     
     url(r'^admin/', include(admin.site.urls)),
