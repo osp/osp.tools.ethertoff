@@ -156,12 +156,15 @@ def profile(request):
 
 
 @login_required(login_url='/etherpad')
-def pad(request, pk):
+def pad(request, pk=None, slug=None):
     """Create and session and display an embedded pad
     """
 
     # Initialize some needed values
-    pad = get_object_or_404(Pad, pk=pk)
+    if slug:
+        pad = get_object_or_404(Pad, name=slug)
+    else:
+        pad = get_object_or_404(Pad, pk=pk)
     padLink = pad.server.url + 'p/' + pad.group.groupID + '$' + \
         urllib.quote_plus(pad.name)
     server = urlparse(pad.server.url)

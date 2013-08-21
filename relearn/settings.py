@@ -1,5 +1,6 @@
 # Django settings for relearn project.
 import os
+import django.conf.global_settings as DEFAULT_SETTINGS
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
@@ -104,6 +105,10 @@ TEMPLATE_DIRS = (
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
     'relearn/templates',
+)
+
+TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
+    "relearn.context_processors.pads",
 )
 
 INSTALLED_APPS = (
