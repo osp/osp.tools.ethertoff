@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block body %}
+<h1>Tracker</h1>
+<form action="tracker_submit" method="get" accept-charset="utf-8">
+    <p><label>ID</label><input name="id" type="text" value="" /></p>
+    <p><label>Date/Time</label><input name="datetime" type="text" value="" /></p>
+    <p><label>Name</label><input name="name" type="text" value="" /></p>
+    <p><label>Text</label><textarea name="text" cols="80" rows="10" value=""></textarea></p>
+    <p><input type="submit" value="Continue &rarr;" /></p>
+</form>
+{% endblock %}
