@@ -1,4 +1,4 @@
-from fabric.api import run, cd, env, local
+from fabric.api import run, cd, env, local, sudo
 
 
 env.hosts = ['osp@osp.constantvzw.org']
