@@ -1,4 +1,4 @@
-from etherpadlite.models import Pad, PadAuthor
+from etherpadlite.models import Pad, PadAuthor, PadServer
 from django.contrib.auth.models import AnonymousUser
 
 def pads(request):
