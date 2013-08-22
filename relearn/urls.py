@@ -10,15 +10,15 @@ from etherpadlite.models import *
 urlpatterns = patterns(
     '',
     url(r'^$', 'django.contrib.auth.views.login',
-        {'template_name': 'etherpad-lite/login.html'}),
+        {'template_name': 'etherpad-lite/login.html'}, name='home'),
     url(r'^etherpad$', 'django.contrib.auth.views.login',
-        {'template_name': 'etherpad-lite/login.html'}),
+        {'template_name': 'etherpad-lite/login.html'}, name='login'),
     url(r'^logout$', 'django.contrib.auth.views.logout',
-        {'template_name': 'etherpad-lite/logout.html'}),
+        {'template_name': 'etherpad-lite/logout.html'}, name='logout'),
     url(r'^accounts/profile/$', 'relearn.views.profile'),
     url(r'^etherpad/(?P<pk>\d+)/$', 'relearn.views.pad'),
-    url(r'^etherpad/create/(?P<pk>\d+)/$', 'relearn.views.padCreate'),
-    url(r'^etherpad/delete/(?P<pk>\d+)/$', 'relearn.views.padDelete'),
+    url(r'^etherpad/create/(?P<pk>\d+)/$', 'relearn.views.padCreate', name='pad-create'),
+    url(r'^etherpad/delete/(?P<pk>\d+)/$', 'relearn.views.padDelete', name='pad-delete'),
     url(r'^group/create/$', 'relearn.views.groupCreate'),
     
     # That needs to change to a special view for rendering:
