@@ -11,6 +11,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
@@ -34,14 +35,17 @@ def padCreate(request, pk):
     if request.method == 'POST':  # Process the form
         form = forms.PadCreate(request.POST)
         if form.is_valid():
-            name = form.cleaned_data['name']
+            n = form.cleaned_data['name']
+            n = n.replace(u':',u'zxgiraffe77')
+            n = slugify(n)
+            n = n.replace(u'zxgiraffe77', u':')
             pad = Pad(
-                name=name,
+                name=n,
                 server=group.server,
                 group=group
             )
             pad.save()
-            return HttpResponseRedirect(reverse('pad-write', args=(name,) ))
+            return HttpResponseRedirect(reverse('pad-write', args=(n,) ))
     else:  # No form to process so create a fresh one
         form = forms.PadCreate({'group': group.groupID})
 
