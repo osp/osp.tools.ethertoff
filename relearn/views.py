@@ -266,7 +266,7 @@ def pad_read(request, pk=None, slug=None):
     else:
         pad = get_object_or_404(Pad, pk=pk)
     
-    padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name)
+    padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name.replace('::', '_'))
     epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
     
     tpl_params = { 'pad' : pad, 'text' : epclient.getHtml(padID)['html'], 'mode' : 'read' }
