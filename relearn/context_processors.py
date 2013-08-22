@@ -3,6 +3,7 @@ from django.contrib.auth.models import AnonymousUser
 
 def pads(request):
     hash = {}
+    # If the user is logged in:
     if hasattr(request, 'user') and not isinstance(request.user, AnonymousUser):
         # This magic exists to synch between the django author and the etherpad author
         try:  # Retrieve the corresponding padauthor object

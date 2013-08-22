@@ -11,6 +11,7 @@ from django.shortcuts import render_to_response, get_object_or_404
 
 from django.http import HttpResponseRedirect
 from django.template import RequestContext
+from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
@@ -24,7 +25,7 @@ from etherpadlite import forms
 from etherpadlite import config
 
 
-@login_required(login_url='/etherpad')
+@login_required(login_url='/accounts/login')
 def padCreate(request, pk):
     """Create a named pad for the given group
     """
@@ -33,13 +34,14 @@ def padCreate(request, pk):
     if request.method == 'POST':  # Process the form
         form = forms.PadCreate(request.POST)
         if form.is_valid():
+            name = form.cleaned_data['name']
             pad = Pad(
-                name=form.cleaned_data['name'],
+                name=name,
                 server=group.server,
                 group=group
             )
             pad.save()
-            return HttpResponseRedirect('/accounts/profile/')
+            return HttpResponseRedirect(reverse('pad-write', args=(name,) ))
     else:  # No form to process so create a fresh one
         form = forms.PadCreate({'group': group.groupID})
 
@@ -50,13 +52,13 @@ def padCreate(request, pk):
     }
     con.update(csrf(request))
     return render_to_response(
-        'etherpad-lite/padCreate.html',
+        'pad-create.html',
         con,
         context_instance=RequestContext(request)
     )
 
 
-@login_required(login_url='/etherpad')
+@login_required(login_url='/accounts/login')
 def padDelete(request, pk):
     """Delete a given pad
     """
@@ -81,7 +83,7 @@ def padDelete(request, pk):
     )
 
 
-@login_required(login_url='/etherpad')
+@login_required(login_url='/accounts/login')
 def groupCreate(request):
     """ Create a new Group
     """
@@ -114,14 +116,14 @@ def groupCreate(request):
     )
 
 
-@login_required(login_url='/etherpad')
+@login_required(login_url='/accounts/login')
 def groupDelete(request, pk):
     """
     """
     pass
 
 
-@login_required(login_url='/etherpad')
+@login_required(login_url='/accounts/login')
 def profile(request):
     """Display a user profile containing etherpad groups and associated pads
     """
@@ -155,7 +157,7 @@ def profile(request):
     )
 
 
-@login_required(login_url='/etherpad')
+@login_required(login_url='/accounts/login')
 def pad(request, pk=None, slug=None):
     """Create and session and display an embedded pad
     """
@@ -172,7 +174,7 @@ def pad(request, pk=None, slug=None):
 
     if author not in pad.group.authors.all():
         response = render_to_response(
-            'etherpad-lite/pad.html',
+            'pad.html',
             {
                 'pad': pad,
                 'link': padLink,
@@ -198,7 +200,7 @@ def pad(request, pk=None, slug=None):
         )
     except Exception, e:
         response = render_to_response(
-            'etherpad-lite/pad.html',
+            'pad.html',
             {
                 'pad': pad,
                 'link': padLink,
@@ -213,7 +215,7 @@ def pad(request, pk=None, slug=None):
 
     # Set up the response
     response = render_to_response(
-        'etherpad-lite/pad.html',
+        'pad.html',
         {
             'pad': pad,
             'link': padLink,
