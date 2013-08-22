@@ -225,7 +225,8 @@ def pad(request, pk=None, slug=None):
             'link': padLink,
             'server': server,
             'uname': author.user.__unicode__(),
-            'error': False
+            'error': False,
+            'mode' : 'write'
         },
         context_instance=RequestContext(request)
     )
@@ -254,3 +255,24 @@ def pad(request, pk=None, slug=None):
         httponly=False
     )
     return response
+
+def pad_read(request, pk=None, slug=None):
+    """Read only pad
+    """
+
+    # Initialize some needed values
+    if slug:
+        pad = get_object_or_404(Pad, name=slug)
+    else:
+        pad = get_object_or_404(Pad, pk=pk)
+    
+    padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name)
+    epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
+    
+    tpl_params = { 'pad' : pad, 'text' : epclient.getHtml(padID)['html'], 'mode' : 'read' }
+    # or tpl_params = { 'text' : epclient.getText(padID)['text'] }, and do processing ourselves—
+    # we need to figure out if Etherpad’s html output suffices for our purposes
+    
+    return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
+
+

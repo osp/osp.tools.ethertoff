@@ -20,8 +20,7 @@ urlpatterns = patterns(
     url(r'^etherpad/delete/(?P<pk>\d+)/$', 'relearn.views.padDelete', name='pad-delete'),
     url(r'^group/create/$', 'relearn.views.groupCreate'),
     
-    # That needs to change to a special view for rendering:
-    url(r'r/(?P<slug>[\w\.\-_\:]+)/$', 'relearn.views.pad', name='pad-read'),
+    url(r'r/(?P<slug>[\w\.\-_\:]+)/$', 'relearn.views.pad_read', name='pad-read'),
     
     url(r'w/(?P<slug>[\w\.\-_\:]+)/$', 'relearn.views.pad', name='pad-write'),
     
