@@ -17,7 +17,7 @@ body {
     color: lightseagreen;
     font-family: patin, serif;
     font-size: 16px;
-    line-height: 1.25;
+    line-height: 1.5em;
     padding: 0.5em;
     .box-sizing(border-box);
 }
@@ -80,7 +80,6 @@ h1 {
 h2 {
     font-size: 1.5em;
     line-height: 0.5em;
-    margin-bottom: 1em;
 }
 h3 {
     margin-top: 48px;
@@ -167,6 +166,8 @@ iframe {
     outline: 1px solid lightseagreen;
 }
 form {
+    margin-bottom: 1.5em;
+
     input, textarea {
         background: none;
         border: 1px solid lightseagreen;
@@ -180,6 +181,16 @@ form {
     }
     input[type=submit]:hover {
         background-color: white;
+    }
+}
+nav {
+    line-height: 1.2em;
+    li {
+        list-style-position: inside;
+        list-style-type: disc;
+    }
+    a {
+        text-decoration: none;
     }
 }
 #content li:before {
