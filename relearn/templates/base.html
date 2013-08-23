@@ -1,4 +1,4 @@
-<!DOCTYPE HTML>
+{% load wikify %}<!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -20,7 +20,7 @@
         <li><a href="{% url 'login' %}">Log in</a></li>
     {% endif %}
     {% for pad in pads %}
-        <li><a href="{% url 'pad-write' slug=pad.name %}">{{ pad.name }}</a></li>
+        <li><a href="{% url 'pad-write' slug=pad.name %}">{{ pad.name|dewikify }}</a></li>
     {% endfor %}
     {% if author %}
         <li><a href="{% url 'pad-create' author.group.all.0.id %}">Create pad</a></li>
