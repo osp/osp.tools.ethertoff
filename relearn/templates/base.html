@@ -16,7 +16,7 @@
             <h1><a href="{% url 'home' %}">Relearn</a></h1>
         </div>
         <div class="middle">
-            <h1>{{ pad.name }}</h1>
+            <h1 class="inline">{{ pad.name }}</h1>
             {% block switch %}{% endblock %}
         </div>
 
@@ -36,14 +36,14 @@
                 <ul>
                     <li><a href="/r/relearn::about">About</a></li>
                     <li><a href="/r/relearn::contact">Contact</a></li>
+                    {% if author %}
+                        <li id="create-pad"><a class="button" href="{% url 'pad-create' author.group.all.0.id %}">Create pad</a></li>
+                    {% endif %}
                     {% for pad in pads %}<li>
                         <a href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.name %}{% else %}{% url 'pad-read' slug=pad.name %}{% endif %}" class="pad-link">{{ pad.name|dewikify }}</a>
                     </li>{% endfor %}
                 </ul>
             </nav>
-                {% if author %}
-                    <p><a class="button" href="{% url 'pad-create' author.group.all.0.id %}">Create pad</a></p>
-                {% endif %}
         </div>
         <div id="content" class="middle">
             {% block content %}{% endblock %}

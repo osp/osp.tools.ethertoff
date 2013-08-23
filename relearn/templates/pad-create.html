@@ -2,23 +2,23 @@
 {% load url from future %}
 {% load i18n %}
 
-{% block title %}{{title}}{% endblock %}
+{% block title %}{{ title }}{% endblock %}
+
+{% block switch %}
+  <h1>{{ title }}</h1>
+{% endblock %}
 
 {% block content %}
-  <h1>{{title}}</h1>
 
   <form action="/etherpad/create/{{ pk }}/" method="post">
-    {% csrf_token %}
-    <table>
-      <tr>
-        <td>{{ form.name.label_tag }} </td>
-        <td>{{ form.name }}</td>
-      </tr>
-    </table>
-    {{ form.group }}
-    <input class="submit" type="submit" value="{%trans "Create" %}" />
+        {% csrf_token %}
+        Pad name
+        {{ form.name }}
+        {{ form.group }}
+        <input class="submit" type="submit" value="{%trans "Create" %}" />
   </form>
-    <p>Names will be normalised to url-like names: <em>Can it scale to the universe?</em> becomes <em>can-it-scale-to-the-universe.</em><br />
-        Use <em>::</em> to create sub-divisions: <em>pedagogy::references</em>.
-    </p>
+  <legend>Names will be normalised to url-like names: <br />
+        «Can it scale to the universe?» becomes «can-it-scale-to-the-universe».<br />
+    Use “::” to create sub-divisions, i.e. «pedagogy::references».
+    </legend>
 {% endblock %}

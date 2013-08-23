@@ -59,6 +59,9 @@ div {
     height: 100%;
 }
 
+.inline {
+    display: inline;
+}
 a {
     color: inherit;
 }
@@ -73,7 +76,6 @@ h1, h2, h3, h4 {
 h1 {
     font-size: 2em;
     line-height: 0.5em;
-    display: inline;
     position: relative;
     z-index: 20;
 }
@@ -174,6 +176,14 @@ form {
         color: lightseagreen;
         font-family: patin;
     }
+    input:focus, textarea:focus {
+        background-color: white;
+    }
+    input[type=text] {
+        height: 20px;
+        position: relative;
+        top: -1px;
+    }
     input[type=submit] {
         cursor: pointer;
         padding: 0;
@@ -191,11 +201,22 @@ nav {
         list-style-position: inside;
         list-style-type: disc;
     }
+    li#create-pad {
+        list-style-type: none;
+        margin: 1.5em;
+    }
     a {
         text-decoration: none;
     }
 }
+.right-side h2 {
+    margin-bottom: 1em;
+}
 #content li:before {
         content: "– ";
         margin-left: 2em;
+}
+legend {
+    font-size: 0.75em;
+    line-height: 1.4em;
 }
