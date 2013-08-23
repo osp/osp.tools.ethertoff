@@ -28,7 +28,7 @@
             <nav>
                 <ul>
                     {% for pad in pads %}<li>
-                        <a href="{% url 'pad-write' slug=pad.name %}" class="pad-link">{{ pad.name|dewikify }}</a>
+                        <a href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.name %}{% else %}{% url 'pad-read' slug=pad.name %}{% endif %}" class="pad-link">{{ pad.name|dewikify }}</a>
                     </li>{% endfor %}
                     {% if author %}<li>
                         <a href="{% url 'pad-create' author.group.all.0.id %}">Create pad</a>
