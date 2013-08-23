@@ -9,24 +9,39 @@
     
 </head>
 <body>
-    {% block switch %}{% endblock %}
-    <h1>Relearn</h1> 
-    <nav>
-    <ul>
-    {% if user.is_authenticated %}
-        <li>{{ user.get_full_name }}</li>
-        <li><a href="{% url 'logout' %}">Log out</a></li>
-    {% else %}
-        <li><a href="{% url 'login' %}">Log in</a></li>
-    {% endif %}
-    {% for pad in pads %}
-        <li><a href="{% url 'pad-write' slug=pad.name %}">{{ pad.name|dewikify }}</a></li>
-    {% endfor %}
-    {% if author %}
-        <li><a href="{% url 'pad-create' author.group.all.0.id %}">Create pad</a></li>
-    {% endif %}
-    </ul>
-    </nav>
-    {% block content %}{% endblock %}
+    <div class="wrap">
+        <div class="side">&nbsp;{% block switch %}{% endblock %}</div>
+        <div class="content">
+            <h1><a href="{% url 'home' %}">Relearn</a></h1>
+        </div>
+
+        <div class="side">
+            <ul>
+                {% if user.is_authenticated %}<li>{{ user.get_full_name }}</li>
+                <li><a href="{% url 'logout' %}">Log out</a></li>{% else %}
+                <li><a href="{% url 'login' %}">Log in</a></li>{% endif %}
+            </ul>
+        </div>
+    </div>
+    <div class="wrap">
+        <div class="side">
+            <nav>
+                <ul>
+                    {% for pad in pads %}<li>
+                        <a href="{% url 'pad-write' slug=pad.name %}" class="pad-link">{{ pad.name|dewikify }}</a>
+                    </li>{% endfor %}
+                    {% if author %}<li>
+                        <a href="{% url 'pad-create' author.group.all.0.id %}">Create pad</a>
+                    </li>{% endif %}
+                </ul>
+            </nav>
+        </div>
+        <div class="content">
+            {% block content %}{% endblock %}
+        </div>
+        <div class="side">
+            <p>Show issues / meta info about author?</p>
+        </div>
+    </div>
 </body>
 </html>
