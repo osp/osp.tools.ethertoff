@@ -72,7 +72,7 @@ def padDelete(request, pk):
     if request.method == 'POST':
         if 'confirm' in request.POST:
             pad.delete()
-        return HttpResponseRedirect('/accounts/profile/')
+        return HttpResponseRedirect(reverse('profile'))
 
     con = {
         'action': '/etherpad/delete/' + pk + '/',
@@ -102,7 +102,7 @@ def groupCreate(request):
             pad_group = PadGroup(group=group, server=server)
             pad_group.save()
             request.user.groups.add(group)
-            return HttpResponseRedirect('/accounts/profile/')
+            return HttpResponseRedirect(reverse('profile'))
         else:
             message = _("This Groupname is allready in use or invalid.")
     else:  # No form to process so create a fresh one
