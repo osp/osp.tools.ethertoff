@@ -2,6 +2,8 @@
 @import "fonts";
 @import "mixins";
 
+html, body { height: 97%; }
+
 body {
     background: #ffff00; /* Old browsers */
     background: -moz-radial-gradient(center, ellipse cover,  #ffff00 0%, #ffffff 68%); /* FF3.6+ */
@@ -16,7 +18,8 @@ body {
     font-family: patin, serif;
     font-size: 16px;
     line-height: 1.25;
-
+    padding: 0.5em;
+    .box-sizing(border-box);
 }
 
 div {
@@ -26,19 +29,31 @@ div {
 .wrap {
     .clearfix;
     margin-bottom: 20px;
+    .box-sizing(border-box);
 }
 
-.side, .content {
+.left-side, .middle, .right-side {
     float: left;
     padding: 10px;
+    .box-sizing(border-box);
 }
 
-.side {
+.left-side {
+    width: 15%;
+}
+.right-side {
     width: 25%;
 }
 
-.content {
-    width: 50%;
+.middle {
+    width: 60%;
+}
+#account-buttons {
+    margin-top: 14px;
+}
+
+#content {
+    height: 100%;
 }
 
 a {
@@ -50,9 +65,11 @@ h1, h2, h3, h4 {
     text-transform: uppercase;
 }
 h1 {
-    text-align: center;
     font-size: 2em;
     line-height: 0.5em;
+    display: inline;
+    position: relative;
+    z-index: 20;
 }
 h2 {
     text-align: center;
@@ -109,6 +126,7 @@ img {
     margin-bottom: 1em;
 }
 div#switch {
+    display: inline;
 }
 div#intro-nl {
     display: none;
@@ -118,16 +136,23 @@ div#intro-nl {
     margin: -10px 1em;
     padding: 1em;
 }
-div#switch:hover {
-}
-div#switch:hover div#intro-nl {
-    display: block;
-}
-div#switch a {
+.button {
     text-decoration: none;
     border: 1px solid MediumSeaGreen;
     padding: 7px 5px;
-    border-radius: 20px;
     box-shadow: 0 0 30px 10px yellow;
+    margin: 0 0.5em;
+    position: relative;
+    top: -3px;
+    background-color: yellow;
+}
+.button:hover {
+    background-color: white;
+}
+div#switch a.active {
+    background-color: white;
+}
+iframe {
+    outline: 1px solid lightseagreen;
 }
 

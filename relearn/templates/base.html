@@ -4,27 +4,32 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet/less" href="{{ STATIC_URL }}less/relearn.less" type="text/css" media="screen" charset="utf-8">
     <script src="{{ STATIC_URL }}js/less-1.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ STATIC_URL }}js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"></script>
 
     <title>Relearn</title>
     
 </head>
 <body>
-    <div class="wrap">
-        <div class="side">&nbsp;{% block switch %}{% endblock %}</div>
-        <div class="content">
+    <div class="wrap" style="height: 15%;">
+        <div class="left-side">
             <h1><a href="{% url 'home' %}">Relearn</a></h1>
         </div>
+        <div class="middle">
+            <h1>{{ pad.name }}</h1>
+            {% block switch %}{% endblock %}
+        </div>
 
-        <div class="side">
-            <ul>
+        <div class="right-side">
+            <ul id="account-buttons">
                 {% if user.is_authenticated %}<li>{{ user.get_full_name }}</li>
-                <li><a href="{% url 'logout' %}">Log out</a></li>{% else %}
-                <li><a href="{% url 'login' %}">Log in</a></li>{% endif %}
+                <li><a class="button" href="{% url 'logout' %}">Log out</a></li>{% else %}
+                <li><a class="button" href="{% url 'login' %}">Log in</a></li>{% endif %}
             </ul>
         </div>
     </div>
-    <div class="wrap">
-        <div class="side">
+    <div class="wrap" style="height: 85%;">
+        <div class="left-side">
             <nav>
                 <ul>
                     {% for pad in pads %}<li>
@@ -36,10 +41,10 @@
                 </ul>
             </nav>
         </div>
-        <div class="content">
+        <div id="content" class="middle">
             {% block content %}{% endblock %}
         </div>
-        <div class="side">
+        <div class="right-side">
             <p>Show issues / meta info about author?</p>
         </div>
     </div>

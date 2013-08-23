@@ -2,7 +2,14 @@
 
 {% block title %}{{pad.name}}{% endblock %}
 
-{% block switch %}<div id="switch">{% if mode == 'read' %}
-    <a>R</a><a class="active" href="{% url 'pad-write' pad.name %}">W</a>{% else %}
-    <a class="active" href="{% url 'pad-read' pad.name %}">R</a><a>W</a>{% endif %}
-</div>{% endblock %}
+{% block switch %}
+
+<div id="switch">
+    {% if mode == 'read' %}
+        <a class="active button">Read</a><a class="button" href="{% url 'pad-write' pad.name %}">Write</a>
+    {% else %}
+        <a class="button" href="{% url 'pad-read' pad.name %}">Read</a><a class="active button">Write</a>
+    {% endif %}
+</div>
+
+{% endblock %}
