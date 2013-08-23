@@ -275,4 +275,11 @@ def pad_read(request, pk=None, slug=None):
     
     return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
 
-
+def home(request):
+    # The homepage is the pad called ‘start’ (props to DokuWiki!)
+    try:
+        Pad.objects.get(name='start')
+        return pad_read(request, slug='start')
+    except Pad.DoesNotExist:
+        return HttpResponseRedirect(reverse('login'))
+    

@@ -9,8 +9,7 @@ from etherpadlite.models import *
 
 urlpatterns = patterns(
     '',
-    url(r'^$', 'django.contrib.auth.views.login',
-        {'template_name': 'login.html'}, name='home'),
+    url(r'^$', 'relearn.views.home', name='home'),
     url(r'^accounts/login$', 'django.contrib.auth.views.login',
         {'template_name': 'login.html'}, name='login'),
     url(r'^accounts/logout$', 'django.contrib.auth.views.logout',
