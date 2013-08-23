@@ -75,10 +75,9 @@ h1 {
     z-index: 20;
 }
 h2 {
-    text-align: center;
     font-size: 1.5em;
     line-height: 0.5em;
-    margin-bottom: 3em;
+    margin-bottom: 1em;
 }
 h3 {
     margin-top: 48px;
@@ -89,6 +88,12 @@ h3 {
 h4 {
     text-decoration: underline;
     margin-bottom: 0;
+}
+em {
+    font-style: italic;
+}
+strong {
+    font-weight: bold;
 }
 div#quotes {
     text-align: center;
@@ -158,4 +163,23 @@ div#switch a.active {
 iframe {
     outline: 1px solid lightseagreen;
 }
-
+form {
+    input, textarea {
+        background: none;
+        border: 1px solid lightseagreen;
+        color: lightseagreen;
+        font-family: patin;
+    }
+    input[type=submit] {
+        cursor: pointer;
+        padding: 0;
+        height: 24px;
+    }
+    input[type=submit]:hover {
+        background-color: white;
+    }
+}
+#content li:before {
+        content: "–";
+        margin-left: 1em;
+}
