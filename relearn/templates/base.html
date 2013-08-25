@@ -49,7 +49,7 @@
         </div>
         <div class="right-side">
             {% if author %}
-            <h2>Send a message</h2>
+            <h2>Point out an issue</h2>
             <form id="email-form" action="base_submit" method="post" accept-charset="utf-8">
                 <input id="name" type="text" value="{{ user.get_full_name }}">
                 <input id="email-address" type="text" value="{{ user.email }}">
