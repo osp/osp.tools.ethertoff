@@ -26,6 +26,8 @@ urlpatterns = patterns(
     
     url(r'^admin/', include(admin.site.urls)),
 
-    (r'^tracker/$', TemplateView.as_view(template_name="tracker.html")),
+    url(r'^tracker/$', TemplateView.as_view(template_name="tracker.html")),
+    url(r'^send-issue/$', 'relearn.views.post_issue', name="relearn-issue-send"),
+    url(r'^issue/$', TemplateView.as_view(template_name="issue.html"), name="relearn-issue-success"),
 )
 

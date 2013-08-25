@@ -25,6 +25,11 @@ from etherpadlite.models import *
 from etherpadlite import forms
 from etherpadlite import config
 
+# web forms
+from django.shortcuts import render
+from django.core.mail import send_mail
+from relearn.forms import ContactForm
+
 
 @login_required(login_url='/accounts/login')
 def padCreate(request, pk):
@@ -282,4 +287,22 @@ def home(request):
         return pad_read(request, slug='start')
     except Pad.DoesNotExist:
         return HttpResponseRedirect(reverse('login'))
+
+
+def post_issue(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            name = form.cleaned_data['name']
+            subject = "[Relearn issue] %s" % form.cleaned_data['subject']
+            message = "%s\n\n-- %s" % (form.cleaned_data['message'], name)
+            email  = form.cleaned_data['email']
+            recipients = ['stephanie@stdin.fr']
+            send_mail(subject, message, email, recipients)
+
+            return HttpResponseRedirect(reverse('relearn-issue-success')) # Redirect after POST
+    else:
+        form = ContactForm() # An unbound form
     
+    return render(request, 'form.html', {'form': form})
