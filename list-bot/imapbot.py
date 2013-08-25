@@ -48,12 +48,12 @@ if retcode == 'OK':
                     'body':msg.get_payload()
                 })
 
-                print(t.render(c))
+                #print(t.render(c))
 
                 # If needed we can save this html to file
-                #import codecs
-                #f = codecs.open('/tmp/foobar.sla', "w", encoding="utf-8")
-                #f.write(t.render(c))
-                #f.close()
+                import codecs
+                f = codecs.open('email.html', "w", encoding="utf-8")
+                f.write(t.render(c))
+                f.close()
 
 conn.close()
