@@ -283,8 +283,8 @@ def pad_read(request, pk=None, slug=None):
 def home(request):
     # The homepage is the pad called ‘start’ (props to DokuWiki!)
     try:
-        Pad.objects.get(name='start')
-        return pad_read(request, slug='start')
+        Pad.objects.get(name='relearn::start')
+        return pad_read(request, slug='relearn::start')
     except Pad.DoesNotExist:
         return HttpResponseRedirect(reverse('login'))
 
