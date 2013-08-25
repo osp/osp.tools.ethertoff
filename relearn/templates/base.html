@@ -51,6 +51,8 @@
             {% if author %}
             <h2>Send a message</h2>
             <form id="email-form" action="base_submit" method="post" accept-charset="utf-8">
+                <input id="name" type="text" value="{{ user.get_full_name }}">
+                <input id="email-address" type="text" value="{{ user.email }}">
                 <textarea style="width: 100%; height: 6em;" type="file" name="body" id="email-body"></textarea>
                 <input id="send-email" type="submit" value="Send">
                 <input id="send-print-email" type="submit" value="Send and print">
