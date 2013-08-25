@@ -56,23 +56,16 @@
             {% block content %}{% endblock %}
         </div>
         <div class="right-side">
-            {% if author %}
+            {#{% if author %}#}
             <h2>Point out an issue</h2>
-            <form id="email-form" action="{% url 'relearn-issue-send' %}" method="post" accept-charset="utf-8">
-                {% csrf_token %}
-                <input style="width: 50%; float: left; -moz-box-sizing: border-box;" id="email-name" name="email-name" type="text" value="{{ user.get_full_name }}">
-                <input style="width: 50%; float: left; -moz-box-sizing: border-box;" id="email-address" name="email-address" type="text" value="{{ user.email }}">
-                <input style="width: 100%" id="email-subject" name="email-subject" type="text" value="Subject">
-                <textarea style="width: 100%; height: 6em;" type="file" name="body" id="email-body"></textarea>
-                <input id="send-email" type="submit" value="Send">
-                <input id="send-print-email" type="submit" value="Send and print">
-            </form>
+            <iframe id="issue-pointer" src="/send-issue/" style="width: 100%; height: 220px; display: block; outline: none !important"></iframe>
+
             <h2>Upload files</h2>
             <form id="upload-form" action="base_submit" method="post" accept-charset="utf-8">
                 <input style="width: 70%" type="file" name="image_file" id="image_file" />
                 <input id="send-file" type="submit" value="Upload">
             </form>
-            {% endif %}
+            {#{% endif %}#}
         </div>
     </div>
 </body>

@@ -1,9 +1,20 @@
-{% extends "base.html" %}
-
-{% block title %}
-    <h1>Success!</h1>
-{% endblock %}
-
-{% block content %}
-    Your issue has been sent. You will receive it through the mailing-list and out of the printer in the common room.
-{% endblock %}
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <title>Relearn</title>
+    <link rel="stylesheet/less" href="{{ STATIC_URL }}less/relearn.less" type="text/css" media="screen" charset="utf-8">
+    <script src="{{ STATIC_URL }}js/less-1.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+    <style type="text/css" media="screen">
+        body {
+            background: none;
+        }
+        
+    </style>
+</head>
+<body>
+    <p>Your issue has been sent. You will receive it through the mailing-list and out of the printer in the common room.</<p>
+    <p><a href="/send-issue/">Point out another issue.</a></p>
+    
+</body>
+</html>
