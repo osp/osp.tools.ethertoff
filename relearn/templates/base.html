@@ -16,8 +16,7 @@
             <h1><a href="{% url 'home' %}">Relearn</a></h1>
         </div>
         <div class="middle">
-            <h1 class="inline">{{ pad.name }}</h1>
-            {% block switch %}{% endblock %}
+            {% block title %}{% endblock %}
         </div>
 
         <div class="right-side">
@@ -49,6 +48,7 @@
             {% block content %}{% endblock %}
         </div>
         <div class="right-side">
+            {% if author %}
             <h2>Send a message</h2>
             <form id="email-form" action="base_submit" method="post" accept-charset="utf-8">
                 <textarea style="width: 100%; height: 6em;" type="file" name="body" id="email-body"></textarea>
@@ -60,6 +60,7 @@
                 <input style="width: 70%" type="file" name="image_file" id="image_file" />
                 <input id="send-file" type="submit" value="Upload">
             </form>
+            {% endif %}
         </div>
     </div>
 </body>

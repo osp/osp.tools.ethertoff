@@ -2,14 +2,11 @@
 {% load url from future %}
 {% load i18n %}
 
-{% block title %}{{ title }}{% endblock %}
-
-{% block switch %}
-  <h1>{{ title }}</h1>
+{% block title %}
+      <h1>{{ title }}</h1>
 {% endblock %}
 
 {% block content %}
-
   <form action="/etherpad/create/{{ pk }}/" method="post">
         {% csrf_token %}
         Pad name

@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}{{pad.name}}{% endblock %}
+{% block title %}
 
-{% block switch %}
+<h1 class="inline">{{pad.name}}</h1>
+
 
 <div id="switch">
     {% if mode == 'read' %}
