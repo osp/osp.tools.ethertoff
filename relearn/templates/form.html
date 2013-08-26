@@ -17,7 +17,7 @@
     {% csrf_token %}
     <div>
         <input style="width: 45%; display: inline; margin-right: 10px;" id="id_name" maxlength="50" name="name" type="text" value="{{ user.get_full_name }}"/>
-        <input style="width: 45%; display: inline;" id="id_email" name="email" type="text" value="{{ user.email }}" />
+        <!--<input style="width: 45%; display: inline;" id="id_email" name="email" type="text" value="{{ user.email }}" />-->
     </div>
     <div style="margin-top: 3px;">
         <label style="width: 25%; display: inline;" for="id_subject">Subject</label> 
