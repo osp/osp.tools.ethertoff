@@ -295,7 +295,7 @@ def post_issue(request):
 
         if form.is_valid():
             name = form.cleaned_data['name']
-            subject = "[Relearn issue] %s" % form.cleaned_data['subject']
+            subject = "[issue spotted] %s" % form.cleaned_data['subject']
             message = "%s\n\n-- %s" % (form.cleaned_data['message'], name)
             #message = "%s" % (form.cleaned_data['message'])
             email  = form.cleaned_data['email']
