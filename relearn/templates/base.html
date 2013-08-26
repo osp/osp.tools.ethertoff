@@ -46,7 +46,7 @@
                                 <a href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.name %}{% else %}{% url 'pad-read' slug=pad.name %}{% endif %}" class="pad-link">{{ pad.name|dewikify }}</a>
                             </li>
                         {% elif author %}
-                                <a href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.name %}{% else %}{% url 'pad-read' slug=pad.name %}{% endif %}" class="pad-link">{{ pad.name|dewikify }}</a>
+                            <li><a href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.name %}{% else %}{% url 'pad-read' slug=pad.name %}{% endif %}" class="pad-link">{{ pad.name|dewikify }}</a></li>
                         {% endif %}
                     {% endfor %}
                 </ul>
