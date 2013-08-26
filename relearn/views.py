@@ -299,7 +299,7 @@ def post_issue(request):
             #message = "%s\n\n-- %s" % (form.cleaned_data['message'], name)
             message = "%s" % (form.cleaned_data['message'])
             email  = form.cleaned_data['email']
-            recipients = ['relearn@stdin.fr']
+            recipients = ['relearn@lists.constantvzw.org']
             send_mail(subject, message, email, recipients)
 
             return HttpResponseRedirect(reverse('relearn-issue-success')) # Redirect after POST
