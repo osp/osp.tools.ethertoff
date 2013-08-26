@@ -48,12 +48,17 @@ if retcode == 'OK':
                     'body':msg.get_payload()
                 })
 
-                #print(t.render(c))
+                print(t.render(c))
 
                 # If needed we can save this html to file
                 import codecs
-                f = codecs.open('email.html', "w", encoding="utf-8")
+		output = 'email_%s.html' % msg.get('Date').replace(" ", "").replace(":", "")
+                f = codecs.open(output, "w", encoding="utf-8")
                 f.write(t.render(c))
                 f.close()
+		
+		import os
+		cmd = "phantomjs print.js %s && lpr -P OSP -o media=A4 %s.pdf" % (output, output)
+		os.system(cmd)
 
 conn.close()
