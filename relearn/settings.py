@@ -4,6 +4,8 @@ import django.conf.global_settings as DEFAULT_SETTINGS
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
+API_PATH = 'http://osp.constantvzw.org/api/'
+
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
@@ -109,6 +111,7 @@ TEMPLATE_DIRS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     "relearn.context_processors.pads",
+    "relearn.context_processors.compose_commits",
 )
 
 INSTALLED_APPS = (

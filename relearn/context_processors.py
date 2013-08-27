@@ -1,5 +1,8 @@
+from datetime import datetime
+
 from etherpadlite.models import Pad, PadAuthor, PadServer
 from django.contrib.auth.models import AnonymousUser
+from gitcommits.models import commits
 
 def pads(request):
     hash = {}
@@ -19,3 +22,22 @@ def pads(request):
         hash['author'] = author
     hash['pads'] = Pad.objects.all()
     return hash
+
+def filter_commits(commits):
+    filtered_commits = []
+    i = 0
+    for commit in commits:
+        if "Merge branch '" in commit['message']:
+            continue
+        commit['commit_time'] = datetime.fromtimestamp(commit['commit_time'])
+        commit['repo_name'] = commit['repo_name'].replace('osp.', '')
+        filtered_commits.append(commit)
+        i += 1
+        if i == 10:
+            break
+    return filtered_commits
+
+def compose_commits(request):
+    commit_stream = commits("osp.relearn.off-grid") + commits("osp.relearn.gesturing-paths") + commits("osp.relearn.be") + commits("osp.relearn.can-it-scale-to-the-universe")
+    commit_stream.sort(reverse=True, key=lambda c: c['commit_time'])
+    return { 'commits' : filter_commits(commit_stream) }
