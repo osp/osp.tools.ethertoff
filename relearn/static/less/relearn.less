@@ -84,7 +84,7 @@ h2 {
     line-height: 0.5em;
 }
 h3 {
-    margin-top: 48px;
+    margin-top: 0px;
     text-transform: uppercase;
     margin-bottom: 0;
     font-size: 28px;
@@ -117,8 +117,13 @@ blockquote div {
     font-family: patin, serif;
 }
 p {
-    margin: 0;
+    margin-bottom: 48px;
 }
+
+p.commit-message {
+    margin-bottom: 0px;
+}
+
 p + p {
     text-indent: 1.5em;
 }
@@ -227,3 +232,20 @@ legend {
     font-size: 0.75em;
     line-height: 1.4em;
 }
+
+/* ------ PRINT ------ */
+
+@media screen {
+    .print-only {
+        display:none;
+    }
+}
+
+@media print {
+    .screen-only {
+        display:none;
+    }
+}
+
+
+
