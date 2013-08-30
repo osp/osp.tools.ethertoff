@@ -17,15 +17,13 @@ from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
 
-# additional imports
 from py_etherpad import EtherpadLiteClient
+from gitcommits.models import commits
 
-# local imports
 from etherpadlite.models import *
 from etherpadlite import forms
 from etherpadlite import config
 
-# web forms
 from django.shortcuts import render
 from django.core.mail import send_mail
 from relearn.forms import ContactForm
@@ -279,6 +277,24 @@ def pad_read(request, pk=None, slug=None):
     # we need to figure out if Etherpad’s html output suffices for our purposes
     
     return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
+
+def filter_commits(commits):
+    filtered_commits = []
+    for commit in commits:
+        if "Merge branch '" in commit['message']:
+            continue
+        commit['commit_time'] = datetime.fromtimestamp(commit['commit_time'])
+        commit['repo_name'] = commit['repo_name'].replace('osp.', '')
+        filtered_commits.append(commit)
+    return filtered_commits
+
+def commits (request):
+    commit_stream = commits("osp.relearn.off-grid") + commits("osp.relearn.gesturing-paths") + commits("osp.relearn.be") + commits("osp.relearn.can-it-scale-to-the-universe")
+    commit_stream.sort(reverse=True, key=lambda c: c['commit_time'])
+    tpl_params = { 'all-commits' : filter_commits(commit_stream) }
+    
+    return render_to_response("commits.html", tpl_params, context_instance = RequestContext(request))
+
 
 def home(request):
     # The homepage is the pad called ‘start’ (props to DokuWiki!)
