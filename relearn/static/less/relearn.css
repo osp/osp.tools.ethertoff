@@ -50,7 +50,17 @@ body {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+  word-wrap : break-word;
 }
+
+@media print {
+    body {
+    color : black;
+    font-size: 12px;
+    line-height: 1.2em;
+    }
+}
+
 div {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -91,6 +101,12 @@ div {
 }
 .middle {
   width: 60%;
+}
+
+@media print {
+    .middle {
+    width : 90%;
+    }
 }
 #account-buttons {
   margin-top: 14px;
