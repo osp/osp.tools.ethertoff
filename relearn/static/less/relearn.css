@@ -58,6 +58,23 @@ body {
     color : black;
     font-size: 12px;
     line-height: 1.2em;
+    width: 100%;
+    height: 100%;
+    }
+    
+    #cover {
+    font-family: patin, serif;
+    color : black;
+    font-size: 12px;
+    line-height: 1.2em;
+    page-break-after: always;
+    }
+
+    #cover h1 {
+    font-family: Crickx, sans-serif;
+    color : black;
+    font-size: 170px;
+    line-height: 0.7em;
     }
 }
 
