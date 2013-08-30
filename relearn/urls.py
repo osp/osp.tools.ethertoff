@@ -18,7 +18,9 @@ urlpatterns = patterns(
     url(r'^etherpad/create/(?P<pk>\d+)/$', 'relearn.views.padCreate', name='pad-create'),
     url(r'^etherpad/delete/(?P<pk>\d+)/$', 'relearn.views.padDelete', name='pad-delete'),
     url(r'^group/create$', 'relearn.views.groupCreate'),
-    
+
+    url(r'^commits/$', 'relearn.views.all_commits', name='commits'),
+
     url(r'r/(?P<slug>[\w\.\-_\:]+)$', 'relearn.views.pad_read', name='pad-read'),
     
     url(r'w/(?P<slug>[\w\.\-_\:]+)$', 'relearn.views.pad', name='pad-write'),
