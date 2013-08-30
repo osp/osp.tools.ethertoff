@@ -76,6 +76,35 @@ body {
     font-size: 170px;
     line-height: 0.7em;
     }
+
+    .commits-col {
+    -moz-column-count:2; /* Firefox */
+    -webkit-column-count:2; /* Safari and Chrome */
+    column-count:2;
+    -moz-column-gap:20px; /* Firefox */
+    -webkit-column-gap:20px; /* Safari and Chrome */
+    column-gap:20px;
+    }
+
+    .commits h3 {
+    font-family: Crickx, sans-serif;
+    color : black;
+    font-size: 10px;
+    line-height: 1em;
+    margin-left: -5px;
+    }
+    
+    .commits p {
+    font-family: patin, serif;
+    color : black;
+    font-size: 12px;
+    line-height: 1.2em;
+    margin-bottom: 15px;
+    }
+
+    .commits p.commit-message {
+    margin-bottom: 0px;
+    }
 }
 
 div {

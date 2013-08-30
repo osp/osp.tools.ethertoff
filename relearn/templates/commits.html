@@ -1,9 +1,14 @@
+<div class="commits">
 {% extends "base.html" %}
+
+{% block contentclasses %}commits-col{% endblock %}
 
 {% block content %}
             {% for commit in all_commits %}
             <h3>{{ commit.repo_name }}</h3>
             <p class='commit-message'>{{ commit.message|urlize|linebreaksbr }}</p>
             <p>By <span class='commit-author'>{{ commit.author }}</span> on <span class='commit-date'>{{ commit.commit_time }}</span></p>
+
             {% endfor %}
 {% endblock %}
+</div>
