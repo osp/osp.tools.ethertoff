@@ -1,0 +1,123 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-04-23 20:05-0400\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1)\n"
+
+#: forms.py:5
+msgid "Name"
+msgstr "Nom"
+
+#: models.py:12
+msgid "URL"
+msgstr "URL"
+
+#: models.py:13
+msgid "API key"
+msgstr "clé API"
+
+#: models.py:14
+msgid "description"
+msgstr "déscription"
+
+#: models.py:17
+msgid "server"
+msgstr "serveur"
+
+#: models.py:38
+msgid "group"
+msgstr "groupe"
+
+#: models.py:85
+msgid "author"
+msgstr "auteur"
+
+#: views.py:29
+#, python-format
+msgid "Create pad in %(grp)s"
+msgstr "Créer un pad dans %(grp)s"
+
+#: views.py:47
+msgid "Really delete this pad?"
+msgstr "Effacer vraiment ce pad?"
+
+#: views.py:47
+#, python-format
+msgid "Deleting %(pad)s"
+msgstr "Effacer %(pad)s"
+
+#: views.py:100
+msgid "You are not allowed to view or edit this pad"
+msgstr "Vous ne pouvez pas visionner ou modifier ce pad"
+
+#: views.py:118
+msgid "etherpad-lite session request returned:"
+msgstr "retour de la demande de session à etherpad-lite"
+
+#: templates/etherpad-lite/base.html:16
+msgid "profile"
+msgstr "profile"
+
+#: templates/etherpad-lite/base.html:17
+msgid "logout"
+msgstr "déconnecter"
+
+#: templates/etherpad-lite/confirm.html:13
+msgid "No"
+msgstr "Non"
+
+#: templates/etherpad-lite/confirm.html:14
+msgid "Yes"
+msgstr "Oui"
+
+#: templates/etherpad-lite/login.html:5 templates/etherpad-lite/login.html:8
+#: templates/etherpad-lite/login.html:26
+msgid "Login"
+msgstr "Connexion"
+
+#: templates/etherpad-lite/login.html:10
+msgid "Your username and password didn't match. Please try again."
+msgstr "Votre pseudo ou votre mot de passe sont incorrecte. Veuillez ressayer."
+
+#: templates/etherpad-lite/logout.html:5
+#, fuzzy
+msgid "Logout"
+msgstr "Déconnexion"
+
+#: templates/etherpad-lite/logout.html:8
+msgid "You have been logged out."
+msgstr "Vous êtes déconnecté."
+
+#: templates/etherpad-lite/logout.html:8
+msgid "Log back in."
+msgstr "Reconnectez vous"
+
+#: templates/etherpad-lite/padCreate.html:19
+msgid "Create"
+msgstr "Créer"
+
+#: templates/etherpad-lite/profile.html:11
+msgid "PADS:"
+msgstr "PADS:"
+
+#: templates/etherpad-lite/profile.html:17
+msgid "Del"
+msgstr "Supprimer"
+
+#: templates/etherpad-lite/profile.html:19
+msgid "Add"
+msgstr "Ajouter"
