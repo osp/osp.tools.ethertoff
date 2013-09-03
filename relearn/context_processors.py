@@ -6,6 +6,8 @@ from gitcommits.models import commits
 
 def pads(request):
     hash = {}
+    if 'admin' in request.path:
+        return hash
     # If the user is logged in:
     if hasattr(request, 'user') and not isinstance(request.user, AnonymousUser):
         # This magic exists to synch between the django author and the etherpad author
@@ -38,6 +40,8 @@ def filter_commits(commits):
     return filtered_commits
 
 def compose_commits(request):
+    if 'admin' in request.path:
+        return {}
     commit_stream = commits("osp.relearn.off-grid") + commits("osp.relearn.gesturing-paths") + commits("osp.relearn.be") + commits("osp.relearn.can-it-scale-to-the-universe")
     commit_stream.sort(reverse=True, key=lambda c: c['commit_time'])
     return { 'commits' : filter_commits(commit_stream) }
