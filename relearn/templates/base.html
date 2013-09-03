@@ -52,7 +52,7 @@
                 </ul>
             </nav>
         </div>
-        <div id="content" class="middle">
+        <div id="content" class="middle {% block contentclasses %}{% endblock %}">
             {% block content %}{% endblock %}
         </div>
         <div class="right-side screen-only">
