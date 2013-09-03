@@ -187,7 +187,7 @@ def pad(request, pk=None, slug=None):
 
     # Initialize some needed values
     if slug:
-        pad = get_object_or_404(Pad, name=slug)
+        pad = get_object_or_404(Pad, display_slug=slug)
     else:
         pad = get_object_or_404(Pad, pk=pk)
     padLink = pad.server.url + 'p/' + pad.group.groupID + '$' + \
@@ -281,7 +281,7 @@ def pad_read(request, pk=None, slug=None):
 
     # Initialize some needed values
     if slug:
-        pad = get_object_or_404(Pad, name=slug)
+        pad = get_object_or_404(Pad, display_slug=slug)
     else:
         pad = get_object_or_404(Pad, pk=pk)
     
