@@ -4,13 +4,13 @@ from django.contrib import admin
 
 from etherpadlite.models import *
 
-
 class PadAuthorAdmin(admin.ModelAdmin):
     list_display = ('__unicode__',)
 
 
 class PadAdmin(admin.ModelAdmin):
     list_display = ('__unicode__',)
+    readonly_fields = ('name',)
 
 admin.site.register(PadServer)
 admin.site.register(PadGroup)

@@ -1,7 +1,7 @@
 {% extends "etherpad-lite/base.html" %}
 {% load url from future %}
 
-{% block title %}{{pad.name}}{% endblock %}
+{% block title %}{{pad.display_slug}}{% endblock %}
 
 {% block wrapper %}
   {% if error %}

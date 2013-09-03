@@ -7,9 +7,9 @@
 
 <div id="switch">
     {% if mode == 'read' %}
-        <a class="active button">Read</a><a class="button" href="{% url 'pad-write' pad.name %}">Write</a>
+        <a class="active button">Read</a><a class="button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
     {% else %}
-        <a class="button" href="{% url 'pad-read' pad.name %}">Read</a><a class="active button">Write</a>
+        <a class="button" href="{% url 'pad-read' pad.display_slug %}">Read</a><a class="active button">Write</a>
     {% endif %}
 	<a class="active button">Print</a>
 </div>

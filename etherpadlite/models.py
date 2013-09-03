@@ -143,6 +143,8 @@ class Pad(models.Model):
     """Schema and methods for etherpad-lite pads
     """
     name = models.CharField(max_length=256)
+    display_name = models.CharField(max_length=256, blank=True, verbose_name="Name as used in Display")
+    display_slug = models.CharField(max_length=256, blank=True, verbose_name="Name as used in URL")
     server = models.ForeignKey(PadServer)
     group = models.ForeignKey(PadGroup)
 
@@ -171,10 +173,15 @@ class Pad(models.Model):
         return self.epclient.getReadOnlyID(self.padid)
 
     def save(self, *args, **kwargs):
-        self.Create()
+        try:
+            self.Create()
+        except ValueError: # already exists (need a better check for that)
+            pass
         super(Pad, self).save(*args, **kwargs)
 
-
+    class Meta:
+        ordering = ['display_name', 'name']
+        
 def padDel(sender, **kwargs):
     """Make sure pads are purged from the etherpad-lite server on deletion
     """

@@ -41,13 +41,7 @@
                         <li id="create-pad"><a class="button" href="{% url 'pad-create' author.group.all.0.id %}">Create pad</a></li>
                     {% endif %}
                     {% for pad in pads %}
-                        {% if not pad|is_relearn %}
-                            <li>
-                                <a href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.name %}{% else %}{% url 'pad-read' slug=pad.name %}{% endif %}" class="pad-link">{{ pad.name|dewikify }}</a>
-                            </li>
-                        {% elif author %}
-                            <li><a href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.name %}{% else %}{% url 'pad-read' slug=pad.name %}{% endif %}" class="pad-link">{{ pad.name|dewikify }}</a></li>
-                        {% endif %}
+                        <li><a href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.display_slug %}{% else %}{% url 'pad-read' slug=pad.display_slug %}{% endif %}" class="pad-link">{{ pad.display_name }}</a></li>
                     {% endfor %}
                 </ul>
             </nav>

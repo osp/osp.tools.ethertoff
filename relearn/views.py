@@ -28,10 +28,24 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from relearn.forms import ContactForm
 
+from relearn.templatetags.wikify import dewikify
 
 @login_required(login_url='/accounts/login')
 def padCreate(request, pk):
     """Create a named pad for the given group
+    So this is kind of convoluted. With an input like
+    
+    Relearn::Can it scale to the universe
+    
+    we get a pad, with the unchangeable id:
+    
+    relearn::can-it-scale-to-the-universe
+    
+    This id becomes the initial value for the (changeable) url slug, as display_slug.
+    Based on this id we also set the (changeable) display name, as display_name,
+    through a slight transformation (- becomes space, :: →) as in:
+    
+    relearn → can it scale to the universe
     """
     group = get_object_or_404(PadGroup, pk=pk)
 
@@ -44,6 +58,8 @@ def padCreate(request, pk):
             n = n.replace(u'zxgiraffe77', u':')
             pad = Pad(
                 name=n,
+                display_slug=n,
+                display_name=dewikify(n),
                 server=group.server,
                 group=group
             )
