@@ -288,9 +288,20 @@ def pad_read(request, pk=None, slug=None):
     padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name.replace('::', '_'))
     epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
     
-    tpl_params = { 'pad' : pad, 'text' : epclient.getHtml(padID)['html'], 'mode' : 'read' }
-    # or tpl_params = { 'text' : epclient.getText(padID)['text'] }, and do processing ourselves—
+    text = epclient.getHtml(padID)['html']
+    text = text.replace('&lt;', '<').replace('&gt;', '>')
+    
+    # Create namespaces from the url of the pad
+    # 'pedagogy::methodology' -> ['pedagogy']
+    # 'pedagogy::methodology::contact' -> ['pedagogy', 'methodology']
+    namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')[:-1]]
+    
+    tpl_params = { 'pad' : pad, 'text' : text, 'mode' : 'read', 'namespaces' : namespaces }
+    # or tpl_params['plaintext'] = epclient.getText(padID)['text']
+    # and do processing ourselves—
     # we need to figure out if Etherpad’s html output suffices for our purposes
+    # The problem with the plain text output is that plugins don’t seem to affect it—
+    # And so the Headings are not translated.
     
     return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
 
