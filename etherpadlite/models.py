@@ -149,7 +149,7 @@ class Pad(models.Model):
     group = models.ForeignKey(PadGroup)
 
     def __unicode__(self):
-        return self.name
+        return self.display_name
 
     @property
     def padid(self):
