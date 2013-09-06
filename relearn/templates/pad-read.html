@@ -1,5 +1,12 @@
 {% extends "pad-base.html" %}
 
 {% block content %}
+{% if authors %}
+<ul class="authors">
+{% for author in authors %}
+    <li>{{ author }}</li>
+{% endfor %}
+</ul>
+{% endif %}
 {{ text|safe }}
 {% endblock %}

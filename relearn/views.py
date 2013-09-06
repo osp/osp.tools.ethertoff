@@ -288,7 +288,13 @@ def pad_read(request, pk=None, slug=None):
     padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name.replace('::', '_'))
     epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
     
+    # Etherpad gives us authorIDs in the form ['a.5hBzfuNdqX6gQhgz', 'a.tLCCEnNVJ5aXkyVI']
+    # We link them to the Django users DjangoEtherpadLite created for us
+    authorIDs = epclient.listAuthorsOfPad(padID)['authorIDs']
+    authors = PadAuthor.objects.filter(authorID__in=authorIDs)
+    
     text = epclient.getHtml(padID)['html']
+    # Quick and dirty hack to allow HTML in pads
     text = text.replace('&lt;&#x2F;', '</').replace('&#x2F;&gt;', '/>').replace('&gt;', '>').replace('&lt;', '<')
     
     # Create namespaces from the url of the pad
@@ -296,7 +302,7 @@ def pad_read(request, pk=None, slug=None):
     # 'pedagogy::methodology::contact' -> ['pedagogy', 'methodology']
     namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')[:-1]]
     
-    tpl_params = { 'pad' : pad, 'text' : text, 'mode' : 'read', 'namespaces' : namespaces }
+    tpl_params = { 'pad' : pad, 'text' : text, 'mode' : 'read', 'namespaces' : namespaces, 'authors' : authors }
     # or tpl_params['plaintext'] = epclient.getText(padID)['text']
     # and do processing ourselves—
     # we need to figure out if Etherpad’s html output suffices for our purposes
