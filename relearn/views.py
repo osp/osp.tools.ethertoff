@@ -289,7 +289,7 @@ def pad_read(request, pk=None, slug=None):
     epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
     
     text = epclient.getHtml(padID)['html']
-    text = text.replace('&lt;', '<').replace('&gt;', '>')
+    text = text.replace('&lt;&#x2F;', '</').replace('&#x2F;&gt;', '/>').replace('&gt;', '>').replace('&lt;', '<')
     
     # Create namespaces from the url of the pad
     # 'pedagogy::methodology' -> ['pedagogy']
