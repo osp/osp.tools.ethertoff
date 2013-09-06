@@ -9,6 +9,7 @@ from etherpadlite.models import *
 
 urlpatterns = patterns(
     '',
+    url(r'^admin/', include(admin.site.urls)),
     url(r'^$', 'relearn.views.home', name='home'),
     url(r'^accounts/login$', 'django.contrib.auth.views.login',
         {'template_name': 'login.html'}, name='login'),
@@ -26,7 +27,6 @@ urlpatterns = patterns(
     url(r'w/(?P<slug>[\w\.\-_\:]+)$', 'relearn.views.pad', name='pad-write'),
     
     
-    url(r'^admin/', include(admin.site.urls)),
 
     url(r'^tracker/$', TemplateView.as_view(template_name="tracker.html")),
     url(r'^send-issue/$', 'relearn.views.post_issue', name="relearn-issue-send"),
