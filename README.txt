@@ -37,6 +37,9 @@ The integration between Django and Etherpad is based on <https://github.com/sfyn
     cd ~/src
     git clone https://github.com/ether/etherpad-lite.git
     
+    # --> install npm
+    Linux Binaries (.tar.gz) from http://nodejs.org/download/
+
     # run it with:
     
     ~/src/etherpad-lite/bin/run.sh
