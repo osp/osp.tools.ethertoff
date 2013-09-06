@@ -13,6 +13,40 @@
   font-weight: normal;
   font-style: normal;
 }
+@font-face {
+    font-family: 'UniversBold';
+    src: url('/static/fonts/universelse-bold-webfont.eot');
+    src: url('/static/fonts/universelse-bold-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/universelse-bold-webfont.woff') format('woff'),
+    url('/static/fonts/universelse-bold-webfont.ttf') format('truetype'),
+    url('/static/fonts/universelse-bold-webfont.svg#news_cycleregular') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'UniversLight';
+    src: url('/static/fonts/universelse-light-webfont.eot');
+    src: url('/static/fonts/universelse-light-webfont.eot?#iefix') format('embedded-opentype'),
+        url('/static/fonts/universelse-light-webfont.woff') format('woff'),
+    url('/static/fonts/universelse-light-webfont.ttf') format('truetype'),
+    url('/static/fonts/universelse-light-webfont.svg#news_cycleregular') format('svg');
+    font-weight: light;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Univers';
+    src: url('/static/fonts/universelse-regular-webfont.eot');
+    src: url('/static/fonts/universelse-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/universelse-regular-webfont.woff') format('woff'),
+    url('/static/fonts/universelse-regular-webfont.ttf') format('truetype'),
+    url('/static/fonts/universelse-regular-webfont.svg#news_cycleregular') format('svg');
+    font-weight: bold;
+    font-style: normal;
+}
+
+
+
+
 html,
 body {
   height: 97%;
@@ -43,7 +77,7 @@ body {
   /* IE6-9 fallback on horizontal gradient */
 
   color: lightseagreen;
-  font-family: patin, serif;
+  font-family: Univers, sans;
   font-size: 16px;
   line-height: 1.5em;
   padding: 0.5em;
