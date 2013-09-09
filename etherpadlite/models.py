@@ -114,8 +114,21 @@ class PadAuthor(models.Model):
     class Meta:
         verbose_name = _('author')
 
+    def full_name_with_prefix(self):
+        first_name = self.user.first_name
+        last_name = self.user.last_name
+        prefix = u""
+        try:
+            last_name, prefix = last_name.split(',')
+        except ValueError:
+            pass
+        full_name = u"%s%s %s" % (first_name, prefix, last_name)
+        if full_name.strip():
+            return full_name
+        return self.user.username
+    
     def __unicode__(self):
-        return self.user.__unicode__()
+        return self.full_name_with_prefix()
 
     def EtherMap(self):
         epclient = EtherpadLiteClient(self.server.apikey, self.server.apiurl)

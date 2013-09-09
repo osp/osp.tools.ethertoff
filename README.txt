@@ -22,12 +22,14 @@ The integration between Django and Etherpad is based on <https://github.com/sfyn
     virtualenv relearn
     source ~/venvs/relearn/bin/activate
     pip install django
-    pip install https://github.com/rassie/PyEtherpadLite/zipball/master
+    pip install https://github.com/devjones/PyEtherpadLite/archive/master.zip
     cd ~/relearn/relearn.be/relearn
     cp local_settings.py.example local_settings.py
     # Add database details to local_settings.py
     cd ..
     python manage.py syncdb
+    python manage.py migrate etherpadlite 0001 --fake
+    python manage.py migrate etherpadlite
     
     # --> and then install etherpad
     
