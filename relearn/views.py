@@ -295,7 +295,7 @@ def pad_read(request, pk=None, slug=None):
     
     text = epclient.getHtml(padID)['html']
     # Quick and dirty hack to allow HTML in pads
-    text = text.replace('&lt;&#x2F;', '</').replace('&#x2F;&gt;', '/>').replace('&gt;', '>').replace('&lt;', '<')
+    text = text.replace('&lt;&#x2F;', '</').replace('&#x2F;&gt;', '/>').replace('&gt;', '>').replace('&lt;', '<').replace("&quot;", '"')
     
     # Create namespaces from the url of the pad
     # 'pedagogy::methodology' -> ['pedagogy']
