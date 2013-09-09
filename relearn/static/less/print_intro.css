@@ -1,40 +1,44 @@
-
-
 @media print {
-    html, body {
-  font-family: Univers, sans;
-  font-size: 16px;
-  line-height: 1.25em;
-  padding: 0.5em;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  word-wrap : break-word;
+
+
+@page : {marks: crop;}
+
+
+#content {
+	margin-left: 0mm;
+	margin-right: 0mm;
+	orphans: 2;
+	background-color: none;
+	}
+
+@page :left {
+	margin-left: 25mm;
+	margin-right: 10mm;
+	}
+
+@page :right {
+	margin-left: 10mm;
+	margin-right: 15mm;
+	}
+
+    body {
+    font-family: Univers, sans;
+    font-size: 16px;
+    line-height: 1.2em;	
     color : black;
     width: 100%;
     height: 100%;
     }
-    
-    #cover {
-    font-family: patin, serif;
-    color : black;
-    font-size: 12px;
-    line-height: 1.2em;
-    page-break-after: always;
-    }
 
-    .title #cover {
-    font-family: Crickx, sans-serif;
-    color : black;
-    font-size: 100px;
-    line-height: 0.7em;
-    }
+h5 { 	font-size:1em;
+	color: blue;
+	}
 
     .commits h3 {
     font-family: Crickx, sans-serif;
     color : black;
     font-size: 10px;
-    line-height: 1em;
+    line-height: 1.2em;
     margin-left: -5px;
     }
     
@@ -56,9 +60,9 @@
     }
 
 
-a {
-  color: inherit;
-}
+    a {
+    color: inherit;
+    }
 
 
 h1,
@@ -66,36 +70,42 @@ h2,
 h3,
 h4 {
   font-weight: normal;
-  font-family: "Crickx", patin, sans-serif;
-  text-transform: uppercase;
+  font-family: "Univers", patin, sans-serif;
 }
 
 h1 {
-  font-size: 2em;
-  line-height: 0.5em;
+  font-family: "Univers", sans-serif;	
+  font-size: 3em;
+  line-height: 1.2em;
   position: relative;
-  z-index: 20;
 }
 h2 {
   font-size: 1.5em;
-  line-height: 0.5em;
+  line-height: 1.2em;
 }
 h3 {
   margin-top: 0px;
   text-transform: uppercase;
   margin-bottom: 0;
-  font-size: 28px;
+  font-size: 1em;
+  line-height: 1.2em;
 }
 h4 {
   text-decoration: underline;
   margin-bottom: 0;
 }
+
+h5 {
+  page-break-before:always
+}
+
 em {
   font-style: italic;
 }
 strong {
   font-weight: bold;
 }
+
 div#quotes {
   text-align: center;
   height: 360px;
@@ -108,7 +118,7 @@ blockquote {
   font-family: "Crickx", patin, sans-serif;
   text-transform: uppercase;
   font-size: 2em;
-  line-height: 1em;
+  line-height: 1.2em;
 }
 blockquote div {
   font-family: patin, serif;
@@ -131,6 +141,7 @@ sup {
   height: 20%;
   margin-left: 0;
 }
+
 img {
   max-width: 100%;
   margin-left: 0;

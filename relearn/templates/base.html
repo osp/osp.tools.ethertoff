@@ -3,12 +3,15 @@
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
-    <link rel="stylesheet" href="{{ STATIC_URL }}less/relearn.css" type="text/css" charset="utf-8">
+    <link rel="stylesheet" href="{{ STATIC_URL }}less/relearn.css" type="text/css" charset="utf-8">    
+	<link rel="stylesheet" href="{{ STATIC_URL }}less/print_intro.css" type="text/css" charset="utf-8"> 
     <script src="{{ STATIC_URL }}js/less-1.4.1.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="{{ STATIC_URL }}js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"></script>
 
     <title>Relearn</title>
+
+    {% block extra_styles %}{% endblock %}
     
 </head>
 <body>
