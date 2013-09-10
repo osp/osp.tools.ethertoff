@@ -298,9 +298,8 @@ def pad_read(request, pk=None, slug=None):
     text = text.replace('&lt;&#x2F;', '</').replace('&#x2F;&gt;', '/>').replace('&gt;', '>').replace('&lt;', '<').replace("&quot;", '"')
     
     # Create namespaces from the url of the pad
-    # 'pedagogy::methodology' -> ['pedagogy']
-    # 'pedagogy::methodology::contact' -> ['pedagogy', 'methodology']
-    namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')[:-1]]
+    # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
+    namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]
     
     tpl_params = { 'pad' : pad, 'text' : text, 'mode' : 'read', 'namespaces' : namespaces, 'authors' : authors }
     # or tpl_params['plaintext'] = epclient.getText(padID)['text']
