@@ -22,12 +22,48 @@
             $(this).html('<img src="' + $(this).attr('href')  + '">');
         }
     });
+
+{% if "notes" in namespaces %}
+
+    // for the notes we want detailed authorship information,
+    // to tell us something about the process.
+    // django provides us with the authors:
     
     var authors = {{ authorship_authors_json|safe }}
     
     for (var i=0; i < authors.length; i++) {
+    // for all the author, we’re going to go over all the spans,
+    // and add authorship labels if they correspond
+    
+    // if we have consecutive spans with the same author,
+    // it only adds a lable for the first one.
+    
         var author = authors[i]; 
-        $('span.' + author.class).before('<span class="authorship">' + author.name + '</span>')
+        
+        var currentAuthor = '';
+        $('span').each(function() {
+            var thisClass = $(this).attr('class');
+            
+            // for the first span it encounters, currentAuthor is empty,
+            // so that always gets a label
+            
+            if ( thisClass !== currentAuthor) {
+
+                // if the class has a classname that corresponds to the author
+                // then we insert the label
+                
+                if (thisClass === author.class ) {
+                    $(this).before('<span class="authorship">' + author.name + '</span>')
+                }
+                
+                // set currentAuthor, so that if the next span shares this author it
+                // doesn’t get labeled
+                
+                currentAuthor = thisClass;
+                
+            }
+        });
     }
+{% endif %}
 </script>
 {% endblock %}
