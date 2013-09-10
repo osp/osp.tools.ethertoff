@@ -10,3 +10,24 @@
 {% endif %}
 {{ text|safe }}
 {% endblock %}
+
+{% block scripts %}
+<script>
+    /* Convert links to images in images */
+   
+    var isImg = new RegExp('\.png|\.jpg|\.jpeg', 'i');
+    
+    $("a[href]").each(function() {
+        if ( $(this).attr('href').match(isImg) ) {
+            $(this).html('<img src="' + $(this).attr('href')  + '">');
+        }
+    });
+    
+    var authors = {{ authorship_authors_json|safe }}
+    
+    for (var i=0; i < authors.length; i++) {
+        var author = authors[i]; 
+        $('span.' + author.class).before('<span class="authorship">' + author.name + '</span>')
+    }
+</script>
+{% endblock %}

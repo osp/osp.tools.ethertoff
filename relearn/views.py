@@ -5,6 +5,7 @@ import datetime
 import time
 import urllib
 from urlparse import urlparse
+import json
 
 # Framework imports
 from django.shortcuts import render_to_response, get_object_or_404
@@ -293,16 +294,26 @@ def pad_read(request, pk=None, slug=None):
     authorIDs = epclient.listAuthorsOfPad(padID)['authorIDs']
     authors = PadAuthor.objects.filter(authorID__in=authorIDs)
     
+    authorship_authors = []
+    for author in authors:
+        authorship_authors.append({ 'name'  : author.user.first_name if author.user.first_name else author.user.username,
+                                    'class' : 'author' + author.authorID.replace('.','_') })
+    authorship_authors_json = json.dumps(authorship_authors, indent=2)
+    
     text = epclient.getHtml(padID)['html']
     # Quick and dirty hack to allow HTML in pads
     text = text.replace('&lt;&#x2F;', '</').replace('&#x2F;&gt;', '/>').replace('&gt;', '>').replace('&lt;', '<').replace("&quot;", '"')
     
     # Create namespaces from the url of the pad
-    # 'pedagogy::methodology' -> ['pedagogy']
-    # 'pedagogy::methodology::contact' -> ['pedagogy', 'methodology']
-    namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')[:-1]]
+    # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
+    namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]
     
-    tpl_params = { 'pad' : pad, 'text' : text, 'mode' : 'read', 'namespaces' : namespaces, 'authors' : authors }
+    tpl_params = { 'pad'                : pad,
+                   'text'               : text,
+                   'mode'               : 'read',
+                   'namespaces'         : namespaces,
+                   'authorship_authors_json' : authorship_authors_json,
+                   'authors'            : authors }
     # or tpl_params['plaintext'] = epclient.getText(padID)['text']
     # and do processing ourselves—
     # we need to figure out if Etherpad’s html output suffices for our purposes
