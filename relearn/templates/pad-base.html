@@ -17,14 +17,4 @@
 
 {% block contentclasses %}{% for namespace in namespaces %}{{ namespace }} {% endfor %}{% endblock %}
 
-{% block scripts %}
-<script>
-    var isImg = new RegExp('\.png|\.jpg|\.jpeg', 'i');
-    
-    $("a[href]").each(function() {
-        if ( $(this).attr('href').match(isImg) ) {
-            $(this).html('<img src="' + $(this).attr('href')  + '">');
-        }
-    }); 
-</script>
-{% endblock %}
+
