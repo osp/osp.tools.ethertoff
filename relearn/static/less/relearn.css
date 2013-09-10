@@ -388,6 +388,12 @@ legend {
   font-size: 0.75em;
   line-height: 1.4em;
 }
+
+/* don’t show the Etherpad background colours */
+#content span {
+    background-color: inherit !important;
+}
+
 /* ------ PRINT ------ */
 @media screen {
   .print-only {
