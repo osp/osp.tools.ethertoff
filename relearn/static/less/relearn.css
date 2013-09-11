@@ -394,7 +394,7 @@ nav a {
 }
 
 ul.authors  {
-    font-size: 14px;
+    font-size: 11px;
     margin-bottom: 10px;
 }
 ul.authors:before {
@@ -405,7 +405,7 @@ ul.authors:before {
     display: inline;
     border: 1px solid lightseagreen;
     margin-right: 10px;
-    padding: 0px 5px 3px 5px;
+    padding: 0px 5px 1px 5px;
     text-transform: uppercase;
     }
 
