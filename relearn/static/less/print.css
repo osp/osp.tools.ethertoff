@@ -124,8 +124,8 @@ html, body {
 
 /* ============ CODE ============ */
 
-.code { 	
-	font-family: notcouriersans;
+code { 	
+	font-family: notcouriersans !important;
 	font-size: 9px;
 	line-height: 1.2em;
 	color: black;
@@ -266,6 +266,7 @@ img {
   margin-left: 0;
   margin-bottom: 1em;
 }
+
 div#switch {
   display: inline;
 }
