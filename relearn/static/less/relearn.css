@@ -412,6 +412,7 @@ legend {
   line-height: 1.4em;
 }
 
+
 }
 /*
 li { 
@@ -420,6 +421,12 @@ li {
     margin-right: .5cm;
     color: blue;
 }*/
+
+/* don’t show the Etherpad background colours */
+#content span {
+    background-color: inherit !important;
+}
+
 
 /* ------ PRINT ------ */
 @media screen {
