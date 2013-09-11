@@ -393,12 +393,27 @@ nav a {
   margin-left: 2em;
 }
 
+ul.authors  {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+ul.authors:before {
+    margin: 0;
+    content: "Authors : "
+}
 .authors li {
     display: inline;
-}
+    border: 1px solid lightseagreen;
+    margin-right: 10px;
+    padding: 0px 5px 3px 5px;
+    text-transform: uppercase;
+    }
+
+/*
 .authors li:after {
-    content: ", "
-}
+    content: ","
+} */
+
 #content .authors li:before {
     margin: 0;
     content: ""
