@@ -190,25 +190,25 @@ a {
 /* ============ TITLES / CAPTIONS ============ */
 
 h1 {
-  font-family: Univers, sans-serif;	
+  font-family: Univers, sans-serif !important;	
   font-style: bold;
-  font-size: 30px;
-  line-height: 1em;
+  font-size: 30px !important;
+  line-height: 1em !important;
 }
 
 h2 {
-  font-family: Univers, sans-serif;	
+  font-family: Univers, sans-serif !important;	
   font-style: bold;
-  font-size: 18px;
+  font-size: 18px !important;
   text-transform: uppercase;
-  line-height: 1em;
+  line-height: 1em !important;
 }
 
 h3, h4, h5, h6 {
-  font-family: Univers, sans-serif;	
+  font-family: Univers, sans-serif !important;	
   font-style: normal;
-  font-size: 15px;
-  line-height: 1.2em;
+  font-size: 15px !important;
+  line-height: 1.2em !important;
 }
 
 
