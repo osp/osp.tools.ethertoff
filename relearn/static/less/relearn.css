@@ -117,7 +117,7 @@ body {
   word-wrap : break-word;
 }
 
-#small { 	
+.small { 	
 	font-family: notcouriersans;
 	color: lightseagreen;
 	font-size:1em;
@@ -126,7 +126,7 @@ body {
 	margin-right: 0cm;
 	}
 
-#notes { 	
+.notes { 	
 	font-family: notcouriersans;
 	font-size:1em;
 	color: lightseagreen;
@@ -397,7 +397,7 @@ ul.authors  {
     font-size: 11px;
     margin-bottom: 10px;
     line-height: 25px;
-    white-space:nowrap;
+//    white-space:nowrap;
 }
 ul.authors:before {
     margin: 0;
