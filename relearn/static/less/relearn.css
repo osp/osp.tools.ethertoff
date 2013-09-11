@@ -68,6 +68,30 @@
 
 }
 
+@font-face {
+    font-family: 'AutopiaLight';
+    src: url('/static/fonts/autopia-c-light-webfont.eot');
+    src: url('/static/fonts/autopia-c-light-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/autopia-c-light-webfont.woff') format('woff'),
+    url('/static/fonts/autopia-c-light-webfont.ttf') format('truetype'),
+    url('/static/fonts/autopia-c-light-webfont.svg#notcouriersansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+                                                                 
+}
+
+@font-face {
+    font-family: 'Autopia';
+    src: url('/static/fonts/autopia-c-regular-webfont.eot');
+    src: url('/static/fonts/autopia-c-regular-webfont.eot?#iefix') format('embedded-opentype'),
+    url('/static/fonts/autopia-c-regular-webfont.woff') format('woff'),
+    url('/static/fonts/autopia-c-regular-webfont.ttf') format('truetype'),
+    url('/static/fonts/autopia-c-regular-webfont.svg#notcouriersansbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    
+}
+
 body {
   font-family: Univers;
   font-feature-settings: "liga", "dlig", "clig", "kern";
@@ -115,6 +139,15 @@ body {
   -moz-box-sizing: border-box;
   box-sizing: border-box;
   word-wrap : break-word;
+}
+
+
+/* ============ PAGES TITRES ============ */
+
+.titlepages {
+    font-family: Autopia, serif;  
+    font-size: 50px;
+    line-height: 1em;
 }
 
 .small { 	
