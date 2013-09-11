@@ -1,6 +1,7 @@
 {% extends "pad-base.html" %}
 
 {% block content %}
+<h1 class="print-only">{{ pad.display_name }}</h1>
 {% if authors %}
 <ul class="authors">
 {% for author in authors %}
