@@ -192,7 +192,7 @@ a {
 h1 {
   font-family: Univers, sans-serif !important;	
   font-style: bold;
-  font-size: 30px !important;
+  font-size: 50px !important;
   line-height: 1em !important;
 }
 
@@ -262,9 +262,10 @@ p + p {
 /* ============ PICTURES ============ */
 
 img {
-  max-width: 100%;
-  margin-left: 0;
-  margin-bottom: 1em;
+  max-width: 70%;
+  max-height: 40%;
+  margin-left: 20px;
+  margin-bottom: 5px;
 }
 
 div#switch {
