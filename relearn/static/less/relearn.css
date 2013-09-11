@@ -141,6 +141,14 @@ body {
   word-wrap : break-word;
 }
 
+/* ============ PAGES TITRES ============ */
+
+.titlepages {
+    font-family: Autopia, serif;  
+    font-size: 50px;
+    line-height: 1em;
+}
+
 #small { 	
 	font-family: notcouriersans;
 	color: lightseagreen;
