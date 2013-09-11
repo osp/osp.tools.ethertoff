@@ -2,21 +2,23 @@
 
 @media print {
     html, body {
-  font-family: Univers, sans;
-  font-size: 16px;
-  line-height: 1.25em;
-  padding: 0.5em;
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
-  word-wrap : break-word;
-    color : black;
+    font-family: Univers, sans;
+    font-size: 16px;
+    line-height: 1.25em;
+    padding: 0.5em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap : break-word;
+    font-feature-settings: "liga", "dlig", "clig", "kern";
+    -webkit-font-feature-settings: "liga", "dlig", "clig", "kern";
+    -o-font-feature-settings: "liga", "dlig", "clig", "kern";  color : black;
     width: 100%;
     height: 100%;
-    }
+}
     
     #cover {
-    font-family: patin, serif;
+    font-family: Univers, sans-serif;
     color : black;
     font-size: 12px;
     line-height: 1.2em;
@@ -24,12 +26,81 @@
     }
 
     .title #cover {
-    font-family: Crickx, sans-serif;
+    font-family: Univers, sans-serif;
     color : black;
     font-size: 100px;
     line-height: 0.7em;
     }
 
+// not effective on the phantomjs pdf export yet
+@page :left {
+	margin-left: 25mm;
+	margin-right: 10mm;
+	}
+
+@page :right {
+	margin-left: 10mm;
+	margin-right: 15mm;
+	}
+
+#small { 	
+	font-family: notcouriersans;
+	font-size:.8em;
+	line-height: 1.2em;
+	color: black;
+	margin-left: .5cm;
+	margin-right: 0cm;
+	}
+
+#notes { 	
+	font-family: notcouriersans;
+	font-size:.8em;
+	line-height: 1.2em;
+	color: black;
+	margin-left: .5cm;
+	margin-right: 0cm;
+	}
+
+.authorship { 	
+	font-family: UniversLight;
+	font-size: .4em;
+	height: 1.7em;
+    text-transform: uppercase;
+    position:absolute;
+    margin-top: .9em;
+    padding-top:1em;
+    margin-left: -.5em;
+    padding-left: 2px;
+    border-left: 1px solid gray;
+   	}
+
+.authors  {
+    display: none;
+   	}
+
+
+li { 
+	display : inline-block;
+	width: 30%;
+	margin-right: 3%;
+	margin-bottom: .3cm;
+	font-size:9px;
+	line-height: 1.4em;
+	}
+
+li U { 
+    text-decoration: none;
+    border-bottom: 1px solid gray;
+	}
+
+U { 
+    text-decoration: none;
+    border-bottom: 1px solid gray;
+	}
+
+sup { 
+    margin-right: 2px;
+	}
     .commits h3 {
     font-family: Crickx, sans-serif;
     color : black;
@@ -60,35 +131,52 @@ a {
   color: inherit;
 }
 
-
 h1,
 h2,
 h3,
 h4 {
   font-weight: normal;
-  font-family: "Crickx", patin, sans-serif;
-  text-transform: uppercase;
+  font-family: Univers, sans-serif;
 }
 
 h1 {
-  font-size: 2em;
-  line-height: 0.5em;
+  font-family: Univers, sans-serif;	
+  font-size: 3em;
+  line-height: 1.2em;
   position: relative;
-  z-index: 20;
 }
 h2 {
   font-size: 1.5em;
-  line-height: 0.5em;
+  line-height: 1.2em;
 }
 h3 {
   margin-top: 0px;
   text-transform: uppercase;
   margin-bottom: 0;
-  font-size: 28px;
+  font-size: 1em;
+  line-height: 1.2em;
 }
+
+h3 b{
+  margin-top: 0px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-size: 1em;
+  line-height: 1.2em;
+}
+
 h4 {
   text-decoration: underline;
   margin-bottom: 0;
+}
+
+#participants{
+  page-break-before: auto;
+  margin-bottom: -60px;
+}
+
+h5 {
+  page-break-before:always
 }
 em {
   font-style: italic;

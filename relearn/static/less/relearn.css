@@ -14,7 +14,7 @@
   font-style: normal;
 }
 @font-face {
-    font-family: 'UniversBold';
+    font-family: 'Univers';
     src: url('/static/fonts/universelse-bold-webfont.eot');
     src: url('/static/fonts/universelse-bold-webfont.eot?#iefix') format('embedded-opentype'),
     url('/static/fonts/universelse-bold-webfont.woff') format('woff'),
@@ -40,10 +40,40 @@
     url('/static/fonts/universelse-regular-webfont.woff') format('woff'),
     url('/static/fonts/universelse-regular-webfont.ttf') format('truetype'),
     url('/static/fonts/universelse-regular-webfont.svg#news_cycleregular') format('svg');
-    font-weight: bold;
+    font-weight: normal;
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'notcouriersans';
+    src: url('/static/fonts/NotCourierSans-webfont.eot');
+    src: url('/static/fonts/NotCourierSans-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/static/fonts/NotCourierSans-webfont.woff') format('woff'),
+         url('/static/fonts/NotCourierSans-webfont.ttf') format('truetype'),
+         url('/static/fonts/NotCourierSans-webfont.svg#notcouriersansregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'notcouriersans';
+    src: url('/static/fonts/NotCourierSans-Bold-webfont.eot');
+    src: url('/static/fonts/NotCourierSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/static/fonts/NotCourierSans-Bold-webfont.woff') format('woff'),
+         url('/static/fonts/NotCourierSans-Bold-webfont.ttf') format('truetype'),
+         url('/static/fonts/NotCourierSans-Bold-webfont.svg#notcouriersansbold') format('svg');
+    font-weight: bold;
+    font-style: bold;
+
+}
+
+body {
+  font-family: Univers;
+  font-feature-settings: "liga", "dlig", "clig", "kern";
+  -webkit-font-feature-settings: "liga", "dlig", "clig", "kern";
+  -o-font-feature-settings: "liga", "dlig", "clig", "kern";
+}
 
 @media screen {
 
@@ -51,6 +81,7 @@ html,
 body {
   height: 97%;
 }
+
 body {
   background: #ffff00;
   /* Old browsers */
@@ -77,8 +108,7 @@ body {
   /* IE6-9 fallback on horizontal gradient */
 
   color: lightseagreen;
-  font-family: Univers, sans;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.5em;
   padding: 0.5em;
   -webkit-box-sizing: border-box;
@@ -87,6 +117,52 @@ body {
   word-wrap : break-word;
 }
 
+#small { 	
+	font-family: notcouriersans;
+	color: lightseagreen;
+	font-size:1em;
+	line-height: 1.2em;
+	margin-left: .5cm;
+	margin-right: 0cm;
+	}
+
+#notes { 	
+	font-family: notcouriersans;
+	font-size:1em;
+	color: lightseagreen;
+	line-height: 1.2em;
+	margin-left: .5cm;
+	margin-right: 0cm;
+	}
+
+.authorship { 	
+	font-family: UniversLight;
+	font-size: .4em;
+	height: 1.7em;
+	color: lightseagreen;
+    text-transform: uppercase;
+    position:absolute;
+    margin-top: .9em;
+    padding-top:1em;
+    margin-left: -.5em;
+    padding-left: 2px;
+    border-left: 1px solid lightseagreen;
+   	}
+
+.authors  {
+    display: block;
+   	}
+ 
+li U { 
+    text-decoration: none;
+    border-bottom: 1px solid lightseagreen;
+	}
+
+U { 
+    text-decoration: none;
+    border-bottom: 1px solid lightseagreen;
+	}
+	   	
 div {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
@@ -146,15 +222,22 @@ a {
 a:hover {
   background-color: yellow;
 }
-h1,
-h2,
+h1{
+  font-weight: normal;
+  font-family: "Crickx", sans-serif;
+  text-transform: uppercase;
+}
+
+h2 {
+
+}
+
 h3,
 h4,
 h5,
 h6{
   font-weight: normal;
-  font-family: "Crickx", sans-serif;
-  text-transform: uppercase;
+  font-family: Univers, sans-serif;
 }
 h1 {
   font-size: 2em;
@@ -330,7 +413,13 @@ legend {
 }
 
 }
-
+/*
+li { 
+    display : inline-block;
+    width: 5cm;
+    margin-right: .5cm;
+    color: blue;
+}*/
 
 /* ------ PRINT ------ */
 @media screen {
