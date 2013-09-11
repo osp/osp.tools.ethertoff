@@ -396,6 +396,8 @@ nav a {
 ul.authors  {
     font-size: 11px;
     margin-bottom: 10px;
+    line-height: 25px;
+    white-space:nowrap;
 }
 ul.authors:before {
     margin: 0;
