@@ -47,9 +47,9 @@ html, body {
 /* ============ COVER ============ */
 
     #cover {
-    font-family: Univers, sans-serif;
+    font-family: HerscheyScript, sans-serif;
     color : black;
-    font-size: 200px !important;
+    font-size: 100px !important;
     line-height: 1em !important;
     page-break-after: always;
      white-space:pre;
@@ -216,7 +216,7 @@ h3, h4, h5, h6 {
 /* ============ PAGES TITRES ============ */
 
 .titlepages {
-  font-family: Autopia, serif;	
+    font-family: HerscheyTimes, serif;	
   font-size: 50px;
   line-height: 1em;
 }

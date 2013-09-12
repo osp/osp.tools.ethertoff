@@ -142,10 +142,8 @@ body {
 }
 
 
-/* ============ PAGES TITRES ============ */
-
 .titlepages {
-    font-family: Autopia, serif;  
+    font-family: HerscheyTimes, serif;  
     font-size: 50px;
     line-height: 1em;
 }
