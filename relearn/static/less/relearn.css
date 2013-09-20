@@ -22,7 +22,7 @@ body {
 
   color: lightseagreen;
   font-family: "Univers Light";
-  font-size: 20px;
+  font-size: 12px;
   line-height: 1.5em;
   padding: 0.5em;
 
@@ -52,14 +52,8 @@ img {
   margin-bottom: 1em;
 }
 blockquote {
-  display: none;
-  text-align: center;
-  width: 85%;
-  margin: auto;
-  font-family: "Crickx", patin, sans-serif;
-  text-transform: uppercase;
-  font-size: 2em;
-  line-height: 1em;
+	font-style: italic;
+	margin-left: 2em;
 }
 blockquote div {
   font-family: patin, serif;
@@ -74,6 +68,9 @@ legend {
   font-size: 0.75em;
   line-height: 1.4em;
 }
+code, pre {
+    font-family: notcouriersans, monospace;
+}
 /* - INLINES ------------------------------------- */
 a {
   color: inherit;
@@ -86,13 +83,18 @@ h1{
   line-height: 1em !important;
   position: relative;
   z-index: 20;
+  line-height: 2em;
   font-weight: normal;
-  font-family: "Crickx", sans-serif;
-  text-transform: uppercase;
+  font-family: "HerscheyFutura", sans-serif;
+  margin-bottom:12px;
 }
 h2 {
-  font-size: 1.5em;
-  line-height: 0.5em;
+  font-family: "HerscheyFutura", sans-serif;
+  font-size: 1em;
+  line-height: 1.5em;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  margin-bottom:9px;
 }
 h3,
 h4,
@@ -179,14 +181,14 @@ form input[type=submit]:hover {
 .button:hover {
   background-color: white;
 }
-.small { 	
-	font-family: notcouriersans;
-	color: lightseagreen;
-	font-size:1em;
-	line-height: 1.2em;
-	margin-left: 0cm;
-	margin-right: 0cm;
-	}
+.small {     
+    font-family: notcouriersans;
+    color: lightseagreen;
+    font-size:1em;
+    line-height: 1.2em;
+    margin-left: 0cm;
+    margin-right: 0cm;
+    }
 .inline {
   display: inline;
 }
@@ -227,6 +229,7 @@ form input[type=submit]:hover {
 }
 .middle {
   width: 60%;
+  padding: 10px 20px;
 }
 
 /* - NAV ------------------------------------------*/
@@ -269,6 +272,8 @@ div#switch a.active {
 }
 div.intro {
     font-family: AutopiaLight, serif;  
+    line-height: 1.8em; 
+    font-size: 12px;
 }
 
 .titlepages {
@@ -277,14 +282,14 @@ div.intro {
     line-height: 1em;
 }
 
-.notes { 	
-	font-family: notcouriersans;
-	font-size:1em;
-	color: lightseagreen;
-	line-height: 1.2em;
-	margin-left: 0cm;
-	margin-right: 0cm;
-	}
+.notes {     
+    font-family: notcouriersans;
+    font-size:1em;
+    color: lightseagreen;
+    line-height: 1.2em;
+    margin-left: 0cm;
+    margin-right: 0cm;
+    }
 
 ul.indent li:before {
     content: "" !important;
@@ -306,11 +311,11 @@ p.commit-message {
 }
 
 /* - AUTHORSHIP -----------------------------*/
-.authorship { 	
-	font-family: Univers;
-	font-size: .4em;
-	height: 1.7em;
-	color: lightseagreen;
+.authorship {     
+    font-family: Univers;
+    font-size: .4em;
+    height: 1.7em;
+    color: lightseagreen;
     text-transform: uppercase;
     position:absolute;
     margin-top: .9em;
@@ -318,11 +323,11 @@ p.commit-message {
     margin-left: -0.5em;
     padding-left: 2px;
     border-left: 1px solid lightseagreen;
-   	}
+       }
 
 .authors  {
     display: block;
-   	}
+       }
 ul.authors {
     font-size: 11px;
     margin-bottom: 10px;
@@ -334,12 +339,15 @@ ul.authors:before {
     content: "Authors : "
 }
 ul.authors li {
-    display: inline;
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    display: inline-block;
     border: 1px solid lightseagreen;
-    margin-right: 10px;
-    padding: 0px 5px 1px 5px;
+    margin-right: 0.5em;
+    padding: 0px 5px;
     text-transform: uppercase;
-    }
+    height: 23px;
+}
 ul.authors li:before {
     margin-left: 0 !important;
     content: "" !important;
@@ -371,3 +379,4 @@ ul.authors li:last-child:after {
     display: none;
   }
 }
+
