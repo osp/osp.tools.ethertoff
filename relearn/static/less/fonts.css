@@ -19,24 +19,14 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'UniversBold';
-    src: url('/static/fonts/universelse-bold-webfont.eot');
-    src: url('/static/fonts/universelse-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/universelse-bold-webfont.woff') format('woff'),
-         url('/static/fonts/universelse-bold-webfont.ttf') format('truetype'),
-         url('/static/fonts/universelse-bold-webfont.svg#universelse-bold') format('svg');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'UniversLight';
+    font-family: 'Univers Light';
     src: url('/static/fonts/universelse-light-webfont.eot');
     src: url('/static/fonts/universelse-light-webfont.eot?#iefix') format('embedded-opentype'),
          url('/static/fonts/universelse-light-webfont.woff') format('woff'),
          url('/static/fonts/universelse-light-webfont.ttf') format('truetype'),
          url('/static/fonts/universelse-light-webfont.svg#universelse-light') format('svg');
-    font-weight: bold;
-    font-style: light;
+    font-weight: normal;
+    font-style: normal;
 }
 @font-face {
     font-family: 'Univers';
@@ -45,6 +35,16 @@
          url('/static/fonts/universelse-regular-webfont.woff') format('woff'),
          url('/static/fonts/universelse-regular-webfont.ttf') format('truetype'),
          url('/static/fonts/universelse-regular-webfont.svg#universelse-regular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'Univers';
+    src: url('/static/fonts/universelse-bold-webfont.eot');
+    src: url('/static/fonts/universelse-bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('/static/fonts/universelse-bold-webfont.woff') format('woff'),
+         url('/static/fonts/universelse-bold-webfont.ttf') format('truetype'),
+         url('/static/fonts/universelse-bold-webfont.svg#universelse-bold') format('svg');
     font-weight: bold;
     font-style: normal;
 }

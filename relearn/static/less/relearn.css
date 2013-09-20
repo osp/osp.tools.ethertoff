@@ -1,153 +1,184 @@
 @import "reset.css";
-@font-face {
-  font-family: 'patin';
-  src: url('/static/fonts/osp_le-patin-helvete-webfont.eot');
-  src: url('/static/fonts/osp_le-patin-helvete-webfont.eot?#iefix') format('embedded-opentype'), url('/static/fonts/osp_le-patin-helvete-webfont.woff') format('woff'), url('/static/fonts/osp_le-patin-helvete-webfont.ttf') format('truetype'), url('/static/fonts/osp_le-patin-helvete-webfont.svg#news_cycleregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-  font-family: 'Crickx';
-  src: url('/static/fonts/crickxsharkcut-webfont.eot');
-  src: url('/static/fonts/crickxsharkcut-webfont.eot?#iefix') format('embedded-opentype'), url('/static/fonts/crickxsharkcut-webfont.woff') format('woff'), url('/static/fonts/crickxsharkcut-webfont.ttf') format('truetype'), url('/static/fonts/crickxsharkcut-webfont.svg#news_cycleregular') format('svg');
-  font-weight: normal;
-  font-style: normal;
-}
-@font-face {
-    font-family: 'Univers';
-    src: url('/static/fonts/universelse-bold-webfont.eot');
-    src: url('/static/fonts/universelse-bold-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/universelse-bold-webfont.woff') format('woff'),
-    url('/static/fonts/universelse-bold-webfont.ttf') format('truetype'),
-    url('/static/fonts/universelse-bold-webfont.svg#news_cycleregular') format('svg');
-    font-weight: bold;
-    font-style: bold;
-}
-@font-face {
-    font-family: 'Univers';
-    src: url('/static/fonts/universelse-light-webfont.eot');
-    src: url('/static/fonts/universelse-light-webfont.eot?#iefix') format('embedded-opentype'),
-        url('/static/fonts/universelse-light-webfont.woff') format('woff'),
-    url('/static/fonts/universelse-light-webfont.ttf') format('truetype'),
-    url('/static/fonts/universelse-light-webfont.svg#news_cycleregular') format('svg');
-    font-weight: light;
-    font-style: light;
-}
-@font-face {
-    font-family: 'Univers';
-    src: url('/static/fonts/universelse-regular-webfont.eot');
-    src: url('/static/fonts/universelse-regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/universelse-regular-webfont.woff') format('woff'),
-    url('/static/fonts/universelse-regular-webfont.ttf') format('truetype'),
-    url('/static/fonts/universelse-regular-webfont.svg#news_cycleregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
+@import "fonts.css";
 
-@font-face {
-    font-family: 'notcouriersans';
-    src: url('/static/fonts/NotCourierSans-webfont.eot');
-    src: url('/static/fonts/NotCourierSans-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/NotCourierSans-webfont.woff') format('woff'),
-         url('/static/fonts/NotCourierSans-webfont.ttf') format('truetype'),
-         url('/static/fonts/NotCourierSans-webfont.svg#notcouriersansregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-
-@font-face {
-    font-family: 'notcouriersans';
-    src: url('/static/fonts/NotCourierSans-Bold-webfont.eot');
-    src: url('/static/fonts/NotCourierSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/NotCourierSans-Bold-webfont.woff') format('woff'),
-         url('/static/fonts/NotCourierSans-Bold-webfont.ttf') format('truetype'),
-         url('/static/fonts/NotCourierSans-Bold-webfont.svg#notcouriersansbold') format('svg');
-    font-weight: bold;
-    font-style: bold;
-
-}
-
-@font-face {
-    font-family: 'AutopiaLight';
-    src: url('/static/fonts/autopia-c-light-webfont.eot');
-    src: url('/static/fonts/autopia-c-light-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/autopia-c-light-webfont.woff') format('woff'),
-    url('/static/fonts/autopia-c-light-webfont.ttf') format('truetype'),
-    url('/static/fonts/autopia-c-light-webfont.svg#notcouriersansbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-                                                                 
-}
-
-@font-face {
-    font-family: 'Autopia';
-    src: url('/static/fonts/autopia-c-regular-webfont.eot');
-    src: url('/static/fonts/autopia-c-regular-webfont.eot?#iefix') format('embedded-opentype'),
-    url('/static/fonts/autopia-c-regular-webfont.woff') format('woff'),
-    url('/static/fonts/autopia-c-regular-webfont.ttf') format('truetype'),
-    url('/static/fonts/autopia-c-regular-webfont.svg#notcouriersansbold') format('svg');
-    font-weight: normal;
-    font-style: normal;
-    
-}
-
-body {
-  font-family: Univers;
-  font-feature-settings: "liga", "dlig", "clig", "kern";
-  -webkit-font-feature-settings: "liga", "dlig", "clig", "kern";
-  -o-font-feature-settings: "liga", "dlig", "clig", "kern";
-}
-
-@media screen {
-
-html,
-body {
-  height: 97%;
-}
-
+/*-- REDEFINE TAGS ---------------------------------------- */
 body {
   background: #ffff00;
   /* Old browsers */
-
   background: -moz-radial-gradient(center, ellipse cover, #ffff00 0%, #ffffff 68%);
   /* FF3.6+ */
-
   background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #ffff00), color-stop(68%, #ffffff));
   /* Chrome,Safari4+ */
-
   background: -webkit-radial-gradient(center, ellipse cover, #ffff00 0%, #ffffff 68%);
   /* Chrome10+,Safari5.1+ */
-
   background: -o-radial-gradient(center, ellipse cover, #ffff00 0%, #ffffff 68%);
   /* Opera 12+ */
-
   background: -ms-radial-gradient(center, ellipse cover, #ffff00 0%, #ffffff 68%);
   /* IE10+ */
-
   background: radial-gradient(ellipse at center, #ffff00 0%, #ffffff 68%);
   /* W3C */
-
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#ffffff', GradientType=1);
   /* IE6-9 fallback on horizontal gradient */
 
   color: lightseagreen;
+  font-family: "Univers Light";
   font-size: 20px;
   line-height: 1.5em;
   padding: 0.5em;
+
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
+
   word-wrap : break-word;
+  font-feature-settings: "liga", "dlig", "clig", "kern";
+  -webkit-font-feature-settings: "liga", "dlig", "clig", "kern";
+  -o-font-feature-settings: "liga", "dlig", "clig", "kern";
+  text-rendering: optimizeLegibility;
+}
+/* - BLOCKS ------------------------------------- */
+iframe {
+  outline: 1px solid lightseagreen;
+}
+div {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+img {
+  border: 3px solid lightseagreen;
+  max-width: 70%;
+  margin-left: 15%;
+  margin-bottom: 1em;
+}
+blockquote {
+  display: none;
+  text-align: center;
+  width: 85%;
+  margin: auto;
+  font-family: "Crickx", patin, sans-serif;
+  text-transform: uppercase;
+  font-size: 2em;
+  line-height: 1em;
+}
+blockquote div {
+  font-family: patin, serif;
+}
+p {
+  margin-bottom: 48px;
+}
+p + p {
+  text-indent: 1.5em;
+}
+legend {
+  font-size: 0.75em;
+  line-height: 1.4em;
+}
+/* - INLINES ------------------------------------- */
+a {
+  color: inherit;
+}
+a:hover {
+  background-color: yellow;
+}
+h1{
+  font-size: 2em !important;
+  line-height: 1em !important;
+  position: relative;
+  z-index: 20;
+  font-weight: normal;
+  font-family: "Crickx", sans-serif;
+  text-transform: uppercase;
+}
+h2 {
+  font-size: 1.5em;
+  line-height: 0.5em;
+}
+h3,
+h4,
+h5,
+h6{
+  font-weight: normal;
+  font-family: Univers, sans-serif;
+}
+h3 {
+  margin-top: 0px;
+  text-transform: uppercase;
+  margin-bottom: 0;
+  font-size: 28px;
+}
+h4 {
+  text-decoration: underline;
+  margin-bottom: 0;
+}
+em {
+  font-style: italic;
+}
+strong {
+  font-weight: bold;
+}
+sup {
+  font-size: 0.75em;
+  line-height: 0;
+  vertical-align: 0.25em;
+}
+li u { 
+    text-decoration: none;
+    border-bottom: 1px solid lightseagreen;
 }
 
-
-.titlepages {
-    font-family: HerscheyTimes, serif;  
-    font-size: 50px;
-    line-height: 1em;
+u { 
+    text-decoration: none;
+    border-bottom: 1px solid lightseagreen;
+}
+/* -- FORMS --------------------------*/ 
+form {
+  margin-bottom: 1.5em;
+}
+form label,
+form textarea {
+  font-size: 13.33px;
+}
+form input,
+form textarea {
+  background: none;
+  border: 1px solid lightseagreen;
+  color: lightseagreen;
+  font-family: patin;
+}
+form input:focus,
+form textarea:focus {
+  background-color: white;
+}
+form input[type=text],
+form input[type=password] {
+  height: 20px;
+  position: relative;
+  top: -1px;
+}
+form input[type=submit] {
+  cursor: pointer;
+  padding: 0;
+  height: 24px;
+}
+form input[type=submit]:hover {
+  background-color: white;
 }
 
+/* - GENERIC CLASSES -------------------------------- */
+.button {
+  text-decoration: none;
+  border: 1px solid MediumSeaGreen;
+  padding: 7px 5px;
+  box-shadow: 0 0 30px 10px yellow;
+  margin: 0 0.5em;
+  position: relative;
+  top: -3px;
+  background-color: yellow;
+}
+.button:hover {
+  background-color: white;
+}
 .small { 	
 	font-family: notcouriersans;
 	color: lightseagreen;
@@ -156,49 +187,11 @@ body {
 	margin-left: 0cm;
 	margin-right: 0cm;
 	}
-
-.notes { 	
-	font-family: notcouriersans;
-	font-size:1em;
-	color: lightseagreen;
-	line-height: 1.2em;
-	margin-left: 0cm;
-	margin-right: 0cm;
-	}
-
-.authorship { 	
-	font-family: Univers;
-	font-size: .4em;
-	height: 1.7em;
-	color: lightseagreen;
-    text-transform: uppercase;
-    position:absolute;
-    margin-top: .9em;
-    padding-top:1em;
-    margin-left: -.5em;
-    padding-left: 2px;
-    border-left: 1px solid lightseagreen;
-   	}
-
-.authors  {
-    display: block;
-   	}
- 
-li U { 
-    text-decoration: none;
-    border-bottom: 1px solid lightseagreen;
-	}
-
-U { 
-    text-decoration: none;
-    border-bottom: 1px solid lightseagreen;
-	}
-	   	
-div {
-  -webkit-box-sizing: border-box;
-  -moz-box-sizing: border-box;
-  box-sizing: border-box;
+.inline {
+  display: inline;
 }
+
+/* - PAGE STRUCTURE ---------------------------------*/
 .wrap {
   margin-bottom: 20px;
   -webkit-box-sizing: border-box;
@@ -235,170 +228,8 @@ div {
 .middle {
   width: 60%;
 }
-#account-buttons {
-  margin-top: 14px;
-}
-#account-buttons li {
-  display: inline;
-}
-#content {
-  height: 100%;
-}
-.inline {
-  display: inline;
-}
-a {
-  color: inherit;
-}
-a:hover {
-  background-color: yellow;
-}
-h1{
-  font-weight: normal;
-  font-family: "Crickx", sans-serif;
-  text-transform: uppercase;
-}
 
-h2 {
-
-}
-
-h3,
-h4,
-h5,
-h6{
-  font-weight: normal;
-  font-family: Univers, sans-serif;
-}
-h1 {
-  font-size: 2em !important;
-  line-height: 1em !important;
-  position: relative;
-  z-index: 20;
-}
-h2 {
-  font-size: 1.5em;
-  line-height: 0.5em;
-}
-h3 {
-  margin-top: 0px;
-  text-transform: uppercase;
-  margin-bottom: 0;
-  font-size: 28px;
-}
-h4 {
-  text-decoration: underline;
-  margin-bottom: 0;
-}
-em {
-  font-style: italic;
-}
-strong {
-  font-weight: bold;
-}
-div#quotes {
-  text-align: center;
-  height: 360px;
-}
-blockquote {
-  display: none;
-  text-align: center;
-  width: 85%;
-  margin: auto;
-  font-family: "Crickx", patin, sans-serif;
-  text-transform: uppercase;
-  font-size: 2em;
-  line-height: 1em;
-}
-blockquote div {
-  font-family: patin, serif;
-}
-p {
-  margin-bottom: 48px;
-}
-p.commit-message {
-  margin-bottom: 0px;
-}
-p + p {
-  text-indent: 1.5em;
-}
-sup {
-  font-size: 0.75em;
-  line-height: 0;
-  vertical-align: 0.25em;
-}
-.inst_logo {
-  height: 20%;
-  margin-left: 0;
-}
-img {
-  border: 3px solid lightseagreen;
-  max-width: 70%;
-  margin-left: 15%;
-  margin-bottom: 1em;
-}
-div#switch {
-  display: inline;
-}
-div#intro-nl {
-  display: none;
-  background-color: white;
-  border: 1px solid yellow;
-  z-index: 1000;
-  margin: -10px 1em;
-  padding: 1em;
-}
-.button {
-  text-decoration: none;
-  border: 1px solid MediumSeaGreen;
-  padding: 7px 5px;
-  box-shadow: 0 0 30px 10px yellow;
-  margin: 0 0.5em;
-  position: relative;
-  top: -3px;
-  background-color: yellow;
-}
-.button:hover {
-  background-color: white;
-}
-div#switch a.active {
-  background-color: white;
-}
-iframe {
-  outline: 1px solid lightseagreen;
-}
-form {
-  margin-bottom: 1.5em;
-}
-form label,
-form textarea {
-  font-size: 13.33px;
-}
-form input,
-form textarea {
-  background: none;
-  border: 1px solid lightseagreen;
-  color: lightseagreen;
-  font-family: patin;
-}
-form input:focus,
-form textarea:focus {
-  background-color: white;
-}
-form input[type=text],
-form input[type=password] {
-  height: 20px;
-  position: relative;
-  top: -1px;
-}
-form input[type=submit] {
-  cursor: pointer;
-  padding: 0;
-  height: 24px;
-}
-form input[type=submit]:hover {
-  background-color: white;
-}
+/* - NAV ------------------------------------------*/
 nav {
   line-height: 1.2em;
   margin-bottom: 2em;
@@ -416,15 +247,80 @@ nav li#create-pad {
 nav a {
   text-decoration: none;
 }
-.right-side h2 {
-  margin-bottom: 1em;
+#account-buttons {
+  margin-top: 14px;
+}
+#account-buttons li {
+  display: inline;
+}
+div#switch {
+  display: inline;
+}
+div#switch a.active {
+  background-color: white;
+}
+/* - MAIN CONTENT ----------------------------------*/
+#content {
+  font-weight: 200;
 }
 #content li:before {
   content: "– ";
   margin-left: 2em;
 }
 
-ul.authors  {
+.titlepages {
+    font-family: HerscheyTimes, serif;  
+    font-size: 50px;
+    line-height: 1em;
+}
+
+.notes { 	
+	font-family: notcouriersans;
+	font-size:1em;
+	color: lightseagreen;
+	line-height: 1.2em;
+	margin-left: 0cm;
+	margin-right: 0cm;
+	}
+
+ul.indent li:before {
+    content: "" !important;
+}
+ 
+.inst_logo {
+  height: 20%;
+  margin-left: 0;
+}
+.right-side h2 {
+  margin-bottom: 1em;
+}
+div#quotes {
+  text-align: center;
+  height: 360px;
+}
+p.commit-message {
+  margin-bottom: 0px;
+}
+
+/* - AUTHORSHIP -----------------------------*/
+.authorship { 	
+	font-family: Univers;
+	font-size: .4em;
+	height: 1.7em;
+	color: lightseagreen;
+    text-transform: uppercase;
+    position:absolute;
+    margin-top: .9em;
+    padding-top:1em;
+    margin-left: -0.5em;
+    padding-left: 2px;
+    border-left: 1px solid lightseagreen;
+   	}
+
+.authors  {
+    display: block;
+   	}
+ul.authors {
     font-size: 11px;
     margin-bottom: 10px;
     line-height: 25px;
@@ -434,43 +330,28 @@ ul.authors:before {
     margin: 0;
     content: "Authors : "
 }
-.authors li {
+ul.authors li {
     display: inline;
     border: 1px solid lightseagreen;
     margin-right: 10px;
     padding: 0px 5px 1px 5px;
     text-transform: uppercase;
     }
-
+ul.authors li:before {
+    margin-left: 0 !important;
+    content: "" !important;
+}
 /*
-.authors li:after {
+ul.authors li:after {
     content: ","
-} */
-
-#content .authors li:before {
-    margin: 0;
-    content: ""
+} 
+ul.authors li:last-child:after {
+    content: "";
 }
-
-.authors li:last-child:after {
-    content: ""
-}
-legend {
-  font-size: 0.75em;
-  line-height: 1.4em;
-}
+*/
 
 
-}
-/*
-li { 
-    display : inline-block;
-    width: 5cm;
-    margin-right: .5cm;
-    color: blue;
-}*/
-
-/* don’t show the Etherpad background colours */
+/* Hides Etherpad background colours */
 #content span {
     background-color: inherit !important;
 }

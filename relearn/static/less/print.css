@@ -1,290 +1,37 @@
-
+// not effective on the phantomjs pdf export yet : distinction btwn droite and gauche pages
+@page {
+    size: 14,85cm 21cm;
+}
+@page:left {
+    margin-left: 5cm;
+    margin-right: 0;
+}
+@page:right {
+    margin-right: 5cm;
+    margin-left: 0;
+}
 
 @media print {
-
 /* ============ GENERAL LAYOUT ============ */
 
 html, body {
-    font-family: Univers, sans-serif;
-    font-size: 12px;
-	font-style: light;
-	font-weight: light;
-    line-height: 1.4em;
-    padding-left: 2px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
-    word-wrap : break-word;
-    font-feature-settings: "liga", "dlig", "clig", "kern";
-    -webkit-font-feature-settings: "liga", "dlig", "clig", "kern";
-    -o-font-feature-settings: "liga", "dlig", "clig", "kern";  
     color : black;
-    width: 100%;
-    height: 100%;
-    background-color: none;
-    }
-
-    .middle {
+    background: none;
+}
+.middle {
     width : 100%;
-    }
-    
-#content  {  
-    background-color: none;
-    right: 0;
-    }
-
-// not effective on the phantomjs pdf export yet : distinction btwn droite and gauche pages
-@page :left {
-	margin-left: 25mm;
-	margin-right: 10mm;
-	}
-
-@page :right {
-	margin-left: 10mm;
-	margin-right: 15mm;
-	}      
+}
 
 /* ============ COVER ============ */
 
-    #cover {
+#cover {
     font-family: HerscheyScript, sans-serif;
-    color : black;
     font-size: 100px !important;
     line-height: 1em !important;
     page-break-after: always;
-     white-space:pre;
-        }
+}
 
-    .title #cover h1 {
-    font-family: Univers, sans-serif;
-    color : black;
+#cover h1 {
     font-size: 200px !important;
     line-height: 1em !important;
-    }
-
-/* ============ INTRODUCTION TEXTS ============ */
-
-.intro { 	
-	font-family: Univers;
-	font-size: 16px;
-	line-height: 1.25em;
-	color: black;
-	margin-left: 0cm;
-	margin-right: 0cm;
-	}
-	
-/* ============ NORMAL TEXT (cf. "body" font size) ============ */
-
-.normal { 	
-	font-family: Univers;
-	font-size:12px;
-	line-height: 1.25em;
-	color: black;
-	margin-left: 0cm;
-	margin-right: 0cm;
-	}
-
-/* ============ SMALL TEXT ============ */
-
-.small { 	
-	font-family: Univers;
-	font-size:9px;
-	line-height: 1.2em;
-	color: black;
-	margin-left: 0cm;
-	margin-right: 0cm;
-	}
-
-/* ============ NOTES ============ */
-
-.notes { 	
-	font-family: notcouriersans;
-	font-size:9px;
-	line-height: 1.2em;
-	color: black;
-	margin-left: 0cm;
-	margin-right: 0cm;
-	}
-
-.authorship { 	
-	font-family: Univers;
-	font-size: .4em;
-	height: 1.7em;
-    text-transform: uppercase;
-    position:absolute;
-    margin-top: .9em;
-    padding-top:1em;
-    margin-left: -.5em;
-    padding-left: 2px;
-    border-left: 1px solid gray;
-   	}
-
-.authors  {
-    display: none;
-   	}
-
-/* ============ CODE ============ */
-
-code { 	
-	font-family: notcouriersans !important;
-	font-size: 9px;
-	line-height: 1.2em;
-	color: black;
-	margin-left: 0cm;
-	margin-right: 0cm;
-	}
-
-/* ============ BIO / GIT / (listes) ============ */
-
-li { 
-	display : inline-block;
-	width: 30%;
-	margin-right: 3%;
-	margin-bottom: .3cm;
-	font-size:9px;
-	line-height: 1.4em;
-	}
-
-li U { 
-    text-decoration: none;
-    border-bottom: 1px solid gray;
-	}
-
-U { 
-    text-decoration: none;
-    border-bottom: 1px solid gray;
-	}
-
-sup { 
-    margin-right: 2px;
-    font-size: 0.75em;
-    line-height: 0;
-    vertical-align: 0.25em;
-	}
-	
-    .commits h3 {
-    font-family: Crickx, sans-serif;
-    color : black;
-    font-size: 10px;
-    line-height: 1em;
-    margin-left: -5px;
-    }
-
-
-    .commits p {
-    font-family: patin, serif;
-    color : black;
-    font-size: 12px;
-    line-height: 1.2em;
-    margin-bottom: 15px;
-    }
-
-    .commits p.commit-message {
-    margin-bottom: 0px;
-    }
-    
-
-a {
-  color: inherit;
-}
-
-/* ============ TITLES / CAPTIONS ============ */
-
-h1 {
-  font-family: Univers, sans-serif !important;	
-  font-style: bold;
-  font-size: 50px !important;
-  line-height: 1em !important;
-}
-
-h2 {
-  font-family: Univers, sans-serif !important;	
-  font-style: bold;
-  font-size: 18px !important;
-  text-transform: uppercase;
-  line-height: 1em !important;
-}
-
-h3, h4, h5, h6 {
-  font-family: Univers, sans-serif !important;	
-  font-style: normal;
-  font-size: 15px !important;
-  line-height: 1.2em !important;
-}
-
-
-/* ============ PAGES TITRES ============ */
-
-.titlepages {
-    font-family: HerscheyTimes, serif;	
-  font-size: 50px;
-  line-height: 1em;
-}
-
-/* ============ MICRO TYPO ============ */
-
-em {
-  font-style: italic;
-}
-strong {
-  font-weight: bold;
-}
-div#quotes {
-  text-align: center;
-  height: 360px;
-}
-blockquote {
-  display: none;
-  text-align: center;
-  width: 85%;
-  margin: auto;
-  font-family: "Crickx", patin, sans-serif;
-  text-transform: uppercase;
-  font-size: 2em;
-  line-height: 1em;
-}
-blockquote div {
-  font-family: patin, serif;
-}
-p {
-  margin-bottom: 5px;
-}
-p.commit-message {
-  margin-bottom: 0px;
-}
-p + p {
-  text-indent: 1.5em;
-}
-.inst_logo {
-  height: 20%;
-  margin-left: 0;
-}
-
-/* ============ PICTURES ============ */
-
-img {
-  max-width: 70%;
-  max-height: 40%;
-  margin-left: 20px;
-  margin-bottom: 5px;
-}
-
-div#switch {
-  display: inline;
-}
-
-
-
-}
-
-/* ------ PRINT ------ */
-@media screen {
-  .print-only {
-    display: none;
-  }
-}
-@media print {
-  .screen-only {
-    display: none;
-  }
 }
