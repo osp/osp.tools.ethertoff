@@ -267,6 +267,9 @@ div#switch a.active {
   content: "– ";
   margin-left: 2em;
 }
+div.intro {
+    font-family: AutopiaLight, serif;  
+}
 
 .titlepages {
     font-family: HerscheyTimes, serif;  
