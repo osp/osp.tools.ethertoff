@@ -49,7 +49,7 @@
     font-style: normal;
 }
 @font-face {
-    font-family: 'notcouriersansregular';
+    font-family: 'notcouriersans';
     src: url('/static/fonts/NotCourierSans-webfont.eot');
     src: url('/static/fonts/NotCourierSans-webfont.eot?#iefix') format('embedded-opentype'),
          url('/static/fonts/NotCourierSans-webfont.woff') format('woff'),
