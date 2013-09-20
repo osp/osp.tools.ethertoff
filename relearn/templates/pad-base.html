@@ -10,7 +10,7 @@
     {% else %}
         <a class="button" href="{% url 'pad-read' pad.display_slug %}">Read</a><a class="active button">Write</a>
     {% endif %}
-	<a class="active button">Print</a>
+	<a class="button" href="#" onclick="window.print()">Print</a>
 </div>
 
 {% endblock %}
