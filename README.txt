@@ -1,7 +1,8 @@
 RELEARN
 =======
 
-Web platform, initially for the OSP 2013 Summerschool bearing this name.
+Simple collaborative web platform, initially developed for the OSP 2013 Summerschool
+bearing this name.
 
 <http://relearn.be/>
 
@@ -10,7 +11,14 @@ Relearn.be is structured as a wiki where each page constitutes an Etherpad.
 The pad is available to logged in users (‘write-mode’). 
 The text of the pad is available to everyone (‘read-mode’).
 
-The integration between Django and Etherpad is based on <https://github.com/sfyn/django-etherpad-lite>
+relearn.be is a shell for an Etherpad installation hosted on the same domain.
+This integration is based on Sofian Benaissa’s bridge between Django and Etherpad,
+originally created for THINK WE MUST/CON-VOCATION a performance during Promiscuous
+Infrastructures entrelacées, an exhibition by the collective Artivistic at SKOL.
+
+-  <https://github.com/sfyn/django-etherpad-lite>
+-  <http://www.riotnrrd.info/tech/etherpad-lite-performances-ongoing-saga>
+-  <http://www.thinkwemust.org/?page_id=6>
 
 - - -
 

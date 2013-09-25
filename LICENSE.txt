@@ -1,6 +1,6 @@
 The contents of this repository are ©
-osp member a, osp member b, osp member c, osp member d
-for OSP Open Source Publishing
+Sofian Benaissa, Eric Schrijver, Samuel Rivers-Moore, Stéphanie Vilayphiou,
+Alexandre Leray, Ludivine Loiseau
 unless noted otherwise.
 
 As the copyright holders, we open up these materials for your to use if you 
@@ -15,12 +15,11 @@ modify and redistribute our materials, and that you are also allowed to make
 money doing so. You have to, however, redistribute your own variants under 
 the same license. This means that the ecology of sharing is stimulated.
 
-All code written in programming languages is licensed under the Affero GPL 
-v3. This is a variant of the GPLv3 copyleft license, that makes sure that 
-deploying your code online also counts as distribution, and thus, as an 
-incentive to re-share your modified code.
+All code written in programming languages is licensed under the
+GNU General Public License as published by the Free Software Foundation,
+either version 3 of the License, or (at your option) any later version.
 
-Consult the Affero GPL v3 online: 
+http://www.gnu.org/licenses/gpl.html
 
 All texts written in natural languages, and all drawings and visual designs, 
 are dual licensed under the Free Art License 1.3 and Creative Commons 
@@ -29,11 +28,14 @@ Attribution-ShareAlike 3.0 Unported.
 - The Free Art License, because we feel that the spirit of it is beautiful 
 and simple seems the closest to the way we think creation can be shared. 
 
+http://artlibre.org/licence/lal/en
+
 - Creative Commons, because a lot of people take part in this ecosystem. 
 If you modify our work, you are free to license your version under either of 
 them (or both).
 
-Consult the Free Art License online: 
+http://creativecommons.org/licenses/by-sa/3.0/
+
 All original typefaces are licensed under the SIL Open Font License. This 
 copyleft license is the first license written specifically for fonts. If we 
 base our font on an existing font, we reutilise the original license. The 
