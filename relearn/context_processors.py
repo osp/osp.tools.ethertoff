@@ -2,7 +2,15 @@ from datetime import datetime
 
 from etherpadlite.models import Pad, PadAuthor, PadServer
 from django.contrib.auth.models import AnonymousUser
+from django.contrib.sites.models import get_current_site
+
 from gitcommits.models import commits
+
+def site_name(request):
+    current_site = get_current_site(request)
+    # maybe something that sounds more to the point than stite_name?
+    # project_name? wiki_name?
+    return { 'site_name' : current_site.name }
 
 def pads(request):
     hash = {}

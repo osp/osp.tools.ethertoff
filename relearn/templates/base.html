@@ -9,7 +9,7 @@
     <script src="{{ STATIC_URL }}js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"></script>
 
-    <title>Relearn{% if pad %} → {{ pad.display_name }}{% endif %}</title>
+    <title>{{ site_name }}{% if pad %} → {{ pad.display_name }}{% endif %}</title>
 
     {% block extra_styles %}{% endblock %}
     
@@ -17,7 +17,7 @@
 <body>
     <div class="wrap screen-only" style="min-height: 15%;">
         <div class="left-side">
-            <h1><a href="{% url 'home' %}">Relearn</a></h1>
+            <h1><a href="{% url 'home' %}">{{ site_name }}</a></h1>
         </div>
         <div class="middle">
             {% block title %}{% endblock %}
