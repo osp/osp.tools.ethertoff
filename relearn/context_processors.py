@@ -5,6 +5,8 @@ from django.contrib.auth.models import AnonymousUser
 from django.contrib.sites.models import get_current_site
 
 def site_name(request):
+    if 'admin' in request.path:
+        return {}
     current_site = get_current_site(request)
     # maybe something that sounds more to the point than stite_name?
     # project_name? wiki_name?
