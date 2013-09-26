@@ -37,9 +37,6 @@
         <div class="left-side screen-only">
             <nav>
                 <ul>
-                    <li><a href="/r/relearn::welcome">Welcome</a></li>
-                    <li><a href="/r/relearn::about">About</a></li>
-                    <li><a href="/r/relearn::contact">Contact</a></li>
                     {% if author %}
                         <li id="create-pad"><a class="button" href="{% url 'pad-create' author.group.all.0.id %}">Create pad</a></li>
                     {% endif %}
@@ -53,29 +50,7 @@
             {% block content %}{% endblock %}
         </div>
         <div class="right-side screen-only">
-            {% if author %}
-            <h2>Point out an issue</h2>
-            
-           <p> If you want to point an issue to the Relearn team, please send an e-mail to : <a href="mailto:relearn@lists.constantvzw.org">relearn@lists.constantvzw.org</a>
-           <br>
-           </p>
-            
-            {% comment %}
-            <h2>Upload files</h2>
-            <form id="upload-form" action="base_submit" method="post" accept-charset="utf-8">
-                <input style="width: 70%" type="file" name="image_file" id="image_file" />
-                <input id="send-file" type="submit" value="Upload">
-            </form>
-            {% endcomment %}
-            {% endif %}
-            
-            <h2>What we say</h2>
-            <p>The latest 10 commits, excluding the merges. There is a delay of an hour…</p>
-            {% for commit in commits %}
-            <h3>{{ commit.repo_name }}</h3>
-            <p class='commit-message'>{{ commit.message|urlize|linebreaksbr }}</p>
-            <p>By <span class='commit-author'>{{ commit.author }}</span> on <span class='commit-date'>{{ commit.commit_time }}</span></p>
-            {% endfor %}
+            <h2>The right side</h2>
         </div>
     </div>
 {% block scripts %}{% endblock %}

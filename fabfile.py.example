@@ -1,0 +1,22 @@
+from fabric.api import run, cd, env, local, sudo
+
+"""
+This is how we like to do Django deployments at OSP—
+quite minimalist.
+"""
+
+env.hosts = ['user@example.com']
+env.path = '/path/to/remote/git/repo/'
+
+def getdb():
+    pass
+
+def deploy():
+    with cd(env.path):
+        run('git pull origin master')
+        run('/path/to/remote/python manage.py collectstatic --noinput')
+        sudo('supervisorctl restart appname')
+        # the last stop of course depends on what kind of server/supervisor is
+        # running your app. With Apache it would be more likely:
+        # sudo('/usr/sbin/apachectl graceful')
+        

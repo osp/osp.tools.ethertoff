@@ -19,7 +19,6 @@ from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
 
 from py_etherpad import EtherpadLiteClient
-from gitcommits.models import commits
 
 from etherpadlite.models import *
 from etherpadlite import forms
@@ -322,48 +321,11 @@ def pad_read(request, pk=None, slug=None):
     
     return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
 
-def filter_commits(commits):
-    filtered_commits = []
-    for commit in commits:
-        if "Merge branch '" in commit['message']:
-            continue
-        commit['commit_time'] = datetime.datetime.fromtimestamp(commit['commit_time'])
-        commit['repo_name'] = commit['repo_name'].replace('osp.', '')
-        filtered_commits.append(commit)
-    return filtered_commits
-
-def all_commits (request):
-    commit_stream = commits("osp.relearn.off-grid") + commits("osp.relearn.gesturing-paths") + commits("osp.relearn.be") + commits("osp.relearn.can-it-scale-to-the-universe")
-    commit_stream.sort(reverse=True, key=lambda c: c['commit_time'])
-    tpl_params = { 'all_commits' : filter_commits(commit_stream) }
-    
-    return render_to_response("commits.html", tpl_params, context_instance = RequestContext(request))
-
-
 def home(request):
     # The homepage is the pad called ‘start’ (props to DokuWiki!)
     try:
-        Pad.objects.get(name='relearn::start')
-        return pad_read(request, slug='relearn::start')
+        Pad.objects.get(name='start')
+        return pad_read(request, slug='start')
     except Pad.DoesNotExist:
         return HttpResponseRedirect(reverse('login'))
 
-
-def post_issue(request):
-    if request.method == 'POST':
-        form = ContactForm(request.POST)
-
-        if form.is_valid():
-            name = form.cleaned_data['name']
-            subject = "[issue spotted] %s" % form.cleaned_data['subject']
-            message = "%s\n\n-- %s" % (form.cleaned_data['message'], name)
-            #message = "%s" % (form.cleaned_data['message'])
-            email  = form.cleaned_data['email']
-            recipients = ['relearn@lists.constantvzw.org']
-            send_mail(subject, message, email, recipients)
-
-            return HttpResponseRedirect(reverse('relearn-issue-success')) # Redirect after POST
-    else:
-        form = ContactForm() # An unbound form
-    
-    return render(request, 'form.html', {'form': form})

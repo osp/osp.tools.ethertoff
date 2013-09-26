@@ -11,12 +11,3 @@ def dewikify(name):
     name = name.replace('-', ' ')
     name = name.replace('::', u' → ')
     return name
-
-@register.filter(name='is_relearn')
-@stringfilter
-def is_relearn(name):
-    name = name.replace('-', ' ')
-    name = name.replace('::', ' ')
-    name = name.split(" ")
-    if name[0] == "relearn":
-        return True
