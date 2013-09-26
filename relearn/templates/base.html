@@ -9,7 +9,7 @@
     <script src="{{ STATIC_URL }}js/jquery-1.10.2.min.js" type="text/javascript" charset="utf-8"></script>
     <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"></script>
 
-    <title>Relearn</title>
+    <title>Relearn{% if pad %} → {{ pad.display_name }}{% endif %}</title>
 
     {% block extra_styles %}{% endblock %}
     
