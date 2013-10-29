@@ -1,0 +1,343 @@
+@import "reset.css";
+@import "fonts.css";
+
+/*-- REDEFINE TAGS ---------------------------------------- */
+body {
+    background: #fff;
+    color: #333;
+    font-family: "Univers Light";
+    font-size: 12px;
+    line-height: 1.5em;
+    padding: 0.5em;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    word-wrap: break-word;
+    font-feature-settings: "liga", "dlig", "clig", "kern";
+    -webkit-font-feature-settings: "liga", "dlig", "clig", "kern";
+    -o-font-feature-settings: "liga", "dlig", "clig", "kern";
+    text-rendering: optimizeLegibility;
+}
+/* - BLOCKS ------------------------------------- */
+iframe {
+    outline: 1px solid #333;
+}
+div {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+img {
+    border: 3px solid #333;
+    max-width: 70%;
+    margin-left: 15%;
+    margin-bottom: 1em;
+}
+blockquote {
+    font-style: italic;
+    margin-left: 2em;
+}
+blockquote div {
+    font-family: patin, serif;
+}
+p {
+    margin-bottom: 48px;
+}
+p + p {
+    text-indent: 1.5em;
+}
+legend {
+    font-size: 0.75em;
+    line-height: 1.4em;
+}
+code, pre {
+    font-family: notcouriersans, monospace;
+}
+/* - INLINES ------------------------------------- */
+a {
+    color: inherit;
+}
+a:hover {
+    background-color: #f7f7f7;
+}
+h1 {
+    font-size: 2em !important;
+    line-height: 1em !important;
+    position: relative;
+    z-index: 20;
+    line-height: 2em;
+    font-weight: normal;
+    font-family: "HerscheyFutura", sans-serif;
+    margin-bottom: 12px;
+}
+h2 {
+    font-family: "HerscheyFutura", sans-serif;
+    font-size: 1em;
+    line-height: 1.5em;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-bottom: 9px;
+}
+h3, h4, h5, h6 {
+    font-weight: normal;
+    font-family: Univers, sans-serif;
+}
+h3 {
+    margin-top: 0px;
+    text-transform: uppercase;
+    margin-bottom: 0;
+    font-size: 28px;
+}
+h4 {
+    text-decoration: underline;
+    margin-bottom: 0;
+}
+em {
+    font-style: italic;
+}
+strong {
+    font-weight: bold;
+}
+sup {
+    font-size: 0.75em;
+    line-height: 0;
+    vertical-align: 0.25em;
+}
+li u {
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+}
+
+u {
+    text-decoration: none;
+    border-bottom: 1px solid #333;
+}
+/* -- FORMS --------------------------*/
+form {
+    margin-bottom: 1.5em;
+}
+form label, form textarea {
+    font-size: 13.33px;
+}
+form input, form textarea {
+    background: none;
+    border: 1px solid #333;
+    color: #333;
+    font-family: patin;
+}
+form input:focus, form textarea:focus {
+    background-color: white;
+}
+form input[type=text], form input[type=password] {
+    height: 20px;
+    position: relative;
+    top: -1px;
+}
+form input[type=submit] {
+    cursor: pointer;
+    padding: 0;
+    height: 24px;
+}
+form input[type=submit]:hover {
+    background-color: white;
+}
+
+/* - GENERIC CLASSES -------------------------------- */
+.button {
+    text-decoration: none;
+    border: 1px solid MediumSeaGreen;
+    padding: 7px 5px;
+    box-shadow: 0 0 30px 10px #f7f7f7;
+    margin: 0 0.5em;
+    position: relative;
+    top: -3px;
+    background-color: #f7f7f7;
+}
+.button:hover {
+    background-color: white;
+}
+.small {
+    font-family: notcouriersans;
+    color: #333;
+    font-size: 1em;
+    line-height: 1.2em;
+    margin-left: 0cm;
+    margin-right: 0cm;
+}
+.inline {
+    display: inline;
+}
+
+/* - PAGE STRUCTURE ---------------------------------*/
+.wrap {
+    margin-bottom: 20px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.wrap:before, .wrap:after {
+    content: " ";
+    /* 1 */
+
+    display: table;
+    /* 2 */
+
+}
+.wrap:after {
+    clear: both;
+}
+.left-side, .middle, .right-side {
+    float: left;
+    padding: 10px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+.left-side {
+    width: 15%;
+}
+.right-side {
+    width: 25%;
+}
+.middle {
+    width: 60%;
+    padding: 10px 20px;
+}
+
+/* - NAV ------------------------------------------*/
+nav {
+    line-height: 1.2em;
+    margin-bottom: 2em;
+    font-size: 13.33px;
+}
+nav li {
+    list-style-position: inside;
+    list-style-type: disc;
+}
+nav li#create-pad {
+    list-style-type: none;
+    margin: 1.5em;
+    font-size: 16px;
+}
+nav a {
+    text-decoration: none;
+}
+#account-buttons {
+    margin-top: 14px;
+}
+#account-buttons li {
+    display: inline;
+}
+div#switch {
+    display: inline;
+}
+div#switch a.active {
+    background-color: white;
+}
+/* - MAIN CONTENT ----------------------------------*/
+#content {
+    font-weight: 200;
+}
+#content li:before {
+    content: "– ";
+    margin-left: 2em;
+}
+div.intro {
+    font-family: AutopiaLight, serif;
+    line-height: 1.8em;
+    font-size: 12px;
+}
+
+.titlepages {
+    font-family: HerscheyTimes, serif;
+    font-size: 50px;
+    line-height: 1em;
+}
+
+.notes {
+    font-family: notcouriersans;
+    font-size: 1em;
+    color: #333;
+    line-height: 1.2em;
+    margin-left: 0cm;
+    margin-right: 0cm;
+}
+
+ul.indent li:before {
+    content: "" !important;
+}
+
+.inst_logo {
+    height: 20%;
+    margin-left: 0;
+}
+.right-side h2 {
+    margin-bottom: 1em;
+}
+div#quotes {
+    text-align: center;
+    height: 360px;
+}
+p.commit-message {
+    margin-bottom: 0px;
+}
+
+/* - AUTHORSHIP -----------------------------*/
+.authorship {
+    font-family: Univers;
+    font-size: .4em;
+    height: 1.7em;
+    color: #333;
+    text-transform: uppercase;
+    position: absolute;
+    margin-top: .9em;
+    padding-top: 1em;
+    margin-left: -0.5em;
+    padding-left: 2px;
+    border-left: 1px solid #333;
+}
+
+.authors {
+    display: block;
+}
+ul.authors {
+    font-size: 11px;
+    margin-bottom: 10px;
+    line-height: 25px;
+}
+ul.authors:before {
+    margin: 0;
+    content: "Authors : "
+}
+ul.authors li {
+    font-size: 11px;
+    letter-spacing: 0.5px;
+    display: inline-block;
+    border: 1px solid #333;
+    margin-right: 0.5em;
+    padding: 0px 5px;
+    text-transform: uppercase;
+    height: 23px;
+}
+ul.authors li:before {
+    margin-left: 0 !important;
+    content: "" !important;
+}
+
+/* Hides Etherpad background colours */
+#content span {
+    background-color: inherit !important;
+}
+
+/* ------ PRINT ------ */
+@media screen {
+    .print-only {
+        display: none;
+    }
+}
+@media print {
+    .screen-only {
+        display: none;
+    }
+}
+
