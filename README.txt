@@ -24,8 +24,9 @@ Infrastructures entrelacées, an exhibition by the collective Artivistic at SKOL
 
 ## Installation instructions
 
+    # Requires Django 1.5
     # First create and install a virtual environment [1]. Then:
-    pip install django
+    pip install "django<1.6"
     pip install https://github.com/devjones/PyEtherpadLite/archive/master.zip
 
     cd /path/to/relearn.be/      # [2]
