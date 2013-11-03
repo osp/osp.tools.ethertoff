@@ -82,7 +82,7 @@ Infrastructures entrelacées, an exhibition by the collective Artivistic at SKOL
     virtualenv relearn
     source ~/venvs/relearn/bin/activate
 
-[2] For those running the Virtual Machine from the relearn sessions:
+[2] For those running the Virtual Machine from the relearn summer school:
 
     cd ~/relearn/relearn.be/
 
