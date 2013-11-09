@@ -211,8 +211,12 @@ nav {
     font-size: 13.33px;
 }
 nav li {
-    list-style-position: inside;
-    list-style-type: disc;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-left: 14px;
+}
+nav > ul > li {
+    margin-left: 0;
 }
 nav li#create-pad {
     list-style-type: none;
