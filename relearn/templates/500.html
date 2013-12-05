@@ -1,0 +1,45 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" href="/static/css/style.css" type="text/css" charset="utf-8">    
+    <link rel="stylesheet" href="/static/css/print.css" media="print" type="text/css" charset="utf-8"> 
+
+    <title>Error message</title>
+</head>
+<body>
+        <div class="wrap screen-only" style="min-height: 15%;">
+        <div class="left-side">
+            <h1><a href="{% url 'home' %}">Error</a></h1>
+        </div>
+        <div class="middle">
+            <h1 class="inline">Something went wrong.</h1>
+        </div>
+
+        <div class="right-side">
+            <ul id="account-buttons">
+                <li><a class="button" href="{% url 'home' %}">Home</a></li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="wrap">
+        <div class="left-side screen-only">
+
+        </div>
+        <div id="content" class="middle">
+            <dl>
+                <dt>Requested address</dt>
+                <dd>{{ path }}</dd>
+                <dt>Type of error</dt>
+                <dd>{{ exception }}</dd>
+                {% if reason %}<dt>Possible causes</dt>
+                <dd>{{ reason|linebreaks}}</dd>{% endif %}
+            </dl>
+        </div>
+        <div class="right-side screen-only">
+
+        </div>
+    </div>
+</body>
+</html>
