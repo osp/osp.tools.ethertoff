@@ -4,6 +4,9 @@ from etherpadlite.models import Pad, PadAuthor, PadServer
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.sites.models import get_current_site
 
+class EthertoffError(Exception):
+    pass
+
 def site_name(request):
     if 'admin' in request.path:
         return {}
@@ -22,12 +25,16 @@ def pads(request):
         try:  # Retrieve the corresponding padauthor object
             author = PadAuthor.objects.get(user=request.user)
         except PadAuthor.DoesNotExist:
+            if Padserver.count() == 0:
+                raise EthertoffError("In trying to associate the author to Etherpad, Ethertoff did not find a suitable pad server. In the admin, you need to create a PadServer object that contains the address of your etherpad install.")
             author = PadAuthor(
                 user=request.user,
-                server=PadServer.objects.get(id=1)
+                server=PadServer.objects.all()[-1]
             )
             author.save()
         author.GroupSynch()
+        if author.group.count() == 0:
+            raise EthertoffError("This user needs to be associated to a group (that in turn needs to be associated to an Etherpad group).")
         hash['author'] = author
     hash['pads'] = Pad.objects.all()
     return hash
