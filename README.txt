@@ -1,5 +1,12 @@
-RELEARN
-=======
+RELEARN (aka. Ethertoff)
+========================
+
+> Just a question: I thought it was ethertopff and not ethertoff but I don't
+> remember why. What is the actual name?
+>
+> Well someone misspelled ethertopdf as ethertopf which sounds like römertopf
+> and than somebody else understood ethertoff like chokotoff and chokotoff
+> being Bruxellois I thought it might be the best of all these references
 
 Simple collaborative web platform, initially developed for the OSP 2013 Summerschool
 bearing this name.
@@ -8,7 +15,7 @@ bearing this name.
 
 Relearn.be is structured as a wiki where each page constitutes an Etherpad.
 
-The pad is available to logged in users (‘write-mode’). 
+The pad is available to logged in users (‘write-mode’).
 The text of the pad is available to everyone (‘read-mode’).
 
 relearn.be is a shell for an Etherpad installation hosted on the same domain.
@@ -38,29 +45,29 @@ Infrastructures entrelacées, an exhibition by the collective Artivistic at SKOL
     # Add database details to local_settings.py
     cd ..
     python manage.py syncdb
-    
+
     # --> and then install etherpad
-    
+
     mkdir -p ~/src
     cd ~/src
     git clone https://github.com/ether/etherpad-lite.git
-    
+
     # --> install node js
     Linux Binaries (.tar.gz) from http://nodejs.org/download/
 
     # run it with:
-    
+
     ~/src/etherpad-lite/bin/run.sh
-    
+
     Your Etherpad is running at http://12.0.0.1:9001/
-    
+
     in Etherpad’s folder, you will find a file called APIKEY.txt
-    you need it’s contents later 
-    
+    you need it’s contents later
+
     Run the surver:
     python manage.py runserver
     visit the admin at: http://127.0.0.1:800/admin/
-    you can login with the superuser 
+    you can login with the superuser
     Etherpadlite > Servers > Add
     url: http://127.0.0.1:9001/
     api_key: the contents of APIKEY.txt
@@ -68,7 +75,7 @@ Infrastructures entrelacées, an exhibition by the collective Artivistic at SKOL
     Add your superuser to group you just created
     Etherpadlite > Group > Add
     Create an Etherpad Group based upon the group you just created.
-    
+
     Now relearn is served at http://127.0.0.1:8000/
 
     You can set the site name, that appears on the header, in the ‘sites’ app in the admin.
