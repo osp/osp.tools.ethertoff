@@ -27,8 +27,6 @@ var navigation = function(padLinks) {
         sections : {}
     };
 
-    console.log(obj);
-
     var unpackPads = function(obj) {
         obj.pads = _.uniq(_.compact(_.map(obj.pads, function(pad) {
             if (pad.namespaces.length > 1) {
@@ -64,7 +62,7 @@ var navigation = function(padLinks) {
 };
 
 var padLinks = _.map($('#pads_list li a'), function(padLink) {
-    return padLink.getAttribute('href');
+    return padLink.getAttribute('data-uid');
 });
 
 var renderSection = function(section) {
@@ -73,7 +71,7 @@ var renderSection = function(section) {
         return '<li><a class="namespace">' + sectionKey + ' →</a>' + renderSection(section.sections[sectionKey]) + '</li>';
     }));
     var lis = lis.concat(_.map(section.pads, function(pad) {
-        return '<li><a href="' + pad.href + '">' + pad.name + '</a></li>';
+        return '<li><a href="' + encodeURIComponent(pad.href) + '">' + pad.name + '</a></li>';
     }));
     return '<ul>' + lis.join('') + '</ul>';
 };
