@@ -42,7 +42,6 @@ def padCreate(request, pk):
     relearn::can-it-scale-to-the-universe
     
     This id becomes the initial value for the (changeable) url slug, as display_slug.
-    Based on this id we also set the (changeable) display name, as display_name,
     through a slight transformation (- becomes space, :: →) as in:
     
     relearn → can it scale to the universe
@@ -59,7 +58,6 @@ def padCreate(request, pk):
             pad = Pad(
                 name=n,
                 display_slug=n,
-                display_name=dewikify(n),
                 server=group.server,
                 group=group
             )

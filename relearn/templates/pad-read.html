@@ -1,7 +1,8 @@
 {% extends "pad-base.html" %}
+{% load wikify %}
 
 {% block content %}
-<h1 class="print-only">{{ pad.display_name }}</h1>
+<h1 class="print-only">{{ pad.display_slug|dewikify }}</h1>
 {% if authors %}
 <ul class="authors">
 {% for author in authors %}
