@@ -6,6 +6,7 @@ import time
 import urllib
 from urlparse import urlparse
 import json
+import re
 
 # Framework imports
 from django.shortcuts import render_to_response, get_object_or_404
@@ -38,13 +39,14 @@ def padCreate(request, pk):
     Relearn::Can it scale to the universe
     
     we get a pad, with the unchangeable id:
-    
     relearn::can-it-scale-to-the-universe
+    and the name / display_slug:
+    Relearn::Can_it_scale_to_the_universe
     
-    This id becomes the initial value for the (changeable) url slug, as display_slug.
-    through a slight transformation (- becomes space, :: →) as in:
-    
-    relearn → can it scale to the universe
+    The title of pages is displayed through a slight transformation,
+    known as dewikify.
+    _ becomes space, :: → as in:
+    Relearn → can it scale to the universe
     """
     group = get_object_or_404(PadGroup, pk=pk)
 
@@ -52,11 +54,9 @@ def padCreate(request, pk):
         form = forms.PadCreate(request.POST)
         if form.is_valid():
             n = form.cleaned_data['name']
-            n = n.replace(u':',u'zxgiraffe77')
-            n = slugify(n)
-            n = n.replace(u'zxgiraffe77', u':')
+            n = re.sub(r'\s+', u'_', n)
             pad = Pad(
-                name=n,
+                name=slugify(n),
                 display_slug=n,
                 server=group.server,
                 group=group
