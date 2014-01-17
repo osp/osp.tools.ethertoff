@@ -11,6 +11,7 @@ class PadAuthorAdmin(admin.ModelAdmin):
 class PadAdmin(admin.ModelAdmin):
     list_display = ('__unicode__',)
     readonly_fields = ('name',)
+    exclude = ('display_name',)
 
 admin.site.register(PadServer)
 admin.site.register(PadGroup)
