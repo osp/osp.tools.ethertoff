@@ -29,7 +29,7 @@ def pads(request):
                 raise EthertoffError("In trying to associate the author to Etherpad, Ethertoff did not find a suitable pad server. In the admin, you need to create a PadServer object that contains the address of your etherpad install.")
             author = PadAuthor(
                 user=request.user,
-                server=PadServer.objects.all()[-1]
+                server=PadServer.objects.all().reverse()[0]
             )
             author.save()
         author.GroupSynch()
