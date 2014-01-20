@@ -25,7 +25,7 @@ def pads(request):
         try:  # Retrieve the corresponding padauthor object
             author = PadAuthor.objects.get(user=request.user)
         except PadAuthor.DoesNotExist:
-            if Padserver.count() == 0:
+            if len(PadServer.objects.all()) == 0:
                 raise EthertoffError("In trying to associate the author to Etherpad, Ethertoff did not find a suitable pad server. In the admin, you need to create a PadServer object that contains the address of your etherpad install.")
             author = PadAuthor(
                 user=request.user,
