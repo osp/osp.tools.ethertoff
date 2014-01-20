@@ -161,6 +161,11 @@ class Pad(models.Model):
     """
     name = models.CharField(max_length=256)
     display_slug = models.CharField(max_length=256, blank=True, verbose_name="Name as used in URL (use :: for namespacing)")
+    
+    # I’m putting this back. We don’t use it anymore, but putting in the migration is
+    # more hassle then it’s worth
+    display_name = models.CharField(max_length=256, blank=True, verbose_name=u"Name as used in Display (use → for namespacing)")
+    
     server = models.ForeignKey(PadServer)
     group = models.ForeignKey(PadGroup)
 
@@ -189,6 +194,9 @@ class Pad(models.Model):
         return self.epclient.getReadOnlyID(self.padid)
 
     def save(self, *args, **kwargs):
+        # see above
+        self.display_name = self.display_slug
+        
         try:
             self.Create()
         except ValueError: # already exists (need a better check for that)
