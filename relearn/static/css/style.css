@@ -1,26 +1,8 @@
-@import "reset.css";
-@import "fonts.css";
 
-/*-- REDEFINE TAGS ---------------------------------------- */
+/*-- REDEFINE TAGS ---------------------------------------- */ 
 body {
-    background: #ffff00;
-    /* Old browsers */
-    background: -moz-radial-gradient(center, ellipse cover, #ffff00 0%, #ffffff 68%);
-    /* FF3.6+ */
-    background: -webkit-gradient(radial, center center, 0px, center center, 100%, color-stop(0%, #ffff00), color-stop(68%, #ffffff));
-    /* Chrome,Safari4+ */
-    background: -webkit-radial-gradient(center, ellipse cover, #ffff00 0%, #ffffff 68%);
-    /* Chrome10+,Safari5.1+ */
-    background: -o-radial-gradient(center, ellipse cover, #ffff00 0%, #ffffff 68%);
-    /* Opera 12+ */
-    background: -ms-radial-gradient(center, ellipse cover, #ffff00 0%, #ffffff 68%);
-    /* IE10+ */
-    background: radial-gradient(ellipse at center, #ffff00 0%, #ffffff 68%);
-    /* W3C */
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#ffff00', endColorstr='#ffffff', GradientType=1);
-    /* IE6-9 fallback on horizontal gradient */
-
-    color: lightseagreen;
+    background: #fff;
+    color: #333;
     font-family: "Univers Light";
     font-size: 12px;
     line-height: 1.5em;
@@ -34,9 +16,9 @@ body {
     -o-font-feature-settings: "liga", "dlig", "clig", "kern";
     text-rendering: optimizeLegibility;
 }
-/* - BLOCKS ------------------------------------- */
+/* - BLOCKS ------------------------------------- */ 
 iframe {
-    outline: 1px solid lightseagreen;
+    outline: 1px solid #333;
 }
 div {
     -webkit-box-sizing: border-box;
@@ -44,7 +26,7 @@ div {
     box-sizing: border-box;
 }
 img {
-    border: 3px solid lightseagreen;
+    border: 3px solid #333;
     max-width: 70%;
     margin-left: 15%;
     margin-bottom: 1em;
@@ -69,12 +51,12 @@ legend {
 code, pre {
     font-family: notcouriersans, monospace;
 }
-/* - INLINES ------------------------------------- */
+/* - INLINES ------------------------------------- */ 
 a {
     color: inherit;
 }
 a:hover {
-    background-color: yellow;
+    background-color: #f7f7f7;
 }
 h1 {
     font-size: 2em !important;
@@ -121,14 +103,13 @@ sup {
 }
 li u {
     text-decoration: none;
-    border-bottom: 1px solid lightseagreen;
+    border-bottom: 1px solid #333;
 }
-
 u {
     text-decoration: none;
-    border-bottom: 1px solid lightseagreen;
+    border-bottom: 1px solid #333;
 }
-/* -- FORMS --------------------------*/
+/* -- FORMS --------------------------*/ 
 form {
     margin-bottom: 1.5em;
 }
@@ -137,8 +118,8 @@ form label, form textarea {
 }
 form input, form textarea {
     background: none;
-    border: 1px solid lightseagreen;
-    color: lightseagreen;
+    border: 1px solid #333;
+    color: #333;
     font-family: patin;
 }
 form input:focus, form textarea:focus {
@@ -157,25 +138,25 @@ form input[type=submit] {
 form input[type=submit]:hover {
     background-color: white;
 }
-
-/* - GENERIC CLASSES -------------------------------- */
+ 
+/* - GENERIC CLASSES -------------------------------- */ 
 .button {
     text-decoration: none;
     border: 1px solid MediumSeaGreen;
     padding: 7px 5px;
-    box-shadow: 0 0 30px 10px yellow;
+    box-shadow: 0 0 30px 10px #f7f7f7;
     margin: 0 0.5em;
     position: relative;
     top: -3px;
-    background-color: yellow;
+    background-color: #f7f7f7;
 }
 .button:hover {
     background-color: white;
 }
 .small {
     font-family: notcouriersans;
-    color: lightseagreen;
-    font-size: 1em;
+    color: #333;
+    font-size: 1em ;
     line-height: 1.2em;
     margin-left: 0cm;
     margin-right: 0cm;
@@ -183,8 +164,8 @@ form input[type=submit]:hover {
 .inline {
     display: inline;
 }
-
-/* - PAGE STRUCTURE ---------------------------------*/
+ 
+/* - PAGE STRUCTURE ---------------------------------*/ 
 .wrap {
     margin-bottom: 20px;
     -webkit-box-sizing: border-box;
@@ -194,10 +175,8 @@ form input[type=submit]:hover {
 .wrap:before, .wrap:after {
     content: " ";
     /* 1 */
-
-    display: table;
-    /* 2 */
-
+     display: table;
+    /* 2 */ 
 }
 .wrap:after {
     clear: both;
@@ -219,16 +198,20 @@ form input[type=submit]:hover {
     width: 60%;
     padding: 10px 20px;
 }
-
-/* - NAV ------------------------------------------*/
+ 
+/* - NAV ------------------------------------------*/ 
 nav {
     line-height: 1.2em;
     margin-bottom: 2em;
     font-size: 13.33px;
 }
 nav li {
-    list-style-position: inside;
-    list-style-type: disc;
+    list-style-position: outside;
+    list-style-type: none;
+    margin-left: 14px;
+}
+nav > ul > li {
+    margin-left: 0;
 }
 nav li#create-pad {
     list-style-type: none;
@@ -250,7 +233,7 @@ div#switch {
 div#switch a.active {
     background-color: white;
 }
-/* - MAIN CONTENT ----------------------------------*/
+/* - MAIN CONTENT ----------------------------------*/ 
 #content {
     font-weight: 200;
 }
@@ -263,27 +246,23 @@ div.intro {
     line-height: 1.8em;
     font-size: 12px;
 }
-
-.titlepages {
+ .titlepages {
     font-family: HerscheyTimes, serif;
     font-size: 50px;
     line-height: 1em;
 }
-
-.notes {
+ .notes {
     font-family: notcouriersans;
     font-size: 1em;
-    color: lightseagreen;
+    color: #333;
     line-height: 1.2em;
     margin-left: 0cm;
     margin-right: 0cm;
 }
-
-ul.indent li:before {
+ ul.indent li:before {
     content: "" !important;
 }
-
-.inst_logo {
+ .inst_logo {
     height: 20%;
     margin-left: 0;
 }
@@ -297,23 +276,22 @@ div#quotes {
 p.commit-message {
     margin-bottom: 0px;
 }
-
-/* - AUTHORSHIP -----------------------------*/
+ 
+/* - AUTHORSHIP -----------------------------*/ 
 .authorship {
     font-family: Univers;
     font-size: .4em;
     height: 1.7em;
-    color: lightseagreen;
+    color: #333;
     text-transform: uppercase;
     position: absolute;
     margin-top: .9em;
     padding-top: 1em;
     margin-left: -0.5em;
     padding-left: 2px;
-    border-left: 1px solid lightseagreen;
+    border-left: 1px solid #333;
 }
-
-.authors {
+ .authors {
     display: block;
 }
 ul.authors {
@@ -329,7 +307,7 @@ ul.authors li {
     font-size: 11px;
     letter-spacing: 0.5px;
     display: inline-block;
-    border: 1px solid lightseagreen;
+    border: 1px solid #333;
     margin-right: 0.5em;
     padding: 0px 5px;
     text-transform: uppercase;
@@ -339,13 +317,11 @@ ul.authors li:before {
     margin-left: 0 !important;
     content: "" !important;
 }
-
-/* Hides Etherpad background colours */
-#content span {
+ /* Hides Etherpad background colours */ #content span {
     background-color: inherit !important;
 }
-
-/* ------ PRINT ------ */
+ 
+/* ------ PRINT ------ */ 
 @media screen {
     .print-only {
         display: none;
@@ -356,4 +332,3 @@ ul.authors li:before {
         display: none;
     }
 }
-
