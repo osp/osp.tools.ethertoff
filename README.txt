@@ -15,7 +15,7 @@ bearing this name.
 
 Relearn.be is structured as a wiki where each page constitutes an Etherpad.
 
-The pad is available to logged in users (‘write-mode’). 
+The pad is available to logged in users (‘write-mode’).
 The text of the pad is available to everyone (‘read-mode’).
 
 relearn.be is a shell for an Etherpad installation hosted on the same domain.
@@ -70,7 +70,7 @@ run Etherpad with:
     
     ~/src/etherpad-lite/bin/run.sh
     
-Your Etherpad is running at http://12.0.0.1:9001/
+Your Etherpad is running at http://127.0.0.1:9001/
     
 In Etherpad’s folder, you will find a file called APIKEY.txt
 you need its contents later 
@@ -172,3 +172,23 @@ You will also need to set up a database, because its default database
 is not intended for use on servers. Finally, you will need to reverse
 proxy the Etherpad process from your main web server, mapping it to
 a folder such as /ether/.
+
+## SUPERVISOR
+To run django and etherpad in the background.
+
+    sudo aptitude install supervisor
+    # Edit specific config file for each application in /etc/supervisor/conf.d/
+    # Example of config file:
+
+    [program:pads]
+    directory = /absolute/path/to/etherpad-lite/bin/
+    user = username
+    command = /absolute/path/to/etherpad-lite/bin/run.sh
+    stopwaitsecs=60
+
+    stdout_logfile = /absolute/path/to/etherpad-lite/logfile.log
+    stderr_logfile = /absolute/path/to/etherpad-lite/logfile.log
+
+    # Then run the apps daemon
+    supervisord
+    supervisorctl start app_name
