@@ -1,5 +1,12 @@
-RELEARN
-=======
+RELEARN (aka. Ethertoff)
+========================
+
+> Just a question: I thought it was ethertopff and not ethertoff but I don't
+> remember why. What is the actual name?
+>
+> Well someone misspelled ethertopdf as ethertopf which sounds like römertopf
+> and than somebody else understood ethertoff like chokotoff and chokotoff
+> being Bruxellois I thought it might be the best of all these references
 
 Simple collaborative web platform, initially developed for the OSP 2013 Summerschool
 bearing this name.
@@ -65,7 +72,7 @@ run Etherpad with:
     
 Your Etherpad is running at http://12.0.0.1:9001/
     
-in Etherpad’s folder, you will find a file called APIKEY.txt
+In Etherpad’s folder, you will find a file called APIKEY.txt
 you need its contents later 
     
 Run the server:
@@ -165,17 +172,3 @@ You will also need to set up a database, because its default database
 is not intended for use on servers. Finally, you will need to reverse
 proxy the Etherpad process from your main web server, mapping it to
 a folder such as /ether/.
-
-## SUPERVISOR
-To run django and etherpad in the background.
-
-    pip install supervisor
-    # Install a default supervisor config file
-    su -
-    echo_supervisord_conf > /etc/supervisor/supervisord.conf
-    # Edit specific config file for each application
-    # Then run the apps daemon
-    su -
-    source /path_to_virtual_environment/bin/activate
-    supervisord
-    supervisorctl start app_name

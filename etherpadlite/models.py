@@ -7,6 +7,8 @@ from django.utils.translation import ugettext_lazy as _
 
 from py_etherpad import EtherpadLiteClient
 
+from relearn.templatetags.wikify import dewikify
+
 import string
 import random
 
@@ -158,13 +160,12 @@ class Pad(models.Model):
     """Schema and methods for etherpad-lite pads
     """
     name = models.CharField(max_length=256)
-    display_name = models.CharField(max_length=256, blank=True, verbose_name=u"Name as used in Display (use → for namespacing)")
     display_slug = models.CharField(max_length=256, blank=True, verbose_name="Name as used in URL (use :: for namespacing)")
     server = models.ForeignKey(PadServer)
     group = models.ForeignKey(PadGroup)
 
     def __unicode__(self):
-        return self.display_name
+        return dewikify(self.display_slug)
 
     @property
     def padid(self):
@@ -195,7 +196,7 @@ class Pad(models.Model):
         super(Pad, self).save(*args, **kwargs)
 
     class Meta:
-        ordering = ['display_name', 'name']
+        ordering = ['display_slug', 'name']
         
 def padDel(sender, **kwargs):
     """Make sure pads are purged from the etherpad-lite server on deletion

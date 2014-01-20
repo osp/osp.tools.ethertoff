@@ -10,7 +10,7 @@ import json
 # Framework imports
 from django.shortcuts import render_to_response, get_object_or_404
 
-from django.http import HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect
 from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
@@ -42,7 +42,6 @@ def padCreate(request, pk):
     relearn::can-it-scale-to-the-universe
     
     This id becomes the initial value for the (changeable) url slug, as display_slug.
-    Based on this id we also set the (changeable) display name, as display_name,
     through a slight transformation (- becomes space, :: →) as in:
     
     relearn → can it scale to the universe
@@ -59,7 +58,6 @@ def padCreate(request, pk):
             pad = Pad(
                 name=n,
                 display_slug=n,
-                display_name=dewikify(n),
                 server=group.server,
                 group=group
             )
@@ -328,4 +326,13 @@ def home(request):
         return pad_read(request, slug='start')
     except Pad.DoesNotExist:
         return HttpResponseRedirect(reverse('login'))
+
+def css(request):
+    try:
+        pad = Pad.objects.get(display_slug='css')
+        padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name.replace('::', '_'))
+        epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
+        return HttpResponse(epclient.getText(padID)['text'], mimetype="text/css")
+    except:
+        return HttpResponse("body:before { content: 'Pad called CSS not found'}", mimetype="text/css")
 
