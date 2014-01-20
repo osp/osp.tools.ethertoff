@@ -334,5 +334,9 @@ def css(request):
         epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
         return HttpResponse(epclient.getText(padID)['text'], mimetype="text/css")
     except:
-        return HttpResponse("body:before { content: 'Pad called CSS not found'}", mimetype="text/css")
+        # If there is no pad called "css", loads a default css file
+        f = open('relearn/static/css/style.css', 'r')
+        css = f.read()
+        f.close()
+        return HttpResponse(css, mimetype="text/css")
 
