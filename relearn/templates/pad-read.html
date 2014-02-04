@@ -17,7 +17,7 @@
 <script>
     /* Convert links to images in images */
    
-    var isImg = new RegExp('\.png|\.jpg|\.jpeg', 'i');
+    var isImg = new RegExp('\.png|\.jpg|\.jpeg|\.gif', 'i');
     
     $("a[href]").each(function() {
         if ( $(this).attr('href').match(isImg) ) {
