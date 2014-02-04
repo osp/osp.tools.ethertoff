@@ -5,6 +5,7 @@ import datetime
 import time
 import urllib
 from urlparse import urlparse
+import HTMLParser
 import json
 import re
 
@@ -30,6 +31,15 @@ from django.core.mail import send_mail
 from relearn.forms import ContactForm
 
 from relearn.templatetags.wikify import dewikify
+
+"""
+Set up an HTMLParser for the sole purpose of unescaping
+Etherpad’s HTML entities.
+cf http://fredericiana.com/2010/10/08/decoding-html-entities-to-text-in-python/
+"""
+
+h = HTMLParser.HTMLParser()
+unescape = h.unescape
 
 @login_required(login_url='/accounts/login')
 def padCreate(request, pk):
@@ -299,7 +309,7 @@ def pad_read(request, pk=None, slug=None):
     
     text = epclient.getHtml(padID)['html']
     # Quick and dirty hack to allow HTML in pads
-    text = text.replace('&lt;&#x2F;', '</').replace('&#x2F;&gt;', '/>').replace('&gt;', '>').replace('&lt;', '<').replace("&quot;", '"')
+    text = unescape(text)
     
     # Create namespaces from the url of the pad
     # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
