@@ -132,6 +132,7 @@ INSTALLED_APPS = (
     'etherpadlite',
     'example_theme',
     'relearn',
+    'south'
 )
 
 # A sample logging configuration. The only tangible logging
