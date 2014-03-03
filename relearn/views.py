@@ -64,10 +64,12 @@ def padCreate(request, pk):
         form = forms.PadCreate(request.POST)
         if form.is_valid():
             n = form.cleaned_data['name']
+            basename = slugify(n)[:42]
             n = re.sub(r'\s+', u'_', n)
             pad = Pad(
-                name=slugify(n),
+                name=basename,
                 display_slug=n,
+                display_name=n,     # this is just for backwards compatibility
                 server=group.server,
                 group=group
             )
