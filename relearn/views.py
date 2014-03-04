@@ -8,6 +8,12 @@ from urlparse import urlparse
 import HTMLParser
 import json
 import re
+import os
+
+# PyPi imports
+
+from markdown import markdown
+from py_etherpad import EtherpadLiteClient
 
 # Framework imports
 from django.shortcuts import render_to_response, get_object_or_404
@@ -20,7 +26,7 @@ from django.core.context_processors import csrf
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
 
-from py_etherpad import EtherpadLiteClient
+# Django Apps import
 
 from etherpadlite.models import *
 from etherpadlite import forms
@@ -309,9 +315,19 @@ def pad_read(request, pk=None, slug=None):
                                     'class' : 'author' + author.authorID.replace('.','_') })
     authorship_authors_json = json.dumps(authorship_authors, indent=2)
     
-    text = epclient.getHtml(padID)['html']
-    # Quick and dirty hack to allow HTML in pads
-    text = unescape(text)
+    name, extension = os.path.splitext(slug)
+    if not extension:
+        # Etherpad has a quasi-WYSIWYG functionality.
+        # Though is not alwasy dependable
+        text = epclient.getHtml(padID)['html']
+        # Quick and dirty hack to allow HTML in pads
+        text = unescape(text)
+    else:
+        # If a pad is named something.css, something.html, something.md etcetera,
+        # we don’t want Etherpads automatically generated HTML, we want plain text.
+        text = epclient.getText(padID)['text']
+        if extension in ['.md', '.markdown']:
+            text = markdown(text, ['extra'])
     
     # Create namespaces from the url of the pad
     # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
@@ -323,11 +339,7 @@ def pad_read(request, pk=None, slug=None):
                    'namespaces'         : namespaces,
                    'authorship_authors_json' : authorship_authors_json,
                    'authors'            : authors }
-    # or tpl_params['plaintext'] = epclient.getText(padID)['text']
-    # and do processing ourselves—
-    # we need to figure out if Etherpad’s html output suffices for our purposes
-    # The problem with the plain text output is that plugins don’t seem to affect it—
-    # And so the Headings are not translated.
+    
     
     return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
 

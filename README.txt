@@ -33,7 +33,7 @@ Infrastructures entrelacées, an exhibition by the collective Artivistic at SKOL
 
 Requires Django 1.5
 First create and install a virtual environment [1]. Then:
-    pip install "django<1.6"
+    pip install "django<1.6" south Markdown
     pip install https://github.com/devjones/PyEtherpadLite/archive/master.zip
 
     mkdir -p ~/src/
@@ -45,6 +45,7 @@ First create and install a virtual environment [1]. Then:
 Add database details to local_settings.py
     cd ..
     python manage.py syncdb
+    python manage.py migrate etherpadlite
 
 If you have the error "Site matching query does not exist", 
 open the python shell
