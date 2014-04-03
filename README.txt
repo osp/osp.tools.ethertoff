@@ -1,5 +1,5 @@
-RELEARN (aka. Ethertoff)
-========================
+Ethertoff
+=========
 
 > Just a question: I thought it was ethertopff and not ethertoff but I don't
 > remember why. What is the actual name?
@@ -8,17 +8,20 @@ RELEARN (aka. Ethertoff)
 > and than somebody else understood ethertoff like chokotoff and chokotoff
 > being Bruxellois I thought it might be the best of all these references
 
-Simple collaborative web platform, initially developed for the OSP 2013 Summerschool
-bearing this name.
+Ethertoff is a simple collaborative web platform, much resembling a wiki but featuring
+realtime editing thanks to Etherpad. Its output is constructed with equal love for print
+and web.
+
+Ethertoff has been initially developed for the OSP 2013 Summerschool bearing the name ‘Relearn’.
 
 <http://relearn.be/>
 
-Relearn.be is structured as a wiki where each page constitutes an Etherpad.
+Ethertoff is structured as a wiki where each page constitutes an Etherpad.
 
 The pad is available to logged in users (‘write-mode’).
 The text of the pad is available to everyone (‘read-mode’).
 
-relearn.be is a shell for an Etherpad installation hosted on the same domain.
+Ethertoff is a shell for an Etherpad installation hosted on the same domain.
 This integration is based on Sofian Benaissa’s bridge between Django and Etherpad,
 originally created for THINK WE MUST/CON-VOCATION a performance during Promiscuous
 Infrastructures entrelacées, an exhibition by the collective Artivistic at SKOL.
