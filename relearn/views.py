@@ -336,7 +336,8 @@ def pad_read(request, pk=None, slug=None):
         # we don’t want Etherpads automatically generated HTML, we want plain text.
         text = epclient.getText(padID)['text']
         if extension in ['.md', '.markdown']:
-            text = markdown(text, ['extra', 'meta'])
+            md = markdown.Markdown(extensions=['extra', 'meta'])
+            text = md.convert(text)
             meta = md.Meta
 
     # Create namespaces from the url of the pad
