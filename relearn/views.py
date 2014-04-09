@@ -12,7 +12,7 @@ import os
 
 # PyPi imports
 
-from markdown import markdown
+import markdown
 from py_etherpad import EtherpadLiteClient
 
 # Framework imports
