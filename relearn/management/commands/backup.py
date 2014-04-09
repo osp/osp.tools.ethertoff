@@ -39,6 +39,6 @@ class Command(BaseCommand):
             
             backup_file_path = os.path.join(BACKUP_DIR, pad.display_slug)
             
-            with codecs.open(backup_file_path, 'w', 'utf-8') as f:
-                f.write(text)
+            with open(backup_file_path.encode('utf-8'), 'w') as f:
+                f.write(text.encode('utf-8'))
             
