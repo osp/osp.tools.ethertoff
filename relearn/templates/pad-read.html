@@ -10,6 +10,16 @@
 {% endfor %}
 </ul>
 {% endif %}
+
+{% if meta %}
+<dl class="meta">
+{% for key, value in meta %}
+    <dt>{{ key }}</dt>
+    <dd>{{ value }}</dd>
+{% endfor %}
+</dl>
+{% endif %}
+
 {{ text|safe }}
 {% endblock %}
 

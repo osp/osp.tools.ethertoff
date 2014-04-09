@@ -51,14 +51,14 @@ unescape = h.unescape
 def padCreate(request, pk):
     """Create a named pad for the given group
     So this is kind of convoluted. With an input like
-    
+
     Relearn::Can it scale to the universe
-    
+
     we get a pad, with the unchangeable id:
     relearn::can-it-scale-to-the-universe
     and the name / display_slug:
     Relearn::Can_it_scale_to_the_universe
-    
+
     The title of pages is displayed through a slight transformation,
     known as dewikify.
     _ becomes space, :: → as in:
@@ -300,22 +300,25 @@ def pad_read(request, pk=None, slug=None):
         pad = get_object_or_404(Pad, display_slug=slug)
     else:
         pad = get_object_or_404(Pad, pk=pk)
-    
+
     padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name.replace('::', '_'))
     epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
-    
+
     # Etherpad gives us authorIDs in the form ['a.5hBzfuNdqX6gQhgz', 'a.tLCCEnNVJ5aXkyVI']
     # We link them to the Django users DjangoEtherpadLite created for us
     authorIDs = epclient.listAuthorsOfPad(padID)['authorIDs']
     authors = PadAuthor.objects.filter(authorID__in=authorIDs)
-    
+
     authorship_authors = []
     for author in authors:
         authorship_authors.append({ 'name'  : author.user.first_name if author.user.first_name else author.user.username,
                                     'class' : 'author' + author.authorID.replace('.','_') })
     authorship_authors_json = json.dumps(authorship_authors, indent=2)
-    
+
     name, extension = os.path.splitext(slug)
+
+    meta = {}
+
     if not extension:
         # Etherpad has a quasi-WYSIWYG functionality.
         # Though is not alwasy dependable
@@ -327,20 +330,22 @@ def pad_read(request, pk=None, slug=None):
         # we don’t want Etherpads automatically generated HTML, we want plain text.
         text = epclient.getText(padID)['text']
         if extension in ['.md', '.markdown']:
-            text = markdown(text, ['extra'])
-    
+            text = markdown(text, ['extra', 'meta'])
+            meta = md.Meta
+
     # Create namespaces from the url of the pad
     # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
     namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]
-    
+
     tpl_params = { 'pad'                : pad,
+                   'meta'               : meta,
                    'text'               : text,
                    'mode'               : 'read',
                    'namespaces'         : namespaces,
                    'authorship_authors_json' : authorship_authors_json,
                    'authors'            : authors }
-    
-    
+
+
     return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
 
 def home(request):
