@@ -38,6 +38,12 @@ from relearn.forms import ContactForm
 
 from relearn.templatetags.wikify import dewikify
 
+# By default, the homepage is the pad called ‘start’ (props to DokuWiki!)
+try:
+    from relearn.settings import HOME_PAD
+except ImportError:
+    HOME_PAD = 'start'
+
 """
 Set up an HTMLParser for the sole purpose of unescaping
 Etherpad’s HTML entities.
@@ -344,10 +350,9 @@ def pad_read(request, pk=None, slug=None):
     return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
 
 def home(request):
-    # The homepage is the pad called ‘start’ (props to DokuWiki!)
     try:
-        Pad.objects.get(name='start')
-        return pad_read(request, slug='start')
+        Pad.objects.get(name=HOME_PAD)
+        return pad_read(request, slug=HOME_PAD)
     except Pad.DoesNotExist:
         return HttpResponseRedirect(reverse('login'))
 
