@@ -11,16 +11,18 @@
 </ul>
 {% endif %}
 
+{{ text|safe }}
+{% endblock %}
+
+{% block rightside %}
 {% if meta %}
 <dl class="meta">
-{% for key, value in meta %}
+{% for key, values in meta_list %}
     <dt>{{ key }}</dt>
-    <dd>{{ value }}</dd>
+    {% for value in values %}<dd>{{ value }}</dd>{% endfor %}
 {% endfor %}
 </dl>
 {% endif %}
-
-{{ text|safe }}
 {% endblock %}
 
 {% block scripts %}

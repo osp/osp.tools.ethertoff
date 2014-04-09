@@ -344,8 +344,12 @@ def pad_read(request, pk=None, slug=None):
     # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
     namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]
 
+    if len(meta.keys()) > 0:
+        meta_list = list(meta.iteritems())
+    
     tpl_params = { 'pad'                : pad,
-                   'meta'               : meta,
+                   'meta'               : meta,      # to access by hash, like meta.author
+                   'meta_list'          : meta_list, # to access all meta info in a (key, value) list
                    'text'               : text,
                    'mode'               : 'read',
                    'namespaces'         : namespaces,
