@@ -5,10 +5,12 @@
 <h1 class="inline">{{ pad.display_slug }}</h1>
 
 <div id="switch">
+    {% if author %}
     {% if mode == 'read' %}
         <a class="active button">Read</a><a class="button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
     {% else %}
         <a class="button" href="{% url 'pad-read' pad.display_slug %}">Read</a><a class="active button">Write</a>
+    {% endif %}
     {% endif %}
 	<a class="button" href="#" onclick="window.print()">Print</a>
 </div>

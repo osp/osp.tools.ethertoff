@@ -15,6 +15,7 @@
 {% endblock %}
 
 {% block rightside %}
+{% if author %}
 {% if meta %}
 <dl class="meta">
 {% for key, values in meta_list %}
@@ -22,6 +23,7 @@
     {% for value in values %}<dd>{{ value }}</dd>{% endfor %}
 {% endfor %}
 </dl>
+{% endif %}
 {% endif %}
 {% endblock %}
 
