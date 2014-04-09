@@ -344,6 +344,7 @@ def pad_read(request, pk=None, slug=None):
     # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
     namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]
 
+    meta_list = []
     if len(meta.keys()) > 0:
         meta_list = list(meta.iteritems())
     
