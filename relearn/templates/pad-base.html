@@ -18,6 +18,6 @@
 	<link rel="stylesheet" href="{{ STATIC_URL }}less/print_notes.css" type="text/css" charset="utf-8">
 {% endif %}{% endblock %}
 
-{% block contentclasses %}{% for namespace in namespaces %}{{ namespace }} {% endfor %}{% endblock %}
+{% block contentclasses %}{{ pad.display_name|slugify }}{% endblock %}
 
 
