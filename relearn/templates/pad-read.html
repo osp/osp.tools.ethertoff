@@ -2,15 +2,6 @@
 {% load wikify relearn_tags %}
 
 {% block content %}
-<h1 class="print-only">{{ pad.display_slug|dewikify }}</h1>
-{% if authors %}
-<ul class="authors">
-{% for author in authors %}
-    <li>{{ author }}</li>
-{% endfor %}
-</ul>
-{% endif %}
-
 <header>
 {% if meta.authors %}
 <p>{{ meta.authors|natural_join:'et' }}</p>
@@ -23,6 +14,7 @@
 
 {% block rightside %}
 {% if author %}
+<h2>The right side</h2>
 {% if meta %}
 <!--
 auteur
@@ -37,6 +29,18 @@ sommaire (optionel)
 {% endfor %}
 </dl>
 {% endif %}
+
+<h3>Editors</h3>
+
+{% if authors %}
+<ul class="authors">
+{% for author in authors %}
+    <li>{{ author }}</li>
+{% endfor %}
+</ul>
+{% endif %}
+
+
 {% endif %}
 {% endblock %}
 
