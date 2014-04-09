@@ -336,7 +336,7 @@ def pad_read(request, pk=None, slug=None):
         # we don’t want Etherpads automatically generated HTML, we want plain text.
         text = epclient.getText(padID)['text']
         if extension in ['.md', '.markdown']:
-            md = markdown.Markdown(extensions=['extra', 'meta'])
+            md = markdown.Markdown(extensions=['extra', 'meta', 'headerid(level=2)'])
             text = md.convert(text)
             meta = md.Meta
 
@@ -347,7 +347,7 @@ def pad_read(request, pk=None, slug=None):
     meta_list = []
     if len(meta.keys()) > 0:
         meta_list = list(meta.iteritems())
-    
+
     tpl_params = { 'pad'                : pad,
                    'meta'               : meta,      # to access by hash, like meta.author
                    'meta_list'          : meta_list, # to access all meta info in a (key, value) list

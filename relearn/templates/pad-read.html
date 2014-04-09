@@ -1,5 +1,5 @@
 {% extends "pad-base.html" %}
-{% load wikify %}
+{% load wikify relearn_tags %}
 
 {% block content %}
 <h1 class="print-only">{{ pad.display_slug|dewikify }}</h1>
@@ -11,11 +11,24 @@
 </ul>
 {% endif %}
 
+<header>
+{% if meta.authors %}
+<p>{{ meta.authors|natural_join:'et' }}</p>
+{% endif %}
+<h1>{{ meta.title.0|default:pad.display_slug }}</h1>
+</header>
+
 {{ text|safe }}
 {% endblock %}
 
 {% block rightside %}
 {% if meta %}
+<!--
+auteur
+titre
+date
+sommaire (optionel)
+-->
 <dl class="meta">
 {% for key, values in meta_list %}
     <dt>{{ key }}</dt>
