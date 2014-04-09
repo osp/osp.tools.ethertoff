@@ -351,7 +351,7 @@ def pad_read(request, pk=None, slug=None):
 
 def home(request):
     try:
-        Pad.objects.get(name=HOME_PAD)
+        Pad.objects.get(display_slug=HOME_PAD)
         return pad_read(request, slug=HOME_PAD)
     except Pad.DoesNotExist:
         return HttpResponseRedirect(reverse('login'))
