@@ -17,27 +17,9 @@
     
 </head>
 <body>
-    <div class="wrap screen-only" style="min-height: 15%;">
+    <!--<div class="wrap screen-only" style="min-height: 15%;">-->
         <div class="left-side">
             <h1><a href="{% url 'home' %}"><img src="/media/images/eyes/Oeil-droit-1.png" alt="{{ site_name }}" /></a></h1>
-        </div>
-        <div class="middle">
-            {% block title %}{% endblock %}
-        </div>
-
-        <div class="right-side">
-            <h1><a href="{% url 'home' %}"><img src="/media/images/eyes/Oeil-gauche-1.png" alt="{{ site_name }}" /></a></h1>
-        </div>
-    </div>
-
-
-    <div class="wrap" style="height: 85%;">
-        <div class="left-side screen-only">
-            <ul id="account-buttons">
-                {% if user.is_authenticated and author %}<li>{{ author.full_name_with_prefix }}</li>
-                <li><a class="button" href="{% url 'logout' %}">Log out</a></li>{% else %}
-                <li><a class="button" href="{% url 'login' %}">Log in</a></li>{% endif %}
-            </ul>
 
             {% if author %}
             <nav>
@@ -52,13 +34,47 @@
             </nav>
             {% endif %}
         </div>
-        <div id="content" class="middle {% block contentclasses %}{% endblock %}">
-            {% block content %}{% endblock %}
+
+
+        <div class="middle">
+            {% block title %}{% endblock %}
+            <div id="content" class="middle {% block contentclasses %}{% endblock %}">
+                {% block content %}{% endblock %}
+            </div>
         </div>
-        <div class="right-side screen-only">
+
+
+        <div class="right-side">
+            <h1><a href="{% url 'home' %}"><img src="/media/images/eyes/Oeil-gauche-1.png" alt="{{ site_name }}" /></a></h1>
+
+            <div id="switch">
+                {% if author %}
+                {% if mode == 'read' %}
+                    <a class="active button">Read</a><a class="button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
+                {% else %}
+                    <a class="button" href="{% url 'pad-read' pad.display_slug %}">Read</a><a class="active button">Write</a>
+                {% endif %}
+                {% endif %}
+                <a class="button" href="#" onclick="window.print()">Print</a>
+            </div>
+
             {% block rightside %}{% endblock %}
+
+            <ul id="account-buttons">
+                {% if user.is_authenticated and author %}<li>{{ author.full_name_with_prefix }}</li>
+                <li><a class="button" href="{% url 'logout' %}">Log out</a></li>{% else %}
+                <li><a class="button" href="{% url 'login' %}">Log in</a></li>{% endif %}
+            </ul>
         </div>
-    </div>
+    <!--</div>-->
+
+
+    <!--<div class="wrap" style="height: 85%;">-->
+        <!--<div class="left-side screen-only">-->
+        <!--</div>-->
+        <!--<div class="right-side screen-only">-->
+        <!--</div>-->
+    <!--</div>-->
     <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"></script>
 {% block scripts %}{% endblock %}
 </body>
