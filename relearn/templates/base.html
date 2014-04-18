@@ -46,7 +46,8 @@
 
         <div class="right-side">
             <h1><a href="{% url 'home' %}"><img src="/media/images/eyes/Oeil-gauche-1.png" alt="{{ site_name }}" /></a></h1>
-
+            
+            {% if pad %}
             <div id="switch">
                 {% if author %}
                 {% if mode == 'read' %}
@@ -57,6 +58,7 @@
                 {% endif %}
                 <a class="button" href="#" onclick="window.print()">Print</a>
             </div>
+            {% endif %}
 
             {% block rightside %}{% endblock %}
 
