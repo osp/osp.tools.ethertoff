@@ -38,7 +38,7 @@
 
         <div class="middle">
             {% block title %}{% endblock %}
-            <div id="content" class="middle {% block contentclasses %}{% endblock %}">
+            <div id="content" class="{% block contentclasses %}{% endblock %}">
                 {% block content %}{% endblock %}
             </div>
         </div>
