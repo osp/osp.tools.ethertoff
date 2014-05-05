@@ -79,3 +79,32 @@ var renderSection = function(section) {
 
 var padsList = $(renderSection(navigation(padLinks)));
 $("#pads_list").html( padsList.html() );
+
+// make external links open in new window
+var isExternal = function(href) {
+    /*
+     * isExternal("http://i.liketightpants.net/")
+     * true
+     * isExternal("/publications/")
+     * false
+     * isExternal("http://www.f-u-t-u-r-e.org/publications/")
+     * false
+     * isExternal("http://localhost:8000/publications/")
+     * false
+     * isExternal("http://127.0.0.1:8000/publications/")
+     * false
+     */
+    if (href.indexOf("http") === -1 || href.indexOf(document.location.host) !== -1 || href.indexOf("localhost") !== -1 || href.indexOf("127.0.0.1") !== -1 ) {
+        return false;
+    }
+    return true;
+};
+
+$("a[href]").each(
+    function() { 
+        if (isExternal($(this).attr('href')) ) { 
+            $(this).attr('target', '_blank');
+        }
+    }
+);
+
