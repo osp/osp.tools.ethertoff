@@ -36,9 +36,8 @@ class Command(BaseCommand):
             authors = PadAuthor.objects.filter(authorID__in=authorIDs)
             
             text = epclient.getText(padID)['text']
-            
+
             backup_file_path = os.path.join(BACKUP_DIR, pad.display_slug)
             
             with open(backup_file_path.encode('utf-8'), 'w') as f:
                 f.write(text.encode('utf-8'))
-            
