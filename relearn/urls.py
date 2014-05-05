@@ -1,6 +1,9 @@
 from django.conf.urls import patterns, include, url
 from django.views.generic import TemplateView
 
+from django.conf import settings
+from django.conf.urls.static import static
+
 # Uncomment the next two lines to enable the admin:
 from django.contrib import admin
 admin.autodiscover()
@@ -20,5 +23,5 @@ urlpatterns = patterns(
     url(r'^group/create$', 'relearn.views.groupCreate'),
     url(r'r/(?P<slug>[\w\.\-_\:]+)$', 'relearn.views.pad_read', name='pad-read'),
     url(r'w/(?P<slug>[\w\.\-_\:]+)$', 'relearn.views.pad', name='pad-write'),
-)
+) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

@@ -1,8 +1,16 @@
+import re
+import os
+from random import randint
+
 from datetime import datetime
 
+from relearn.settings import MEDIA_ROOT
 from etherpadlite.models import Pad, PadAuthor, PadServer
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.sites.models import get_current_site
+
+is_eye = re.compile(r'[GD]\d+\.svg')
+number_of_eyes = len([eye for eye in os.listdir(os.path.join(MEDIA_ROOT, 'images', 'eyes')) if is_eye.match(eye)])
 
 class EthertoffError(Exception):
     pass
@@ -39,3 +47,11 @@ def pads(request):
     hash['pads'] = Pad.objects.all()
     return hash
 
+def eye(request):
+    hash = {}
+    if 'admin' in request.path:
+        return hash
+    n = randint(1, 1 + number_of_eyes / 2)
+    hash['left_eye']  = 'G' + str(n) + '.svg'
+    hash['right_eye'] = 'D' + str(n) + '.svg'
+    return hash
