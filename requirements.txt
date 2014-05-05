@@ -1,0 +1,8 @@
+django<1.6
+south
+Markdown
+https://github.com/devjones/PyEtherpadLite/archive/master.zip
+distribute>0.6.24
+MySQL-python
+gunicorn
+https://github.com/aleray/markdown-figures/archive/master.zip
