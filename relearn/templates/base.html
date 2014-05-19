@@ -30,9 +30,6 @@
 
         <div class="right-side">
             <h1><a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a></h1>
-            <div id="content" class="{% block contentclasses %}{% endblock %}">
-                {% block content %}{% endblock %}
-            </div>
         </div>
     </div>
 
@@ -53,6 +50,9 @@
             {% endif %}
         </div>
         <div class="middle">
+            <div id="content" class="{% block contentclasses %}{% endblock %}">
+                {% block content %}{% endblock %}
+            </div>
         </div>
         <div class="right-side screen-only">
             {% if pad %}
