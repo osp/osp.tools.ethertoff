@@ -1,46 +1,47 @@
 {% extends "pad-base.html" %}
 {% load wikify relearn_tags %}
 
-{% block content %}
-<header>
-{% if meta.authors %}
-<p>{{ meta.authors|natural_join:'et' }}</p>
-{% endif %}
-<h1>{{ meta.title.0|default:pad.display_slug }}</h1>
-</header>
+{% block title %}
+    <header>
+    {% if meta.authors %}
+        <p>{{ meta.authors|natural_join:'et' }}</p>
+    {% endif %}
+    <h1>{{ meta.title.0|default:pad.display_slug }}</h1>
+    </header>
+{% endblock %}
 
-{{ text|safe }}
+{% block content %}
+    {{ text|safe }}
 {% endblock %}
 
 {% block rightside %}
-{% if author %}
-<h2>The right side</h2>
-{% if meta %}
-<!--
-auteur
-titre
-date
-sommaire (optionel)
--->
-<dl class="meta">
-{% for key, values in meta_list %}
-    <dt>{{ key }}</dt>
-    {% for value in values %}<dd>{{ value }}</dd>{% endfor %}
-{% endfor %}
-</dl>
-{% endif %}
+    {% if author %}
+        <h2>The right side</h2>
+        {% if meta %}
+            <!--
+            auteur
+            titre
+            date
+            sommaire (optionel)
+            -->
+            <dl class="meta">
+            {% for key, values in meta_list %}
+                <dt>{{ key }}</dt>
+                {% for value in values %}<dd>{{ value }}</dd>{% endfor %}
+            {% endfor %}
+            </dl>
+        {% endif %}
 
-<h3>Editors</h3>
+        <h3>Editors</h3>
 
-{% if authors %}
-<ul class="authors">
-{% for author in authors %}
-    <li>{{ author }}</li>
-{% endfor %}
-</ul>
-{% endif %}
+        {% if authors %}
+            <ul class="authors">
+            {% for author in authors %}
+                <li>{{ author }}</li>
+            {% endfor %}
+            </ul>
+        {% endif %}
 
-
-{% endif %}
+    {% endif %}
 {% endblock %}
 
