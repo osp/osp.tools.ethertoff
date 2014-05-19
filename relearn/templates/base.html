@@ -23,7 +23,7 @@
         </div>
 
 
-        <div class="middle">
+        <div class="middle pad-{{ pad.display_name|slugify }}">
             {% block title %}{% endblock %}
         </div>
 
@@ -50,7 +50,7 @@
             {% endif %}
         </div>
         <div class="middle">
-            <div id="content" class="{% block contentclasses %}{% endblock %}">
+            <div id="content" class="pad-{{ pad.display_name|slugify }}{% block contentclasses %}{% endblock %}">
                 {% block content %}{% endblock %}
             </div>
         </div>
