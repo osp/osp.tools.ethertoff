@@ -19,17 +19,23 @@
 <body>
     <div class="wrap screen-only" style="min-height: 15%;">
         <div class="left-side">
-            <h1><a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a></h1>
         </div>
 
 
         <div class="middle pad-{{ pad.display_name|slugify }}">
+            {% ifequal pad.display_name|slugify 00.md %}
+                <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a>
+            {% endifequal %}
+
             {% block title %}{% endblock %}
+
+            {% ifequal pad.display_name|slugify 00.md %}
+                <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a>
+            {% endifequal %}
         </div>
 
 
         <div class="right-side">
-            <h1><a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a></h1>
         </div>
     </div>
 
