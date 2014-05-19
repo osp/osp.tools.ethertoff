@@ -17,10 +17,28 @@
     
 </head>
 <body>
-    <!--<div class="wrap screen-only" style="min-height: 15%;">-->
+    <div class="wrap screen-only" style="min-height: 15%;">
         <div class="left-side">
             <h1><a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a></h1>
+        </div>
 
+
+        <div class="middle">
+            {% block title %}{% endblock %}
+        </div>
+
+
+        <div class="right-side">
+            <h1><a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a></h1>
+            <div id="content" class="{% block contentclasses %}{% endblock %}">
+                {% block content %}{% endblock %}
+            </div>
+        </div>
+    </div>
+
+
+    <div class="wrap" style="height: 85%;">
+        <div class="left-side screen-only">
             {% if author %}
             <nav>
                 <ul>
@@ -34,19 +52,9 @@
             </nav>
             {% endif %}
         </div>
-
-
         <div class="middle">
-            {% block title %}{% endblock %}
-            <div id="content" class="{% block contentclasses %}{% endblock %}">
-                {% block content %}{% endblock %}
-            </div>
         </div>
-
-
-        <div class="right-side">
-            <h1><a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a></h1>
-            
+        <div class="right-side screen-only">
             {% if pad %}
             <div id="switch">
                 {% if author %}
@@ -68,15 +76,7 @@
                 <li><a class="button" href="{% url 'login' %}">Log in</a></li>{% endif %}
             </ul>
         </div>
-    <!--</div>-->
-
-
-    <!--<div class="wrap" style="height: 85%;">-->
-        <!--<div class="left-side screen-only">-->
-        <!--</div>-->
-        <!--<div class="right-side screen-only">-->
-        <!--</div>-->
-    <!--</div>-->
+    </div>
     <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"></script>
 {% block scripts %}{% endblock %}
 </body>
