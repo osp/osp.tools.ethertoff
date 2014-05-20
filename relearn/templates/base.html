@@ -16,13 +16,13 @@
     {% block extra_styles %}{% endblock %}
     
 </head>
-<body>
+<body class="pad-{{ pad.display_name|slugify }}">
     <div class="wrap" style="min-height: 15%;">
         <div class="left-side screen-only">
         </div>
 
 
-        <div class="middle pad-{{ pad.display_name|slugify }}">
+        <div class="middle">
             {% ifequal pad.display_name|slugify 00md %}
                 <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a>
             {% endifequal %}
@@ -56,7 +56,7 @@
             {% endif %}
         </div>
         <div class="middle">
-            <div id="content" class="pad-{{ pad.display_name|slugify }}{% block contentclasses %}{% endblock %}">
+            <div id="content" class="{% block contentclasses %}{% endblock %}">
                 {% block content %}{% endblock %}
             </div>
         </div>
