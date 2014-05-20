@@ -336,7 +336,7 @@ def pad_read(request, pk=None, slug=None):
         # we don’t want Etherpads automatically generated HTML, we want plain text.
         text = epclient.getText(padID)['text']
         if extension in ['.md', '.markdown']:
-            md = markdown.Markdown(extensions=['extra', 'meta', 'headerid(level=2)', 'attr_list', 'figcaption', 'markdown_in_html', 'smarty_pants'])
+            md = markdown.Markdown(extensions=['extra', 'meta', 'headerid(level=2)', 'attr_list', 'figcaption', 'smarty-pants'])
             text = md.convert(text)
             meta = md.Meta
 
