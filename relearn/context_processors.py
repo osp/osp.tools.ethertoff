@@ -51,7 +51,7 @@ def eye(request):
     hash = {}
     if 'admin' in request.path:
         return hash
-    n = randint(1, 1 + number_of_eyes / 2)
+    n = randint(1, number_of_eyes / 2)
     hash['left_eye']  = 'G' + str(n) + '.svg'
     hash['right_eye'] = 'D' + str(n) + '.svg'
     return hash
