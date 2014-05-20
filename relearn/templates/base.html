@@ -63,24 +63,24 @@
         <div class="right-side screen-only">
             {% if pad %}
             <div id="switch">
-                {% if author %}
                 {% if mode == 'read' %}
                     <a class="active button">Read</a><a class="button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
                 {% else %}
                     <a class="button" href="{% url 'pad-read' pad.display_slug %}">Read</a><a class="active button">Write</a>
                 {% endif %}
-                {% endif %}
                 <a class="button" href="#" onclick="window.print()">Print</a>
+                    {% if user.is_authenticated and author %}
+                        <a class="button" href="{% url 'logout' %}">Log out</a>
+                        <span>{{ author.full_name_with_prefix }}</span>
+                    {% else %}
+                        <a class="button" href="{% url 'login' %}">Log in</a>
+                    {% endif %}
+                </ul>
             </div>
             {% endif %}
 
             {% block rightside %}{% endblock %}
 
-            <ul id="account-buttons">
-                {% if user.is_authenticated and author %}<li>{{ author.full_name_with_prefix }}</li>
-                <li><a class="button" href="{% url 'logout' %}">Log out</a></li>{% else %}
-                <li><a class="button" href="{% url 'login' %}">Log in</a></li>{% endif %}
-            </ul>
         </div>
     </div>
     <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"></script>
