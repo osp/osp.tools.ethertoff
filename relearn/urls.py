@@ -11,7 +11,7 @@ admin.autodiscover()
 urlpatterns = patterns(
     '',
     url(r'^admin/', include(admin.site.urls)),
-    url(r'^all/$', TemplateView.as_view(template_name = 'all.html')),
+    url(r'^all/$', TemplateView.as_view(template_name = 'all.html'), name='all'),
     url(r'^css/$', 'relearn.views.css', name='css'),
     url(r'^$', 'relearn.views.home', name='home'),
     url(r'^accounts/login$', 'django.contrib.auth.views.login',
