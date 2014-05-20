@@ -35,19 +35,13 @@
             sommaire (optionel)
             -->
             <dl class="meta">
-            {% for key, values in meta_list %}
+            {% for key, values in meta_list reversed %}
                 <dt>{{ key }}</dt>
                 {% for value in values %}<dd>{{ value }}</dd>{% endfor %}
             {% endfor %}
                 <dt>Editors</dt>
                 <dd>
-                {% if authors %}
-                    <ul class="authors">
-                    {% for author in authors %}
-                        <li>{{ author }}</li>
-                    {% endfor %}
-                    </ul>
-                {% endif %}
+                    {{ authors|natural_join:'et' }}
                 </dd>
             </dl>
         {% endif %}
