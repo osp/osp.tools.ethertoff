@@ -11,7 +11,7 @@
             <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a>
         {% endifequal %}
 
-        {{ meta.title.0|default:pad.display_slug }}
+        {{ meta.title.0|default:pad.display_slug|markdown_filter }}
 
         {% ifequal pad.display_name|slugify "00md" %}
             <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a>
