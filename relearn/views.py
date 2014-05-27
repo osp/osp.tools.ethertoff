@@ -338,14 +338,17 @@ def pad_read(request, pk=None, slug=None):
         if extension in ['.md', '.markdown']:
             md = markdown.Markdown(extensions=['extra', 'meta', 'headerid(level=2)', 'attr_list', 'figcaption', 'smarty'])
             text = md.convert(text)
-            meta = md.Meta
+            try:
+                meta = md.Meta
+            except AttributeError:   # Edge-case: this happens when the pad is completely empty
+                meta = None
 
     # Create namespaces from the url of the pad
     # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
     namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]
 
     meta_list = []
-    if len(meta.keys()) > 0:
+    if meta and len(meta.keys()) > 0:
         meta_list = list(meta.iteritems())
 
     tpl_params = { 'pad'                : pad,
