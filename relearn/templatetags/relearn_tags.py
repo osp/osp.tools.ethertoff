@@ -1,5 +1,9 @@
-from django import template
+import markdown
 
+from django import template
+from django.template.defaultfilters import stringfilter
+from django.utils.encoding import force_unicode
+from django.utils.safestring import mark_safe
 
 register = template.Library()
 
@@ -21,5 +25,15 @@ def natural_join(val, cjn="and"):
     >>> natural_join(['pierre', 'paul', 'jacques'], cnj="et")
     'pierre, paul et jacques'
     """
+    val = list(val)
     return " ".join((", ".join(val[0:-1]), "%s %s" % (cjn, val[-1]))) if len(val) > 1 else val[0]
 
+
+
+@register.filter(is_safe=True)
+@stringfilter
+def markdown_filter(value):
+    extensions = ["extra", ]
+
+    return mark_safe(markdown.markdown(force_unicode(value),
+                                       extensions))
