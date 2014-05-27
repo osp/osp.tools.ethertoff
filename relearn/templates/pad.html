@@ -1,5 +1,24 @@
 {% extends "pad-base.html" %}
 
+{% block title %}
+    <header>
+    {% if meta.authors %}
+        <p class="authors">{{ meta.authors|natural_join:'et' }}</p>
+    {% endif %}
+    <h1>
+        {% ifequal pad.display_name|slugify "00md" %}
+            <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a>
+        {% endifequal %}
+
+        {{ meta.title.0|default:pad.display_slug }}
+
+        {% ifequal pad.display_name|slugify "00md" %}
+            <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a>
+        {% endifequal %}
+    </h1>
+    </header>
+{% endblock %}
+
 {% block content %}
   {% if error %}
   <div id="main">
