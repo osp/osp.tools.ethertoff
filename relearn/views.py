@@ -53,6 +53,12 @@ cf http://fredericiana.com/2010/10/08/decoding-html-entities-to-text-in-python/
 h = HTMLParser.HTMLParser()
 unescape = h.unescape
 
+"""
+Create a regex for our include template tag
+"""
+include_regex = re.compile("{%\s?include\s?\"([\w._-]+)\"\s?%}")
+
+
 @login_required(login_url='/accounts/login')
 def padCreate(request, pk):
     """Create a named pad for the given group
@@ -336,13 +342,21 @@ def pad_read(request, pk=None, slug=None):
         # we don’t want Etherpads automatically generated HTML, we want plain text.
         text = epclient.getText(padID)['text']
         if extension in ['.md', '.markdown']:
-            md = markdown.Markdown(extensions=['extra', 'meta', 'headerid(level=2)', 'attr_list', 'figcaption', 'smarty'])
+            md = markdown.Markdown(extensions=['extra', 'meta', 'headerid(level=2)', 'attr_list', 'figcaption'])
             text = md.convert(text)
             try:
                 meta = md.Meta
             except AttributeError:   # Edge-case: this happens when the pad is completely empty
                 meta = None
-
+    
+    # Convert the {% include %} tags into a form easily digestible by jquery
+    # {% include "example.html" %} -> <a id="include-example.html" class="include" href="/r/include-example.html">include-example.html</a>
+    def ret(matchobj):
+        return '<a id="include-%s" class="include" href="%s">%s</a>' % (matchobj.group(1), reverse('pad-read', args=(matchobj.group(1),) ), matchobj.group(1))
+    
+    text = include_regex.sub(ret, text)
+    
+    
     # Create namespaces from the url of the pad
     # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
     namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]

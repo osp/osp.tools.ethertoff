@@ -108,3 +108,10 @@ $("a[href]").each(
     }
 );
 
+// Django gives us elements like:
+// <a id="include-example.html" class="include" href="/r/include-example.html">include-example.html</a>
+// in which we include the relevant pages
+
+$("#content .include").each(function(i, el) {
+    $(el).load($(el).attr('href') + ' .middle');
+});
