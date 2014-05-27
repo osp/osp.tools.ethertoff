@@ -16,7 +16,7 @@
     {% block extra_styles %}{% endblock %}
     
 </head>
-<body class="pad-{{ pad.display_name|slugify }}">
+<body class="pad-{{ pad.display_name|slugify }} {{ mode }}-mode">
     <nav>
         <h1><a class="button" href="/">&lt;o&gt; future &lt;o&gt;</a></h1>
         {% if pad %}
