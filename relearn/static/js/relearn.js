@@ -4,9 +4,9 @@ $(window).load(function() {
 
     // COUNT WORDS
     words = $("#content").text().split(" ").length;
-    $("dl.meta").append("<dt>Words</dt><dd>" + words + "</dd>");
+    $("dl.meta").append("<dt>Words</dt><dd><p>" + words + "</p></dd>");
     characters = $("#content").text().split("").length;
-    $("dl.meta").append("<dt>Characters</dt><dd>" + characters + "</dd>");
+    $("dl.meta").append("<dt>Characters</dt><dd><p>" + characters + "</p></dd>");
 });
 
 // just for testing:
