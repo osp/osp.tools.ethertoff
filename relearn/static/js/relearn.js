@@ -23,7 +23,7 @@ $(window).load(function() {
                 }
                 $("#master-page").hide();
                 $("#content").css("-webkit-flow-into", "myFlow");
-            }, 2000);
+            }, 1000);
         } else {
             $(html).removeClass("print-preview");
             $("style[media='print, screen']").attr("media", "print");
