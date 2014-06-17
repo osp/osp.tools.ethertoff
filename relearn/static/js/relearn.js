@@ -17,9 +17,9 @@ $(window).load(function() {
             $("body").append("<section id='master-page' class='page'></section>");
             nb_page = Math.floor($("#content").height() / $("#master-page").height());
             console.log(nb_page);
-            for (i = 1; i <= nb_page; i++){
-                $("#master-page").clone().attr("id","page-"+i).insertAfter($("#master-page"));
-            }
+            //for (i = 1; i <= nb_page; i++){
+                //$("#master-page").clone().attr("id","page-"+i).insertAfter($("#master-page"));
+            //}
             $("#content").css("-webkit-flow-into", "myFlow");
         } else {
             $(html).removeClass("print-preview");
