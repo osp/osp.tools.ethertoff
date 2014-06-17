@@ -17,8 +17,9 @@ $(window).load(function() {
             window.setTimeout(function(){
                 nb_page = Math.floor($("#content").height() / $("#master-page").height());
                 for (i = 1; i <= nb_page; i++){
-                    $("#master-page").clone().attr("id","page-"+i).insertAfter($("#master-page"));
+                    $("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#master-page"));
                 }
+                $("#master-page").hide();
                 $("#content").css("-webkit-flow-into", "myFlow");
             }, 1000);
         } else {
