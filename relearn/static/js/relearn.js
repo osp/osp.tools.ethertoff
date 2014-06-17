@@ -14,12 +14,14 @@ $(window).load(function() {
             $("html").addClass("print-preview");
             $("style[media='print']").attr("media", "print, screen");
             $("link[media='print']").attr("media", "print, screen");
-            nb_page = Math.floor($("#content").height() / $("#master-page").height());
-            console.log(nb_page);
-            //for (i = 1; i <= nb_page; i++){
-                //$("#master-page").clone().attr("id","page-"+i).insertAfter($("#master-page"));
-            //}
-            $("#content").css("-webkit-flow-into", "myFlow");
+            window.setTimeout(function(){
+                nb_page = Math.floor($("#content").height() / $("#master-page").height());
+                console.log(nb_page);
+                //for (i = 1; i <= nb_page; i++){
+                    //$("#master-page").clone().attr("id","page-"+i).insertAfter($("#master-page"));
+                //}
+                $("#content").css("-webkit-flow-into", "myFlow");
+            }, 1000);
         } else {
             $(html).removeClass("print-preview");
             $("style[media='print, screen']").attr("media", "print");
