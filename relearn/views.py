@@ -209,7 +209,7 @@ def profile(request):
 
 
 @login_required(login_url='/accounts/login')
-def pad(request, pk=None, slug=None):
+def pad(request, pk=None, slug=None): # pad_write
     """Create and session and display an embedded pad
     """
 
@@ -374,6 +374,9 @@ def pad_read(request, pk=None, slug=None):
                    'authorship_authors_json' : authorship_authors_json,
                    'authors'            : authors }
 
+    if not request.user.is_authenticated():
+        request.session.set_test_cookie()
+        tpl_params['next'] = reverse('pad-write', args=(slug,) )
 
     return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
 

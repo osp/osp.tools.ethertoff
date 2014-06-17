@@ -115,3 +115,22 @@ $("a[href]").each(
 $("#content .include").each(function(i, el) {
     $(el).load($(el).attr('href') + ' .middle');
 });
+
+$(".logged-out a.write-button").click(function(e) {
+    e.preventDefault();
+    $(".popup-wrapper").removeClass("hidden");
+});
+
+$(".popup-wrapper").click(function(e) {
+    $(this).addClass("hidden");
+});
+
+$(".popup").click(function(e) {
+    e.stopPropagation();
+});
+
+$(document).keydown(function(e) {
+    if (e.keyCode == 27) {
+        $(".popup-wrapper").addClass("hidden");
+    }
+});

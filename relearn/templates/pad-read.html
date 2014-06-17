@@ -48,3 +48,21 @@
     {% endif %}
 {% endblock %}
 
+{% block extraui %}
+{% if not user.is_authenticated %}
+<div class="popup-wrapper hidden">
+    <div class="popup">
+      <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+        {% csrf_token %}
+        <label for="id_username">Username</label>
+        <input id="id_username" maxlength="254" name="username" type="text" />
+        <label for="id_password">Password</label>
+        <input id="id_password" name="password" type="password" />
+    
+        <input class="submit" type="submit" value="Login" />
+        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'home' %}{% endif %}" />
+      </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}
