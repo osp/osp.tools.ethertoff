@@ -13,6 +13,7 @@ $(window).load(function() {
         if(! $("html").hasClass("print-preview")){
             $("html").addClass("print-preview");
             $("style[media='print']").attr("media", "print, screen");
+            $("#content").css("-webkit-flow-into", "myFlow");
         } else {
             $(html).removeClass("print-preview");
             $("style[media='print, screen']").attr("media", "print");
