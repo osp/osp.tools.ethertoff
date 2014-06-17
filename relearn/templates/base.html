@@ -37,6 +37,9 @@
             <a class="button screen-only" href="{% url 'logout' %}{% if pad %}?next={% url 'pad-read' pad.display_slug %}{% endif %}">Log out</a>
             <a class="button screen-only" href="{% url 'pad-create' author.group.all.0.id %}">Create</a>
             <a class="button screen-only" href="{% url 'all' %}">List</a>
+            <a class="button screen-only" href="/w/TODOLIST">TODO</a>
+            <a class="button screen-only" href="/w/style.css">styles</a>
+            <a class="button screen-only" href="/w/typo">typo</a>
             {#{% else %}#}
             <!--<a class="button" href="{% url 'login' %}">Log in</a>-->
         </div>
