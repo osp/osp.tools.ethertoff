@@ -16,16 +16,16 @@
     {% block extra_styles %}{% endblock %}
     
 </head>
-<body class="pad-{{ pad.display_name|slugify }} {{ mode }}-mode">
+<body class="pad-{{ pad.display_name|slugify }} {{ mode }}-mode {% if user.is_authenticated and author %}logged-in{% else %}logged-out{% endif %}">
     <nav>
         <h1><a class="button" href="/">&lt;o&gt; future &lt;o&gt;</a></h1>
         {% if pad %}
             {% if mode == 'read' %}
-                <a class="active button screen-only">Read</a>
-                <a class="button screen-only" href="{% url 'pad-write' pad.display_slug %}">Write</a>
+                <a class="active button read-button screen-only">Read</a>
+                <a class="button screen-only write-button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
             {% else %}
-                <a class="button screen-only" href="{% url 'pad-read' pad.display_slug %}">Read</a>
-                <a class="active button screen-only">Write</a>
+                <a class="button screen-only read-button" href="{% url 'pad-read' pad.display_slug %}">Read</a>
+                <a class="active button screen-only write-button">Write</a>
             {% endif %}
         {% endif %}
 
@@ -33,7 +33,7 @@
 
         {% if user.is_authenticated and author %}
             <span class="screen-only">{{ author.full_name_with_prefix }}</span>
-            <a class="button screen-only" href="{% url 'logout' %}">Log out</a>
+            <a class="button screen-only" href="{% url 'logout' %}{% if pad %}?next={% url 'pad-read' pad.display_slug %}{% endif %}">Log out</a>
             <a class="button screen-only" href="{% url 'pad-create' author.group.all.0.id %}">Create</a>
             <a class="button screen-only" href="{% url 'all' %}">List</a>
             {#{% else %}#}
@@ -72,6 +72,8 @@
             {% block rightside %}{% endblock %}
         </div>
     </div>
+    {% block extraui %}{% endblock %}
+    
     <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"></script>
 
     <!-- Piwik -->
