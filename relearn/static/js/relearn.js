@@ -14,7 +14,6 @@ $(window).load(function() {
             $("html").addClass("print-preview");
             $("style[media='print']").attr("media", "print, screen");
             $("link[media='print']").attr("media", "print, screen");
-            $("body").append("<section id='master-page' class='page'></section>");
             nb_page = Math.floor($("#content").height() / $("#master-page").height());
             console.log(nb_page);
             //for (i = 1; i <= nb_page; i++){
