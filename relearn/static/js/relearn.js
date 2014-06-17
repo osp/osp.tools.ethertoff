@@ -5,7 +5,7 @@ $(window).load(function() {
     // COUNT WORDS
     words = $("#content").text().split(" ").length;
     $("dl.meta").append("<dt>Words</dt><dd>" + words + "</dd>");
-    characters = $("#content").text().split(" ").length;
+    characters = $("#content").text().split("").length;
     $("dl.meta").append("<dt>Characters</dt><dd>" + characters + "</dd>");
 });
 
