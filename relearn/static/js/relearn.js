@@ -14,8 +14,8 @@ $(window).load(function() {
             $("html").addClass("print-preview");
             $("style[media='print']").attr("media", "print, screen");
             $("link[media='print']").attr("media", "print, screen");
+            $("body").append('<section id="master-page"></section>');
             window.setTimeout(function(){
-                $("body").append('<section id="master-page"></section>');
                 nb_page = Math.floor($("#content").height() / $("#master-page").height());
                 for (i = 1; i <= nb_page; i++){
                     $("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#master-page"));
