@@ -16,10 +16,9 @@ $(window).load(function() {
             $("link[media='print']").attr("media", "print, screen");
             window.setTimeout(function(){
                 nb_page = Math.floor($("#content").height() / $("#master-page").height());
-                console.log(nb_page);
-                //for (i = 1; i <= nb_page; i++){
-                    //$("#master-page").clone().attr("id","page-"+i).insertAfter($("#master-page"));
-                //}
+                for (i = 1; i <= nb_page; i++){
+                    $("#master-page").clone().attr("id","page-"+i).insertAfter($("#master-page"));
+                }
                 $("#content").css("-webkit-flow-into", "myFlow");
             }, 1000);
         } else {
