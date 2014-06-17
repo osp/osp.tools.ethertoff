@@ -13,7 +13,11 @@ $(window).load(function() {
         if(! $("html").hasClass("print-preview")){
             $("html").addClass("print-preview");
             $("style[media='print']").attr("media", "print, screen");
-            $("body").append("<section class='page'></section>");
+            $("body").append("<section id='master-page' class='page'></section>");
+            nb_page = Math.floor($("#content").height() / $("#master-page").height());
+            for (i = 1; i <= nb_page; i++){
+                $("#master-page").clone().attr("id","page-"+i).insertAfter($("#master-page"));
+            }
             $("#content").css("-webkit-flow-into", "myFlow");
         } else {
             $(html).removeClass("print-preview");
