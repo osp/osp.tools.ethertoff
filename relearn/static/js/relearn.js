@@ -7,6 +7,17 @@ $(window).load(function() {
     $("dl.meta").append("<dt>Words</dt><dd><p>" + words + "</p></dd>");
     characters = $("#content").text().split("").length;
     $("dl.meta").append("<dt>Characters</dt><dd><p>" + characters + "</p></dd>");
+
+    // PRINT PREVIEW
+    $("#print-preview").click(function(){
+        if(! $(html).hasClass("print-preview")){
+            $(html).addClass("print-preview");
+            $("style[media='print']").attr("media", "print, screen");
+        } else {
+            $(html).removeClass("print-preview");
+            $("style[media='print, screen']").attr("media", "print");
+        }
+    });
 });
 
 // just for testing:
