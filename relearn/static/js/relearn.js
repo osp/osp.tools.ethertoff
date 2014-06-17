@@ -13,6 +13,7 @@ $(window).load(function() {
         if(! $("html").hasClass("print-preview")){
             $("html").addClass("print-preview");
             $("style[media='print']").attr("media", "print, screen");
+            $("link[media='print']").attr("media", "print, screen");
             $("body").append("<section id='master-page' class='page'></section>");
             nb_page = Math.floor($("#content").height() / $("#master-page").height());
             for (i = 1; i <= nb_page; i++){
@@ -22,6 +23,7 @@ $(window).load(function() {
         } else {
             $(html).removeClass("print-preview");
             $("style[media='print, screen']").attr("media", "print");
+            $("link[media='print, screen']").attr("media", "print");
         }
     });
 });
