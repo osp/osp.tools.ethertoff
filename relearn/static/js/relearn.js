@@ -1,6 +1,12 @@
 $(window).load(function() {
     h = $("div#content").height();
     $("iframe#ether").height(h);
+
+    // COUNT WORDS
+    words = $("#content").text().split(" ").length;
+    $("dl.meta").append("<dt>Words</dt><dd>" + words + "</dd>");
+    characters = $("#content").text().split(" ").length;
+    $("dl.meta").append("<dt>Characters</dt><dd>" + characters + "</dd>");
 });
 
 // just for testing:
