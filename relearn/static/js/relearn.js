@@ -41,7 +41,9 @@ $(window).load(function() {
                 $(".page").css("-webkit-flow-from", "myFlow");
                 $(".page").css("-adobe-flow-from", "myFlow");
                 //$("#master-page").hide();
-                CSSRegions.doLayout();
+                window.setTimeout(function(){
+                    CSSRegions.doLayout();
+                }, 2000);
             }, 2000);
         } else {
             $(html).removeClass("print-preview");
