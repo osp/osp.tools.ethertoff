@@ -25,6 +25,7 @@ $(window).load(function() {
             $("style[media='print']").attr("media", "print, screen");
             $("link[media='print']").attr("media", "print, screen");
             doc_height = $("body").height();
+            console.log(doc_height);
             $("body").append('<section id="master-page"></section>');
                 $("#content").css("display", "block !important");
             window.setTimeout(function(){
