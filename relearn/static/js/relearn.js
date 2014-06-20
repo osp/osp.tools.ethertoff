@@ -26,6 +26,7 @@ $(window).load(function() {
             $("link[media='print']").attr("media", "print, screen");
             doc_height = $("body").height();
             $("body").append('<section id="master-page"></section>');
+                $("#content").css("display", "block !important");
             window.setTimeout(function(){
                 nb_page = Math.floor(doc_height / $("#master-page").height());
                 console.log(nb_page);
@@ -34,6 +35,7 @@ $(window).load(function() {
                 }
                 $("#content").css("-webkit-flow-into", "myFlow");
                 $("#content").css("-adobe-flow-into", "myFlow");
+                $("#content").css("display", "block !important");
                 //$("#master-page").hide();
             }, 2000);
         } else {
