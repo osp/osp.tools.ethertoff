@@ -28,11 +28,11 @@ $(window).load(function() {
             $("body").append('<section id="master-page"></section>');
             window.setTimeout(function(){
                 nb_page = Math.floor(doc_height / $("#master-page").height());
+                console.log(nb_page);
                 for (i = 1; i <= nb_page; i++){
                     $("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#master-page"));
                 }
                 $("#master-page").hide();
-                $("#content").css("-adobe-flow-into", "myFlow");
                 $("#content").css("-webkit-flow-into", "myFlow");
             }, 1000);
         } else {
