@@ -32,7 +32,8 @@ $(window).load(function() {
                     $("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#master-page"));
                 }
                 $("#master-page").hide();
-                //$("#content").css("-adobe-flow-into", "myFlow");
+                $("#content").css("-adobe-flow-into", "myFlow");
+                $("#content").css("-webkit-flow-into", "myFlow");
             }, 1000);
         } else {
             $(html).removeClass("print-preview");
