@@ -1,3 +1,9 @@
+function remy(target) {          
+    pattern = /([A-Z].{0,2}) /g
+    text = target.html();          
+    target.html(text.replace(pattern, '$1&nbsp;'));  
+}    
+
 $(window).load(function() {
     h = $("div#content").height();
     $("iframe#ether").height(h);
@@ -7,6 +13,9 @@ $(window).load(function() {
     $("dl.meta").append("<dt>Words</dt><dd><p>" + words + "</p></dd>");
     characters = $("#content").text().split("").length;
     $("dl.meta").append("<dt>Characters</dt><dd><p>" + characters + "</p></dd>");
+
+    // ORPHANS AND WIDOWS
+    remy($("#content"));  
 
     // PRINT PREVIEW
     $("#print-preview").click(function(){
