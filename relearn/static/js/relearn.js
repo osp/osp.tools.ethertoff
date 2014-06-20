@@ -27,7 +27,7 @@ $(window).load(function() {
             console.log(doc_height);
             $("style[media='print']").attr("media", "print, screen");
             $("link[media='print']").attr("media", "print, screen");
-            $("body").append('<section id="master-page"></section>');
+            //$("body").append('<section id="master-page"></section>');
                 $("#content").css("display", "block !important");
             window.setTimeout(function(){
                 nb_page = Math.floor(doc_height / $("#master-page").height());
