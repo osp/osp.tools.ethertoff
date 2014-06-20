@@ -5,6 +5,7 @@ function remy(target) {
 }    
 
 $(window).load(function() {
+    $("#content").css("display", "block !important");
     h = $("div#content").height();
     $("iframe#ether").height(h);
 
