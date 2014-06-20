@@ -38,6 +38,8 @@ $(window).load(function() {
                 $("#content").css("display", "block !important");
                 $("#content").css("-webkit-flow-into", "myFlow");
                 $("#content").css("-adobe-flow-into", "myFlow");
+                $(".page").css("-webkit-flow-from", "myFlow");
+                $(".page").css("-adobe-flow-from", "myFlow");
                 //$("#master-page").hide();
             }, 2000);
         } else {
