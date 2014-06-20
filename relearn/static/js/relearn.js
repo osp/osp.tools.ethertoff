@@ -1,6 +1,6 @@
 function remy(target) {          
     console.log("orphans and widows");
-    pattern = /([A-Z].{0,2}) /g
+    pattern = /([A-Z].{0,2}|, .{0,3}) /g
     text = target.html();          
     target.html(text.replace(pattern, '$1&nbsp;'));  
 }    
