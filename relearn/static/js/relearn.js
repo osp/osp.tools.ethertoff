@@ -1,5 +1,4 @@
 function remy(target) {          
-    console.log("orphans and widows");
     pattern = /([A-Z].{0,2}|, .{0,3}) /g
     text = target.html();          
     target.html(text.replace(pattern, '$1&nbsp;'));  
@@ -34,9 +33,9 @@ $(window).load(function() {
                 for (i = 1; i <= nb_page; i++){
                     $("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#master-page"));
                 }
+                $("#content").css("display", "block !important");
                 $("#content").css("-webkit-flow-into", "myFlow");
                 $("#content").css("-adobe-flow-into", "myFlow");
-                $("#content").css("display", "block !important");
                 //$("#master-page").hide();
             }, 2000);
         } else {
