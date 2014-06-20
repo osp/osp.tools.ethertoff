@@ -21,6 +21,7 @@ $(window).load(function() {
     $("#print-preview").click(function(){
         if(! $("html").hasClass("print-preview")){
             $("html").addClass("print-preview");
+            $("#content").css("display", "block !important");
             doc_height = $("body").height();
             console.log(doc_height);
             $("style[media='print']").attr("media", "print, screen");
