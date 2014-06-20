@@ -34,7 +34,7 @@ $(window).load(function() {
                 }
                 $("#content").css("-webkit-flow-into", "myFlow");
                 $("#content").css("-adobe-flow-into", "myFlow");
-                $("#master-page").hide();
+                //$("#master-page").hide();
             }, 2000);
         } else {
             $(html).removeClass("print-preview");
