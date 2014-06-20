@@ -26,10 +26,11 @@ $(window).load(function() {
             $("link[media='print']").attr("media", "print, screen");
             doc_height = $("body").height();
             $("body").append('<section id="master-page"></section>');
+            $("body").append('<section id="pages"></section>');
             window.setTimeout(function(){
                 nb_page = Math.floor(doc_height / $("#master-page").height());
                 for (i = 1; i <= nb_page; i++){
-                    $("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#master-page"));
+                    $("#master-page").clone().addClass("page").attr("id","page-"+i).append($("#pages"));
                 }
                 $("#master-page").hide();
                 $("#content").css("-adobe-flow-into", "myFlow");
