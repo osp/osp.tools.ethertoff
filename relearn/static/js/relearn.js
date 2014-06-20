@@ -32,9 +32,10 @@ $(window).load(function() {
                 for (i = 1; i <= nb_page; i++){
                     $("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#master-page"));
                 }
-                $("#master-page").hide();
                 $("#content").css("-webkit-flow-into", "myFlow");
-            }, 1000);
+                $("#content").css("-adobe-flow-into", "myFlow");
+                $("#master-page").hide();
+            }, 2000);
         } else {
             $(html).removeClass("print-preview");
             $("style[media='print, screen']").attr("media", "print");
