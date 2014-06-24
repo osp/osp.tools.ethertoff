@@ -9,7 +9,7 @@ from etherpadlite.models import Pad, PadAuthor, PadServer
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.sites.models import get_current_site
 
-is_eye = re.compile(r'[GD]\d+\.svg')
+is_eye = re.compile(r'[GD]\d+\.png')
 number_of_eyes = len([eye for eye in os.listdir(os.path.join(MEDIA_ROOT, 'images', 'eyes')) if is_eye.match(eye)])
 
 class EthertoffError(Exception):
