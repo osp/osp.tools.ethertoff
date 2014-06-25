@@ -4,10 +4,8 @@ function remy(target) {
     target.html(text.replace(pattern, '$1&nbsp;'));  
 }    
 
-$(window).load(function() {
-    $("#content").css("display", "block !important");
+$(document).ready(function() {
     h = $("div#content").height();
-    $("iframe#ether").height(h);
 
     // COUNT WORDS
     words = $("#content").text().split(" ").length;
@@ -18,33 +16,26 @@ $(window).load(function() {
     // ORPHANS AND WIDOWS
     remy($("#content"));  
 
+            console.log(h);
+            $("body").append('<section id="master-page"></section>');
+page_height = $("#master-page").height();
+console.log(page_height);
+                nb_page = Math.floor(h / page_height);
+                console.log(nb_page);
+                for (i = 1; i <= nb_page; i++){
+                    //$("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#content"));
+			$("#content").before("<section class='page'></section>");
+                }
+$(".page").css("height", "auto");
+
     // PRINT PREVIEW
     $("#print-preview").click(function(){
         if(! $("html").hasClass("print-preview")){
+	$(".page").height(page_height);
+CSSRegions.doLayout();
             $("html").addClass("print-preview");
-            $("#content").css("display", "block !important");
-            doc_height = $("body").height();
-            console.log(doc_height);
             $("style[media='print']").attr("media", "print, screen");
             $("link[media='print']").attr("media", "print, screen");
-            $("body").append('<section id="master-page"></section>');
-                $("#content").css("display", "block !important");
-            window.setTimeout(function(){
-                nb_page = Math.floor(doc_height / $("#master-page").height());
-                console.log(nb_page);
-                for (i = 1; i <= nb_page; i++){
-                    $("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#master-page"));
-                }
-                $("#content").css("display", "block !important");
-                $("#content").css("-webkit-flow-into", "myFlow");
-                $("#content").css("-adobe-flow-into", "myFlow");
-                $(".page").css("-webkit-flow-from", "myFlow");
-                $(".page").css("-adobe-flow-from", "myFlow");
-                //$("#master-page").hide();
-                window.setTimeout(function(){
-                    CSSRegions.doLayout();
-                }, 2000);
-            }, 2000);
         } else {
             $(html).removeClass("print-preview");
             $("style[media='print, screen']").attr("media", "print");
