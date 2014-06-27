@@ -14,6 +14,7 @@ import os
 
 import markdown
 from py_etherpad import EtherpadLiteClient
+import dateutil.parser
 
 # Framework imports
 from django.shortcuts import render_to_response, get_object_or_404
@@ -363,6 +364,11 @@ def pad_read(request, pk=None, slug=None):
 
     meta_list = []
     if meta and len(meta.keys()) > 0:
+        if 'date' in meta:
+            meta['date_parsed'] = []
+            for date in meta['date']:
+                meta['date_parsed'].append( dateutil.parser.parse(meta['date'][0]).isoformat() )
+        
         meta_list = list(meta.iteritems())
 
     tpl_params = { 'pad'                : pad,
