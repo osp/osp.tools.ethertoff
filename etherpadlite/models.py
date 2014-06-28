@@ -206,9 +206,9 @@ class Pad(models.Model):
     class Meta:
         ordering = ['display_slug', 'name']
         
-def padDel(sender, **kwargs):
-    """Make sure pads are purged from the etherpad-lite server on deletion
-    """
-    pad = kwargs['instance']
-    pad.Destroy()
-pre_delete.connect(padDel, sender=Pad)
+#def padDel(sender, **kwargs):
+#    """Make sure pads are purged from the etherpad-lite server on deletion
+#    """
+#    pad = kwargs['instance']
+#    pad.Destroy()
+#pre_delete.connect(padDel, sender=Pad)
