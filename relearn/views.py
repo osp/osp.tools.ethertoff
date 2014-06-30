@@ -369,7 +369,7 @@ def home(request):
 
 def css(request):
     try:
-        pad = Pad.objects.get(display_slug='css')
+        pad = Pad.objects.get(display_slug='style.css')
         padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name.replace('::', '_'))
         epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
         return HttpResponse(epclient.getText(padID)['text'], mimetype="text/css")
