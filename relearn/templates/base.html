@@ -1,5 +1,4 @@
-{% load wikify %}
-<!DOCTYPE HTML>
+{% load wikify %}<!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -7,9 +6,9 @@
     <link rel="stylesheet" href="{{ STATIC_URL }}css/fonts.css" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="/css/" type="text/css" charset="utf-8">
     <link rel="stylesheet" href="/css-print/" type="text/css" charset="utf-8" media="print">
-    <script src="{{ STATIC_URL }}js/less-1.4.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ STATIC_URL }}js/underscore.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ STATIC_URL }}js/less-1.4.1.min.js" type="text/javascript" charset="utf-8"> </script>
+    <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js" type="text/javascript" charset="utf-8"> </script>
+    <script src="{{ STATIC_URL }}js/underscore.js" type="text/javascript" charset="utf-8"> </script>
 
     <title>{{ site_name }}{% if pad %} → {{ pad.display_slug|dewikify }}{% endif %}</title>
 
@@ -82,9 +81,9 @@
     {% block extraui %}{% endblock %}
     
 
-    <script src="http://adobe-webplatform.github.io/css-regions-polyfill/cssregions.js" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ STATIC_URL }}js/comments/comments.js" type="text/javascript" charset="utf-8"></script>
+    <script src="http://adobe-webplatform.github.io/css-regions-polyfill/cssregions.js" type="text/javascript" charset="utf-8"> </script>
+    <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"> </script>
+    <script src="{{ STATIC_URL }}js/comments/comments.js" type="text/javascript" charset="utf-8"> </script>
     {% if user.is_authenticated and author %}
         <script>
             $(function() {

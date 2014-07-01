@@ -92,6 +92,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'relearn.middleware.ErrorHandlingMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'relearn.middleware.TidyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',

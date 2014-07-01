@@ -5,6 +5,8 @@ from urllib2 import URLError
 from relearn.context_processors import EthertoffError
 from etherpadlite.models import Pad, PadAuthor, PadServer
 
+from html5tidy import tidy
+
 class ErrorHandlingMiddleware(object):
     """
     Catch errors if we can make some reasonable prediction about what went wrong
@@ -23,3 +25,11 @@ class ErrorHandlingMiddleware(object):
                               'reason'    : reason }
             return HttpResponseServerError(t.render(Context(tpl_variables)))
         return None
+
+class TidyMiddleware(object):
+    # cf http://pyevolve.sourceforge.net/wordpress/?p=814
+    def process_response(self, request, response):
+        if response.status_code == 200:
+            if response["content-type"].startswith("text/html"):
+                response.content = tidy(response.content)
+        return response
