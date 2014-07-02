@@ -14,6 +14,7 @@ import os
 
 import markdown
 from py_etherpad import EtherpadLiteClient
+import dateutil.parser
 
 # Framework imports
 from django.shortcuts import render_to_response, get_object_or_404
@@ -23,6 +24,7 @@ from django.template import RequestContext
 from django.template.defaultfilters import slugify
 from django.core.urlresolvers import reverse
 from django.core.context_processors import csrf
+from django.core.exceptions import PermissionDenied
 from django.contrib.auth.decorators import login_required
 from django.utils.translation import ugettext_lazy as _
 
@@ -363,6 +365,19 @@ def pad_read(request, pk=None, slug=None):
 
     meta_list = []
     if meta and len(meta.keys()) > 0:
+        print meta.keys()
+
+        # One needs to set a ‘Public’ metadata for the page to be accessible to outside visitors
+        if not 'public' in meta or not meta['public'][0] or meta['public'][0].lower() in ['false', 'no', 'off', '0']:
+            if not request.user.is_authenticated():
+                raise PermissionDenied
+        
+        # The human-readable date is parsed so we can sort all the articles
+        if 'date' in meta:
+            meta['date_parsed'] = []
+            for date in meta['date']:
+                meta['date_parsed'].append( dateutil.parser.parse(meta['date'][0]).isoformat() )
+        
         meta_list = list(meta.iteritems())
 
     tpl_params = { 'pad'                : pad,

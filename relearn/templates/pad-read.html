@@ -4,14 +4,14 @@
 {% block title %}
     <header>
     {% if meta.authors %}
-        <p class="authors">{{ meta.authors|natural_join:'et' }}</p>
+        <p class="authors" property="dc:creator">{{ meta.authors|natural_join:'et' }}</p>
     {% endif %}
     <h1>
         {% ifequal pad.display_name|slugify "00md" %}
             <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a>
         {% endifequal %}
 
-        {{ meta.title.0|default:pad.display_slug|markdown_filter }}
+        <span property="dc:title">{{ meta.title.0|default:pad.display_slug|markdown_filter }}</span>
 
         {% ifequal pad.display_name|slugify "00md" %}
             <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a>
@@ -20,13 +20,29 @@
     </header>
 {% endblock %}
 
+{% block head_meta %}{% if meta %}
+
+{% if meta.title %}<meta property="dc:title" content="{{ meta.title|natural_join:'et' }}" />{% endif %}
+{% if meta.title %}<meta property="dc:title" content="{{ meta.title|natural_join:'et' }}" />{% endif %}
+
+
+{% endif %}{% endblock %}
+
 {% block content %}
     {{ text|safe }}
     <a id="go-up" class="screen-only" href="#">&uarr;</a>
 {% endblock %}
 
 {% block rightside %}
+    <span property="dc:created" content="{{ meta.date_parsed.0 }}">{{ meta.date.0 }}</span>
+    
+    {% if meta.licence.0 == "CC BY-ND 3.0 France" %}
+    <a href="http://creativecommons.org/licenses/by-nd/3.0/fr/" rel="license">{{ meta.licence.0 }}</a>{% else %}
+    <span property="license">{{ meta.licence.0 }}</span>{% endif %}
+    
+    
     {% if author %}
+    <p>This is the invisible part</p>
         {% if meta %}
             <!--
             auteur

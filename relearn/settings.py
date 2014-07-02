@@ -92,6 +92,7 @@ TEMPLATE_LOADERS = (
 MIDDLEWARE_CLASSES = (
     'relearn.middleware.ErrorHandlingMiddleware',
     'django.middleware.common.CommonMiddleware',
+    'relearn.middleware.TidyMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -116,6 +117,7 @@ TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     "relearn.context_processors.site_name",
     "relearn.context_processors.pads",
     "relearn.context_processors.eye",
+    "relearn.context_processors.local",
 )
 
 INSTALLED_APPS = (

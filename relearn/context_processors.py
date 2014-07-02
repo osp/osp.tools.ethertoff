@@ -1,5 +1,6 @@
 import re
 import os
+import sys
 from random import randint
 
 from datetime import datetime
@@ -55,3 +56,9 @@ def eye(request):
     hash['left_eye']  = 'G' + str(n) + '.png'
     hash['right_eye'] = 'D' + str(n) + '.png'
     return hash
+
+def local(request):
+    try:
+        return { 'LOCAL' : sys.argv[1] == 'runserver' } # cf http://stackoverflow.com/a/4277798/319860
+    except IndexError:
+        return { 'LOCAL' : False }

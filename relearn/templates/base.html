@@ -1,5 +1,4 @@
-{% load wikify %}
-<!DOCTYPE HTML>
+{% load wikify %}<!DOCTYPE HTML>
 <html>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
@@ -14,6 +13,7 @@
     <title>{{ site_name }}{% if pad %} → {{ pad.display_slug|dewikify }}{% endif %}</title>
 
     {% block extra_styles %}{% endblock %}
+    {% block head_meta %}{% endblock %}
     
 </head>
 <body class="pad-{{ pad.display_name|slugify }} {{ mode }}-mode {% if user.is_authenticated and author %}logged-in{% else %}logged-out{% endif %}">
@@ -81,9 +81,10 @@
     {% block extraui %}{% endblock %}
     
 
-    <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"></script>
-    <script src="{{ STATIC_URL }}js/comments/comments.js" type="text/javascript" charset="utf-8"></script>
+    <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>
+    <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"> </script>
+    <script src="{{ STATIC_URL }}js/comments/comments.js" type="text/javascript" charset="utf-8"> </script>
+
     {% if user.is_authenticated and author %}
         <script>
             $(function() {
@@ -92,7 +93,7 @@
         </script>
     {% endif %}
 
-    <!-- Piwik -->
+    {% if not LOCAL %}<!-- Piwik -->
     <script type="text/javascript">
       var _paq = _paq || [];
       _paq.push(['trackPageView']);
@@ -105,7 +106,7 @@
         g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
       })();
     </script>
-    <noscript><p><img src="http://stats.f-u-t-u-r-e.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
+    <noscript><p><img src="http://stats.f-u-t-u-r-e.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>{% endif %}
     <!-- End Piwik Code -->
 
 {% block scripts %}{% endblock %}
