@@ -22,6 +22,7 @@ page_height = $("#master-page").height();
 console.log(page_height);
                 nb_page = Math.floor(h / page_height);
                 console.log(nb_page);
+                if (nb_page == 0) { nb_page = 1}
                 for (i = 1; i <= nb_page; i++){
                     //$("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#content"));
 			$("#content").before("<section class='page'></section>");
