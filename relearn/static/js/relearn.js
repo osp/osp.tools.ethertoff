@@ -1,5 +1,5 @@
 function remy(target) {          
-    pattern = /([A-Z].{0,2}|, .{0,3}) /g
+    pattern = /(\b[A-Z].{0,2}|, .{0,3}) /g
     text = target.html();          
     target.html(text.replace(pattern, '$1&nbsp;'));  
 }    
