@@ -1,0 +1,47 @@
+{% extends "pad-base.html" %}
+{% load wikify relearn_tags %}
+
+{% block bodyclasses %}pad-00md{% endblock %}
+{% block title %}
+    <header>
+
+    <h1>
+        <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a>
+
+        <span property="dc:title">Index</span>
+
+        <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a>
+    </h1>
+    </header>
+{% endblock %}
+
+{% block content %}
+    <ul>{% for article in articles %}
+        <li>{{ article.author }} <a href="{{ article.href }}">{{ article.title }}</a></li>
+    {% endfor %}</ul>
+{% endblock %}
+
+{% block rightside %}
+    {% if author %}
+    <p>This is the invisible part</p>
+    {% endif %}
+{% endblock %}
+
+{% block extraui %}
+{% if not user.is_authenticated %}
+<div class="popup-wrapper hidden">
+    <div class="popup">
+      <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+        {% csrf_token %}
+        <label for="id_username">Username</label>
+        <input id="id_username" maxlength="254" name="username" type="text" />
+        <label for="id_password">Password</label>
+        <input id="id_password" name="password" type="password" />
+    
+        <input class="submit" type="submit" value="Login" />
+        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'home' %}{% endif %}" />
+      </form>
+    </div>
+</div>
+{% endif %}
+{% endblock %}

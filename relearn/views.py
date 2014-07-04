@@ -45,6 +45,10 @@ try:
     from relearn.settings import HOME_PAD
 except ImportError:
     HOME_PAD = 'start'
+try:
+    from relearn.settings import BACKUP_DIR
+except ImportError:
+    BACKUP_DIR = None
 
 """
 Set up an HTMLParser for the sole purpose of unescaping
@@ -364,13 +368,13 @@ def pad_read(request, pk=None, slug=None):
     namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]
 
     meta_list = []
-    if meta and len(meta.keys()) > 0:
-        print meta.keys()
 
-        # One needs to set a ‘Public’ metadata for the page to be accessible to outside visitors
-        if not 'public' in meta or not meta['public'][0] or meta['public'][0].lower() in ['false', 'no', 'off', '0']:
-            if not request.user.is_authenticated():
-                raise PermissionDenied
+    # One needs to set a ‘Public’ metadata for the page to be accessible to outside visitors
+    if not meta or not 'public' in meta or not meta['public'][0] or meta['public'][0].lower() in ['false', 'no', 'off', '0']:
+        if not request.user.is_authenticated():
+            raise PermissionDenied
+    
+    if meta and len(meta.keys()) > 0:
         
         # The human-readable date is parsed so we can sort all the articles
         if 'date' in meta:
@@ -397,10 +401,17 @@ def pad_read(request, pk=None, slug=None):
 
 def home(request):
     try:
-        Pad.objects.get(display_slug=HOME_PAD)
-        return pad_read(request, slug=HOME_PAD)
-    except Pad.DoesNotExist:
-        return HttpResponseRedirect(reverse('login'))
+        articles = json.load(open(os.path.join(BACKUP_DIR, 'index.json')))
+        tpl_params = { 'articles': articles }
+        return render_to_response("home.html", tpl_params, context_instance = RequestContext(request))
+    except IOError:
+            try:
+                Pad.objects.get(display_slug=HOME_PAD)
+                return pad_read(request, slug=HOME_PAD)
+            except Pad.DoesNotExist:
+                return HttpResponseRedirect(reverse('login'))
+
+    
 
 def css(request):
     try:

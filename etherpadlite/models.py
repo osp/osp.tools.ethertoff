@@ -3,6 +3,7 @@
 from django.db import models
 from django.db.models.signals import pre_delete
 from django.contrib.auth.models import User, Group
+from django.core.urlresolvers import reverse
 from django.utils.translation import ugettext_lazy as _
 
 from py_etherpad import EtherpadLiteClient
@@ -171,6 +172,9 @@ class Pad(models.Model):
 
     def __unicode__(self):
         return dewikify(self.display_slug)
+
+    def get_absolute_url(self):
+        return reverse('relearn.views.pad_read', args=[self.display_slug])
 
     @property
     def padid(self):
