@@ -105,7 +105,7 @@ def query_results_to_template_articles(query_results):
     
     template_articles.append(article)
     
-    return template_articles
+    return sorted(template_articles, key=lambda a: a['date'] if 'date' in a else 0, reverse=True)
 
 
 class Command(BaseCommand):
