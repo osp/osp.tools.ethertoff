@@ -115,7 +115,9 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         
         g = rdflib.Graph()
-
+        host = 'http://f-u-t-u-r-e.org/'
+        # 'http://127.0.0.1:8000'
+        
         for pad in Pad.objects.all():
             # We only want to index the articles—
             # For now we can distinguish them because they have url’s
@@ -123,7 +125,7 @@ class Command(BaseCommand):
             if not pad.display_slug.endswith('.md'):
                 continue
             try:
-                result = g.parse('http://127.0.0.1:8000' + pad.get_absolute_url())
+                result = g.parse(host + pad.get_absolute_url())
             except HTTPError, e:
                 if e.code == 403:
                     # Some of the pads will not be public yet—
