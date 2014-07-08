@@ -115,7 +115,7 @@ class Command(BaseCommand):
     def handle(self, *args, **options):
         
         g = rdflib.Graph()
-        host = 'http://f-u-t-u-r-e.org/'
+        host = 'http://f-u-t-u-r-e.org'
         # 'http://127.0.0.1:8000'
         
         for pad in Pad.objects.all():
