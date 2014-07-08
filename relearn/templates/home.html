@@ -17,7 +17,7 @@
 
 {% block content %}
     <ul>{% for article in articles %}
-        <li>{{ article.author }} <a href="{{ article.href }}">{{ article.title }}</a></li>
+        <li class="{{ article.language }}">{{ article.author }} <a href="{{ article.href }}">{{ article.title }}</a></li>
     {% endfor %}</ul>
 {% endblock %}
 

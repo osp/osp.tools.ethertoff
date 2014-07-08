@@ -77,6 +77,7 @@ short_names = {
     "http://purl.org/dc/terms/title" : "title",
     "http://purl.org/dc/terms/creator" : "author",
     "http://purl.org/dc/terms/created" : "date",
+    "http://purl.org/dc/terms/language" : "language",
 }
 
 def query_results_to_template_articles(query_results):

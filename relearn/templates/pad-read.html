@@ -23,7 +23,7 @@
 {% block head_meta %}{% if meta %}
 
 {% if meta.title %}<meta property="dc:title" content="{{ meta.title|natural_join:'et' }}" />{% endif %}
-{% if meta.title %}<meta property="dc:title" content="{{ meta.title|natural_join:'et' }}" />{% endif %}
+{% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
 
 
 {% endif %}{% endblock %}
