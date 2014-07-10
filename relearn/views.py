@@ -367,6 +367,7 @@ def pad_read(request, pk=None, slug=None):
     # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
     namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]
 
+    date_obj = None
     meta_list = []
 
     # One needs to set a ‘Public’ metadata for the page to be accessible to outside visitors
@@ -380,13 +381,16 @@ def pad_read(request, pk=None, slug=None):
         if 'date' in meta:
             meta['date_parsed'] = []
             for date in meta['date']:
-                meta['date_parsed'].append( dateutil.parser.parse(meta['date'][0]).isoformat() )
+                if not date_obj:
+                    date_obj = dateutil.parser.parse(date)
+                meta['date_parsed'].append( dateutil.parser.parse(date).isoformat() )
         
         meta_list = list(meta.iteritems())
 
     tpl_params = { 'pad'                : pad,
                    'meta'               : meta,      # to access by hash, like meta.author
                    'meta_list'          : meta_list, # to access all meta info in a (key, value) list
+                   'date'               : date_obj,
                    'text'               : text,
                    'mode'               : 'read',
                    'namespaces'         : namespaces,
