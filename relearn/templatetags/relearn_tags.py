@@ -7,6 +7,18 @@ from django.utils.safestring import mark_safe
 
 register = template.Library()
 
+def un_alphabetise(name):
+    """
+    >>> un_alphabetise("Turkle, Sherry")
+    "Sherry Turkle"
+    >>> un_alphabetise("Sherry Turkle")
+    "Sherry Turkle"
+    """
+    try:
+        name, prefix = name.split(',')
+        return prefix.strip() + ' ' + name.strip()
+    except ValueError:
+        return name
 
 @register.filter
 def natural_join(val, cjn="and"):
@@ -34,7 +46,7 @@ def natural_join(val, cjn="and"):
         except AttributeError:
             return repr(object)
         
-    val = [to_string(object) for object in val]
+    val = [un_alphabetise(to_string(object)) for object in val]
     return " ".join((", ".join(val[0:-1]), "%s %s" % (cjn, val[-1]))) if len(val) > 1 else val[0]
 
 

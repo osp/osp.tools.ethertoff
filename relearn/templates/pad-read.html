@@ -4,7 +4,7 @@
 {% block title %}
     <header>
     {% if meta.authors %}
-        <p class="authors" property="dc:creator">{{ meta.authors|natural_join:'et' }}</p>
+        <p class="authors">{{ meta.authors|dictsort:"lower"|natural_join:'&' }}</p>
     {% endif %}
     <h1>
         {% ifequal pad.display_name|slugify "00md" %}
@@ -22,7 +22,9 @@
 
 {% block head_meta %}{% if meta %}
 
-{% if meta.title %}<meta property="dc:title" content="{{ meta.title|natural_join:'et' }}" />{% endif %}
+{% if meta.authors %}{% for author in meta.authors %}<meta property="dc:creator" content="{{ author }}" />
+{% endfor %}{% endif %}
+{% if meta.title %}<meta property="dc:title" content="{{ meta.title.0 }}" />{% endif %}
 {% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
 
 

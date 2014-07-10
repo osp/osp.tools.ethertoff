@@ -45,18 +45,26 @@ We then use python to construct a list that is easy to use in a template, someth
 
 [
   {
-    "date": "2012-06-02T00:00:00", 
-    "title": "The Play/ザ・プレイ", 
-    "href": "http://127.0.0.1:8000/r/06_Elodie_Royer_Yoann_Gourmel_The_Play_FR.md", 
-    "license": "http://creativecommons.org/licenses/by-nd/3.0/fr/", 
-    "author": "Élodie Royer et Yoann Gourmel"
+    "language": "fr", 
+    "author": "Mayer, Bernadette", 
+    "title": "Utopia", 
+    "href": "http://127.0.0.1:8000/r/B_Bernadette-Mayer_Utopia_FR.md", 
+    "authors": [
+      "Mayer, Bernadette"
+    ], 
+    "date": "2014-10-10T00:00:00"
   }, 
   {
-    "date": "2014-10-02T00:00:00", 
-    "href": "http://127.0.0.1:8000/r/B_Bernadette-Mayer_Utopia_FR.md", 
-    "author": "Bernadette Mayer", 
-    "license": "", 
-    "title": "Utopia"
+    "license": "http://creativecommons.org/licenses/by-nd/3.0/fr/", 
+    "language": "fr", 
+    "author": "Gourmel, Yoann", 
+    "title": "The Play/ザ・プレイ", 
+    "href": "http://127.0.0.1:8000/r/06_Elodie_Royer_Yoann_Gourmel_The_Play_FR.md", 
+    "authors": [
+      "Royer, Élodie", 
+      "Gourmel, Yoann"
+    ], 
+    "date": "2012-06-10T00:00:00"
   }
 ]
 
@@ -101,8 +109,13 @@ def query_results_to_template_articles(query_results):
             current_uri = uri
         
         if key in short_names:
-            new_key = short_names[key]
-            article[new_key] = value
+            if key == "http://purl.org/dc/terms/creator":
+                if 'authors' not in article:
+                    article['authors'] = []
+                article['authors'].append(value)
+            else:
+                new_key = short_names[key]
+                article[new_key] = value
     
     template_articles.append(article)
     
