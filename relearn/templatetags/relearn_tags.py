@@ -45,7 +45,10 @@ def natural_join(val, cjn="and"):
             return object.__unicode__()
         except AttributeError:
             return repr(object)
-        
+    
+    if len(val) == 0:
+        return u""
+    
     val = [un_alphabetise(to_string(object)) for object in val]
     return " ".join((", ".join(val[0:-1]), "%s %s" % (cjn, val[-1]))) if len(val) > 1 else val[0]
 
