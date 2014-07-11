@@ -38,6 +38,8 @@ from django.shortcuts import render
 from django.core.mail import send_mail
 from relearn.forms import ContactForm
 
+from relearn.management.commands.index import snif
+
 from relearn.templatetags.wikify import dewikify
 
 # By default, the homepage is the pad called ‘start’ (props to DokuWiki!)
@@ -415,7 +417,16 @@ def home(request):
             except Pad.DoesNotExist:
                 return HttpResponseRedirect(reverse('login'))
 
-    
+@login_required(login_url='/accounts/login')
+def publish(request):
+    tpl_params = {}
+    if request.method == 'POST':
+        tpl_params['published'] = True
+        tpl_params['message'] = snif()
+    else:
+        tpl_params['published'] = False
+        tpl_params['message'] = ""
+    return render_to_response("publish.html", tpl_params, context_instance = RequestContext(request))
 
 def css(request):
     try:

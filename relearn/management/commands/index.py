@@ -3,9 +3,11 @@
 # Python imports
 
 import os
+import sys
 import codecs
 import json
 from urllib2 import HTTPError
+from time import clock
 
 # PyPi imports
 
@@ -121,38 +123,45 @@ def query_results_to_template_articles(query_results):
     
     return sorted(template_articles, key=lambda a: a['date'] if 'date' in a else 0, reverse=True)
 
+def snif():
+    start = clock()
+    
+    g = rdflib.Graph()
+    host = 'http://f-u-t-u-r-e.org'
+    # host = 'http://127.0.0.1:8000'
+    
+    for pad in Pad.objects.all():
+        # We only want to index the articles—
+        # For now we can distinguish them because they have url’s
+        # ending in ‘.md’
+        if not pad.display_slug.endswith('.md'):
+            continue
+        try:
+            result = g.parse(host + pad.get_absolute_url())
+        except HTTPError, e:
+            if e.code == 403:
+                # Some of the pads will not be public yet—
+                # They gives a ‘403 FORBIDDEN’ response
+                # this is expected, and we don’t need to scrape them
+                continue
+            else:
+                raise
+    
+    d = query_results_to_template_articles(g.query(sparql_query))
+    
+    with open(os.path.join(BACKUP_DIR, "index.json"), 'w') as f:
+        f.write(json.dumps(d, indent=2, ensure_ascii=False).encode('utf-8'))
+        # with open(os.path.join(BACKUP_DIR, "index.html"), 'w') as f:
+        #    f.write(render_to_string("home.html", {"articles" : d}).encode('utf-8'))
+    
+    duration = clock() - start
+    return "sniffed %s articles in %s seconds" % ( Pad.objects.count(), duration )
+
 
 class Command(BaseCommand):
     args = ''
     help = 'Create an index of all the articles’ metadata'
 
     def handle(self, *args, **options):
-        
-        g = rdflib.Graph()
-        host = 'http://f-u-t-u-r-e.org'
-        # 'http://127.0.0.1:8000'
-        
-        for pad in Pad.objects.all():
-            # We only want to index the articles—
-            # For now we can distinguish them because they have url’s
-            # ending in ‘.md’
-            if not pad.display_slug.endswith('.md'):
-                continue
-            try:
-                result = g.parse(host + pad.get_absolute_url())
-            except HTTPError, e:
-                if e.code == 403:
-                    # Some of the pads will not be public yet—
-                    # They gives a ‘403 FORBIDDEN’ response
-                    # this is expected, and we don’t need to scrape them
-                    continue
-                else:
-                    raise
-        
-        d = query_results_to_template_articles(g.query(sparql_query))
-        
-        with open(os.path.join(BACKUP_DIR, "index.json"), 'w') as f:
-            f.write(json.dumps(d, indent=2, ensure_ascii=False).encode('utf-8'))
-                
-        # with open(os.path.join(BACKUP_DIR, "index.html"), 'w') as f:
-        #    f.write(render_to_string("home.html", {"articles" : d}).encode('utf-8'))
+        return snif()
+

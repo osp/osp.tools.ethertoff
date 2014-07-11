@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if published %}
+<p style="background-color: white">Succesfully published</p>
+<p style="background-color: white">{{ message }}</p>
+{% else %}
+<form action="" method="post">
+    {% csrf_token %}
+    <input style="background-color: white" type="submit" class="submit" value="Publish"/>
+</form>
+{% endif %}
+{% endblock %}
