@@ -10,8 +10,6 @@ from etherpadlite.models import Pad, PadAuthor, PadServer
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.sites.models import get_current_site
 
-is_eye = re.compile(r'[GD]\d+\.png')
-number_of_eyes = len([eye for eye in os.listdir(os.path.join(MEDIA_ROOT, 'images', 'eyes')) if is_eye.match(eye)])
 
 class EthertoffError(Exception):
     pass
@@ -46,15 +44,6 @@ def pads(request):
             raise EthertoffError("This user needs to be associated to a group (that in turn needs to be associated to an Etherpad group).")
         hash['author'] = author
     hash['pads'] = Pad.objects.all()
-    return hash
-
-def eye(request):
-    hash = {}
-    if 'admin' in request.path:
-        return hash
-    n = randint(1, number_of_eyes / 2)
-    hash['left_eye']  = 'G' + str(n) + '.png'
-    hash['right_eye'] = 'D' + str(n) + '.png'
     return hash
 
 def local(request):
