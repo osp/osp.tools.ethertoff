@@ -14,7 +14,7 @@
     <meta property="dc:creator" content="{{ author }}" />
     {% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
 
-    <meta property="dc:identifier">{{ meta.id.0 }}</meta>
+    <meta property="dc:identifier" content="{{ meta.id.0 }}" />
     {% if meta.type %}<meta property="dc:type">{{ meta.type.0 }}</meta>{% endif %}
 {% endif %}
 {% endblock %}
