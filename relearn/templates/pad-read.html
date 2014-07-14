@@ -14,6 +14,8 @@
     <meta property="dc:creator" content="{{ author }}" />
     {% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
 
+    <meta property="dc:identifier">{{ meta.id.0 }}</meta>
+    {% if meta.type %}<meta property="dc:type">{{ meta.type.0 }}</meta>{% endif %}
 {% endif %}
 {% endblock %}
 
@@ -58,10 +60,6 @@
     </dl>>
 
 
-    <p>
-        <span property="dc:identifier">{{ meta.id.0 }}</span><br/>
-        <span property="dc:type">{{ meta.type.0 }}</span><br/>
-    </p>
     
     <p>
         <a id="go-up" class="screen-only" href="#">&uarr;</a>
