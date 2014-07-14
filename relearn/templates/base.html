@@ -20,7 +20,6 @@
     <nav>
         <h1><a class="button" href="/">&lt;o&gt; future &lt;o&gt;</a></h1>
         <a class="button screen-only" href="/r/00-Bat.md">About</a>
-        {% if pad %}
             {% if mode == 'read' %}
                 <a class="active button read-button screen-only">Read</a>
                 <a class="button screen-only write-button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
@@ -28,7 +27,6 @@
                 <a class="button screen-only read-button" href="{% url 'pad-read' pad.display_slug %}">Read</a>
                 <a class="active button screen-only write-button">Write</a>
             {% endif %}
-        {% endif %}
 
         <a class="button screen-only" href="#" onclick="window.print()">Print</a>
 
