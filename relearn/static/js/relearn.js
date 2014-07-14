@@ -7,11 +7,13 @@ function remy(target) {
 $(document).ready(function() {
     h = $("div#content").height();
 
-    // COUNT WORDS
+    // COUNT ITEMS
     words = $("#content").text().split(" ").length;
     $("dl.meta").append("<dt>Words</dt><dd><p>" + words + "</p></dd>");
     characters = $("#content").text().split("").length;
     $("dl.meta").append("<dt>Characters</dt><dd><p>" + characters + "</p></dd>");
+    images = $("#content img").length;
+    $("dl.meta").append("<dt>Images</dt><dd><p>" + images + "</p></dd>");
 
     // ORPHANS AND WIDOWS
     remy($("#content"));  
