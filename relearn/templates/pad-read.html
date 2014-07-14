@@ -34,10 +34,33 @@
     {{ text|safe }}
 
     <p>
-        <span property="dc:identifier">{{ meta.id.0 }}</span>
-        Published on &lt;o&gt; future &lt;o&gt; <span property="dc:created" content="{{ meta.date_parsed.0 }}">{{ date|date:"F j, o" }}</span>.
+        Published on &lt;o&gt; future &lt;o&gt;, <span property="dc:created" content="{{ meta.date_parsed.0 }}">{{ date|date:"F j, o" }}</span>.
+    </p>
     
-    {% if meta.licence %}License: {% if meta.licence.0 == "CC BY-ND 3.0 France" %}<a href="http://creativecommons.org/licenses/by-nd/3.0/fr/" rel="license">{{ meta.licence.0 }}</a>{% else %}<span property="license">{{ meta.licence.0 }}</span>{% endif %}{% else %}All rights reserved{% endif %}.
+    <dl>
+        {% if meta.translator %}
+            <dt>Translator</dt>
+            <dd>{{ meta.translator.0 }}</dd>
+        {% endif %}
+
+        {% if meta.licence %}
+            <dt>License</dt>
+            {% if meta.licence.0 == "CC BY-ND 3.0 France" %}<dd><a href="http://creativecommons.org/licenses/by-nd/3.0/fr/" rel="license">{{ meta.licence.0 }}</a>{% else %}<span property="license">{{ meta.licence.0 }}</span></dd>
+            {% endif %}
+        {% else %}
+            <dd>All rights reserved</dd>
+        {% endif %}
+
+        {% if meta.pdf %}
+            <dt>PDF</dt>
+            <dd><a href="{{ meta.pdf.0 }}">Download</a></dd>
+        {% endif %}
+    </dl>>
+
+
+    <p>
+        <span property="dc:identifier">{{ meta.id.0 }}</span><br/>
+        <span property="dc:type">{{ meta.type.0 }}</span><br/>
     </p>
     
     <p>
