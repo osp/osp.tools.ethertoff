@@ -56,8 +56,12 @@
             <dt>PDF</dt>
             <dd><a href="{{ meta.pdf.0 }}">Download</a></dd>
         {% endif %}
+
     </dl>
 
+    {% if meta.colophon %}
+        {{ meta.colophon|safe}}
+    {% endif %}
 
     
     <div id="go-up">
