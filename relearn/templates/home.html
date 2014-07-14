@@ -16,7 +16,7 @@
     {% for article in articles %}
         {% if article.title != "About" %}
             {% ifchanged article.id %}
-            <li {% if article.summary %}data-summary="{{ article.summary }}"{% endif %}>
+            <li {% if article.type %}data-summary="{{ article.type }}"{% endif %}>
                     <span class="authors">{{ article.authors|dictsort:"lower"|natural_join:'&' }}</span> 
             {% endifchanged %}
 
