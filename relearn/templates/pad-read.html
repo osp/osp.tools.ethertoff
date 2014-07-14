@@ -23,8 +23,8 @@
     {% if meta.authors %}
         <p class="authors">{{ meta.authors|dictsort:"lower"|natural_join:'&' }}</p>
     {% endif %}
-    <h1>
-        <span property="dc:title">{{ meta.title.0|default:pad.display_slug|markdown_filter }}</span>
+    <h1 property="dc:title">
+        {{ meta.title.0|default:pad.display_slug|markdown_filter }}
     </h1>
     </header>
 {% endblock %}
