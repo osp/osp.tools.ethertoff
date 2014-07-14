@@ -15,15 +15,15 @@
     <ul>
     {% for article in articles %}
         {% if article.title != "About" %}
-            {% ifchanged article.bla %}
+            {% ifchanged article.id %}
                 <li class="{{ article.language }}">
                     <span class="authors">{{ article.authors|dictsort:"lower"|natural_join:'&' }}</span> 
             {% endifchanged %}
 
-            <span style="color: red;">{{ article.bla }}</span>
+            <span style="color: red;">{{ article.id }}</span>
                     <a href="{{ article.href }}">{{ article.title }}</a>
 
-            {% ifchanged article.bla %}
+            {% ifchanged article.id %}
                 </li>
             {% endifchanged %}
         {% endif %}
