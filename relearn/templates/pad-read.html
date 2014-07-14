@@ -20,6 +20,7 @@
     {% endfor %}
 {% endif %}
 {% if meta.title %}<meta property="dc:title" content="{{ meta.title.0 }}" />{% endif %}
+        <meta property="dc:creator" content="{{ author }}" />
 {% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
 
 
@@ -27,15 +28,18 @@
 
 {% block content %}
     {{ text|safe }}
-    <a id="go-up" class="screen-only" href="#">&uarr;</a>
 
 
     <p>
+        <span property="dc:identifier">{{ meta.id.0 }}</span>
         Published on &lt;o&gt; future &lt;o&gt; <span property="dc:created" content="{{ meta.date_parsed.0 }}">{{ date|date:"F j, o" }}</span>.
     
     {% if meta.licence %}License: {% if meta.licence.0 == "CC BY-ND 3.0 France" %}<a href="http://creativecommons.org/licenses/by-nd/3.0/fr/" rel="license">{{ meta.licence.0 }}</a>{% else %}<span property="license">{{ meta.licence.0 }}</span>{% endif %}{% else %}All rights reserved{% endif %}.
     </p>
     
+    <p>
+        <a id="go-up" class="screen-only" href="#">&uarr;</a>
+    </p>
 {% endblock %}
 
 {% block rightside %}
