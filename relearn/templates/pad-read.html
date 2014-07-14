@@ -1,6 +1,23 @@
 {% extends "pad-base.html" %}
 {% load wikify relearn_tags %}
 
+{% block head_meta %}
+
+{% if meta %}
+
+    {% if meta.authors %}
+        {% for author in meta.authors %}
+            <meta property="dc:creator" content="{{ author }}" />
+        {% endfor %}
+    {% endif %}
+    {% if meta.title %}<meta property="dc:title" content="{{ meta.title.0 }}" />{% endif %}
+    <meta property="dc:creator" content="{{ author }}" />
+    {% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
+
+{% endif %}
+{% endblock %}
+
+
 {% block title %}
     <header>
     {% if meta.authors %}
@@ -12,23 +29,9 @@
     </header>
 {% endblock %}
 
-{% block head_meta %}{% if meta %}
-
-{% if meta.authors %}
-    {% for author in meta.authors %}
-        <meta property="dc:creator" content="{{ author }}" />
-    {% endfor %}
-{% endif %}
-{% if meta.title %}<meta property="dc:title" content="{{ meta.title.0 }}" />{% endif %}
-        <meta property="dc:creator" content="{{ author }}" />
-{% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
-
-
-{% endif %}{% endblock %}
 
 {% block content %}
     {{ text|safe }}
-
 
     <p>
         <span property="dc:identifier">{{ meta.id.0 }}</span>
