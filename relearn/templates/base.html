@@ -17,23 +17,9 @@
     
 </head>
 <body class="pad-{{ pad.display_name|slugify }} {{ mode }}-mode {% if user.is_authenticated and author %}logged-in{% else %}logged-out{% endif %} {% block bodyclasses %}{% endblock %}">
-    <nav>
+    <nav id="nav-left">
         <h1><a class="button" href="/">&lt;o&gt; future &lt;o&gt;</a></h1>
         <a class="button screen-only" href="/r/00-Bat.md">About</a>
-        {% if pad %}
-            {% if mode == 'read' %}
-                <a class="active button read-button screen-only">Read</a>
-                <a class="button screen-only write-button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
-            {% else %}
-                <a class="button screen-only read-button" href="{% url 'pad-read' pad.display_slug %}">Read</a>
-                <a class="active button screen-only write-button">Write</a>
-            {% endif %}
-        {% else %}
-                <a class="button read-button screen-only">Read</a>
-                <a class="button screen-only write-button" href="{% url 'login' %}">Write</a>
-        {% endif %}
-
-        <a class="button screen-only" href="#" onclick="window.print()">Print</a>
 
         {% if user.is_authenticated and author %}
         <div id="staff-menu" class="private">
@@ -50,6 +36,21 @@
             <!--<a class="button" href="{% url 'login' %}">Log in</a>-->
         </div>
         {% endif %}
+    </nav>
+    <nav id="nav-right">
+        {% if pad %}
+            {% if mode == 'read' %}
+                <a class="active button read-button screen-only">Read</a>
+                <a class="button screen-only write-button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
+            {% else %}
+                <a class="button screen-only read-button" href="{% url 'pad-read' pad.display_slug %}">Read</a>
+                <a class="active button screen-only write-button">Write</a>
+            {% endif %}
+        {% else %}
+                <a class="button read-button screen-only">Read</a>
+                <a class="button screen-only write-button" href="{% url 'login' %}">Write</a>
+        {% endif %}
+        <a class="button screen-only" href="#" onclick="window.print()">Print</a>
     </nav>
     <div class="wrap">
         <div class="left-side screen-only">
