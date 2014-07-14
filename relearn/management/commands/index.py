@@ -88,6 +88,7 @@ short_names = {
     "http://purl.org/dc/terms/creator" : "author",
     "http://purl.org/dc/terms/created" : "date",
     "http://purl.org/dc/terms/language" : "language",
+    "http://purl.org/dc/terms/type" : "type",
     "http://purl.org/dc/terms/identifier" : "id",
 }
 
