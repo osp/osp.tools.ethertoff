@@ -33,7 +33,7 @@ $(document).ready(function() {
     //$("#print-preview").click(function(){
     //    if(! $("html").hasClass("print-preview")){
 	//$(".page").height(page_height);
-CSSR//egions.doLayout();
+    //CSSRegions.doLayout();
     //        $("html").addClass("print-preview");
     //        $("style[media='print']").attr("media", "print, screen");
     //        $("link[media='print']").attr("media", "print, screen");
