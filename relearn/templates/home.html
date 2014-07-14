@@ -2,13 +2,18 @@
 {% load wikify relearn_tags %}
 
 {% block bodyclasses %}pad-00md{% endblock %}
-
 {% block title %}
+    <header>
+
+    <h1>
+        <span property="dc:title">Index</span>
+    </h1>
+    </header>
 {% endblock %}
 
 {% block content %}
     <ul>{% for article in articles %}{% if article.title != "About" %}
-        <li class="{{ article.language }}">{{ article.authors|dictsort:"lower"|natural_join:'&' }}, <a href="{{ article.href }}">{{ article.title }}</a></li>
+        <li class="{{ article.language }}">{{ article.authors|dictsort:"lower"|natural_join:'&' }} <a href="{{ article.href }}">{{ article.title }}</a></li>
     {% endif %}{% endfor %}</ul>
 {% endblock %}
 
