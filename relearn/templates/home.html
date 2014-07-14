@@ -2,17 +2,8 @@
 {% load wikify relearn_tags %}
 
 {% block bodyclasses %}pad-00md{% endblock %}
+
 {% block title %}
-    <header>
-
-    <h1>
-        <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a>
-
-        <span property="dc:title">Index</span>
-
-        <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a>
-    </h1>
-    </header>
 {% endblock %}
 
 {% block content %}
