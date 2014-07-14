@@ -21,7 +21,7 @@
             {% ifchanged article.id %}
             </li>
             <li {% if article.type %}data-type="{{ article.type }}"{% endif %}>
-                    <span class="authors">{{ article.authors|dictsort:"lower"|natural_join:'' }}</span> 
+                    <span class="authors">{{ article.authors|dictsort:"lower"|natural_join:'&' }}</span> 
             {% endifchanged %}
 
             <a href="{{ article.href }}" lang="{{ article.language }}">{{ article.title }}</a>

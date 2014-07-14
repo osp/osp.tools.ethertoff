@@ -11,7 +11,6 @@
         {% endfor %}
     {% endif %}
     {% if meta.title %}<meta property="dc:title" content="{{ meta.title.0 }}" />{% endif %}
-    <meta property="dc:creator" content="{{ author }}" />
     {% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
 
     <meta property="dc:identifier" content="{{ meta.id.0 }}" />
