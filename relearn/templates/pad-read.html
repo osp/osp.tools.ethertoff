@@ -60,7 +60,7 @@
     </dl>
 
     {% if meta.colophon %}
-        {{ meta.colophon.0|safe}}
+    {{ meta.colophon.0|markdown_filter }}
     {% endif %}
 
     
