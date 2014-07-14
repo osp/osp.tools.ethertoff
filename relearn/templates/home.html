@@ -20,7 +20,6 @@
                     <span class="authors">{{ article.authors|dictsort:"lower"|natural_join:'&' }}</span> 
             {% endifchanged %}
 
-            <span style="color: red;">{{ article.id }} </span>
             <a href="{{ article.href }}" lang="{{ article.language }}">{{ article.title }}</a>
 
             {% ifchanged article.id %}
