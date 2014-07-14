@@ -47,7 +47,7 @@
 
         {% if meta.licence %}
             <dt>License</dt>
-            {% if meta.licence.0 == "CC BY-ND 3.0 France" %}<dd><a href="http://creativecommons.org/licenses/by-nd/3.0/fr/" rel="license">{{ meta.licence.0 }}</a>{% else %}<span property="license">{{ meta.licence.0 }}</span></dd>
+            {% if meta.licence.0 == "CC BY-ND 3.0 France" %}<dd><a href="http://creativecommons.org/licenses/by-nd/3.0/fr/" rel="license">{{ meta.licence.0 }}</a></dd>{% else %}<dd><span property="license">{{ meta.licence.0 }}</span></dd>
             {% endif %}
         {% else %}
             <dd>All rights reserved</dd>
@@ -57,7 +57,7 @@
             <dt>PDF</dt>
             <dd><a href="{{ meta.pdf.0 }}">Download</a></dd>
         {% endif %}
-    </dl>>
+    </dl>
 
 
     
