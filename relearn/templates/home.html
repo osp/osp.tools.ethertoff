@@ -16,12 +16,12 @@
     {% for article in articles %}
         {% if article.title != "About" %}
             {% ifchanged article.identifier %}
-                <li class="{{ article.language }}">
+                <li>
                     <span class="authors">{{ article.authors|dictsort:"lower"|natural_join:'&' }}</span> 
             {% endifchanged %}
 
             <span style="color: red;">{{ article.identifier }} </span>
-                    <a href="{{ article.href }}">{{ article.title }}</a>
+            <a href="{{ article.href }}" lang="{{ article.language }}">{{ article.title }}</a>
 
             {% ifchanged article.identifier %}
                 </li>
