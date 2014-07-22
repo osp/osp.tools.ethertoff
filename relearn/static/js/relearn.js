@@ -5,6 +5,8 @@ function remy(target) {
 }    
 
 $(document).ready(function() {
+
+
     h = $("div#content").height();
 
     // COUNT ITEMS
@@ -17,6 +19,14 @@ $(document).ready(function() {
 
     // ORPHANS AND WIDOWS
     remy($("#content"));  
+
+    // OFFSET ANCHOR BECAUSE OF FIXED MENU
+    $('a.footnote-ref, a.footnote-backref').click(function(e){
+        e.preventDefault();
+        href = $(this).attr("href").replace("#", "");
+        $("html, body").scrollTop($("[id='" + href + "']").offset().top - 100);
+      }
+    )
 
     //console.log(h);
     //$("body").append('<section id="master-page"></section>');
