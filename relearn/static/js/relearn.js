@@ -24,7 +24,10 @@ $(document).ready(function() {
     $('a.footnote-ref, a.footnote-backref').click(function(e){
         e.preventDefault();
         href = $(this).attr("href").replace("#", "");
-        $("html, body").scrollTop($("[id='" + href + "']").offset().top - 100);
+        target = $("[id='" + href + "']");
+        $(".target").removeClass("target");
+        target.addClass("target");
+        $("html, body").scrollTop(target.offset().top - 100);
       }
     )
 
