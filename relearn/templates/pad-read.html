@@ -20,7 +20,7 @@
 
 
 {% block title %}
-    <header>
+    <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
     {% if meta.authors %}
         <p class="authors">{{ meta.authors|dictsort:"lower"|natural_join:'&' }}</p>
     {% endif %}
