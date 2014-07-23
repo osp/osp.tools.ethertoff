@@ -2,6 +2,16 @@
 {% load wikify relearn_tags %}
 
 {% block bodyclasses %}pad-00md{% endblock %}
+
+{% block extra_nav %}
+    <div id="sort-by">Sort by:
+        <a class="active button screen-only" href="/">Date</a>
+        <a class="button screen-only" href="#">Author</a>
+        <a class="button screen-only" href="#">Book</a>
+    </div>
+{% endblock %}
+
+
 {% block title %}
     <header>
 
