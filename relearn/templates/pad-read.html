@@ -19,6 +19,13 @@
 {% endblock %}
 
 
+{% block title_left %}
+<div id="previous">
+    <a href="#">&larr;</a>
+</div>
+{% endblock %}
+
+
 {% block title %}
     <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
     {% if meta.authors %}
@@ -28,6 +35,13 @@
         {{ meta.title.0|default:pad.display_slug|markdown_filter }}
     </h1>
     </header>
+{% endblock %}
+
+
+{% block title_right %}
+<div id="next">
+    <a href="#">&rarr;</a>
+</div>
 {% endblock %}
 
 
