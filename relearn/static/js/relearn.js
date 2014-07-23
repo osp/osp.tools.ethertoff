@@ -6,9 +6,6 @@ function remy(target) {
 
 $(document).ready(function() {
 
-
-    h = $("div#content").height();
-
     // COUNT ITEMS
     words = $("#content").text().split(" ").length;
     $("dl.meta").append("<dt>Words</dt><dd><p>" + words + "</p></dd>");
@@ -31,33 +28,47 @@ $(document).ready(function() {
       }
     )
 
-    //console.log(h);
-    //$("body").append('<section id="master-page"></section>');
-    //page_height = $("#master-page").height();
-    //console.log(page_height);
-    //nb_page = Math.floor(h / page_height);
-    //console.log(nb_page);
-    //if (nb_page == 0) { nb_page = 1}
-    //for (i = 1; i <= nb_page; i++){
-        ////$("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#content"));
-        //$("#content").before("<section class='page'></section>");
-    //}
     //$(".page").css("height", "auto");
 
     //// PRINT PREVIEW
-    //$("#print-preview").click(function(){
-    //    if(! $("html").hasClass("print-preview")){
-	//$(".page").height(page_height);
-    //CSSRegions.doLayout();
-    //        $("html").addClass("print-preview");
-    //        $("style[media='print']").attr("media", "print, screen");
-    //        $("link[media='print']").attr("media", "print, screen");
-    //    } else {
-    //        $(html).removeClass("print-preview");
-    //        $("style[media='print, screen']").attr("media", "print");
-    //        $("link[media='print, screen']").attr("media", "print");
-    //    }
-    //});
+    $("#print-preview").click(function(){
+        $("style[media='print']").attr("media", "print, screen");
+        $("link[media='print']").attr("media", "print, screen");
+        $("body").append('<section id="master-page"></section>');
+        paddingL = parseInt($("#master-page").css("padding-left"));
+        paddingR = parseInt($("#master-page").css("padding-right"));
+        innerWidth = $("#master-page").width() - (paddingL + paddingR);
+        console.log(innerWidth);
+
+        $("#content").width(innerWidth);
+        console.log($("#content").width());
+        h = $("div#content").height();
+        console.log("Content = " + h);
+
+
+            page_height = $("#master-page").height();
+            console.log(page_height);
+            nb_page = Math.ceil(h / page_height);
+            console.log(nb_page);
+            if (nb_page == 0) { nb_page = 1}
+            for (i = 1; i <= nb_page; i++){
+                //$("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#content"));
+                $("#content").before("<section class='page'></section>");
+            }
+            $("#master-page").hide();
+
+        //    if(! $("html").hasClass("print-preview")){
+        //$(".page").height(page_height);
+        //CSSRegions.doLayout();
+        //        $("html").addClass("print-preview");
+        //        $("style[media='print']").attr("media", "print, screen");
+        //        $("link[media='print']").attr("media", "print, screen");
+        //    } else {
+        //        $(html).removeClass("print-preview");
+        //        $("style[media='print, screen']").attr("media", "print");
+        //        $("link[media='print, screen']").attr("media", "print");
+        //    }
+    });
 });
 
 // just for testing:
