@@ -29,6 +29,8 @@ class ErrorHandlingMiddleware(object):
 class TidyMiddleware(object):
     # cf http://pyevolve.sourceforge.net/wordpress/?p=814
     def process_response(self, request, response):
+        if 'admin' in request.path:
+            return response
         if response.status_code == 200:
             if response["content-type"].startswith("text/html"):
                 response.content = tidy(response.content)

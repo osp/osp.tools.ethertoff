@@ -90,11 +90,11 @@ def padCreate(request, pk):
         form = forms.PadCreate(request.POST)
         if form.is_valid():
             n = form.cleaned_data['name']
-            basename = slugify(n)[:42]
             n = re.sub(r'\s+', u'_', n)
+            n = slugify(n)
             pad = Pad(
-                name=basename,
-                display_slug=n,
+                name=n[:42], # This is the slug internally used by etherpad
+                display_slug=n, # This is the slug we get to change afterwards
                 display_name=n,     # this is just for backwards compatibility
                 server=group.server,
                 group=group
