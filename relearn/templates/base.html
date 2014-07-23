@@ -58,15 +58,7 @@
         </div>
 
         <div class="middle">
-            {% ifequal pad.display_name|slugify 00md %}
-                <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a>
-            {% endifequal %}
-
             {% block title %}{% endblock %}
-
-            {% ifequal pad.display_name|slugify 00md %}
-                <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a>
-            {% endifequal %}
         </div>
 
         <div class="right-side screen-only">
