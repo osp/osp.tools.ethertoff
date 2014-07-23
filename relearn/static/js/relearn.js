@@ -35,27 +35,28 @@ $(document).ready(function() {
         $("style[media='print']").attr("media", "print, screen");
         $("link[media='print']").attr("media", "print, screen");
         $("body").append('<section id="master-page"></section>');
-        paddingL = parseInt($("#master-page").css("padding-left"));
-        paddingR = parseInt($("#master-page").css("padding-right"));
-        innerWidth = $("#master-page").width() - (paddingL + paddingR);
-        console.log(innerWidth);
+        window.setTimeout(function(){
+            paddingL = parseInt($("#master-page").css("padding-left"));
+            paddingR = parseInt($("#master-page").css("padding-right"));
+            innerWidth = $("#master-page").width() - (paddingL + paddingR);
 
-        $("#content").width(innerWidth);
-        console.log($("#content").width());
-        h = $("div#content").height();
-        console.log("Content = " + h);
-
-
+            $("#content").width(innerWidth);
+            h = $("div#content").height();
             page_height = $("#master-page").height();
-            console.log(page_height);
             nb_page = Math.ceil(h / page_height);
-            console.log(nb_page);
+            console.log("Content = " + h);
+            console.log("page height = " + page_height);
+            console.log("nb page = " + nb_page);
             if (nb_page == 0) { nb_page = 1}
             for (i = 1; i <= nb_page; i++){
                 //$("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#content"));
-                $("#content").before("<section class='page'></section>");
+                $("#content").before("<section class='page' id='page-" + i + "'></section>");
             }
             $("#master-page").hide();
+        }, 1000);
+
+
+
 
         //    if(! $("html").hasClass("print-preview")){
         //$(".page").height(page_height);
