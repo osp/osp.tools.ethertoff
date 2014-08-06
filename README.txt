@@ -1,6 +1,12 @@
 Ethertoff
 =========
 
+![](http://osp.kitchen/api/osp.tools.ethertoff/raw/iceberg/ethertoff-write-read-print.gif)
+
+Ethertoff is a simple collaborative web platform, much resembling a wiki but featuring
+realtime editing thanks to Etherpad. Its output is constructed with equal love for print
+and web.
+
 > Just a question: I thought it was ethertopff and not ethertoff but I don't
 > remember why. What is the actual name?
 >
@@ -8,9 +14,6 @@ Ethertoff
 > and than somebody else understood ethertoff like chokotoff and chokotoff
 > being Bruxellois I thought it might be the best of all these references
 
-Ethertoff is a simple collaborative web platform, much resembling a wiki but featuring
-realtime editing thanks to Etherpad. Its output is constructed with equal love for print
-and web.
 
 Ethertoff has been initially developed for the OSP 2013 Summerschool bearing the name ‘Relearn’.
 
