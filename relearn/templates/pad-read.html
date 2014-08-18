@@ -63,8 +63,6 @@
                 <dt>License</dt>
                 {% if meta.licence.0 == "CC BY-ND 3.0 France" %}<dd><a href="http://creativecommons.org/licenses/by-nd/3.0/fr/" rel="license">{{ meta.licence.0 }}</a></dd>{% else %}<dd><span property="license">{{ meta.licence.0 }}</span></dd>
                 {% endif %}
-            {% else %}
-                <dd>All rights reserved</dd>
             {% endif %}
 
             {% if meta.pdf %}
