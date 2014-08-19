@@ -26,4 +26,18 @@ $(window).load(function(){
         $(this).toggleClass("button-active");
         $("html").toggleClass("debug");
     });
+
+
+
+    // __________________________________ TOC __________________________________ //
+    $(".page:not(#master-page)").each(function(){
+        page = $(this).attr("id");
+        $("#toc-pages").append("<li><a href='#" + page + "'>" + page.replace("-", " ") + "</a></li>")
+    });
+    $("#goto").click(function(e){
+        e.preventDefault();
+        $(this).toggleClass("button-active");
+        $("#toc-pages").toggle();
+    });
+
 });
