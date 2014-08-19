@@ -28,6 +28,34 @@ $(window).load(function(){
     });
 
 
+    // __________________________________ HIGH RESOLUTION __________________________________ //
+    $("button#hi-res").click(function(e){
+        e.preventDefault();
+        $(this).toggleClass("button-active");
+        $("html").toggleClass("export");
+        $("img").each(function(){
+            var hires = $(this).attr("data-alt-src");
+            var lores = $(this).attr("src");
+            $(this).attr("data-alt-src", lores)
+            $(this).attr("src", hires)
+        });
+        console.log("Wait for hi-res images to load");
+        window.setTimeout(function(){
+            console.log("Check image resolution");
+            // Redlights images too small for printing
+            $("img").each(function(){
+                if (Math.ceil(this.naturalHeight / $(this).height()) < 3) {
+                    console.log($(this).attr("src") + ": " + Math.floor(this.naturalHeight / $(this).height()) );
+                    if($(this).parent().hasClass("moveable")) {
+                        $(this).parent().toggleClass("lo-res");
+                    } else {
+                        $(this).toggleClass("lo-res");
+                    }
+                }
+            });
+        }, 2000);
+    });
+
 
     // __________________________________ TOC __________________________________ //
     $(".page:not(#master-page)").each(function(){
@@ -39,5 +67,6 @@ $(window).load(function(){
         $(this).toggleClass("button-active");
         $("#toc-pages").toggle();
     });
+
 
 });
