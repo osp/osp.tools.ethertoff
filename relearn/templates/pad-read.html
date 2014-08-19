@@ -109,20 +109,31 @@
 {% endblock %}
 
 {% block extraui %}
-{% if not user.is_authenticated %}
-<div class="popup-wrapper hidden">
-    <div class="popup">
-      <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
-        {% csrf_token %}
-        <label for="id_username">Username</label>
-        <input id="id_username" maxlength="254" name="username" type="text" />
-        <label for="id_password">Password</label>
-        <input id="id_password" name="password" type="password" />
-    
-        <input class="submit" type="submit" value="Login" />
-        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'home' %}{% endif %}" />
-      </form>
-    </div>
-</div>
-{% endif %}
+    {% if not user.is_authenticated %}
+        <div class="popup-wrapper hidden">
+            <div class="popup">
+              <form method="post" action="{% url 'django.contrib.auth.views.login' %}">
+                {% csrf_token %}
+                <label for="id_username">Username</label>
+                <input id="id_username" maxlength="254" name="username" type="text" />
+                <label for="id_password">Password</label>
+                <input id="id_password" name="password" type="password" />
+            
+                <input class="submit" type="submit" value="Login" />
+                <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'home' %}{% endif %}" />
+              </form>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div id="print-interface">
+            <button id="debug" class="button" href="#">Debug</button>
+            <button id="hi-res" class="button" href="#">Hi-res</button>
+            <div id="toc">
+                <button id="goto" class="button" href="#">Go to</button>
+                <ul id="toc-pages"></ul>
+            </div>
+        </div>
+    {% endif %}
 {% endblock %}

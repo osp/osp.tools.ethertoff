@@ -4,6 +4,7 @@
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/fonts.css" type="text/css">
+    <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="print" type="text/less">
     <link rel="stylesheet" href="/css/" type="text/css">
     <link rel="stylesheet" href="/css-print/" type="text/css" media="print">
     <script src="{{ STATIC_URL }}js/less-1.4.1.min.js" type="text/javascript"> </script>
@@ -86,6 +87,7 @@
 
     <!--<script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>-->
     <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"> </script>
+    <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
     <script src="{{ STATIC_URL }}js/comments/comments.js" type="text/javascript" charset="utf-8"> </script>
 
     {% if user.is_authenticated and author %}
