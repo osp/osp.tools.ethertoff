@@ -48,8 +48,8 @@
             {% else %}
                 <a class="button screen-only read-button" href="{% url 'pad-read' pad.display_slug %}">Read</a>
                 <a class="active button screen-only write-button">Write</a>
-                <a class="button screen-only" href="{% url 'pad-print' pad.display_slug %}">Print</a>
             {% endif %}
+                <a class="button screen-only" href="{% url 'pad-print' pad.display_slug %}">Print</a>
         {% else %}
                 <a class="button read-button screen-only">Read</a>
                 <a class="button screen-only write-button" href="{% url 'login' %}">Write</a>
