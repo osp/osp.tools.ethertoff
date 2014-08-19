@@ -1,6 +1,3 @@
-console.log("ok");
-
-//// PRINT PREVIEW
 $(window).load(function(){
     if($("body").hasClass("print-mode")){
     $("style[media='print']").attr("media", "print, screen");
@@ -20,26 +17,13 @@ $(window).load(function(){
     }
     $("#master-page").hide();
 
-    
-
-            window.setTimeout(function(){
-                console.log("do it");
-                    CSSRegions.doLayout();
-            }, 5000);
-
-
-
-    //$(".page").height(page_height);
-    //CSSRegions.doLayout();
-    //        $("html").addClass("print-preview");
-    //        $("style[media='print']").attr("media", "print, screen");
-    //        $("link[media='print']").attr("media", "print, screen");
-    //    } else {
-    //        $(html).removeClass("print-preview");
-    //        $("style[media='print, screen']").attr("media", "print");
-    //        $("link[media='print, screen']").attr("media", "print");
-    
-
    }
 
+
+    // __________________________________ DEBUG __________________________________ //
+    $("button#debug").click(function(e){
+        e.preventDefault();
+        $(this).toggleClass("button-active");
+        $("html").toggleClass("debug");
+    });
 });

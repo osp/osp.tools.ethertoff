@@ -22,12 +22,9 @@
 
 
 /* __________________________________ DEBUG __________________________________ */
-html.debug {
+.debug {
     /*outline: 1pt solid purple;*/
 
-    body {
-        /*outline: 1pt solid pink;*/
-    }
     div.preview-page {
         outline: 1pt solid blue;
         border: 1px solid red;
@@ -57,9 +54,15 @@ html.debug {
 }
 
 /* __________________________________ INTERFACE CLASSES  __________________________________ */
-.screen-only,
-.button,
-#interface {
+@media print {
+    .button,
+    #interface {
+        display: none;
+    }
+}
+
+nav,
+.screen-only {
     display: none;
 }
 
@@ -172,7 +175,6 @@ html.spread {
 
 html {
     width: @page-width-crop;
-
 }
 
 body {
@@ -180,11 +182,23 @@ body {
     width: @page-width-crop;
 }
 
+html,
+body,
+.wrap,
+.middle {
+    margin: 0;
+    padding: 0;
+}
+
 
 /* __________________________________ MAIN SECTION __________________________________ */
-.page {
+#master-page,
+.page{
     height: @page-height - @header-height - @footer-height;
     width: @page-width;
+}
+
+.page {
     margin: @crop;
     margin-bottom: @page-margin-bottom;
     padding-top: @page-margin-top + @header-height;
@@ -197,6 +211,7 @@ body {
 .middle {
     -webkit-flow-into: myFlow;
     -adobe-flow-into: myFlow;
+    width: 100%;
 }
 
 /* __________________________________ CONTENT __________________________________ */
