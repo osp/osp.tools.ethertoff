@@ -16,6 +16,9 @@
     <meta property="dc:identifier" content="{{ meta.id.0 }}" />
     {% if meta.type %}<meta property="dc:type" content="{{ meta.type.0 }}" />{% endif %}
 {% endif %}
+
+    <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="screen, print" type="text/less">
+    <!--<script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>-->
 {% endblock %}
 
 
@@ -81,32 +84,11 @@
     <div id="go-up">
         <a class="screen-only" href="#">&uarr;</a>
     </div>
+
+
+
 {% endblock %}
 
-{% block rightside %}
-    
-    
-    {% if author %}
-        {% if meta %}
-            <!--
-            auteur
-            titre
-            date
-            sommaire (optionel)
-            -->
-            <dl class="meta private">
-            {% for key, values in meta_list reversed %}
-                <dt>{{ key|title }}</dt>
-                {% for value in values %}<dd>{{ value|markdown_filter }}</dd>{% endfor %}
-            {% endfor %}
-                <dt>Editors</dt>
-                <dd>
-                    <p>{{ authors|natural_join:'et' }}</p>
-                </dd>
-            </dl>
-        {% endif %}
-    {% endif %}
-{% endblock %}
 
 {% block extraui %}
     {% if not user.is_authenticated %}
@@ -122,6 +104,17 @@
                 <input class="submit" type="submit" value="Login" />
                 <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'home' %}{% endif %}" />
               </form>
+            </div>
+        </div>
+
+    {% else %}
+
+        <div id="print-interface">
+            <button id="debug" class="button" href="#">Debug</button>
+            <button id="hi-res" class="button" href="#">Hi-res</button>
+            <div id="toc">
+                <button id="goto" class="button" href="#">Go to</button>
+                <ul id="toc-pages"></ul>
             </div>
         </div>
     {% endif %}

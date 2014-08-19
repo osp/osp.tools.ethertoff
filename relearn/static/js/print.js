@@ -1,7 +1,7 @@
 //$(".page").css("height", "auto");
 
 //// PRINT PREVIEW
-$("#print-preview").click(function(){
+$(window).load(function(){
     $("body").addClass("print-mode");
     $("style[media='print']").attr("media", "print, screen");
     $("link[media='print']").attr("media", "print, screen");
@@ -34,5 +34,5 @@ $("#print-preview").click(function(){
     //        $("style[media='print, screen']").attr("media", "print");
     //        $("link[media='print, screen']").attr("media", "print");
     //    }
-});
 
+});

@@ -27,6 +27,7 @@ urlpatterns = patterns(
     url(r'^group/create$', 'relearn.views.groupCreate'),
     url(r'r/(?P<slug>[\w\.\-_\:]+)$', 'relearn.views.pad_read', name='pad-read'),
     url(r'w/(?P<slug>[\w\.\-_\:]+)$', 'relearn.views.pad', name='pad-write'),
+    url(r'p/(?P<slug>[\w\.\-_\:]+)$', 'relearn.views.pad_print', name='pad-print'),
     url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /", mimetype="text/plain")),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
