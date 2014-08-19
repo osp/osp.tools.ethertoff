@@ -1,9 +1,34 @@
 $(window).load(function(){
-    if($("body").hasClass("print-mode")){
+if($("body").hasClass("print-mode")){
+
+    // Visualizes print css on screen
     $("style[media='print']").attr("media", "print, screen");
     $("link[media='print']").attr("media", "print, screen");
 
+    // Create pages
     $("body").append('<section id="master-page" class="page"></section>');
+    $("#master-page").append('\
+            <div class="print-marks">\
+                <div class="crop-top-left">\
+                    <div class="crop-right" style="top: 0; right: 0;"></div>\
+                    <div class="crop-bottom" style="bottom: 0cm; left: 0;"></div>\
+                </div>\
+                <div class="crop-top-right">\
+                    <div class="crop-left" style="top: 0; left: 0;"></div>\
+                    <div class="crop-bottom" style="bottom: 0; right: 0;"></div>\
+                </div>\
+                <div class="crop-bottom-right">\
+                    <div class="crop-left" style="left: 0; bottom: 0;"></div>\
+                    <div class="crop-top" style="right: 0cm; top: 0;"></div>\
+                </div>\
+                <div class="crop-bottom-left">\
+                    <div class="crop-right" style="bottom: 0cm; right: 0;"></div>\
+                    <div class="crop-top" style="left: 0cm; top: 0"></div>\
+                </div>\
+            </div>\
+    ');
+
+    $("#master-page").append('<section class="header"></section>').append('<section class="main-section"></section>').append('<section class="footer"></section>');
 
     height = $($(".middle")[0]).height() + $($(".middle")[1]).height();
     page_height = $("#master-page").height();
@@ -17,7 +42,6 @@ $(window).load(function(){
     }
     $("#master-page").hide();
 
-   }
 
 
     // __________________________________ DEBUG __________________________________ //
@@ -69,4 +93,7 @@ $(window).load(function(){
     });
 
 
+
+
+}
 });

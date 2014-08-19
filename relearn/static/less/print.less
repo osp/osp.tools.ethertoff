@@ -25,25 +25,24 @@
 .debug {
     /*outline: 1pt solid purple;*/
 
-    div.preview-page {
+    .page {
         outline: 1pt solid blue;
-        border: 1px solid red;
     }
     
-    section.header {
+    .header {
         outline: 1pt solid pink;
     }
 
-    section.page {
-        outline: 1pt solid purple;
+    .main-section {
+        outline: 1pt solid cyan;
     }
 
-    section.footer {
+    .footer {
         outline: 1pt solid pink;
     }
 
-    div#content {
-        outline: 1pt solid red;
+    .middle {
+        /*outline: 1pt solid red;*/
     }
     .region-break {
         border-top: 1pt dashed blue;
@@ -159,7 +158,7 @@ div#print-interface {
 html.spread {
     width: @page-width-crop * 2;
 
-    .preview-page {
+    .page {
         outline: 1px solid black;
         float: left;
 
@@ -191,17 +190,117 @@ body,
 }
 
 
-/* __________________________________ MAIN SECTION __________________________________ */
-#master-page,
-.page{
-    height: @page-height - @header-height - @footer-height;
-    width: @page-width;
+
+/* __________________________________ PRINT MARKS  __________________________________ */
+div.print-marks {
+    position: absolute;
+    top: 0;
+    z-index: -1000;
+    width: @page-width-crop; 
+    height: @page-height-crop;
 }
 
+#master-page,
 .page {
+    width: @page-width-crop; 
+    height: @page-height-crop;
+    position: relative;
+    z-index: -10;
+    outline-offset: -@crop;
+    counter-increment: page-counter;
+    page-break-inside: avoid;
+    page-break-after: always;
+    overflow: hidden;
+
+    &:nth-child(odd) .header {
+        text-align: right;
+    }
+
+    &:nth-child(odd) .header,
+    &:nth-child(odd) .main-section,
+    &:nth-child(odd) .footer {
+        padding-left: @page-margin-inside;
+        padding-right: @page-margin-outside;
+    }
+    &:nth-child(even) .header,
+    &:nth-child(even) .main-section,
+    &:nth-child(even) .footer {
+        padding-left: @page-margin-outside;
+        padding-right: @page-margin-inside;
+    }
+}
+
+
+/* __________________________________ CROP MARKS  __________________________________ */
+div.crop-top-left,
+div.crop-top-right,
+div.crop-bottom-right,
+div.crop-bottom-left {
+    height: @crop;
+    width:  @crop;
+    position: absolute;
+}
+ 
+div.crop-top-left {
+    left: 0;
+    top: 0;
+}
+div.crop-top-right {
+    right: 0;
+    top: 0;
+}
+div.crop-bottom-right {
+    right: 0;
+    bottom: 0;
+}
+div.crop-bottom-left {
+    left: 0;
+    bottom: 0;
+}
+div.crop-top,
+div.crop-right,
+div.crop-bottom,
+div.crop-left {
+    width: @crop-length;
+    height: @crop-length;
+    position: absolute;
+}
+div.crop-top {
+    border-top: 1pt solid black;
+}
+div.crop-right {
+    border-right: 1pt solid black;
+}
+div.crop-bottom {
+    border-bottom: 1pt solid black;
+}
+div.crop-left {
+    border-left: 1pt solid black;
+}
+
+
+/* __________________________________ HEADER __________________________________ */
+section.header {
+    position: absolute;
+    top: @crop;
+    margin: 0 @crop;
+    margin-top: @page-margin-top;
+    width: @page-width;
+    height: @header-height;
+    text-align: left;
+
+    &:after {
+        content: @header-text;
+    }
+}
+
+/* __________________________________ MAIN SECTION __________________________________ */
+
+section.main-section {
+    height: @page-height - @page-margin-top - @header-height - @footer-height - @page-margin-bottom;
     margin: @crop;
     margin-bottom: @page-margin-bottom;
-    padding-top: @page-margin-top + @header-height;
+    margin-top: @crop + @page-margin-top + @header-height;
     padding-bottom: @page-margin-bottom;
     page-break-inside: avoid;
     page-break-before: always;
@@ -212,6 +311,23 @@ body,
     -webkit-flow-into: myFlow;
     -adobe-flow-into: myFlow;
     width: 100%;
+}
+
+
+/* __________________________________ FOOTER __________________________________ */
+section.footer {
+    position: absolute;
+    bottom: @crop;
+    margin: 0 @crop;
+    margin-top: @footer-height;
+    margin-bottom: @page-margin-bottom;
+    width: @page-width;
+    height: @footer-height;
+    text-align: center;
+
+    &:after {
+        content: @footer-text;
+    }
 }
 
 /* __________________________________ CONTENT __________________________________ */
