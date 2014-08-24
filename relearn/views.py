@@ -311,6 +311,7 @@ def pad(request, pk=None, slug=None): # pad_write
     )
     return response
 
+
 def pad_read(request, pk=None, slug=None):
     """Read only pad
     """
@@ -404,6 +405,103 @@ def pad_read(request, pk=None, slug=None):
         tpl_params['next'] = reverse('pad-write', args=(slug,) )
 
     return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
+
+
+def pad_print(request, pk=None, slug=None):
+    """Print only pad
+    Based on pad_read, just returning another template
+    (super not optimal, but let's clean this afterwards)
+    """
+
+    # Initialize some needed values
+    if slug:
+        pad = get_object_or_404(Pad, display_slug=slug)
+    else:
+        pad = get_object_or_404(Pad, pk=pk)
+
+    padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name.replace('::', '_'))
+    epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
+
+    # Etherpad gives us authorIDs in the form ['a.5hBzfuNdqX6gQhgz', 'a.tLCCEnNVJ5aXkyVI']
+    # We link them to the Django users DjangoEtherpadLite created for us
+    authorIDs = epclient.listAuthorsOfPad(padID)['authorIDs']
+    authors = PadAuthor.objects.filter(authorID__in=authorIDs)
+
+    authorship_authors = []
+    for author in authors:
+        authorship_authors.append({ 'name'  : author.user.first_name if author.user.first_name else author.user.username,
+                                    'class' : 'author' + author.authorID.replace('.','_') })
+    authorship_authors_json = json.dumps(authorship_authors, indent=2)
+
+    name, extension = os.path.splitext(slug)
+
+    meta = {}
+
+    if not extension:
+        # Etherpad has a quasi-WYSIWYG functionality.
+        # Though is not alwasy dependable
+        text = epclient.getHtml(padID)['html']
+        # Quick and dirty hack to allow HTML in pads
+        text = unescape(text)
+    else:
+        # If a pad is named something.css, something.html, something.md etcetera,
+        # we don’t want Etherpads automatically generated HTML, we want plain text.
+        text = epclient.getText(padID)['text']
+        if extension in ['.md', '.markdown']:
+            md = markdown.Markdown(extensions=['extra', 'meta', 'headerid(level=2)', 'attr_list', 'figcaption'])
+            text = md.convert(text)
+            try:
+                meta = md.Meta
+            except AttributeError:   # Edge-case: this happens when the pad is completely empty
+                meta = None
+    
+    # Convert the {% include %} tags into a form easily digestible by jquery
+    # {% include "example.html" %} -> <a id="include-example.html" class="include" href="/r/include-example.html">include-example.html</a>
+    def ret(matchobj):
+        return '<a id="include-%s" class="include pad-%s" href="%s">%s</a>' % (slugify(matchobj.group(1)), slugify(matchobj.group(1)), reverse('pad-print', args=(matchobj.group(1),) ), matchobj.group(1))
+    
+    text = include_regex.sub(ret, text)
+    
+    
+    # Create namespaces from the url of the pad
+    # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
+    namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]
+
+    date_obj = None
+    meta_list = []
+
+    # One needs to set a ‘Public’ metadata for the page to be accessible to outside visitors
+    if not meta or not 'public' in meta or not meta['public'][0] or meta['public'][0].lower() in ['false', 'no', 'off', '0']:
+        if not request.user.is_authenticated():
+            raise PermissionDenied
+    
+    if meta and len(meta.keys()) > 0:
+        
+        # The human-readable date is parsed so we can sort all the articles
+        if 'date' in meta:
+            meta['date_parsed'] = []
+            for date in meta['date']:
+                if not date_obj:
+                    date_obj = dateutil.parser.parse(date)
+                meta['date_parsed'].append( dateutil.parser.parse(date).isoformat() )
+        
+        meta_list = list(meta.iteritems())
+
+    tpl_params = { 'pad'                : pad,
+                   'meta'               : meta,      # to access by hash, like meta.author
+                   'meta_list'          : meta_list, # to access all meta info in a (key, value) list
+                   'date'               : date_obj,
+                   'text'               : text,
+                   'mode'               : 'print',
+                   'namespaces'         : namespaces,
+                   'authorship_authors_json' : authorship_authors_json,
+                   'authors'            : authors }
+
+    if not request.user.is_authenticated():
+        request.session.set_test_cookie()
+        tpl_params['next'] = reverse('pad-write', args=(slug,) )
+
+    return render_to_response("pad-print.html", tpl_params, context_instance = RequestContext(request))
 
 def home(request):
     try:
