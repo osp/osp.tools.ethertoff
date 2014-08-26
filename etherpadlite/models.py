@@ -171,7 +171,7 @@ class Pad(models.Model):
     group = models.ForeignKey(PadGroup)
 
     def __unicode__(self):
-        return dewikify(self.display_slug)
+        return self.display_slug
 
     def get_absolute_url(self):
         return reverse('relearn.views.pad_read', args=[self.display_slug])
