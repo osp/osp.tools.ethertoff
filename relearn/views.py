@@ -509,9 +509,32 @@ def home(request):
         sort = None
         if 'sort' in request.GET:
             sort = request.GET['sort']
-        if sort == 'book':
-            articles = [article for article in articles if 'type' in article and article['type'].lower() == 'book']
-        tpl_params = { 'articles': articles,
+            if sort == 'book':
+                """
+                Only those articles with type=book
+                """
+                tpl_articles = [article for article in articles if 'type' in article and article['type'].lower() == 'book']
+            elif sort == 'author':
+                """
+                [ Author A Article A, Author A Article B, Author B Article A, Author B Article B]
+                
+                Articles with multiple authors appear multiple times
+                """
+                authors = {}
+                for article in articles:
+                    if 'authors' in article:
+                        for author in article['authors']:
+                            if not author in authors:
+                                authors[author] = [article]
+                            else:
+                                authors[author].append(article)
+                tpl_articles = []
+                for author in sorted(authors.keys()):
+                    # Add the articles sorted by date ascending:
+                    tpl_articles += sorted(authors[author], key=lambda a: a['date'] if 'date' in a else 0)
+        else:
+            tpl_articles = articles
+        tpl_params = { 'articles': tpl_articles,
                        'sort': sort }
         return render_to_response("home.html", tpl_params, context_instance = RequestContext(request))
     except IOError:
