@@ -510,7 +510,7 @@ def home(request):
         if 'sort' in request.GET:
             sort = request.GET['sort']
         if sort == 'book':
-            articles = [article for article in articles if 'type' in article and article['type'] == 'book']
+            articles = [article for article in articles if 'type' in article and article['type'].lower() == 'book']
         tpl_params = { 'articles': articles,
                        'sort': sort }
         return render_to_response("home.html", tpl_params, context_instance = RequestContext(request))
