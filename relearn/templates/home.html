@@ -5,9 +5,9 @@
 
 {% block extra_nav %}
     <div id="sort-by">Sort by:
-        <a class="active button screen-only" href="/">Date</a>
-        <a class="button screen-only" href="#">Author</a>
-        <a class="button screen-only" href="#">Book</a>
+        <a class="{% if not sort %}active{% endif %} button screen-only" href="/">Date</a>
+        <a class="{% if sort == 'author' %}active{% endif %} button screen-only" href="?sort=author">Author</a>
+        <a class="{% if sort == 'book' %}active{% endif %} button screen-only" href="?sort=book">Book</a>
     </div>
 {% endblock %}
 

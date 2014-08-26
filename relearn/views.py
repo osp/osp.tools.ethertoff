@@ -506,7 +506,13 @@ def pad_print(request, pk=None, slug=None):
 def home(request):
     try:
         articles = json.load(open(os.path.join(BACKUP_DIR, 'index.json')))
-        tpl_params = { 'articles': articles }
+        sort = None
+        if 'sort' in request.GET:
+            sort = request.GET['sort']
+        if sort == 'book':
+            articles = [article for article in articles if 'type' in article and article['type'] == 'book']
+        tpl_params = { 'articles': articles,
+                       'sort': sort }
         return render_to_response("home.html", tpl_params, context_instance = RequestContext(request))
     except IOError:
             try:
