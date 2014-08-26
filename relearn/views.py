@@ -99,8 +99,8 @@ def padCreate(request, pk):
                 server=group.server,
                 group=group
             )
-            saved_pad = pad.save()
-            return HttpResponseRedirect(reverse('pad-write', args=(saved_pad.display_slug,) ))
+            pad.save()
+            return HttpResponseRedirect(reverse('pad-write', args=(pad.display_slug,) ))
     else:  # No form to process so create a fresh one
         form = forms.PadCreate({'group': group.groupID})
 
