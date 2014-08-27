@@ -100,7 +100,7 @@ def query_results_to_template_articles(query_results):
     article = None
     current_uri = None
     for s, p, o in query_results:
-        print s, p, o
+        print s.encode('utf-8'), p.encode('utf-8'), o.encode('utf-8')
         uri   = unicode(s).strip()
         key   = unicode(p).strip()
         value = unicode(o).strip()
