@@ -148,38 +148,6 @@ div#print-interface {
     -webkit-font-feature-settings: "liga", "dlig", "clig", "kern";
 }
 
-@page {
-    //size: @page-width @page-height; // format coupé
-    size: @page-width-crop @page-height-crop;  // format avec cropmarks
-    margin: 0;
-}
-
-
-html.spread {
-    width: @page-width-crop * 2;
-
-    .page {
-        outline: 1px solid black;
-        float: left;
-
-        &:first-child {
-            margin-left: @page-width !important;
-        }
-        &:nth-child(odd) {
-            margin-left: -@crop * 2;
-            left: 1px;
-        }
-    }
-}
-
-html {
-    width: @page-width-crop;
-}
-
-body {
-    position: absolute;
-    width: @page-width-crop;
-}
 
 html,
 body,
@@ -202,8 +170,6 @@ div.print-marks {
 
 #master-page,
 .page {
-    width: @page-width-crop; 
-    height: @page-height-crop;
     position: relative;
     z-index: -10;
     outline-offset: -@crop;
@@ -214,19 +180,6 @@ div.print-marks {
 
     &:nth-child(odd) .header {
         text-align: right;
-    }
-
-    &:nth-child(odd) .header,
-    &:nth-child(odd) .main-section,
-    &:nth-child(odd) .footer {
-        padding-left: @page-margin-inside;
-        padding-right: @page-margin-outside;
-    }
-    &:nth-child(even) .header,
-    &:nth-child(even) .main-section,
-    &:nth-child(even) .footer {
-        padding-left: @page-margin-outside;
-        padding-right: @page-margin-inside;
     }
 }
 
@@ -279,29 +232,9 @@ div.crop-left {
 }
 
 
-/* __________________________________ HEADER __________________________________ */
-section.header {
-    position: absolute;
-    top: @crop;
-    margin: 0 @crop;
-    margin-top: @page-margin-top;
-    width: @page-width;
-    height: @header-height;
-    text-align: left;
-
-    &:after {
-        content: @header-text;
-    }
-}
-
 /* __________________________________ MAIN SECTION __________________________________ */
 
 section.main-section {
-    height: @page-height - @page-margin-top - @header-height - @footer-height - @page-margin-bottom;
-    margin: @crop;
-    margin-bottom: @page-margin-bottom;
-    margin-top: @crop + @page-margin-top + @header-height;
-    padding-bottom: @page-margin-bottom;
     page-break-inside: avoid;
     page-break-before: always;
     -webkit-flow-from: myFlow;
