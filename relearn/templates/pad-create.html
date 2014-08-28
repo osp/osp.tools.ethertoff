@@ -7,15 +7,12 @@
 {% endblock %}
 
 {% block content %}
-  <form action="/etherpad/create/{{ pk }}/" method="post">
+  <form action="{% url 'pad-create' %}" method="post">
         {% csrf_token %}
         Pad name
         {{ form.name }}
         {{ form.group }}
         <input class="submit" type="submit" value="{%trans "Create" %}" />
   </form>
-  <legend>Names will be normalised to url-like names: <br />
-        «Can it scale to the universe?» becomes «can-it-scale-to-the-universe».<br />
-    Use “::” to create sub-divisions, i.e. «pedagogy::references».
-    </legend>
+  <legend></legend>
 {% endblock %}

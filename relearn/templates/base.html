@@ -29,7 +29,7 @@
         <div id="staff-menu" class="private">
             <span class="screen-only">{{ author.full_name_with_prefix }}</span>
             <a class="button screen-only" href="{% url 'logout' %}{% if pad %}?next={% url 'pad-read' pad.display_slug %}{% endif %}">Log out</a>
-            <a class="button screen-only" href="{% url 'pad-create' author.group.all.0.id %}">Create</a>
+            <a class="button screen-only" href="{% url 'pad-create' %}">Create</a>
             <a class="button screen-only" href="{% url 'all' %}">List</a>
             <a class="button screen-only" href="{% url 'publish' %}">Publish</a>
             <a class="button screen-only" href="/w/TODOLIST">TODO</a>
