@@ -115,6 +115,7 @@ TEMPLATE_DIRS = (
 
 TEMPLATE_CONTEXT_PROCESSORS = DEFAULT_SETTINGS.TEMPLATE_CONTEXT_PROCESSORS + (
     "relearn.context_processors.site_name",
+    "relearn.context_processors.eyes",
     "relearn.context_processors.pads",
     "relearn.context_processors.local",
 )
