@@ -206,15 +206,14 @@ def pad_read(request, pk=None, slug=None):
     articles = json.load(open(os.path.join(BACKUP_DIR, 'index.json')))
     SITE = get_current_site(request)
     href = "http://%s" % SITE.domain + request.path
+    
+    prev = None
+    next = None
     for i, article in enumerate(articles):
         if article['href'] == href:
-            if i == 0:        # The first is the most recent article, there is no newer
-                next = None
-            else:
+            if i != 0:        # The first is the most recent article, there is no newer
                 next = articles[i-1]
-            if i == len(articles) - 1:
-                prev = None
-            else:
+            if i != len(articles) - 1:
                 prev = articles[i+1]
 
     # Initialize some needed values
