@@ -3,6 +3,7 @@
 # Python imports
 
 import os
+import re
 import sys
 import codecs
 import json
@@ -118,6 +119,13 @@ def query_results_to_template_articles(query_results):
                 if 'authors' not in article:
                     article['authors'] = []
                 article['authors'].append(value)
+            if key == "http://purl.org/dc/terms/title":
+                # Ad-hoc: remove footnotes from the titles!
+                print "found title", value
+                value = re.sub(r'<sup>.*</sup>', '', value) # A revoir—apparement il y a des titles a 2 endroits, un avec syntax html un avec syntax text
+                value = re.sub(r'1$', '', value)
+                print "encoding as", value
+                article['title'] = value
             else:
                 new_key = short_names[key]
                 article[new_key] = value
