@@ -10,6 +10,8 @@ from etherpadlite.models import Pad, PadAuthor, PadServer
 from django.contrib.auth.models import AnonymousUser
 from django.contrib.sites.models import get_current_site
 
+is_eye = re.compile(r'Yeux_\d+\.png')
+number_of_eyes = len([eye for eye in os.listdir(os.path.join(MEDIA_ROOT, 'images', 'eyes')) if is_eye.match(eye)])
 
 class EthertoffError(Exception):
     pass
@@ -21,6 +23,14 @@ def site_name(request):
     # maybe something that sounds more to the point than stite_name?
     # project_name? wiki_name?
     return { 'site_name' : current_site.name }
+
+def eyes(request):
+    hash = {}
+    if 'admin' in request.path:
+        return hash
+    n = randint(1, number_of_eyes)
+    hash['EYES']  = 'Yeux_%02d.png' % n
+    return hash
 
 def pads(request):
     hash = {}
