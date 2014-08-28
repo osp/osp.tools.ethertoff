@@ -3,8 +3,8 @@
 
 {% block extra_styles %}
     <link rel="stylesheet" href="/css-print/" type="text/less" media="print">
-    <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="screen, print" type="text/less">
     {% if user.is_authenticated %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="screen, print" type="text/less">
         {% if meta.publish %}<link rel="stylesheet" href="{{ pad|stripExtension }}less" type="text/less" media="print">{% endif %}
     {% endif %}
 {% endblock %}
