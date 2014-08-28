@@ -30,7 +30,6 @@
             <a class="button screen-only" href="{% url 'logout' %}{% if pad %}?next={% url 'pad-read' pad.display_slug %}{% endif %}">Log out</a>
             <a class="button screen-only" href="{% url 'pad-create' %}">Create</a>
             <a class="button screen-only" href="{% url 'all' %}">List</a>
-            <a class="button screen-only" href="{% url 'publish' %}">Publish</a>
             <a class="button screen-only" href="/w/TODOLIST">TODO</a>
             <a class="button screen-only" href="/w/style.css">styles</a>
             <a class="button screen-only" href="/w/typo">typo</a>
@@ -49,7 +48,6 @@
                 <a class="active button screen-only write-button">Write</a>
             {% endif %}
                 <a class="button screen-only" href="{% url 'pad-print' pad.display_slug %}">Print</a>
-                {% if user.is_authenticated %}<a class="button screen-only" href="{% url 'pad-publish' pad.display_slug %}">Publish</a>{% endif %}
         {% else %}
                 <a class="button read-button screen-only">Read</a>
                 <a class="button screen-only write-button" href="{% url 'login' %}">Write</a>
