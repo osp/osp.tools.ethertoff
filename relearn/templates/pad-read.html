@@ -72,7 +72,9 @@
         </dl>
 
         {% if meta.colophon %}
-            {{ meta.colophon.0|markdown_filter }}
+            {% for p in meta.colophon.all %}
+                {{ p|markdown_filter }}
+            {% endfor %}
         {% endif %}
 
     </div>
