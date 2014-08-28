@@ -3,9 +3,9 @@
 
 {% block extra_styles %}
     <link rel="stylesheet" href="/css-print/" type="text/less" media="all">
-    {% if user.is_authenticated %}
-        <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="screen, print" type="text/less">
-        {% if meta.publish %}<link rel="stylesheet" href="{{ pad|stripExtension }}less" type="text/less" media="print">{% endif %}
+    {% if user.is_authenticated and meta.publish %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="all" type="text/less">
+        {% if meta.publish %}<link rel="stylesheet" href="{{ pad|stripExtension }}less" type="text/less" media="all">{% endif %}
     {% endif %}
 {% endblock %}
 
@@ -25,7 +25,7 @@
     {% endif %}
 
 
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and meta.publish %}
         <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
         <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>
     {% endif %}
@@ -40,6 +40,7 @@
 
 
 {% block title %}
+<!--{{ meta.publish }}-->
     <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
     {% if meta.authors %}
         <p class="authors">{{ meta.authors|dictsort:"lower"|natural_join:'&' }}</p>
