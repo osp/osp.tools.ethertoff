@@ -1,24 +1,24 @@
 /* __________________________________ LOCAL SETTINGS __________________________________ */
 
-@page-height: 210mm;
-@page-width: 148.5mm;
-@spread: @page-width*2;
+/*@page-height: 210mm;*/
+/*@page-width: 148.5mm;*/
+/*@spread: @page-width*2;*/
 
-@crop-length: 7mm;
-@crop-offset: 5mm;
-@crop: @crop-length + @crop-offset;    // Based on Scribus cropmarks with 5mm of bleed -> 7mm of marks + 5mm of offset
-@page-width-crop: @page-width + (@crop*2); 
-@page-height-crop: @page-height + (@crop*2);
+/*@crop-length: 7mm;*/
+/*@crop-offset: 5mm;*/
+/*@crop: @crop-length + @crop-offset;    // Based on Scribus cropmarks with 5mm of bleed -> 7mm of marks + 5mm of offset*/
+/*@page-width-crop: @page-width + (@crop*2); */
+/*@page-height-crop: @page-height + (@crop*2);*/
 
-@page-margin-inside: 20mm;
-@page-margin-outside: 10mm;
-@page-margin-top: 10mm;
-@page-margin-bottom: 15mm;
+/*@page-margin-inside: 20mm;*/
+/*@page-margin-outside: 10mm;*/
+/*@page-margin-top: 10mm;*/
+/*@page-margin-bottom: 15mm;*/
 
-@header-height: 10mm;
-@header-text: "f-u-t-u-r-e.org";
-@footer-height: 10mm;
-@footer-text: counter(page-counter);
+/*@header-height: 10mm;*/
+/*@header-text: "f-u-t-u-r-e.org";*/
+/*@footer-height: 10mm;*/
+/*@footer-text: counter(page-counter);*/
 
 
 /* __________________________________ DEBUG __________________________________ */
@@ -164,8 +164,6 @@ div.print-marks {
     position: absolute;
     top: 0;
     z-index: -1000;
-    width: @page-width-crop; 
-    height: @page-height-crop;
 }
 
 #master-page,
@@ -189,8 +187,6 @@ div.crop-top-left,
 div.crop-top-right,
 div.crop-bottom-right,
 div.crop-bottom-left {
-    height: @crop;
-    width:  @crop;
     position: absolute;
 }
  
@@ -214,8 +210,6 @@ div.crop-top,
 div.crop-right,
 div.crop-bottom,
 div.crop-left {
-    width: @crop-length;
-    height: @crop-length;
     position: absolute;
 }
 div.crop-top {
@@ -247,21 +241,6 @@ section.main-section {
 }
 
 
-/* __________________________________ FOOTER __________________________________ */
-section.footer {
-    position: absolute;
-    bottom: @crop;
-    margin: 0 @crop;
-    margin-top: @footer-height;
-    margin-bottom: @page-margin-bottom;
-    width: @page-width;
-    height: @footer-height;
-    text-align: center;
-
-    &:after {
-        content: @footer-text;
-    }
-}
 
 /* __________________________________ CONTENT __________________________________ */
 
