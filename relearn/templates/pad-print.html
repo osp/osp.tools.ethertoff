@@ -3,7 +3,7 @@
 
 {% block extra_styles %}
     <link rel="stylesheet" href="/css-print/" type="text/less" media="all">
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and meta.publish %}
         <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="screen, print" type="text/less">
         {% if meta.publish %}<link rel="stylesheet" href="{{ pad|stripExtension }}less" type="text/less" media="print">{% endif %}
     {% endif %}
@@ -25,7 +25,7 @@
     {% endif %}
 
 
-    {% if user.is_authenticated %}
+    {% if user.is_authenticated and meta.publish %}
         <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
         <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>
     {% endif %}
