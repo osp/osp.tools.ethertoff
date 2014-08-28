@@ -1,4 +1,10 @@
 $(window).load(function(){
+
+if($("body").hasClass("logged-in")) {
+    $("style"[attr="publish"]).remove();
+}
+
+
 if($("body").hasClass("print-mode")){
 
     // Visualizes print css on screen

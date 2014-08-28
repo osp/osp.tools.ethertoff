@@ -17,7 +17,13 @@
     {% if meta.type %}<meta property="dc:type" content="{{ meta.type.0 }}" />{% endif %}
 {% endif %}
 
-    <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="screen, print" type="text/less">
+    {% if user.is_authenticated %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}less/publish.less" media="screen, print" type="text/less">
+        <link rel="stylesheet" href="/css-print/" type="text/less" media="print">
+    {% else %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="screen, print" type="text/less">
+        <link rel="stylesheet" href="/css-publish/" type="text/less" media="print">
+    {% endif %}
 {% endblock %}
 
 
