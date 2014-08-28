@@ -99,7 +99,7 @@ var renderSection = function(section) {
         return '<li><a class="namespace">' + sectionKey + ' →</a>' + renderSection(section.sections[sectionKey]) + '</li>';
     }));
     var lis = lis.concat(_.map(section.pads, function(pad) {
-        return '<li><a href="/r/' + encodeURIComponent(pad.href) + '">' + pad.name + '</a></li>';
+        return '<li><a href="/r/' + pad.href + '">' + pad.name + '</a></li>';
     }));
     return '<ul>' + lis.join('') + '</ul>';
 };

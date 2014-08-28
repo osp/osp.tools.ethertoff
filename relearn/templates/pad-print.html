@@ -1,23 +1,34 @@
 {% extends "pad-base.html" %}
 {% load wikify relearn_tags %}
 
-{% block head_meta %}
-
-{% if meta %}
-
-    {% if meta.authors %}
-        {% for author in meta.authors %}
-            <meta property="dc:creator" content="{{ author }}" />
-        {% endfor %}
+{% block extra_styles %}
+    <link rel="stylesheet" href="/css-print/" type="text/less" media="all">
+    {% if user.is_authenticated %}
+        <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="screen, print" type="text/less">
+        {% if meta.publish %}<link rel="stylesheet" href="{{ pad|stripExtension }}less" type="text/less" media="print">{% endif %}
     {% endif %}
-    {% if meta.title %}<meta property="dc:title" content="{{ meta.title.0 }}" />{% endif %}
-    {% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
+{% endblock %}
 
-    <meta property="dc:identifier" content="{{ meta.id.0 }}" />
-    {% if meta.type %}<meta property="dc:type" content="{{ meta.type.0 }}" />{% endif %}
-{% endif %}
+{% block head_meta %}
+    {% if meta %}
 
-    <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="screen, print" type="text/less">
+        {% if meta.authors %}
+            {% for author in meta.authors %}
+                <meta property="dc:creator" content="{{ author }}" />
+            {% endfor %}
+        {% endif %}
+        {% if meta.title %}<meta property="dc:title" content="{{ meta.title.0 }}" />{% endif %}
+        {% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
+
+        <meta property="dc:identifier" content="{{ meta.id.0 }}" />
+        {% if meta.type %}<meta property="dc:type" content="{{ meta.type.0 }}" />{% endif %}
+    {% endif %}
+
+
+    {% if user.is_authenticated %}
+        <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
+        <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>
+    {% endif %}
 {% endblock %}
 
 
