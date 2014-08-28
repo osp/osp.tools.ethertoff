@@ -33,6 +33,7 @@ from django.utils.translation import ugettext_lazy as _
 from etherpadlite.models import *
 from etherpadlite import forms
 from etherpadlite import config
+from django.contrib.sites.models import get_current_site
 
 from relearn.management.commands.index import snif
 
@@ -199,6 +200,22 @@ def pad(request, pk=None, slug=None): # pad_write
 def pad_read(request, pk=None, slug=None):
     """Read only pad
     """
+    
+    # FIND OUT WHERE WE ARE,
+    # then get previous and next
+    articles = json.load(open(os.path.join(BACKUP_DIR, 'index.json')))
+    SITE = get_current_site(request)
+    href = "http://%s" % SITE.domain + request.path
+    for i, article in enumerate(articles):
+        if article['href'] == href:
+            if i == 0:        # The first is the most recent article, there is no newer
+                next = None
+            else:
+                next = articles[i-1]
+            if i == len(articles) - 1:
+                prev = None
+            else:
+                prev = articles[i+1]
 
     # Initialize some needed values
     if slug:
@@ -279,6 +296,8 @@ def pad_read(request, pk=None, slug=None):
                    'meta_list'          : meta_list, # to access all meta info in a (key, value) list
                    'date'               : date_obj,
                    'text'               : text,
+                   'prev'               : prev,
+                   'next'               : next,
                    'mode'               : 'read',
                    'namespaces'         : namespaces,
                    'authorship_authors_json' : authorship_authors_json,

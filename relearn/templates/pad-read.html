@@ -20,9 +20,9 @@
 
 
 {% block title_left %}
-<div id="previous">
-    <a href="#">&larr;</a>
-</div>
+{% if prev %}<div id="previous">
+    <a href="{{ prev.href }}" title="{{ prev.authors|natural_join:'&' }}, {{ prev.title|markdown_filter }}">&larr;</a>
+</div>{% endif %}
 {% endblock %}
 
 
@@ -39,9 +39,9 @@
 
 
 {% block title_right %}
-<div id="next">
-    <a href="#">&rarr;</a>
-</div>
+{% if next %}<div id="next">
+    <a href="{{ next.href }}" title="{{ next.authors|natural_join:'&' }}, {{ next.title|markdown_filter }}">&rarr;</a>
+</div>{% endif %}
 {% endblock %}
 
 
