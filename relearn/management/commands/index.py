@@ -138,22 +138,30 @@ def snif():
     start = clock()
     
     g = rdflib.Graph()
-    host = 'http://f-u-t-u-r-e.org'
-    # host = 'http://127.0.0.1:8000'
+    # host = 'http://f-u-t-u-r-e.org'
+    host = 'http://127.0.0.1:8000'
     
+    i = 0
+    total = Pad.objects.count()
     for pad in Pad.objects.all():
+        i += 1
+        txt = "checking pad %s of %s: %s" % (i, total, pad.display_slug)
+        print txt.encode('utf-8')
         # We only want to index the articles—
         # For now we can distinguish them because they have url’s
         # ending in ‘.md’
         if not pad.display_slug.endswith('.md'):
+            print "no *.md extension, probably not meant for publication"
             continue
         try:
             result = g.parse(host + pad.get_absolute_url())
+            print "succesfully parsed"
         except HTTPError, e:
             if e.code == 403:
                 # Some of the pads will not be public yet—
                 # They gives a ‘403 FORBIDDEN’ response
                 # this is expected, and we don’t need to scrape them
+                print "pad not public"
                 continue
             else:
                 raise

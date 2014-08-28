@@ -12,3 +12,6 @@ def deploy():
         run('/home/bat/venvs/relearn/bin/python manage.py collectstatic --noinput')
         sudo('/home/bat/venvs/relearn/bin/supervisorctl restart relearn')
 
+def index():
+    with cd(env.path):
+        run('/home/bat/venvs/relearn/bin/python manage.py index')
