@@ -61,3 +61,8 @@ def markdown_filter(value):
 
     return mark_safe(markdown.markdown(force_unicode(value),
                                        extensions))
+
+@register.filter
+def stripExtension(value):
+    import re
+    return re.split("md|html$", u"%s" % value)[0]
