@@ -21,7 +21,9 @@
 
 {% block title_left %}
 {% if prev %}<div id="previous">
-    <a href="{{ prev.href }}" title="{{ prev.authors|natural_join:'&' }}, {{ prev.title|markdown_filter }}">&larr;</a>
+    <a href="{{ prev.href }}" title="{{ prev.authors|natural_join:'&' }}, {{ prev.title }}">&larr;<br/>
+    <span>{{ prev.authors|natural_join:'&' }}<br/>
+    {{ prev.title }}</span></a>
 </div>{% endif %}
 {% endblock %}
 
@@ -40,7 +42,9 @@
 
 {% block title_right %}
 {% if next %}<div id="next">
-    <a href="{{ next.href }}" title="{{ next.authors|natural_join:'&' }}, {{ next.title|markdown_filter }}">&rarr;</a>
+    <a href="{{ next.href }}" title="{{ next.authors|natural_join:'&' }}, {{ next.title }}">&rarr;<br/>
+    <span>{{ next.authors|natural_join:'&' }}<br/>
+    {{ next.title }}</span></a>
 </div>{% endif %}
 {% endblock %}
 
