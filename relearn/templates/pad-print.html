@@ -138,8 +138,10 @@
                     size:" + pageWidth + " " + pageHeight + "; \
                 }\
             "
-            $(window).load(function(){
-                $("body").append("<style id='publish-styles'>");
+            $(document).ready(function(){
+                var style = document.createElement('style');
+                style.id = "publish-css";
+                //$("body").append("<style id='publish-styles'>");
                 $("#publish-styles").html(styles);
             });
         </script>
