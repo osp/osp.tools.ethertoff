@@ -141,8 +141,11 @@
             $(document).ready(function(){
                 var style = document.createElement('style');
                 style.id = "publish-css";
+                style.innerHTML(styles);
+                console.log(style);
+                document.body.appendChild(style);
                 //$("body").append("<style id='publish-styles'>");
-                $("#publish-styles").html(styles);
+                //$("#publish-styles").html(styles);
             });
         </script>
     {% endif %}
