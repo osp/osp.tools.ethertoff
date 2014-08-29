@@ -22,7 +22,7 @@
 {% if prev %}<div id="previous">
     <a href="{{ prev.href }}" title="{{ prev.authors|natural_join:'&' }}, {{ prev.title }}">&larr;<br/>
     <span>{{ prev.authors|natural_join:'&' }}<br/>
-    {{ prev.title }}</span></a>
+    {{ prev.title|safe }}</span></a>
 </div>{% endif %}
 {% endblock %}
 
@@ -43,7 +43,7 @@
 {% if next %}<div id="next">
     <a href="{{ next.href }}" title="{{ next.authors|natural_join:'&' }}, {{ next.title }}">&rarr;<br/>
     <span>{{ next.authors|natural_join:'&' }}<br/>
-    {{ next.title }}</span></a>
+    {{ next.title|safe }}</span></a>
 </div>{% endif %}
 {% endblock %}
 
