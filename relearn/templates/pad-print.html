@@ -131,22 +131,5 @@
     {% if user.is_authenticated and meta.publish %}
         <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
         <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>
-
-        <script>
-            var styles = " \
-                @page { \
-                    size:" + pageWidth + " " + pageHeight + "; \
-                }\
-            "
-            $(document).ready(function(){
-                var style = document.createElement('style');
-                document.body.appendChild(style);
-                style.id = "publish-css";
-                //style.innerHTML(styles);
-                //$("body").append("<style id='publish-styles'>");
-                $("#publish-css").html(styles);
-                console.log(style);
-            });
-        </script>
     {% endif %}
 {% endblock %}
