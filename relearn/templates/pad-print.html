@@ -24,11 +24,6 @@
         {% if meta.type %}<meta property="dc:type" content="{{ meta.type.0 }}" />{% endif %}
     {% endif %}
 
-
-    {% if user.is_authenticated and meta.publish %}
-        <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
-        <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>
-    {% endif %}
 {% endblock %}
 
 
@@ -127,5 +122,26 @@
                 <ul id="toc-pages"></ul>
             </div>
         </div>
+    {% endif %}
+{% endblock %}
+
+
+
+{% block scripts %}
+    {% if user.is_authenticated and meta.publish %}
+        <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
+        <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>
+
+        <script>
+            var styles = " \
+                @page { \
+                    size:" + pageWidth + " " + pageHeight + "; \
+                }\
+            "
+            $(document).ready(function(){
+                $("body").append("<style id='publish-styles'>");
+                $("#publish-styles").html(styles);
+            });
+        </script>
     {% endif %}
 {% endblock %}
