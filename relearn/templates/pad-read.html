@@ -33,7 +33,7 @@
         <p class="authors">{{ meta.authors|natural_join:'&' }}</p>
     {% endif %}
     <h1 property="dc:title">
-        {{ meta.title.0|default:pad.display_slug|markdown_filter }}
+        {{ meta.title.0|default:pad.display_slug|markdown_filter|no_p }}
     </h1>
     </header>
 {% endblock %}

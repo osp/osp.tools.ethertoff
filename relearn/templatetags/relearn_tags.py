@@ -1,3 +1,5 @@
+import re
+
 import markdown
 
 from django import template
@@ -61,6 +63,17 @@ def markdown_filter(value):
 
     return mark_safe(markdown.markdown(force_unicode(value),
                                        extensions))
+
+p_surrounds = re.compile(r'<p>(.*)</p>')
+
+@register.filter(is_safe=True)
+@stringfilter
+def no_p(value):
+    value = value.strip()
+    match = p_surrounds.findall(value)
+    if len(match) == 0:
+        return value
+    return match[0]
 
 @register.filter
 def stripExtension(value):
