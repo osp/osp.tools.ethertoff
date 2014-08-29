@@ -5,7 +5,7 @@
     <link rel="stylesheet" href="/css-print/" type="text/less" media="all">
     {% if user.is_authenticated and meta.publish %}
         <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" media="all" type="text/less">
-        {% if meta.publish %}<link rel="stylesheet" href="{{ pad|stripExtension }}less" type="text/less" media="all">{% endif %}
+        <!--{% if meta.publish %}<link rel="stylesheet" href="{{ pad|stripExtension }}less" type="text/less" media="all">{% endif %}-->
     {% endif %}
 {% endblock %}
 
@@ -142,10 +142,10 @@
                 var style = document.createElement('style');
                 document.body.appendChild(style);
                 style.id = "publish-css";
-                style.innerHTML(styles);
-                console.log(style);
+                //style.innerHTML(styles);
                 //$("body").append("<style id='publish-styles'>");
-                //$("#publish-styles").html(styles);
+                $("#publish-css").html(styles);
+                console.log(style);
             });
         </script>
     {% endif %}
