@@ -121,10 +121,12 @@ def query_results_to_template_articles(query_results):
                 article['authors'].append(value)
             if key == "http://purl.org/dc/terms/title":
                 # Ad-hoc: remove footnotes from the titles!
-                print "found title", value
+                txt = "found title %s" % value
+                print txt.encode('utf-8')
                 value = re.sub(r'<sup>.*</sup>', '', value) # A revoir—apparement il y a des titles a 2 endroits, un avec syntax html un avec syntax text
                 value = re.sub(r'1$', '', value)
-                print "encoding as", value
+                txt = "encoding as %s" % value
+                print txt.encode('utf-8')
                 article['title'] = value
             else:
                 new_key = short_names[key]
