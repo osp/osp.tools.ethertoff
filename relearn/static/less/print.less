@@ -283,9 +283,9 @@ div.crop-left {
 section.header {
     position: absolute;
     top: @crop;
-    margin: 0 @crop;
-    margin-top: @page-margin-top;
-    width: 100%;
+    left: @crop;
+    right: @crop;
+    padding-top: @page-margin-top;
     height: @header-height;
     text-align: left;
 
@@ -297,15 +297,17 @@ section.header {
 /* __________________________________ MAIN SECTION __________________________________ */
 
 section.main-section {
-    height: @page-height - @page-margin-top - @header-height - @footer-height - @page-margin-bottom;
-    margin: @crop;
-    margin-bottom: @page-margin-bottom;
-    margin-top: @crop + @page-margin-top + @header-height;
-    padding-bottom: @page-margin-bottom;
+    padding-top: @header-height;
+    padding-bottom: @footer-height;
     page-break-inside: avoid;
     page-break-before: always;
     -webkit-flow-from: myFlow;
     -adobe-flow-from: myFlow;
+    top: @crop;
+    left: @crop;
+    right: @crop;
+    bottom: @crop;
+    position: absolute;
 }
 .middle {
     -webkit-flow-into: myFlow;
@@ -318,10 +320,8 @@ section.main-section {
 section.footer {
     position: absolute;
     bottom: @crop;
-    margin: 0 @crop;
-    margin-top: @footer-height;
-    margin-bottom: @page-margin-bottom;
-    width: 100%;
+    left: @crop;
+    right: @crop;
     height: @footer-height;
     text-align: center;
 
