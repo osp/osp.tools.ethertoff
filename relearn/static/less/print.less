@@ -301,13 +301,22 @@ section.main-section {
     padding-bottom: @footer-height;
     page-break-inside: avoid;
     page-break-before: always;
-    -webkit-flow-from: myFlow;
-    -adobe-flow-from: myFlow;
     top: @crop;
     left: @crop;
     right: @crop;
     bottom: @crop;
     position: absolute;
+
+}
+div.column {
+    -webkit-flow-from: myFlow;
+    -adobe-flow-from: myFlow;
+    height: 100%;
+    float: left;
+    width: 50%;
+}
+div.column + div.column {
+    padding-left: 1.5em;
 }
 .middle {
     -webkit-flow-into: myFlow;

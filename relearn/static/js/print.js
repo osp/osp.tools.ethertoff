@@ -56,10 +56,21 @@ if($("body").hasClass("print-mode")){
             </div>\
     ');
 
-    $("#master-page").append('<section class="header"></section>').append('<section class="main-section"></section>').append('<section class="footer"></section>');
+    $("#master-page").append('<section class="header"></section>').append('<section class="main-section"><div class="column"></div></section>').append('<section class="footer"></section>');
+
+    // OPTIONAL COLUMNS
+    try {
+        for (i = 1; i < columnNumber; i++){
+            $(".main-section").append("<div class='column'></div>");
+            $(".column").css("width", 100 / columnNumber + "%");
+        }
+    } catch(e){}
+
 
     height = $($(".middle")[0]).height() + $($(".middle")[1]).height();
     page_height = $("#master-page").height();
+
+    // OPTIONAL CUSTOM PAGE NUMBER
     try {
         nb_page = customPageNumber;
     } catch(e) {
@@ -68,7 +79,6 @@ if($("body").hasClass("print-mode")){
     console.log("Content = " + height);
     console.log("page height = " + page_height);
     console.log("nb page = " + nb_page);
-    //if (nb_page == 0) { nb_page = 1}
     for (i = 1; i <= nb_page; i++){
         $("#master-page").clone().addClass("page").attr("id","page-"+i).insertBefore($("#master-page"));
     }
