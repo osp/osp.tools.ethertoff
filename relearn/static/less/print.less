@@ -144,6 +144,8 @@ div#print-interface {
 * {
     -webkit-print-color-adjust: exact;  /* Allows printing of background colors */
     box-sizing: border-box;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
     text-rendering: optimizeLegibility;
     -webkit-font-feature-settings: "liga", "dlig", "clig", "kern";
 }
@@ -308,15 +310,18 @@ section.main-section {
     position: absolute;
 
 }
+#content {
+    width: 100%;
+}
 div.column {
     -webkit-flow-from: myFlow;
     -adobe-flow-from: myFlow;
     height: 100%;
     float: left;
-    width: 50%;
+    width: 100%;
+    padding: 0 0.5em;
 }
 div.column + div.column {
-    padding-left: 1.5em;
 }
 .middle {
     -webkit-flow-into: myFlow;
