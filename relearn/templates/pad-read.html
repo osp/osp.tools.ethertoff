@@ -1,6 +1,11 @@
 {% extends "pad-base.html" %}
 {% load wikify relearn_tags %}
 
+{% block extra_styles %}
+    <link rel="stylesheet" href="/css-print/" type="text/less" media="print">
+{% endblock %}
+
+
 {% block head_meta %}
 
 {% if meta %}
