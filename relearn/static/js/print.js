@@ -5,6 +5,7 @@ if($("body").hasClass("print-mode")){
     $("style[media='print']").attr("media", "print, screen");
     $("link[media='print']").attr("media", "print, screen");
 
+    // POLYFILL HACK: move metadata and footnotes outside of div#content
     footnotes = $(".footnote").detach();
     footnotes.insertAfter($("#content"));
     metadata = $("#metadata").detach();
@@ -29,6 +30,15 @@ if($("body").hasClass("print-mode")){
                 height: " + pageHeightCrop + ";                         \n \
             }                                                           \n \
         "
+
+        // IF NO CROP MARKS
+        if (crop == 0) {
+            styles += " \
+                .print-marks {                                          \n \
+                    display: none;                                      \n \
+                }                                                       \n \
+            "
+        }
         var style = document.createElement('style');
         document.body.appendChild(style);
         style.id = "publish-css";
@@ -36,7 +46,7 @@ if($("body").hasClass("print-mode")){
         $("#publish-css").html(styles);
     } catch(e){}
 
-
+    
     // Create pages
     $("body").append('<section id="master-page" class="page"></section>');
     $("#master-page").append('\
