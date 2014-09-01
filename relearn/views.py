@@ -295,8 +295,8 @@ def pad_read(request, pk=None, slug=None):
                    'meta_list'          : meta_list, # to access all meta info in a (key, value) list
                    'date'               : date_obj,
                    'text'               : text,
-                   'prev'               : prev,
-                   'next'               : next,
+                   'prev_page'          : prev,
+                   'next_page'          : next,
                    'mode'               : 'read',
                    'namespaces'         : namespaces,
                    'authorship_authors_json' : authorship_authors_json,
