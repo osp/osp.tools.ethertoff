@@ -1,13 +1,32 @@
 {% extends "base.html" %}
 
+{% block extra_styles %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}css/progress.css" type="text/css" media="all">
+{% endblock %}
+
 {% block content %}
 {% if published %}
-<p style="background-color: white">Succesfully published</p>
-<p style="background-color: white">{{ message }}</p>
+<p style="background-color: white">Succesfully re-indexed/published.</p>
+<p style="background-color: white">{{ message|title }}.</p>
+<p>View <a href="{% url 'home' %}">home page</a></p>
 {% else %}
+<div id="loading">
+    <div class="meter red">
+        <span style="width: 25%"></span>
+    </div>
+    <p>Publishing, please don’t stop or refresh this page:</p>
+    <p>This might take up to a minute.</p>
+</div>
 <form action="" method="post">
     {% csrf_token %}
-    <input style="background-color: white" type="submit" class="submit" value="Publish"/>
+    <input style="" type="submit" class="submit" value="Re-index"/>
 </form>
+<script>
+    $("input[type=submit]").click(function() {
+        $(this).hide();
+        $("#loading").show();
+    });
+</script>
+
 {% endif %}
 {% endblock %}
