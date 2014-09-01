@@ -53,6 +53,11 @@ if($("body").hasClass("print-mode")){
                     left: 0;                                            \n \
                     right: 0;                                           \n \
                 }                                                       \n \
+                #master-page,                                           \n \
+                .page {                                                 \n \
+                    outline-offset: 0;                                  \n \
+                }                                                       \n \
+
             "
         }
         var style = document.createElement('style');
