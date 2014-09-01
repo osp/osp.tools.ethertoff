@@ -90,6 +90,7 @@
 
     {% else %}
 
+        {% if meta.publish %}
         <div id="print-interface">
             <button id="debug">Debug</button>
             <button id="hi-res">Hi-res</button>
@@ -98,6 +99,7 @@
                 <ul id="toc-pages"> </ul>
             </div>
         </div>
+        {% endif %}
     {% endif %}
 {% endblock %}
 

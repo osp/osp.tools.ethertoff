@@ -114,10 +114,20 @@ if($("body").hasClass("print-mode")){
         $(this).toggleClass("button-active");
         $("html").toggleClass("export");
         $("img").each(function(){
-            var hires = $(this).attr("data-alt-src");
-            var lores = $(this).attr("src");
-            $(this).attr("data-alt-src", lores)
-            $(this).attr("src", hires)
+            if ($("html").hasClass("export")){
+                var lores = $(this).attr("src");
+                hires = lores.split("/");
+                hires.splice(-1, 0, "HD");
+                hires = hires.join("/");
+                $(this).attr("src", hires);
+            } else {
+                var hires = $(this).attr("src");
+                lores = hires.split("/");
+                lores.splice(-2, 1);
+                lores = lores.join("/");
+                $(this).attr("src", lores);
+                $("img").removeClass("lo-res");
+            }
         });
         console.log("Wait for hi-res images to load");
         window.setTimeout(function(){
