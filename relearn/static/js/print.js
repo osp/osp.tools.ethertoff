@@ -57,7 +57,6 @@ if($("body").hasClass("print-mode")){
                 .page {                                                 \n \
                     outline-offset: 0;                                  \n \
                 }                                                       \n \
-
             "
         }
         var style = document.createElement('style');
