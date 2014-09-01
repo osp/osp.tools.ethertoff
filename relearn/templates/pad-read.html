@@ -24,10 +24,10 @@
 
 
 {% block title_left %}
-{% if prev %}<div id="previous">
-    <a href="{{ prev.href }}" title="{{ prev.authors|natural_join:'&' }}, {{ prev.title }}">&larr;<br/>
-    <span>{{ prev.authors|natural_join:'&' }}<br/>
-    {{ prev.title|safe }}</span></a>
+{% if prev_page %}<div id="previous">
+    <a href="{{ prev_page.href }}" title="{{ prev_page.authors|natural_join:'&' }}, {{ prev_page.title }}">&larr;<br/>
+    <span>{{ prev_page.authors|natural_join:'&' }}<br/>
+    {{ prev_page.title|safe }}</span></a>
 </div>{% endif %}
 {% endblock %}
 
@@ -45,10 +45,10 @@
 
 
 {% block title_right %}
-{% if next %}<div id="next">
-    <a href="{{ next.href }}" title="{{ next.authors|natural_join:'&' }}, {{ next.title }}">&rarr;<br/>
-    <span>{{ next.authors|natural_join:'&' }}<br/>
-    {{ next.title|safe }}</span></a>
+{% if next_page %}<div id="next">
+    <a href="{{ next_page.href }}" title="{{ next_page.authors|natural_join:'&' }}, {{ next_page.title }}">&rarr;<br/>
+    <span>{{ next_page.authors|natural_join:'&' }}<br/>
+    {{ next_page.title|safe }}</span></a>
 </div>{% endif %}
 {% endblock %}
 
