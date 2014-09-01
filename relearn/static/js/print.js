@@ -139,8 +139,9 @@ if($("body").hasClass("print-mode")){
                 lores = hires.split("/");
                 lores.splice(-2, 1);
                 lores = lores.join("/");
-                $(this).attr("src", lores);
-                $("img").removeClass("lo-res");
+                $(this).attr("src", lores).ready(function(){
+                    $("img").removeClass("lo-res");
+                });
             }
         });
         }, 2000);
