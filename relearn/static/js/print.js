@@ -5,6 +5,10 @@ if($("body").hasClass("print-mode")){
     $("style[media='print']").attr("media", "print, screen");
     $("link[media='print']").attr("media", "print, screen");
 
+    footnotes = $(".footnote").detach();
+    footnotes.insertAfter($("#content"));
+    metadata = $("#metadata").detach();
+    metadata.insertAfter($(".footnote"));
 
     // OVERRIDES PAGE FORMAT SET ON PAD
     try{
@@ -133,8 +137,6 @@ if($("body").hasClass("print-mode")){
         $(this).toggleClass("button-active");
         $("#toc-pages").toggle();
     });
-
-
 
 
 }

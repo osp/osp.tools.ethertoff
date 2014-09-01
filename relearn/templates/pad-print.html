@@ -26,14 +26,8 @@
 {% endblock %}
 
 
-{% block title_left %}
-<div id="previous">
-    <a href="#">&larr;</a>
-</div>
-{% endblock %}
 
-
-{% block title %}
+{% block content %}
     <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
     {% if meta.authors %}
         <p class="authors">{{ meta.authors|dictsort:"lower"|natural_join:'&' }}</p>
@@ -42,17 +36,7 @@
         {{ meta.title.0|default:pad.display_slug|markdown_filter }}
     </h1>
     </header>
-{% endblock %}
 
-
-{% block title_right %}
-<div id="next">
-    <a href="#">&rarr;</a>
-</div>
-{% endblock %}
-
-
-{% block content %}
     {{ text|safe }}
     
     <div id="metadata">
@@ -82,13 +66,6 @@
             {{ meta.colophon.0|markdown_filter }}
         {% endif %}
 
-    </div>
-
-    
-    <div id="go-up">
-        <a class="screen-only" href="#">&uarr;</a>
-    </div>
-
 
 
 {% endblock %}
@@ -114,11 +91,11 @@
     {% else %}
 
         <div id="print-interface">
-            <button id="debug" class="button" href="#">Debug</button>
-            <button id="hi-res" class="button" href="#">Hi-res</button>
+            <button id="debug" class="button">Debug</button>
+            <button id="hi-res" class="button">Hi-res</button>
             <div id="toc">
-                <button id="goto" class="button" href="#">Go to</button>
-                <ul id="toc-pages"></ul>
+                <button id="goto" class="button">Go to</button>
+                <ul id="toc-pages"> </ul>
             </div>
         </div>
     {% endif %}
