@@ -120,31 +120,30 @@ if($("body").hasClass("print-mode")){
                 hires.splice(-1, 0, "HD");
                 hires = hires.join("/");
                 $(this).attr("src", hires);
-                console.log("Wait for hi-res images to load");
-                window.setTimeout(function(){
-                    console.log("Check image resolution");
-                    // Redlights images too small for printing
-                    $("img").each(function(){
-                        if (Math.ceil(this.naturalHeight / $(this).height()) < 3) {
-                            console.log($(this).attr("src") + ": " + Math.floor(this.naturalHeight / $(this).height()) );
-                            if($(this).parent().hasClass("moveable")) {
-                                $(this).parent().toggleClass("lo-res");
-                            } else {
-                                $(this).toggleClass("lo-res");
-                            }
-                        }
-                    });
+        console.log("Wait for hi-res images to load");
+        window.setTimeout(function(){
+            console.log("Check image resolution");
+            // Redlights images too small for printing
+            $("img").each(function(){
+                if (Math.ceil(this.naturalHeight / $(this).height()) < 3) {
+                    console.log($(this).attr("src") + ": " + Math.floor(this.naturalHeight / $(this).height()) );
+                    if($(this).parent().hasClass("moveable")) {
+                        $(this).parent().toggleClass("lo-res");
+                    } else {
+                        $(this).toggleClass("lo-res");
+                    }
+                }
+            });
+        }, 2000);
             } else {
                 var hires = $(this).attr("src");
                 lores = hires.split("/");
                 lores.splice(-2, 1);
                 lores = lores.join("/");
-                $(this).attr("src", lores).ready(function(){
-                    $("img").removeClass("lo-res");
-                });
+                $(this).attr("src", lores);
+                $("img").removeClass("lo-res");
             }
         });
-        }, 2000);
     });
 
 
