@@ -37,6 +37,22 @@ if($("body").hasClass("print-mode")){
                 .print-marks {                                          \n \
                     display: none;                                      \n \
                 }                                                       \n \
+                section.header {                                        \n \
+                    top: 0;                                             \n \
+                    left: 0;                                            \n \
+                    right: 0;                                           \n \
+                }                                                       \n \
+                section.main-section {                                  \n \
+                    top: 0;                                             \n \
+                    left: 0;                                            \n \
+                    bottom: 0;                                          \n \
+                    right: 0;                                           \n \
+                }                                                       \n \
+                section.footer {                                        \n \
+                    bottom: 0;                                          \n \
+                    left: 0;                                            \n \
+                    right: 0;                                           \n \
+                }                                                       \n \
             "
         }
         var style = document.createElement('style');
