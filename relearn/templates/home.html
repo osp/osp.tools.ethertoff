@@ -33,15 +33,13 @@
         {% if forloop.counter.last %}
             <li>
         {% endif %}
-        {% if article.title != "About" %}
-            {% ifchanged article.id %}
-            </li>
-            <li {% if article.type %}data-type="{{ article.type }}"{% endif %}>
-                    <span class="authors">{{ article.authors|natural_join:'&' }}</span> 
-            {% endifchanged %}
+        {% ifchanged article.id %}
+        </li>
+        <li {% if article.type %}data-type="{{ article.type }}"{% endif %}>
+                <span class="authors">{{ article.authors|natural_join:'&' }}</span> 
+        {% endifchanged %}
 
-            <a href="{{ article.href }}" lang="{{ article.language }}">{{ article.title|markdown_filter }}</a>
-        {% endif %}
+        <a href="{{ article.href }}" lang="{{ article.language }}">{{ article.title|markdown_filter }}</a>
 
         {% if forloop.counter.last %}
             </li>
