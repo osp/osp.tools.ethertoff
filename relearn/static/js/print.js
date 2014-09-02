@@ -37,6 +37,26 @@ if($("body").hasClass("print-mode")){
                 .print-marks {                                          \n \
                     display: none;                                      \n \
                 }                                                       \n \
+                section.header {                                        \n \
+                    top: 0;                                             \n \
+                    left: 0;                                            \n \
+                    right: 0;                                           \n \
+                }                                                       \n \
+                section.main-section {                                  \n \
+                    top: 0;                                             \n \
+                    left: 0;                                            \n \
+                    bottom: 0;                                          \n \
+                    right: 0;                                           \n \
+                }                                                       \n \
+                section.footer {                                        \n \
+                    bottom: 0;                                          \n \
+                    left: 0;                                            \n \
+                    right: 0;                                           \n \
+                }                                                       \n \
+                #master-page,                                           \n \
+                .page {                                                 \n \
+                    outline-offset: 0;                                  \n \
+                }                                                       \n \
             "
         }
         var style = document.createElement('style');
@@ -120,15 +140,6 @@ if($("body").hasClass("print-mode")){
                 hires.splice(-1, 0, "HD");
                 hires = hires.join("/");
                 $(this).attr("src", hires);
-            } else {
-                var hires = $(this).attr("src");
-                lores = hires.split("/");
-                lores.splice(-2, 1);
-                lores = lores.join("/");
-                $(this).attr("src", lores);
-                $("img").removeClass("lo-res");
-            }
-        });
         console.log("Wait for hi-res images to load");
         window.setTimeout(function(){
             console.log("Check image resolution");
@@ -144,6 +155,15 @@ if($("body").hasClass("print-mode")){
                 }
             });
         }, 2000);
+            } else {
+                var hires = $(this).attr("src");
+                lores = hires.split("/");
+                lores.splice(-2, 1);
+                lores = lores.join("/");
+                $(this).attr("src", lores);
+                $("img").removeClass("lo-res");
+            }
+        });
     });
 
 
