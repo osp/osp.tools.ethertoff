@@ -1,7 +1,7 @@
 function remy(target) {          
-    pattern = /(\b[A-Z].{0,2}|, .{0,3}) /g
+    pattern = /(\b[A-Z].{0,2}|, .{0,3}) /g;
     text = target.html();          
-    target.html(text.replace(pattern, '$1&nbsp;'));  
+    target.html(text.replace(pattern, '$1 ')); // I actually put a non-breaking space charcter after $1! You don’t see it, but it’s there. This is to not have this &nbsp; value pop up in places.
 }    
 
 $(document).ready(function() {
