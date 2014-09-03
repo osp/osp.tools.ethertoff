@@ -2,9 +2,9 @@
 {% load wikify relearn_tags %}
 
 {% block extra_styles %}
-    <link rel="stylesheet" href="/css-print/" type="text/css" media="all">
+    <link rel="stylesheet/less" href="/css-print/" type="text/css" media="all">
     {% if user.is_authenticated and meta.publish %}
-        <link rel="stylesheet" href="{{ STATIC_URL }}less/print.less" type="text/less" media="all">
+        <link rel="stylesheet/less" href="{{ STATIC_URL }}less/print.less" type="text/less" media="all">
     {% endif %}
 {% endblock %}
 
