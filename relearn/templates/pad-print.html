@@ -28,6 +28,8 @@
 
 {% block data_article %}{{ meta.authors|natural_join:'&' }}, {{ meta.title.0|markdown_filter|no_p }}{% endblock %}
 
+{% block bodyclasses%}{% if meta.type %}{{ meta.type.0|lower }}{% endif %}{% endblock %}
+
 {% block content %}
     <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
     {% if meta.authors %}
