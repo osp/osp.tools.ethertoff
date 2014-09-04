@@ -13,21 +13,22 @@ if($("body").hasClass("print-mode")){
 
     // OVERRIDES PAGE FORMAT SET ON PAD
     try{
-        var pageWidthCrop = parseInt(customPageWidth) + parseInt(crop) + "mm";
-        var pageHeightCrop = parseInt(customPageHeight) + parseInt(crop) + "mm";
+        var pageWidthCrop = parseInt(customPageWidth) + parseInt(crop);
+        var pageHeightCrop = parseInt(customPageHeight) + parseInt(crop);
+        var pageHeightCropx = pageHeightCrop - 1;
         var styles = "                                                  \
             @page {                                                     \n \
-                size:" + pageWidthCrop + " " + pageHeightCrop + ";      \n \
+                size:" + pageWidthCrop + "mm " + pageHeightCrop + "mm;      \n \
             }                                                           \n \
             html,                                                       \n \
             body {                                                      \n \
-                width: " + pageWidthCrop + ";                           \n \
+                width: " + pageWidthCrop + "mm;                           \n \
             }                                                           \n \
             #master-page,                                               \n \
             .page,                                                      \n \
             div.print-marks {                                           \n \
-                width: " + pageWidthCrop + ";                           \n \
-                height: " + pageHeightCrop + ";                         \n \
+                width: " + pageWidthCrop + "mm;                           \n \
+                height: " + pageHeightCropx + "mm;                         \n \
             }                                                           \n \
         "
 
