@@ -313,9 +313,6 @@ section.main-section {
     position: absolute;
 
 }
-#content {
-    width: 100%;
-}
 div.column {
     -webkit-flow-from: myFlow;
     -adobe-flow-from: myFlow;
@@ -326,7 +323,9 @@ div.column {
 div.column + div.column {
     padding-left: 1em;
 }
-.middle {
+#content,
+div.footnote,
+div#metadata {
     -webkit-flow-into: myFlow;
     -adobe-flow-into: myFlow;
     width: 100%;
