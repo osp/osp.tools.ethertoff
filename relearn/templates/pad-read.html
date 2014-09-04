@@ -24,6 +24,8 @@
 {% endblock %}
 
 
+{% block data_article %}{{ meta.authors|natural_join:'&'|markdown_filter|no_p }}, {{ meta.title.0 }}{% endblock %}
+
 {% block title_left %}
 {% if prev_page %}<div id="previous">
     <a href="{{ prev_page.href }}" title="{{ prev_page.authors|natural_join:'&' }}, {{ prev_page.title }}">&larr;<br/>

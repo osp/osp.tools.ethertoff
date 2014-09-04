@@ -26,6 +26,7 @@
 {% endblock %}
 
 
+{% block data_article %}{{ meta.authors|natural_join:'&' }}, {{ meta.title.0|markdown_filter|no_p }}{% endblock %}
 
 {% block content %}
     <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
