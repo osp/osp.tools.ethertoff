@@ -26,7 +26,7 @@ def site_name(request):
 
 def eyes(request):
     hash = {}
-    if 'admin' in request.path:
+    if 'admin' in request.path or number_of_eyes == 0:
         return hash
     n = randint(1, number_of_eyes)
     hash['EYES']  = 'Yeux_%02d.png' % n
