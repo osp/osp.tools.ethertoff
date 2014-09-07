@@ -100,6 +100,10 @@ def query_results_to_template_articles(query_results):
     template_articles = []
     article = None
     current_uri = None
+    
+    if len(query_results) == 0:
+        return template_articles
+    
     for s, p, o in query_results:
         print s.encode('utf-8'), p.encode('utf-8'), o.encode('utf-8')
         uri   = unicode(s).strip()
