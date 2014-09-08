@@ -19,6 +19,12 @@
             <dt>PDF</dt>
             <dd><a href="{{ meta.pdf.0 }}">Download</a></dd>
         {% endif %}
+
+        {% if meta.tags %}
+            <dt>Tags</dt>
+            <dd>{{ meta.tags|natural_join:',' }}</dd>
+        {% endif %}
+
     </dl>
 
     {% if meta.colophon %}
