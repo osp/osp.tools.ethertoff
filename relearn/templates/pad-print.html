@@ -66,7 +66,6 @@
 
     {% else %}
 
-        {% if meta.publish %}
         <div id="print-interface">
             <button id="debug">Debug</button>
             <button id="hi-res">Hi-res</button>
@@ -75,15 +74,12 @@
                 <ul id="toc-pages"> </ul>
             </div>
         </div>
-        {% endif %}
     {% endif %}
 {% endblock %}
 
 
 
 {% block scripts %}
-    {% if user.is_authenticated and meta.publish %}
-        <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
-        <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>
-    {% endif %}
+    <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
+    <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>
 {% endblock %}
