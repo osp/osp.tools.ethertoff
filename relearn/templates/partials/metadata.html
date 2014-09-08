@@ -1,0 +1,27 @@
+<div id="metadata">
+    <p>
+    Published on {{ site_name }}, <span property="dc:created" content="{{ meta.date_parsed.0 }}">{{ date|date:"F j, o" }}</span>.
+    </p>
+    
+    <dl>
+        {% if meta.translation %}
+            <dt>Translation</dt>
+            <dd>{{ meta.translation.0 }}</dd>
+        {% endif %}
+
+        {% if meta.licence %}
+            <dt>License</dt>
+            {% if meta.licence.0 == "CC BY-ND 3.0 France" %}<dd><a href="http://creativecommons.org/licenses/by-nd/3.0/fr/" rel="license">{{ meta.licence.0 }}</a></dd>{% else %}<dd><span property="license">{{ meta.licence.0 }}</span></dd>
+            {% endif %}
+        {% endif %}
+
+        {% if meta.pdf %}
+            <dt>PDF</dt>
+            <dd><a href="{{ meta.pdf.0 }}">Download</a></dd>
+        {% endif %}
+    </dl>
+
+    {% if meta.colophon %}
+        {{ meta.colophon.0|markdown_filter }}
+    {% endif %}
+</div>
