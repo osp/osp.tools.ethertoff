@@ -39,7 +39,7 @@ Infrastructures entrelacées, an exhibition by the collective Artivistic at SKOL
 
 Requires Django 1.5
 First create and install a virtual environment [1]. Then:
-    pip install "django<1.6" south Markdown
+    pip install "django<1.6" south Markdown html5tidy python-dateutil rdflib
     pip install https://github.com/devjones/PyEtherpadLite/archive/master.zip
 
     mkdir -p ~/src/
