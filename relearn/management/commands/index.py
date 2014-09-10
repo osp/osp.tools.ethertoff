@@ -92,6 +92,7 @@ short_names = {
     "http://purl.org/dc/terms/language" : "language",
     "http://purl.org/dc/terms/type" : "type",
     "http://purl.org/dc/terms/identifier" : "id",
+    "http://purl.org/dc/terms/subject" : "tag",
 }
 
 HOST = None
@@ -129,7 +130,11 @@ def query_results_to_template_articles(query_results):
                 if 'authors' not in article:
                     article['authors'] = []
                 article['authors'].append(value)
-            if key == "http://purl.org/dc/terms/title":
+            elif key == "http://purl.org/dc/terms/subject":
+                if 'tags' not in article:
+                    article['tags'] = []
+                article['tags'].append(value)
+            elif key == "http://purl.org/dc/terms/title":
                 txt = "found title %s" % value
                 print txt.encode('utf-8')
                 # Ad-hoc: remove footnotes from the titles!
