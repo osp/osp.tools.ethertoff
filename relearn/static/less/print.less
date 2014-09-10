@@ -330,6 +330,12 @@ div#metadata {
     -adobe-flow-into: myFlow;
     width: 100%;
 }
+.include #content,
+.include div.footnote,
+.include div#metadata {
+    -webkit-flow-into: none;
+    -adobe-flow-into: none;
+}
 
 
 /* __________________________________ FOOTER __________________________________ */
@@ -370,5 +376,4 @@ h1, h2, h3, h4, h5, h6 {
 p {
     /*-webkit-region-break-inside: avoid;*/
 }
-
 
