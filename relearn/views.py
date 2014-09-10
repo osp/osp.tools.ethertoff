@@ -277,8 +277,8 @@ def pad_read(request, pk=None, slug=None):
     date_obj = None
     meta_list = []
 
-    # One needs to set a ‘Public’ metadata for the page to be accessible to outside visitors
-    if not meta or not 'public' in meta or not meta['public'][0] or meta['public'][0].lower() in ['false', 'no', 'off', '0']:
+    # One needs to set the ‘Static’ metadata to ‘Public’ for the page to be accessible to outside visitors
+    if not meta or not 'status' in meta or not meta['status'][0] or not meta['status'][0].lower() in ['public']:
         if not request.user.is_authenticated():
             raise PermissionDenied
     
