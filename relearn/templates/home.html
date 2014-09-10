@@ -11,8 +11,8 @@
 {% block extra_nav %}
     <div id="sort-by">Sort by:
         <a class="{% if not sort %}active{% endif %} button screen-only" href="/">Date</a>
-        <a class="{% if sort == 'author' %}active{% endif %} button screen-only" href="?sort=author">Author</a>
-        <a class="{% if sort == 'book' %}active{% endif %} button screen-only" href="?sort=book">Book</a>
+        <a class="{% if sort == 'tag' %}active{% endif %} button screen-only" href="?sort=tags">Tag</a>
+        <a class="{% if sort == 'participant' %}active{% endif %} button screen-only" href="?sort=participants">Participant</a>
     </div>
 {% endblock %}
 
@@ -33,24 +33,19 @@
 {% endblock %}
 
 {% block content %}
+    {% for set_of_articles in articles %}
+    <h2>{{ set_of_articles.key }}</h2>
+    
     <ul>
-    {% for article in articles %}
-        {% if forloop.counter.last %}
-            <li>
-        {% endif %}
-        {% ifchanged article.id %}
-        </li>
+    {% for article in set_of_articles.values %}
+
         <li {% if article.type %}data-type="{{ article.type }}"{% endif %}>
-                <span class="authors">{{ article.authors|natural_join:'&' }}</span> 
-        {% endifchanged %}
-
         <a href="{{ article.href }}" lang="{{ article.language }}">{{ article.title|markdown_filter }}</a>
+        </li>
 
-        {% if forloop.counter.last %}
-            </li>
-        {% endif %}
     {% endfor %}
     </ul>
+    {% endfor %}
 {% endblock %}
 
 {% block rightside %}

@@ -324,34 +324,33 @@ def home(request):
         except Pad.DoesNotExist: # If there is no homepage defined we go to the login:
             return HttpResponseRedirect(reverse('login'))
     
-    sort = None
+    sort = 'date'
     if 'sort' in request.GET:
         sort = request.GET['sort']
-        if sort == 'book':
-            """
-            Only those articles with type=book
-            """
-            tpl_articles = [article for article in articles if 'type' in article and article['type'].lower() == 'book']
-        elif sort == 'author':
-            """
-            [ Author A Article A, Author A Article B, Author B Article A, Author B Article B]
-            
-            Articles with multiple authors appear multiple times
-            """
-            authors = {}
-            for article in articles:
-                if 'authors' in article:
-                    for author in article['authors']:
-                        if not author in authors:
-                            authors[author] = [article]
-                        else:
-                            authors[author].append(article)
-            tpl_articles = []
-            for author in sorted(authors.keys()):
-                # Add the articles sorted by date ascending:
-                tpl_articles += sorted(authors[author], key=lambda a: a['date'] if 'date' in a else 0)
-    else:
-        tpl_articles = articles
+
+    hash = {}
+    for article in articles:
+        if sort in article:
+            if isinstance(article[sort], basestring):
+                subject = article[sort]
+                if not subject in hash:
+                    hash[subject] = [article]
+                else:
+                    hash[subject].append(article)
+            else:
+                for subject in article[sort]:
+                    if not subject in hash:
+                        hash[subject] = [article]
+                    else:
+                        hash[subject].append(article)
+    tpl_articles = []
+    for subject in sorted(hash.keys()):
+        # Add the articles sorted by date ascending:
+        tpl_articles.append({
+            'key' : subject,
+            'values': sorted(hash[subject], key=lambda a: a['date'] if 'date' in a else 0)
+        })
+
     tpl_params = { 'articles': tpl_articles,
                    'sort': sort }
     return render_to_response("home.html", tpl_params, context_instance = RequestContext(request))
