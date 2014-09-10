@@ -66,6 +66,7 @@
 
 
 {% block content %}
+        {% include "partials/metadata.html" %}
 
     {% ifequal mode "p" %}
         <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
@@ -77,6 +78,7 @@
         </h2>
         </header>
     {% endifequal %}
+
 
     {{ text|safe }}
     
