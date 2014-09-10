@@ -265,7 +265,7 @@ def pad_read(request, mode="r", slug=None):
     # Convert the {% include %} tags into a form easily digestible by jquery
     # {% include "example.html" %} -> <a id="include-example.html" class="include" href="/r/include-example.html">include-example.html</a>
     def ret(matchobj):
-        return '<a id="include-%s" class="include pad-%s" href="%s">%s</a>' % (slugify(matchobj.group(1)), slugify(matchobj.group(1)), reverse('pad-read', args=(matchobj.group(1),) ), matchobj.group(1))
+        return '<a id="include-%s" class="include pad-%s" href="%s">%s</a>' % (slugify(matchobj.group(1)), slugify(matchobj.group(1)), reverse('pad-read', args=("r", matchobj.group(1)) ), matchobj.group(1))
     
     text = include_regex.sub(ret, text)
     
