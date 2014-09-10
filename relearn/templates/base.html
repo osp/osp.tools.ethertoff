@@ -77,9 +77,11 @@
     </div>
 
     <div class="wrap" style="height: 85%;">
-        <div class="left-side screen-only">
+        <div class="left-side">
+            {% include "partials/metadata.html" %}
         </div>
         <div class="middle">
+
             <div id="content" class="{% block contentclasses %}{% endblock %}">
                 {% block content %}{% endblock %}
             </div>
