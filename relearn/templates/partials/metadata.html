@@ -3,38 +3,48 @@
     <dl>
         {% if meta.theme %}
             <dt>Theme</dt>
-            <dd>{{ meta.theme|natural_join:',' }}</dd>
+            {% for theme in meta.theme %}
+            <dd>{{ theme }}</dd>
+            {% endfor %}
         {% endif %}
 
         {% if meta.place %}
             <dt>Location</dt>
-            <dd>{{ meta.place|natural_join:',' }}</dd>
+            {% for place in meta.place %}
+            <dd>{{ place }}</dd>
+            {% endfor %}
         {% endif %}
 
         {% if meta.participants %}
             <dt>Participants</dt>
-            <dd>{{ meta.participants|natural_join:'and' }}</dd>
+            {% for participant in meta.participants %}
+            <dd property="dc:contributor">{{ participant }}</dd>
+            {% endfor %}
         {% endif %}
 
 
         {% if meta.tags %}
             <dt>Tags</dt>
-            <dd>{{ meta.tags|natural_join:',' }}</dd>
+            {% for tag in meta.tags %}
+            <dd property="dc:subject">{{ tag }}</dd>
+            {% endfor %}
         {% endif %}
 
 
         {% if meta.date_parsed %}
             <dt>Date</dt>
-            <dd>
-            {{ meta.date_parsed|natural_join:',' }}</dd>
-            <span property="dc:created" content="{{ meta.date_parsed.0 }}">{{ date|date:"F j, o" }}</span>
-            </dd>
+            <dd property="dc:created" content="{{ meta.date_parsed.0 }}">{{ date|date:"F j, o" }}</dd>
+            {% for date in meta.date_parsed %}
+            <dd>{{ date }}</dd>
+            {% endfor %}
         {% endif %}
 
 
         {% if meta.intervention %}
             <dt>Type of intervention</dt>
-            <dd>{{ meta.intervention|natural_join:',' }}</dd>
+            {% for intervention in meta.intervention %}
+            <dd>{{ intervention }}</dd>
+            {% endfor %}
         {% endif %}
 
 
