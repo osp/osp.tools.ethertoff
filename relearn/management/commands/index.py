@@ -87,13 +87,14 @@ order by ?subject
 short_names = {
     "http://www.w3.org/1999/xhtml/vocab#license" : "license",
     "http://purl.org/dc/terms/title" : "title",
-    "http://purl.org/dc/terms/creator" : "author",
+    "http://purl.org/dc/terms/creator" : "authors",
     "http://purl.org/dc/terms/created" : "date",
     "http://purl.org/dc/terms/language" : "language",
     "http://purl.org/dc/terms/type" : "type",
     "http://purl.org/dc/terms/identifier" : "id",
-    "http://purl.org/dc/terms/subject" : "tag",
-    "http://purl.org/dc/terms/contributor" : "participant",
+    "http://purl.org/dc/terms/subject" : "tags",
+    "http://purl.org/dc/terms/contributor" : "participants",
+    "http://purl.org/dc/terms/Location" : "place",
 }
 
 HOST = None
@@ -127,30 +128,19 @@ def query_results_to_template_articles(query_results):
             current_uri = uri
         
         if key in short_names:
-            if key == "http://purl.org/dc/terms/creator":
-                if 'authors' not in article:
-                    article['authors'] = []
-                article['authors'].append(value)
-            elif key == "http://purl.org/dc/terms/subject":
-                if 'tags' not in article:
-                    article['tags'] = []
-                article['tags'].append(value)
-            elif key == "http://purl.org/dc/terms/contributor":
-                if 'participants' not in article:
-                    article['participants'] = []
-                article['participants'].append(value)
-            elif key == "http://purl.org/dc/terms/title":
-                txt = "found title %s" % value
-                print txt.encode('utf-8')
-                # Ad-hoc: remove footnotes from the titles!
-                value = re.sub(r'<sup>.*</sup>', '', value)
-                # Ad-hoc: in this case, &lt; is read as < but needs to become &lt; again
-                value = value.replace('<o>', '&lt;o&gt;')
-                txt = "encoding as %s" % value
-                print txt.encode('utf-8')
-                article['title'] = value
+            new_key = short_names[key]
+            # Some terms give us lists:
+            if key in [
+               "http://purl.org/dc/terms/creator",
+               "http://purl.org/dc/terms/subject",
+               "http://purl.org/dc/terms/contributor",
+               "http://purl.org/dc/terms/Location"
+            ]:
+                if new_key not in article:
+                   article[new_key] = []
+                article[new_key].append(value)
+            # Otherwise it is strings
             else:
-                new_key = short_names[key]
                 article[new_key] = value
     
     template_articles.append(article)

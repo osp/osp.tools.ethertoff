@@ -11,7 +11,7 @@
         {% if meta.place %}
             <dt>Location</dt>
             {% for place in meta.place %}
-            <dd>{{ place }}</dd>
+            <dd property="dc:Location">{{ place }}</dd>
             {% endfor %}
         {% endif %}
 
@@ -43,7 +43,7 @@
         {% if meta.intervention %}
             <dt>Type of intervention</dt>
             {% for intervention in meta.intervention %}
-            <dd>{{ intervention }}</dd>
+            <dd property="dc:type">{{ intervention }}</dd>
             {% endfor %}
         {% endif %}
 
