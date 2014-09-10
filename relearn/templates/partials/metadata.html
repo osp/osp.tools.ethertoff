@@ -30,6 +30,11 @@
             {% endfor %}
         {% endif %}
 
+        {% if meta.ingredients %}
+            <dt>Ingredients</dt>
+            <dd>{{ meta.ingredients|natural_join:',' }}</dd>
+        {% endif %}
+
 
         {% if meta.date_parsed %}
             <dt>Date</dt>
