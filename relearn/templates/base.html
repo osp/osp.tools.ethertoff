@@ -43,7 +43,7 @@
     </nav>
     <nav id="nav-right">
         {% if pad %}
-            {% if mode == 'read' %}
+            {% if mode == 'r' %}
                 <a class="active button read-button screen-only">Read</a>
                 <a class="button screen-only write-button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
             {% else %}
