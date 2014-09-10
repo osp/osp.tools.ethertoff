@@ -160,12 +160,11 @@ def snif():
     global HOST
     if not HOST:
         return "No site domain settings found"
-    host = u"http://%s/" % HOST
+    host = u"http://%s" % HOST
     
     start = clock()
     
     g = rdflib.Graph()
-    host = HOST
     
     i = 0
     total = Pad.objects.count()
