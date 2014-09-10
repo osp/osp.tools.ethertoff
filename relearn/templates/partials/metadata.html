@@ -1,14 +1,42 @@
 {% load wikify relearn_tags %}
 <div id="metadata">
-    <p>
-    Published on {{ site_name }}, <span property="dc:created" content="{{ meta.date_parsed.0 }}">{{ date|date:"F j, o" }}</span>.
-    </p>
-    
     <dl>
-        {% if meta.translation %}
-            <dt>Translation</dt>
-            <dd>{{ meta.translation.0 }}</dd>
+        {% if meta.theme %}
+            <dt>Theme</dt>
+            <dd>{{ meta.theme|natural_join:',' }}</dd>
         {% endif %}
+
+        {% if meta.place %}
+            <dt>Location</dt>
+            <dd>{{ meta.place|natural_join:',' }}</dd>
+        {% endif %}
+
+        {% if meta.participants %}
+            <dt>Participants</dt>
+            <dd>{{ meta.participants|natural_join:'and' }}</dd>
+        {% endif %}
+
+
+        {% if meta.tags %}
+            <dt>Tags</dt>
+            <dd>{{ meta.tags|natural_join:',' }}</dd>
+        {% endif %}
+
+
+        {% if meta.date_parsed %}
+            <dt>Date</dt>
+            <dd>
+            {{ meta.date_parsed|natural_join:',' }}</dd>
+            <span property="dc:created" content="{{ meta.date_parsed.0 }}">{{ date|date:"F j, o" }}</span>
+            </dd>
+        {% endif %}
+
+
+        {% if meta.intervention %}
+            <dt>Type of intervention</dt>
+            <dd>{{ meta.intervention|natural_join:',' }}</dd>
+        {% endif %}
+
 
         {% if meta.licence %}
             <dt>License</dt>
@@ -21,14 +49,11 @@
             <dd><a href="{{ meta.pdf.0 }}">Download</a></dd>
         {% endif %}
 
-        {% if meta.tags %}
-            <dt>Tags</dt>
-            <dd>{{ meta.tags|natural_join:',' }}</dd>
-        {% endif %}
 
     </dl>
 
-    {% if meta.colophon %}
-        {{ meta.colophon.0|markdown_filter }}
-    {% endif %}
+
+        {% if meta.colophon %}
+            {{ meta.colophon.0|markdown_filter }}
+        {% endif %}
 </div>

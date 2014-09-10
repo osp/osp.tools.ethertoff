@@ -66,19 +66,7 @@
 
 
 {% block content %}
-    {% if meta.tags %}
-    <h2>Tags</h2>
-    <ul>
-        {% for tag in meta.tags%}<li property="dc:subject">{{ tag }}</li>
-        {% endfor %}
-    </ul>{% endif %}
-    {% if meta.participants %}
-    <h2>Participants</h2>
-    <ul>
-        {% for participant in meta.participants %}<li property="dc:contributor">{{ participant }}</li>
-        {% endfor %}
-    </ul>{% endif %}
-
+    {% include "partials/metadata.html" %}
 
     {% ifequal mode "p" %}
         <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
@@ -93,7 +81,6 @@
 
     {{ text|safe }}
     
-    {% include "partials/metadata.html" %}
     
     {% ifequal mode "r" %}
         <div id="go-up">
