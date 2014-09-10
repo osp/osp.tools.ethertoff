@@ -93,6 +93,7 @@ short_names = {
     "http://purl.org/dc/terms/type" : "type",
     "http://purl.org/dc/terms/identifier" : "id",
     "http://purl.org/dc/terms/subject" : "tag",
+    "http://purl.org/dc/terms/contributor" : "participant",
 }
 
 HOST = None
@@ -134,6 +135,10 @@ def query_results_to_template_articles(query_results):
                 if 'tags' not in article:
                     article['tags'] = []
                 article['tags'].append(value)
+            elif key == "http://purl.org/dc/terms/contributor":
+                if 'participants' not in article:
+                    article['participants'] = []
+                article['participants'].append(value)
             elif key == "http://purl.org/dc/terms/title":
                 txt = "found title %s" % value
                 print txt.encode('utf-8')
