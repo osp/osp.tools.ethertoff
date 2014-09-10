@@ -21,6 +21,7 @@ from django.template.loader import render_to_string
 
 # Django Apps import
 
+from django.contrib.sites.models import Site
 from etherpadlite.models import Pad, PadAuthor
 from relearn.settings import BACKUP_DIR
 
@@ -93,6 +94,11 @@ short_names = {
     "http://purl.org/dc/terms/identifier" : "id",
 }
 
+HOST = None
+if Site.objects.count() > 0:
+    site = Site.objects.all()[0]
+    HOST = site.domain
+
 def query_results_to_template_articles(query_results):
     """
     Transform the RDFLIB SPARQL query result into the row that we want to use for the template
@@ -151,11 +157,15 @@ def query_results_to_template_articles(query_results):
     return sorted(template_articles, key=lambda a: a['date'] if 'date' in a else 0, reverse=True)
 
 def snif():
+    global HOST
+    if not HOST:
+        return "No site domain settings found"
+    host = u"http://%s/" % HOST
+    
     start = clock()
     
     g = rdflib.Graph()
-    host = 'http://f-u-t-u-r-e.org'
-    # host = 'http://127.0.0.1:8000'
+    host = HOST
     
     i = 0
     total = Pad.objects.count()
