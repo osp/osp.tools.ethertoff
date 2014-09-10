@@ -2,8 +2,13 @@
 {% load wikify relearn_tags %}
 
 {% block extra_styles %}
-    <link rel="stylesheet/less" href="/css/" type="text/css" media="screen">
-    <link rel="stylesheet/less" href="/css-print/" type="text/css" media="print">
+    {% ifequal mode "p" %}
+        <link rel="stylesheet/less" href="/css-print/" type="text/css" media="all">
+        <link rel="stylesheet/less" href="{{ STATIC_URL }}less/print.less" type="text/css" media="all">
+    {% else %}
+        <link rel="stylesheet/less" href="/css/" type="text/css" media="screen">
+        <link rel="stylesheet/less" href="/css-print/" type="text/css" media="print">
+    {% endifequal %}
 {% endblock %}
 
 
@@ -29,56 +34,64 @@
 {% block bodyclasses%}{% if meta.type %}{{ meta.type.0|lower }}{% endif %}{% endblock %}
 
 {% block title_left %}
-{% if prev_page %}<div id="previous">
-    <a href="{{ prev_page.href }}" title="{{ prev_page.authors|natural_join:'&' }}, {{ prev_page.title }}">&larr;<br/>
-    <span>{{ prev_page.authors|natural_join:'&' }}<br/>
-    {{ prev_page.title|safe }}</span></a>
-</div>{% endif %}
+    {% if prev_page %}<div id="previous">
+        <a href="{{ prev_page.href }}" title="{{ prev_page.authors|natural_join:'&' }}, {{ prev_page.title }}">&larr;<br/>
+        <span>{{ prev_page.authors|natural_join:'&' }}<br/>
+        {{ prev_page.title|safe }}</span></a>
+    </div>{% endif %}
 {% endblock %}
 
 
 {% block title %}
-    <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
-    {% if meta.authors %}
-        <p class="authors">{{ meta.authors|natural_join:'&' }}</p>
-    {% endif %}
-    <h2 property="dc:title" content="{{ meta.title.0|default:pad.display_slug|markdown_filter|no_p }}">
-        {{ meta.title.0|default:pad.display_slug|markdown_filter|no_p }}
-    </h2>
-    </header>
+    {% ifequal mode "r" %}
+        <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
+        {% if meta.authors %}
+            <p class="authors">{{ meta.authors|natural_join:'&' }}</p>
+        {% endif %}
+        <h2 property="dc:title" content="{{ meta.title.0|default:pad.display_slug|markdown_filter|no_p }}">
+            {{ meta.title.0|default:pad.display_slug|markdown_filter|no_p }}
+        </h2>
+        </header>
+    {% endifequal %}
 {% endblock %}
 
 
 {% block title_right %}
-{% if next_page %}<div id="next">
-    <a href="{{ next_page.href }}" title="{{ next_page.authors|natural_join:'&' }}, {{ next_page.title }}">&rarr;<br/>
-    <span>{{ next_page.authors|natural_join:'&' }}<br/>
-    {{ next_page.title|safe }}</span></a>
-</div>{% endif %}
+    {% if next_page %}<div id="next">
+        <a href="{{ next_page.href }}" title="{{ next_page.authors|natural_join:'&' }}, {{ next_page.title }}">&rarr;<br/>
+        <span>{{ next_page.authors|natural_join:'&' }}<br/>
+        {{ next_page.title|safe }}</span></a>
+    </div>{% endif %}
 {% endblock %}
 
 
 {% block content %}
+    {% ifequal mode "p" %}
+        <header class="{% if meta.type %}{{ meta.type.0|lower }}{% endif %}">
+        {% if meta.authors %}
+            <p class="authors">{{ meta.authors|natural_join:'&' }}</p>
+        {% endif %}
+        <h2 property="dc:title">
+            {{ meta.title.0|default:pad.display_slug|markdown_filter|no_p }}
+        </h2>
+        </header>
+    {% endifequal %}
+
     {{ text|safe }}
     
     {% include "partials/metadata.html" %}
     
-    <div id="go-up">
-        <a class="screen-only" href="#">&uarr;</a>
-    </div>
+    {% ifequal mode "r" %}
+        <div id="go-up">
+            <a class="screen-only" href="#">&uarr;</a>
+        </div>
+    {% endifequal %}
 {% endblock %}
 
+
 {% block rightside %}
-    
-    
-    {% if author %}
-        {% if meta %}
-            <!--
-            auteur
-            titre
-            date
-            sommaire (optionel)
-            -->
+    {% ifequal mode "r" %}
+        {% if author and meta %}
             <dl class="meta private">
             {% for key, values in meta_list reversed %}
                 <dt>{{ key|title }}</dt>
@@ -90,7 +103,7 @@
                 </dd>
             </dl>
         {% endif %}
-    {% endif %}
+    {% endifequal %}
 {% endblock %}
 
 {% block extraui %}
@@ -109,5 +122,23 @@
               </form>
             </div>
         </div>
+    {% else %}
+        {% ifequal mode "p" %}
+            <div id="print-interface">
+                <button id="debug">Debug</button>
+                <button id="hi-res">Hi-res</button>
+                <div id="toc">
+                    <button id="goto">Go to</button>
+                    <ul id="toc-pages"> </ul>
+                </div>
+            </div>
+        {% endifequal %}
     {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    {% ifequal mode "p" %}
+        <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
+        <script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>
+    {% endifequal %}
 {% endblock %}

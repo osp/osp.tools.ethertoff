@@ -9,7 +9,7 @@
 {% block content %}
     <ul id="pads_list">
         {% for pad in pads %}
-            <li><a data-uid="{{ pad.display_slug }}" href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.display_slug %}{% else %}{% url 'pad-read' slug=pad.display_slug %}{% endif %}" class="pad-link">{{ pad.display_slug|dewikify }}</a></li>
+            <li><a data-uid="{{ pad.display_slug }}" href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.display_slug %}{% else %}{% url 'pad-read' 'r' slug=pad.display_slug %}{% endif %}" class="pad-link">{{ pad.display_slug|dewikify }}</a></li>
         {% endfor %}
     </ul>
 {% endblock %}

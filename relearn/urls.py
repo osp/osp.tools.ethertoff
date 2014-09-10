@@ -22,9 +22,8 @@ urlpatterns = patterns(
     url(r'^accounts/logout$', 'django.contrib.auth.views.logout',
         {'template_name': 'logout.html'}, name='logout'),
     url(r'^create/$', 'relearn.views.padCreate', name='pad-create'),
-    url(r'r/(?P<slug>[^/]+)$', 'relearn.views.pad_read', name='pad-read'),
+    url(r'(?P<mode>[r|p])/(?P<slug>[^/]+)$', 'relearn.views.pad_read', name='pad-read'),
     url(r'w/(?P<slug>[^/]+)$', 'relearn.views.pad', name='pad-write'),
-    url(r'p/(?P<slug>[^/]+)$', 'relearn.views.pad_print', name='pad-print'),
     url(r'^robots\.txt$', lambda r: HttpResponse("User-agent: *\nDisallow: /", mimetype="text/plain")),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 

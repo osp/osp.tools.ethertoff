@@ -1,5 +1,5 @@
 $(window).load(function(){
-if($("body").hasClass("print-mode")){
+if($("body").hasClass("p-mode")){
 
     // Visualizes print css on screen
     $("style[media='print']").attr("media", "print, screen");
