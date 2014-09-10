@@ -8,8 +8,8 @@ if($("body").hasClass("p-mode")){
     // POLYFILL HACK: move metadata and footnotes outside of div#content
     footnotes = $(".footnote").detach();
     footnotes.insertAfter($("#content"));
-    metadata = $("#metadata").detach();
-    metadata.insertAfter($(".footnote"));
+    //metadata = $("#metadata").detach();
+    //metadata.insertAfter($(".footnote"));
 
     // OVERRIDES PAGE FORMAT SET ON PAD
     try{
