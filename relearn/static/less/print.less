@@ -1,7 +1,7 @@
 /* __________________________________ LOCAL SETTINGS __________________________________ */
 
-@page-height: 210mm;
-@page-width: 148.5mm;
+@page-height: 200mm;
+@page-width: 170mm;
 @spread: @page-width*2;
 
 @crop-length: 7mm;
@@ -11,7 +11,7 @@
 @page-height-crop: @page-height + (@crop*2);
 
 @page-margin-inside: 20mm;
-@page-margin-outside: 10mm;
+@page-margin-outside: 20mm;
 @page-margin-top: 10mm;
 @page-margin-bottom: 15mm;
 
@@ -324,15 +324,13 @@ div.column + div.column {
     padding-left: 1em;
 }
 #content,
-div.footnote,
-div#metadata {
+div.footnote {
     -webkit-flow-into: myFlow;
     -adobe-flow-into: myFlow;
     width: 100%;
 }
 .include #content,
-.include div.footnote,
-.include div#metadata {
+.include div.footnote {
     -webkit-flow-into: none;
     -adobe-flow-into: none;
 }
