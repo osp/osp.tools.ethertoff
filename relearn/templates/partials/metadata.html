@@ -4,7 +4,7 @@
         {% if meta.theme %}
             <dt>Theme</dt>
             {% for theme in meta.theme %}
-            <dd>{{ theme }}</dd>
+            <dd property="dc:subject">{{ theme }}</dd>
             {% endfor %}
         {% endif %}
 
@@ -26,7 +26,7 @@
         {% if meta.tags %}
             <dt>Tags</dt>
             {% for tag in meta.tags %}
-            <dd property="dc:subject">{{ tag }}</dd>
+            <dd property="ctag:Tag">{{ tag }}</dd>
             {% endfor %}
         {% endif %}
 

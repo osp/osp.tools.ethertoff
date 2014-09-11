@@ -92,7 +92,8 @@ short_names = {
     "http://purl.org/dc/terms/language" : "language",
     "http://purl.org/dc/terms/type" : "type",
     "http://purl.org/dc/terms/identifier" : "id",
-    "http://purl.org/dc/terms/subject" : "tags",
+    "http://commontag.org/ns#Tag" : "tags",
+    "http://purl.org/dc/terms/subject" : "theme",
     "http://purl.org/dc/terms/contributor" : "participants",
     "http://purl.org/dc/terms/Location" : "place",
 }
@@ -132,7 +133,7 @@ def query_results_to_template_articles(query_results):
             # Some terms give us lists:
             if key in [
                "http://purl.org/dc/terms/creator",
-               "http://purl.org/dc/terms/subject",
+               "http://commontag.org/ns#Tag",
                "http://purl.org/dc/terms/contributor",
                "http://purl.org/dc/terms/Location"
             ]:
