@@ -3,8 +3,8 @@
 
 {% block extra_styles %}
     {% ifequal mode "p" %}
-        <link rel="stylesheet/less" href="{% url 'css' %}" type="text/css" media="all">
         <link rel="stylesheet/less" href="{{ STATIC_URL }}less/print.less" type="text/css" media="all">
+        <link rel="stylesheet/less" href="{% url 'css-print' %}" type="text/css" media="all">
     {% else %}
         <link rel="stylesheet/less" href="{% url 'css' %}" type="text/css" media="screen">
         <link rel="stylesheet/less" href="{% url 'css-print' %}" type="text/css" media="print">
