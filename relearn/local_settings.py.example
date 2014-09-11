@@ -2,9 +2,6 @@ import os
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
-API_PATH = 'http://osp.constantvzw.org/api/'
-
-
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3', # Add one of postgresql_psycopg2, mysql, sqlite3, oracle
@@ -21,3 +18,5 @@ EMAIL_PORT = 587
 EMAIL_HOST_USER = ''
 EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
+
+HOME_PAD = 'Start.md'
