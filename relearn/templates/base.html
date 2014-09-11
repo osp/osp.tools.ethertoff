@@ -24,6 +24,15 @@
     <nav id="nav-left">
         <h1><a id="logo" data-article="{% block data_article %}{% endblock%}" href="/">{{ site_name }}</a></h1>
         <a class="button screen-only" href="{% url 'pad-read' 'r' 'Introduction.md' %}">About</a>
+        
+        
+        <div id="sort-by">Sort by:
+            <a class="{% if sort == 'theme' %}active{% endif %} button screen-only" href="/">Theme</a>
+            <a class="{% if sort == 'date' %}active{% endif %} button screen-only" href="/?sort=date">Date</a>
+            <a class="{% if sort == 'tags' %}active{% endif %} button screen-only" href="/?sort=tags">Tag</a>
+            <a class="{% if sort == 'participants' %}active{% endif %} button screen-only" href="/?sort=participants">Participant</a>
+            <a class="{% if sort == 'place' %}active{% endif %} button screen-only" href="/?sort=place">Location</a>
+        </div>
         {% block extra_nav %}{% endblock %}
 
         {% if user.is_authenticated and author %}

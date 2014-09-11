@@ -3,17 +3,6 @@
 
 {% block bodyclasses %}pad-00md{% endblock %}
 
-{% block extra_nav %}
-    <div id="sort-by">Sort by:
-        <a class="{% if sort == 'theme' %}active{% endif %} button screen-only" href="/">Theme</a>
-        <a class="{% if sort == 'date' %}active{% endif %} button screen-only" href="/?sort=date">Date</a>
-        <a class="{% if sort == 'tags' %}active{% endif %} button screen-only" href="/?sort=tags">Tag</a>
-        <a class="{% if sort == 'participants' %}active{% endif %} button screen-only" href="/?sort=participants">Participant</a>
-        <a class="{% if sort == 'place' %}active{% endif %} button screen-only" href="/?sort=place">Location</a>
-    </div>
-{% endblock %}
-
-
 {% block title %}
     <header>
     <h1>
