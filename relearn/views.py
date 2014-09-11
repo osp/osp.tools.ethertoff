@@ -323,7 +323,7 @@ def home(request):
         except Pad.DoesNotExist: # If there is no homepage defined we go to the login:
             return HttpResponseRedirect(reverse('login'))
     
-    sort = 'date'
+    sort = 'theme'
     if 'sort' in request.GET:
         sort = request.GET['sort']
 
