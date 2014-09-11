@@ -5,7 +5,29 @@ from urllib2 import URLError
 from relearn.context_processors import EthertoffError
 from etherpadlite.models import Pad, PadAuthor, PadServer
 
-from html5tidy import tidy
+from html5lib import HTMLParser, serializer, treebuilders, treewalkers
+
+def tidy(html):
+    parser = HTMLParser(tree=treebuilders.getTreeBuilder("lxml"), namespaceHTMLElements=False)
+    p = parser.parse(html, encoding=None, parseMeta=True, useChardet=True)
+    s = serializer.htmlserializer.HTMLSerializer(quote_attr_values = True,
+                                                 omit_optional_tags = False,
+                                                 minimize_boolean_attributes = False,
+                                                 use_trailing_solidus = True,
+                                                 space_before_trailing_solidus = True,
+                                                 escape_lt_in_attrs = False,
+                                                 escape_rcdata = False,
+                                                 resolve_entities = True,
+                                                 alphabetical_attributes = False,
+                                                 inject_meta_charset = True,
+                                                 strip_whitespace = False,
+                                                 sanitize = False)
+
+    walker = treewalkers.getTreeWalker("lxml")
+    stream = walker(p)
+    output_generator = s.serialize(stream)
+
+    return ''.join(o for o in output_generator)
 
 class ErrorHandlingMiddleware(object):
     """
