@@ -174,7 +174,7 @@ class Pad(models.Model):
         return self.display_slug
 
     def get_absolute_url(self):
-        return reverse('relearn.views.pad_read', args=['r', self.display_slug])
+        return reverse('relearn.views.xhtml', args=[self.display_slug.replace('.md','')])
 
     @property
     def padid(self):

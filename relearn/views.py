@@ -196,6 +196,8 @@ def pad(request, pk=None, slug=None): # pad_write
     )
     return response
 
+def xhtml(request, slug):
+    return pad_read(request, "r", slug + '.md')
 
 def pad_read(request, mode="r", slug=None):
     """Read only pad
@@ -221,10 +223,7 @@ def pad_read(request, mode="r", slug=None):
                 prev = articles[i+1]
 
     # Initialize some needed values
-    if slug:
-        pad = get_object_or_404(Pad, display_slug=slug)
-    else:
-        pad = get_object_or_404(Pad, pk=pk)
+    pad = get_object_or_404(Pad, display_slug=slug)
 
     padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name.replace('::', '_'))
     epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
