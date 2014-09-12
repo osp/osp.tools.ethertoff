@@ -1,52 +1,53 @@
 {% load wikify relearn_tags %}
 <div class="metadata">
     <dl>
-        {% if meta.theme %}
-            <dt>Theme</dt>
-            {% for theme in meta.theme %}
-            <dd property="dc:subject">{{ theme }}</dd>
-            {% endfor %}
-        {% endif %}
-
-        {% if meta.place %}
-            <dt>Location</dt>
-            {% for place in meta.place %}
-            <dd property="dc:Location">{{ place }}</dd>
-            {% endfor %}
-        {% endif %}
-
         {% if meta.participants %}
-            <dt>Participants</dt>
+            <dt class="meta-participants">Participants</dt>
             {% for participant in meta.participants %}
             <dd property="dc:contributor">{{ participant }}</dd>
             {% endfor %}
         {% endif %}
 
 
+        {% if meta.place %}
+            <dt class="meta-place">Location</dt>
+            {% for place in meta.place %}
+            <dd property="dc:Location">{{ place }}</dd>
+            {% endfor %}
+        {% endif %}
+
+        {% if meta.theme %}
+            <dt class="meta-theme">Theme</dt>
+            {% for theme in meta.theme %}
+            <dd property="dc:subject">{{ theme }}</dd>
+            {% endfor %}
+        {% endif %}
+
+
         {% if meta.tags %}
-            <dt>Tags</dt>
+            <dt class="meta-tags">Tags</dt>
             {% for tag in meta.tags %}
             <dd property="ctag:Tag">{{ tag }}</dd>
             {% endfor %}
         {% endif %}
 
         {% if meta.ingredients %}
-            <dt>Ingredients</dt>
+            <dt class="meta-ingredients">Ingredients</dt>
             <dd>{{ meta.ingredients|natural_join:',' }}</dd>
         {% endif %}
 
 
         {% if meta.date_parsed %}
-            <dt>Date</dt>
+            <dt class="meta-date">Date</dt>
             <dd property="dc:created" content="{{ meta.date_parsed.0 }}">{{ date|date:"F j, o" }}</dd>
             {% for date in meta.date_parsed %}
-            <dd>{{ date }}</dd>
+                <dd>{{ date }}</dd>
             {% endfor %}
         {% endif %}
 
 
         {% if meta.intervention %}
-            <dt>Type of intervention</dt>
+            <dt class="meta-intervention">Type of intervention</dt>
             {% for intervention in meta.intervention %}
             <dd property="dc:type">{{ intervention }}</dd>
             {% endfor %}
@@ -54,13 +55,13 @@
 
 
         {% if meta.licence %}
-            <dt>License</dt>
+            <dt class="meta-licence">License</dt>
             {% if meta.licence.0 == "CC BY-ND 3.0 France" %}<dd><a href="http://creativecommons.org/licenses/by-nd/3.0/fr/" rel="license">{{ meta.licence.0 }}</a></dd>{% else %}<dd><span property="license">{{ meta.licence.0 }}</span></dd>
             {% endif %}
         {% endif %}
 
         {% if meta.pdf %}
-            <dt>PDF</dt>
+            <dt class="meta-pdf">PDF</dt>
             <dd><a href="{{ meta.pdf.0 }}">Download</a></dd>
         {% endif %}
 
