@@ -6,6 +6,8 @@
 
 
 # project specific #
+#   generated archive (good to git it, but i would git it in its own repo)
+public/
 run.sh
 local_settings.py
 sqlite.db

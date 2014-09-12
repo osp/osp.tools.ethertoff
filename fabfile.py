@@ -15,3 +15,8 @@ def deploy():
 def index():
     with cd(env.path):
         run('/home/osp/apps/venvs/vj14/bin/python manage.py index')
+
+def archive():
+    local('mkdir -p public')
+    local('wget -rk -nH -P ./public http://vj14.stdin.fr/')
+    
