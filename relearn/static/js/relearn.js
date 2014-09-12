@@ -17,6 +17,13 @@ $(document).ready(function() {
     // ORPHANS AND WIDOWS
     remy($("#content"));  
 
+    // DIV WRAPPER AROUND EACH H2
+    $("#content h2").each(function(){
+        h2 = $(this).attr('id');
+        $(this).nextUntil('h2').wrapAll('<div class="' + h2 + '"></div>');
+    });
+
+
     // OFFSET ANCHOR BECAUSE OF FIXED MENU
     $('a.footnote-ref, a.footnote-backref').click(function(e){
         e.preventDefault();
