@@ -23,7 +23,6 @@ $(document).ready(function() {
         $(this).nextUntil('h2').wrapAll('<div class="' + h2 + '"></div>');
     });
 
-
     // OFFSET ANCHOR BECAUSE OF FIXED MENU
     $('a.footnote-ref, a.footnote-backref').click(function(e){
         e.preventDefault();
@@ -39,11 +38,19 @@ $(document).ready(function() {
 // <a id="include-example.html" class="include" href="/r/include-example.html">include-example.html</a>
 // in which we include the relevant pages
 
+var included = $("#content .include").length - 1;
 $("#content .include").each(function(i, el) {
     var url = $(el).attr('href') + ' .middle';
     console.log("trying to load!");
     $(el).load(url,  function( responseText, textStatus, jqXHR ) {
         console.log('succesfully loaded ' + url);
+        if (i == included){
+            // DIV WRAPPER AROUND EACH H2
+            $("#content h2").each(function(){
+                h2 = $(this).attr('id');
+                $(this).nextUntil('h2').wrapAll('<div class="' + h2 + '"></div>');
+            });
+        }
     });
 });
 
