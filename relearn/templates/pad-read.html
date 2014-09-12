@@ -32,6 +32,7 @@
 {% block data_article %}{{ meta.authors|natural_join:'&'|markdown_filter|no_p }}, {{ meta.title.0 }}{% endblock %}
 
 {% block bodyclasses%}{% if meta.host %}{{ meta.host.0|lower }}{% endif %} {% if meta.type %}{{ meta.type.0|lower }}{% endif %}{% endblock %}
+{% block contentclasses%}{% if meta.host %}{{ meta.host.0|lower }}{% endif %} {% if meta.type %}{{ meta.type.0|lower }}{% endif %}{% endblock %}
 
 {% block title_left %}
     {% if prev_page %}<div id="previous">
