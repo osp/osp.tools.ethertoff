@@ -1,6 +1,7 @@
 import re
 
 import markdown
+import dateutil.parser
 
 from django import template
 from django.template.defaultfilters import stringfilter
@@ -8,6 +9,11 @@ from django.utils.encoding import force_unicode
 from django.utils.safestring import mark_safe
 
 register = template.Library()
+
+@register.filter
+def to_date_obj(date_string):
+    date_parsed = dateutil.parser.parse(date_string)
+    return date_parsed
 
 @register.filter
 def un_alphabetise(name):

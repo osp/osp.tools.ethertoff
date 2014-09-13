@@ -37,11 +37,12 @@
         {% endif %}
 
 
-        {% if meta.date_parsed %}
+        {% if meta.date_iso %}
             <dt class="meta-date">Date</dt>
-            <dd property="dc:created" content="{{ meta.date_parsed.0 }}">{{ date|date:"F j, o" }}</dd>
-            {% for date in meta.date_parsed %}
-                <dd>{{ date }}</dd>
+            {% for date_iso in meta.date_iso %}
+            {% with date_iso|to_date_obj as date %}
+<dd {% if forloop.first %}property="dc:created"{% endif %} content="{{ date_iso }}">{% if date.minute == 0 and date.hour == 0 %}{{ date|date:"F j, o" }}{% else %}{{ date|date:"F j, o H:i" }}{% endif %}</dd>
+            {% endwith %}
             {% endfor %}
         {% endif %}
 

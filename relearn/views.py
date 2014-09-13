@@ -15,6 +15,7 @@ import os
 import markdown
 from py_etherpad import EtherpadLiteClient
 import dateutil.parser
+import pytz
 
 # Framework imports
 from django.shortcuts import render_to_response, get_object_or_404
@@ -273,7 +274,6 @@ def pad_read(request, mode="r", slug=None):
     # 'pedagogy::methodology' -> ['pedagogy', 'methodology']
     namespaces = [p.rstrip('-') for p in pad.display_slug.split('::')]
 
-    date_obj = None
     meta_list = []
 
     # One needs to set the ‘Static’ metadata to ‘Public’ for the page to be accessible to outside visitors
@@ -285,18 +285,21 @@ def pad_read(request, mode="r", slug=None):
         
         # The human-readable date is parsed so we can sort all the articles
         if 'date' in meta:
+            meta['date_iso'] = []
             meta['date_parsed'] = []
             for date in meta['date']:
-                if not date_obj:
-                    date_obj = dateutil.parser.parse(date)
-                meta['date_parsed'].append( dateutil.parser.parse(date).isoformat() )
+                date_parsed = dateutil.parser.parse(date)
+                # If there is no timezone we assume it is in Brussels:
+                if not date_parsed.tzinfo:
+                    date_parsed = pytz.timezone('Europe/Brussels').localize(date_parsed) 
+                meta['date_parsed'].append(date_parsed)
+                meta['date_iso'].append( date_parsed.isoformat() )
         
         meta_list = list(meta.iteritems())
 
     tpl_params = { 'pad'                : pad,
                    'meta'               : meta,      # to access by hash, like meta.author
                    'meta_list'          : meta_list, # to access all meta info in a (key, value) list
-                   'date'               : date_obj,
                    'text'               : text,
                    'prev_page'          : prev,
                    'next_page'          : next,

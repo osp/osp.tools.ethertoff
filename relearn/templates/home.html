@@ -15,6 +15,14 @@
     {% for set_of_articles in articles %}
     {% if sort == "participants" %}
     <h2>{{ set_of_articles.key|un_alphabetise }}</h2>
+    {% elif sort == "date" %}
+        {% with set_of_articles.key|to_date_obj as date %}
+        {% if date.minute == 0 and date.hour == 0%}
+            <h2>{{ date|date:"F j, o" }}</h2>
+        {% else %}
+            <h2>{{ date|date:"F j, o H:i" }}</h2>
+        {% endif %}
+        {% endwith%}
     {% else %}
     <h2>{{ set_of_articles.key }}</h2>
     {% endif %}
