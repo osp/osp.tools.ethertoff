@@ -13,8 +13,11 @@
 
 {% block content %}
     {% for set_of_articles in articles %}
+    {% if sort == "participants" %}
+    <h2>{{ set_of_articles.key|un_alphabetise }}</h2>
+    {% else %}
     <h2>{{ set_of_articles.key }}</h2>
-    
+    {% endif %}
     <ul>
     {% for article in set_of_articles.values %}
 

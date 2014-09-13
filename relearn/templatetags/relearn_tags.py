@@ -9,6 +9,7 @@ from django.utils.safestring import mark_safe
 
 register = template.Library()
 
+@register.filter
 def un_alphabetise(name):
     """
     >>> un_alphabetise("Turkle, Sherry")

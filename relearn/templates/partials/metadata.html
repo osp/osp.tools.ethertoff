@@ -4,7 +4,7 @@
         {% if meta.participants %}
             <dt class="meta-participants">Participants</dt>
             {% for participant in meta.participants %}
-            <dd property="dc:contributor">{{ participant }}</dd>
+            <dd property="dc:contributor" content="{{ participant }}">{{ participant|un_alphabetise }}</dd>
             {% endfor %}
         {% endif %}
 
