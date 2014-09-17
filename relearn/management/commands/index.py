@@ -136,7 +136,7 @@ def query_results_to_template_articles(query_results):
     template_articles.append(article)
     
     # Ad hoc: remove the about page (maybe have some meta info. that determine if a page can be sniffed?)
-    template_articles = [article for article in template_articles if article['title'] != "About"]
+    template_articles = [article for article in template_articles if article['title'] != "&lt;o&gt; future &lt;o&gt;"]
     
     return sorted(template_articles, key=lambda a: a['date'] if 'date' in a else 0, reverse=True)
 
