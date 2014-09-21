@@ -1,176 +1,349 @@
-
-/*-- REDEFINE TAGS ---------------------------------------- */ 
-body {
-    background: #fff;
-    color: #333;
-    font-family: "Univers Light";
-    font-size: 12px;
-    line-height: 1.5em;
-    padding: 0.5em;
+@import url(http://fonts.googleapis.com/css?family=Domine:400,700);
+@import url(http://fonts.googleapis.com/css?family=Quattrocento+Sans:400italic,700,400,700italic);
+@font-face {
+    font-family: "Young Serif";
+    src: url(https://github.com/bsozoo/YoungSerif/raw/master/YoungSerif-Regular.otf);
+}
+@color: blue;
+@serif: Domine;
+@sans: Quattrocento Sans;
+@mono: Monospace;
+@font-lettrine: Young Serif;
+@font-size: 17px;
+@font-size-small: 12px;
+@line-height: 21px;
+/* BLOCKS -------------------------------------  */
+* {
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    word-wrap: break-word;
+    text-rendering: optimizeLegibility;
     font-feature-settings: "liga", "dlig", "clig", "kern";
     -webkit-font-feature-settings: "liga", "dlig", "clig", "kern";
+    -moz-font-feature-settings: "liga", "dlig", "clig", "kern";
     -o-font-feature-settings: "liga", "dlig", "clig", "kern";
-    text-rendering: optimizeLegibility;
 }
-/* - BLOCKS ------------------------------------- */ 
+body {
+    background-size: 100%;
+    background-attachment: fixed; 
+    background-repeat: no-repeat;
+    color: black;
+    font-family: @serif;
+    font-size: @font-size;
+    line-height: @line-height;
+    padding: @line-height / 2;
+}
+/* Insertion du pad dans la page */
 iframe {
     outline: 1px solid #333;
 }
-div {
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+iframe#ether {
+    height: 700px !important;
+    max-width: 50em;
+    margin: auto;
 }
-img {
-    border: 3px solid #333;
-    max-width: 70%;
-    margin-left: 15%;
-    margin-bottom: 1em;
-}
-blockquote {
-    font-style: italic;
-    margin-left: 2em;
-}
-blockquote div {
-    font-family: patin, serif;
-}
-p {
-    margin-bottom: 48px;
-}
-p + p {
-    text-indent: 1.5em;
-}
-legend {
-    font-size: 0.75em;
-    line-height: 1.4em;
-}
-code, pre {
-    font-family: notcouriersans, monospace;
-}
-/* - INLINES ------------------------------------- */ 
-a {
-    color: inherit;
-}
-a:hover {
-    background-color: #f7f7f7;
+/* Style des niveaux de titre */
+h1, h2, h3, h4, h5, h6 {
+    font-size: @font-size; 
+    font-weight: bold;
+    font-family: @serif;
+    margin: 0;
+    margin-top: 2 * @line-height;
+    margin-bottom: @line-height;
+    padding-top: @line-height;
+    clear: both;
 }
 h1 {
-    font-size: 2em !important;
-    line-height: 1em !important;
-    position: relative;
-    z-index: 20;
-    line-height: 2em;
+    font-size: @font-size;
+    line-height: @line-height;
+    margin: @line-height 0;
+    text-align: center;
+    font-family: @font-lettrine;
     font-weight: normal;
-    font-family: "HerscheyFutura", sans-serif;
-    margin-bottom: 12px;
+}
+#content h1 {
+    font-size: @font-size * 3.5;
+    line-height: 1em;
+    margin: 5em 0;
 }
 h2 {
-    font-family: "HerscheyFutura", sans-serif;
-    font-size: 1em;
-    line-height: 1.5em;
-    letter-spacing: 0.08em;
+    font-size: @font-size * 1.5;
     text-transform: uppercase;
-    margin-bottom: 9px;
-}
-h3, h4, h5, h6 {
+    text-align: center;
+    font-family: @font-lettrine;
     font-weight: normal;
-    font-family: Univers, sans-serif;
 }
 h3 {
-    margin-top: 0px;
     text-transform: uppercase;
-    margin-bottom: 0;
-    font-size: 28px;
+    margin: @line-height 0;
+    font-family: @font-lettrine;
+    font-weight: normal;
 }
 h4 {
     text-decoration: underline;
+}
+img {
+    max-width: 200px;
+    float: left;
+    margin: @line-height / 2;
+    display: block;
+}
+img.inline {
+    display: inline; 
+    vertical-align: top; 
+    margin: 0;
+    height: 1em;
+}
+img.large {
+    width: 90%;
+    max-width: none;
+    margin: auto;
+}
+.thumbnail {
+    max-width: 30%;
+}
+blockquote {
+    font-family: @sans;
+    font-size: @font-size;
+    margin: @line-height 2 * @line-height;
+}
+p {
+    margin-bottom: 0;
+    clear: both;
+}
+p + p {
+    text-indent: 2 * @line-height;
+}
+h2#summary,
+h2#summary_1,
+h2#summary_2,
+h2#summary_3 {
+    display: none;
+}
+.summary > p:first-of-type,
+.summary_1 > p:first-of-type,
+.summary_2 > p:first-of-type,
+.summary_3 > p:first-of-type   {
+    text-indent: 20em;
+}
+.summary > p:first-of-type:first-letter,
+.summary_1 > p:first-of-type:first-letter,
+.summary_2 > p:first-of-type:first-letter,
+.summary_3 > p:first-of-type:first-letter {
+    font-size: 2.5 * @font-size;
+    font-family: @font-lettrine;
+}
+.summary > p:first-of-type:first-line,
+.summary_1 > p:first-of-type:first-line,
+.summary_2 > p:first-of-type:first-line,
+.summary_3 > p:first-of-type:first-line {
+    font-variant: small-caps;
+}
+hr {
+    border: 0;
+    height: @line-height;
+    margin: 0;
+}
+hr + hr {
+    display: block;
+    border-bottom: 1px solid black;
+}
+code, pre {
+    font-family: @mono;
+    white-space: pre-wrap;
+}
+pre {
+    outline: 1px solid @color;
+    padding: @line-height;
+    width: 75%;
+}
+/* Style des légendes d'images */
+figcaption {
+    font-family:  @sans;
+    font-size: @font-size-small;
+    line-height: 1.3em;
+    text-align: center;
+    margin-bottom: @line-height;
+}
+/* Style des frames de vidéo ou autres objets hors image */
+figure iframe {
+    max-width: 70%;
+    margin: @line-height auto;
+    display: block;
+}
+audio,
+video {
+    display: block;
+    clear: both;
+    margin: auto;
+    margin-bottom: @line-height * 2;
+}
+/* Style des notes de bas de pages */
+.footnote {
+    font-size: @font-size-small;
+    line-height: 1.3em;
+    margin-bottom: 2 * @line-height;
+}
+.footnote p {
     margin-bottom: 0;
 }
+/* INLINES ------------------------------------- */
+/* Style des liens hypertextes */
+a,
+a:visited {
+    text-decoration: none;
+    color: @color;
+}
+/* Style du texte en roll-over sur les liens */
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+/* Style quand on arrive à une ancre */
+.target {
+    background-color: @color;
+}
+/* Style de l'italique */
 em {
     font-style: italic;
 }
+/* Style du bold */
 strong {
     font-weight: bold;
 }
+/* Style des exposants */
 sup {
-    font-size: 0.75em;
+    font-size: 0.65em;
     line-height: 0;
-    vertical-align: 0.25em;
+    vertical-align: 0.5em;
 }
-li u {
-    text-decoration: none;
-    border-bottom: 1px solid #333;
+sup a {
+    font-family:  @sans;
 }
+/* Style du texte souligné */
 u {
     text-decoration: none;
-    border-bottom: 1px solid #333;
+    border-bottom: 2px solid yellow;
 }
-/* -- FORMS --------------------------*/ 
+dt {
+    font-style: italic;
+    display: inline;
+    font-family: @sans;
+}
+dt:after {
+    content: ": ";
+}
+dd {
+    display: inline;
+    margin:0;
+}
+dd:after {
+    content:'\0A';
+    white-space:pre;
+} 
+dd + dd {
+    margin-left: @line-height * 2;
+}
+.metadata dt, 
+.metadata dd {
+    float: left;
+}
+.metadata dt {
+    clear: both;
+    margin-right: 4px;
+}
+.metadata dd +dd {
+    margin-left: 0;
+}
+.metadata dd:after {
+    content: ", ";
+}
+.metadata dd:last-child:after {
+    content: "";
+}
+.metadata dt.meta-participants {
+    display: none;
+}
+.comment:before {     
+    background-color: yellow !important;
+    border-radius: 1em;
+    display: inline;
+    height: 1em;
+    margin: 0 0.5em;
+    padding-left: 7px;
+    padding-right: 9px;
+    text-align: center;
+    width: 1em;
+    content: "!";
+    font-family:  @sans;
+} 
+/* FORMS -------------------------- */
 form {
-    margin-bottom: 1.5em;
+    margin-bottom: none;
 }
 form label, form textarea {
-    font-size: 13.33px;
+    font-family: inherit;
+    font-size: inherit;
 }
 form input, form textarea {
-    background: none;
-    border: 1px solid #333;
-    color: #333;
-    font-family: patin;
+  background: none;
+  border-style: solid;
+  border-color: black;
+  font-family: sans-serif;
+    font-size: inherit;
 }
+/* Style de l'élément activé */
 form input:focus, form textarea:focus {
     background-color: white;
 }
 form input[type=text], form input[type=password] {
-    height: 20px;
+  height: 25px;
     position: relative;
     top: -1px;
+    width: 200px;
 }
 form input[type=submit] {
     cursor: pointer;
     padding: 0;
-    height: 24px;
+  height: 26px;
+  border-style: none;
+  border-color: none;
+  text-decoration: none;
+  color: @color;
 }
 form input[type=submit]:hover {
     background-color: white;
-}
- 
-/* - GENERIC CLASSES -------------------------------- */ 
-.button {
     text-decoration: none;
-    border: 1px solid MediumSeaGreen;
-    padding: 7px 5px;
-    box-shadow: 0 0 30px 10px #f7f7f7;
-    margin: 0 0.5em;
-    position: relative;
-    top: -3px;
-    background-color: #f7f7f7;
+    color: black;
 }
+/* GENERIC CLASSES -------------------------------- */
+/* Style des boutons */
+.button {
+  text-decoration: none;
+    margin: 0 @line-height / 2;
+}
+/* Style des boutons en roll over */
 .button:hover {
-    background-color: white;
+    background-color: none;
+    outline: none;
 }
-.small {
-    font-family: notcouriersans;
-    color: #333;
-    font-size: 1em ;
-    line-height: 1.2em;
-    margin-left: 0cm;
-    margin-right: 0cm;
-}
+/* Classe pour transformer des éléments blocs en éléments en ligne */
 .inline {
     display: inline;
 }
- 
-/* - PAGE STRUCTURE ---------------------------------*/ 
+/* PAGE STRUCTURE --------------------------------- */
+/* Style des containers */
 .wrap {
-    margin-bottom: 20px;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    display: -ms-flexbox;
+    display: -moz-box;
+    display: -webkit-flex;
+    display: flex;
+}
+.wrap:first-child {
+    margin: @line-height 0;
 }
 .wrap:before, .wrap:after {
     content: " ";
@@ -181,154 +354,211 @@ form input[type=submit]:hover {
 .wrap:after {
     clear: both;
 }
+/* Style des sous-parties de containers */
 .left-side, .middle, .right-side {
     float: left;
-    padding: 10px;
-    -webkit-box-sizing: border-box;
-    -moz-box-sizing: border-box;
-    box-sizing: border-box;
+    position: relative;
 }
-.left-side {
-    width: 15%;
-}
-.right-side {
-    width: 25%;
+.left-side,
+.right-side  {
+    -webkit-box-flex: 1;
+    -moz-box-flex: 1;
+    -webkit-flex: 1;
+    -ms-flex: 1; 
+    flex: 1;
+    margin-top: 2 * @line-height;
 }
 .middle {
-    width: 60%;
-    padding: 10px 20px;
+    width: 50em;
+    padding: @line-height 2 * @line-height;
 }
- 
-/* - NAV ------------------------------------------*/ 
+.write-mode .middle {
+    width: 70%;
+}
+/* Pour les inclusions de pads dans les compilations */
+#content .middle {
+    width: 100%;
+}
+/* NAV ------------------------------------------ */
+/* Navigation */
 nav {
-    line-height: 1.2em;
-    margin-bottom: 2em;
-    font-size: 13.33px;
-}
-nav li {
-    list-style-position: outside;
-    list-style-type: none;
-    margin-left: 14px;
-}
-nav > ul > li {
-    margin-left: 0;
-}
-nav li#create-pad {
-    list-style-type: none;
-    margin: 1.5em;
-    font-size: 16px;
-}
-nav a {
-    text-decoration: none;
-}
-#account-buttons {
-    margin-top: 14px;
-}
-#account-buttons li {
-    display: inline;
-}
-div#switch {
-    display: inline;
-}
-div#switch a.active {
+    font-family: @sans;
+    line-height: @line-height;
+    font-size: @font-size-small;
+    position: fixed;
+    top: 0;
     background-color: white;
+    padding: @line-height / 4;
+    z-index: 1000;
 }
-/* - MAIN CONTENT ----------------------------------*/ 
-#content {
-    font-weight: 200;
+nav#nav-left {
+    left: 0;
+    width: 100%;
 }
-#content li:before {
-    content: "– ";
-    margin-left: 2em;
+nav#nav-right {
+    right: 0;
+    text-align: right;
 }
-div.intro {
-    font-family: AutopiaLight, serif;
-    line-height: 1.8em;
-    font-size: 12px;
+nav div#staff-menu {
+    display: inline;
+    color: darkgray;
 }
- .titlepages {
-    font-family: HerscheyTimes, serif;
-    font-size: 50px;
-    line-height: 1em;
+nav h1 {
+    display: inline;
 }
- .notes {
-    font-family: notcouriersans;
-    font-size: 1em;
-    color: #333;
+nav span:before {
+    content: " — ";
+}
+nav div#sort-by {
+    display: inline;
+    color: darkgray;
+}
+/* Texte précédent/suivant */
+div#previous a,
+div#next a {
+    position: fixed;
+    top: 6.5em; 
+    font-family:  sans-serif;
+    font-size: @font-size-small;
     line-height: 1.2em;
-    margin-left: 0cm;
-    margin-right: 0cm;
+    padding: @line-height;
+    z-index: 6666;
 }
- ul.indent li:before {
-    content: "" !important;
+div#previous a span,
+div#next a span {
+    display: none;
 }
- .inst_logo {
-    height: 20%;
-    margin-left: 0;
-}
-.right-side h2 {
-    margin-bottom: 1em;
-}
-div#quotes {
-    text-align: center;
-    height: 360px;
-}
-p.commit-message {
-    margin-bottom: 0px;
-}
- 
-/* - AUTHORSHIP -----------------------------*/ 
-.authorship {
-    font-family: Univers;
-    font-size: .4em;
-    height: 1.7em;
-    color: #333;
-    text-transform: uppercase;
-    position: absolute;
-    margin-top: .9em;
-    padding-top: 1em;
-    margin-left: -0.5em;
-    padding-left: 2px;
-    border-left: 1px solid #333;
-}
- .authors {
+div#previous a:hover span,
+div#next a:hover span {
     display: block;
 }
-ul.authors {
-    font-size: 11px;
-    margin-bottom: 10px;
-    line-height: 25px;
+div#next {
+    text-align: right;
+    padding-right: 0;
 }
-ul.authors:before {
-    margin: 0;
-    content: "Authors : "
+div#next a {
+        right: 0;
 }
-ul.authors li {
-    font-size: 11px;
-    letter-spacing: 0.5px;
-    display: inline-block;
-    border: 1px solid #333;
-    margin-right: 0.5em;
-    padding: 0px 5px;
-    text-transform: uppercase;
-    height: 23px;
+/* MAIN CONTENT ---------------------------------- */
+header {
+    margin-top: @line-height;
+    font-size:  2.5 * @font-size;
+    line-height: 1.2em;
+    text-align: center;
 }
-ul.authors li:before {
-    margin-left: 0 !important;
-    content: "" !important;
+header p, header h2 {
+    font-family: inherit;
+    margin-bottom: 0;
+    line-height: inherit;
+    text-align: center;
+    display: inline;
 }
- /* Hides Etherpad background colours */ #content span {
+header h2 {
+    font-size: inherit;
+    font-family: @font-lettrine;
+    text-transform: none;
+}
+header p.authors:after {
+    content: ", ";
+}
+#content ul li:before {
+    content: "– ";
+    margin-left: 2 * @line-height;
+}
+ol {
+    list-style-type: decimal;
+    margin-left: 2 * @line-height;
+}
+.footnote ol li {
+    margin-bottom: 0em;
+}
+.note {
+    margin: @line-height;
+    margin-left: 50%;
+    text-indent: 0;
+    font-family: @sans;
+    
+    & + p {
+        text-indent: 0;
+    }
+}
+.noteA {
+    width: 75%;
+    float: right;
+    margin: @line-height 0;
+}
+.noteB {
+    width: 75%;
+}
+dl.meta {
+    font-family: @sans;
+    color: lightgray;
+    font-size: @font-size-small;
+   line-height: 1.25em;
+}
+div.metadata {
+   font-family: @sans;
+   font-size: @font-size-small;
+   line-height: 1.25em;
+   position: absolute;
+   top: 0px;
+   left: -15em;
+   width: 15em;
+}
+div#go-up {
+    clear: both;
+    margin-top: 2 * @line-height;
+    a {
+        border-bottom: none;
+    }
+    a:hover {
+        color: @color;
+    }
+}
+/* AUTHORSHIP ----------------------------- */ 
+.authors {
+    display: inline;
+}
+/* Hides Etherpad background colours */ 
+#content span {
     background-color: inherit !important;
 }
- 
-/* ------ PRINT ------ */ 
+/* ------ PRINT/SCREEN ------ */
 @media screen {
     .print-only {
-        display: none;
+    display: none;
     }
 }
-@media print {
-    .screen-only {
-        display: none;
-    }
+/* User Interface */
+.popup-wrapper {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 999999999999;
+    background: rgba(0,0,0,0.6667);
+    text-align: center;
 }
+.popup-wrapper.hidden {
+    display: none;
+}
+.popup-wrapper:before {
+        position: relative;
+        height: 100%;
+        content: "";
+        display: inline-block;
+        vertical-align: middle;
+    }
+.popup {
+        display: inline-block;
+        vertical-align: middle;
+        background-color: white;
+        padding: 30px;
+}
+/* SPECIFIC PADS */
+/* AFTER-LIFE */
+.afterlife * {
+    font-family: @sans;
+}
+
