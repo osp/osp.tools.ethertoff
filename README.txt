@@ -41,7 +41,7 @@ Requires Django 1.5
 First create and install a virtual environment [1]. Then:
     pip install "django<1.6" south Markdown html5tidy python-dateutil rdflib pytz
     pip install https://github.com/devjones/PyEtherpadLite/archive/master.zip
-    pip install https://github.com/aleray/markdown-figures.git
+    pip install https://github.com/aleray/markdown-figures/archive/master.zip
 
     mkdir -p ~/src/
     cd ~/src
