@@ -16,6 +16,7 @@ urlpatterns = patterns(
     url(r'^css/$', 'relearn.views.css', name='css'),
     url(r'^publish/$', 'relearn.views.publish', name='publish'),
     url(r'^css-print/$', 'relearn.views.cssprint', name='css-print'),
+    url(r'^offset-print/$', 'relearn.views.offsetprint', name='offset-print'),
     url(r'^$', 'relearn.views.home', name='home'),
     url(r'^accounts/login$', 'django.contrib.auth.views.login',
         {'template_name': 'login.html'}, name='login'),
