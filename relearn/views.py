@@ -472,13 +472,13 @@ def css(request):
 
 def cssprint(request):
     try:
-        pad = Pad.objects.get(display_slug='print.css')
+        pad = Pad.objects.get(display_slug='laser.css')
         padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name.replace('::', '_'))
         epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
         return HttpResponse(epclient.getText(padID)['text'], mimetype="text/css")
     except:
         # If there is no pad called "css", loads a default css file
-        f = open('relearn/static/css/print.css', 'r')
+        f = open('relearn/static/css/laser.css', 'r')
         css = f.read()
         f.close()
         return HttpResponse(css, mimetype="text/css")
