@@ -1,5 +1,5 @@
-{% load wikify %}<!DOCTYPE HTML>
-<html xmlns="http://www.w3.org/1999/xhtml" {% if meta.language %} lang="{{ meta.language.0 }}" {% endif %} moznomarginboxes mozdisallowselectionprint>
+{% load wikify relearn_tags %}<!DOCTYPE HTML>
+<html{% if meta.language %} lang="{{ meta.language.0 }}" {% endif %} moznomarginboxes mozdisallowselectionprint>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
@@ -11,9 +11,9 @@
         <link rel="stylesheet/less" href="{% url 'css-print' %}" type="text/css" media="print">
     {% endblock %}
 
-    <script src="{{ STATIC_URL }}js/less-1.4.1.min.js" type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}js/underscore.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/less-1.4.1.min.js" type="text/javascript"> </script>
+    <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js" type="text/javascript"> </script>
+    <script src="{{ STATIC_URL }}js/underscore.js" type="text/javascript"> </script>
 
     {% block head_meta %}{% endblock %}
 
@@ -27,11 +27,9 @@
         
         
         <div id="sort-by">Sort by:
-            <a class="{% if sort == 'theme' %}active{% endif %} button screen-only" href="/">Theme</a>
             <a class="{% if sort == 'date' %}active{% endif %} button screen-only" href="/?sort=date">Date</a>
             <a class="{% if sort == 'tags' %}active{% endif %} button screen-only" href="/?sort=tags">Tag</a>
             <a class="{% if sort == 'participants' %}active{% endif %} button screen-only" href="/?sort=participants">Participant</a>
-            <a class="{% if sort == 'place' %}active{% endif %} button screen-only" href="/?sort=place">Location</a>
         </div>
         {% block extra_nav %}{% endblock %}
 
@@ -42,8 +40,10 @@
             <a class="button screen-only" href="{% url 'pad-create' %}">Create</a>
             <a class="button screen-only" href="{% url 'all' %}">List</a>
             <a class="button screen-only" href="{% url 'publish' %}">Re-index</a>
-            <a class="button screen-only" href="/w/TODO.md">TODO</a>
-            <a class="button screen-only" href="/w/style.css">styles</a>
+            <a class="button screen-only" href="/w/TODOLIST">TODO</a>
+            <a class="button screen-only" href="/w/screen.css">screen.css</a>
+            <a class="button screen-only" href="/w/laser.css">laser.css</a>
+            <a class="button screen-only" href="/w/offset.css">offset.css</a>
             <a class="button screen-only" href="/w/typo">typo</a>
             {#{% else %}#}
             <!--<a class="button" href="{% url 'login' %}">Log in</a>-->
@@ -54,9 +54,7 @@
         {% if pad %}
             {% if mode == 'r' %}
                 <a class="active button read-button screen-only">Read</a>
-                {% if user.is_authenticated %}
                 <a class="button screen-only write-button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
-                {% endif %}
             {% else %}
                 <a class="button screen-only read-button" href="{% url 'pad-read' 'r' pad.display_slug %}">Read</a>
                 <a class="active button screen-only write-button">Write</a>
@@ -69,6 +67,7 @@
             {% endif %}
         {% else %}
                 <a class="button read-button screen-only">Read</a>
+                <a class="button screen-only write-button" href="{% url 'login' %}">Write</a>
                 <a class="button screen-only" href="#" onclick="window.print()">Print</a>
         {% endif %}
     </nav>
@@ -90,7 +89,6 @@
         <div class="left-side screen-only">
         </div>
         <div class="middle">
-
             <div id="content" class="{% block contentclasses %}{% endblock %}">
                 {% block content %}{% endblock %}
             </div>
