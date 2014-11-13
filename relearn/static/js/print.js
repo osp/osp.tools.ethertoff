@@ -91,7 +91,7 @@ if($("body").hasClass("p-mode")){
             </div>\
     ');
 
-    $("#master-page").append('<section class="header" data-title="'+ $("header:first-child p").text() + ", " + $("header:first-child h2").text() +"'></section>').append('<section class="main-section"><div class="column"></div></section>').append('<section class="footer"></section>');
+    $("#master-page").append('<section class="header" data-title="'+ $("header:first-child p").text() + ", " + $("header:first-child h2").text() + '"></section>').append('<section class="main-section"><div class="column"></div></section>').append('<section class="footer"></section>');
 
     // OPTIONAL COLUMNS
     try {
