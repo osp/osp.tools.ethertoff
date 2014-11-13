@@ -69,7 +69,7 @@ if($("body").hasClass("p-mode")){
 
     
     // Create pages
-    $("body").append('<section id="master-page" class="page"></section>');
+    $("body").append('<section id="master-page" class="page" data-title="' + $("header:first-child p").text() + ", " + $("header:first-child h2").text() + '"></section>');
     $("#master-page").append('\
             <div class="print-marks">\
                 <div class="crop-top-left">\
