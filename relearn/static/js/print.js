@@ -69,7 +69,7 @@ if($("body").hasClass("print-mode")){
 
     
     // Create pages
-    $("body").append('<section id="master-page" class="page" data-title="' + $("header:first-child p").text() + ", " + $("header:first-child h2").text() + '"></section>');
+    $("body").append('<section id="master-page" class="page"></section>');
     $("#master-page").append('\
             <div class="print-marks">\
                 <div class="crop-top-left">\
@@ -91,7 +91,7 @@ if($("body").hasClass("print-mode")){
             </div>\
     ');
 
-    $("#master-page").append('<section class="header"></section>').append('<section class="main-section"><div class="column"></div></section>').append('<section class="footer"></section>');
+    $("#master-page").append('<section class="header" data-title="'+ $("header:first-child p").text() + ", " + $("header:first-child h2").text() +"'></section>').append('<section class="main-section"><div class="column"></div></section>').append('<section class="footer"></section>');
 
     // OPTIONAL COLUMNS
     try {
