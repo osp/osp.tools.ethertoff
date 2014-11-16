@@ -17,7 +17,7 @@
 
     {% block head_meta %}{% endblock %}
 
-    <title>{{ site_name }}{% if pad %} → {% if meta.authors %}{{ meta.authors|natural_join:'&' }}, {% endif %}{{ meta.title.0|default:pad.display_slug|markdown_filter|no_p }}{% endif %}</title>
+    <title>{{ site_name }}{% if pad %} → {% if meta.authors %}{{ meta.authors|natural_join:'&'|markdown_filter|striptags }}, {% endif %}{{ meta.title.0|default:pad.display_slug|markdown_filter|striptags }}{% endif %}</title>
     
 </head>
 <body class="pad-{{ pad.display_name|slugify }} {{ mode }}-mode {% if user.is_authenticated and author %}logged-in{% else %}logged-out{% endif %} {% block bodyclasses %}{% endblock %}">
