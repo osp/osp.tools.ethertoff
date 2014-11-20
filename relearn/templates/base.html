@@ -1,5 +1,5 @@
 {% load wikify relearn_tags %}<!DOCTYPE HTML>
-<html{% if meta.language %} lang="{{ meta.language.0 }}" {% endif %} moznomarginboxes mozdisallowselectionprint>
+<html xmlns="http://www.w3.org/1999/xhtml" {% if meta.language %} lang="{{ meta.language.0 }}" {% endif %} moznomarginboxes mozdisallowselectionprint>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
 
@@ -54,7 +54,9 @@
         {% if pad %}
             {% if mode == 'r' %}
                 <a class="active button read-button screen-only">Read</a>
+                {% if user.is_authenticated %}
                 <a class="button screen-only write-button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
+                {% endif %}
             {% else %}
                 <a class="button screen-only read-button" href="{% url 'pad-read' 'r' pad.display_slug %}">Read</a>
                 <a class="active button screen-only write-button">Write</a>
