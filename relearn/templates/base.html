@@ -11,9 +11,9 @@
         <link rel="stylesheet/less" href="{% url 'css-print' %}" type="text/css" media="print">
     {% endblock %}
 
-    <script src="{{ STATIC_URL }}js/less-1.4.1.min.js" type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js" type="text/javascript"></script>
-    <script src="{{ STATIC_URL }}js/underscore.js" type="text/javascript"></script>
+    <script src="{{ STATIC_URL }}js/less-1.4.1.min.js" type="text/javascript"> </script>
+    <script src="{{ STATIC_URL }}js/jquery-1.11.1.min.js" type="text/javascript"> </script>
+    <script src="{{ STATIC_URL }}js/underscore.js" type="text/javascript"> </script>
 
     {% block head_meta %}{% endblock %}
 
@@ -69,6 +69,7 @@
             {% endif %}
         {% else %}
                 <a class="button read-button screen-only">Read</a>
+                <a class="button screen-only write-button" href="{% url 'login' %}">Write</a>
                 <a class="button screen-only" href="#" onclick="window.print()">Print</a>
         {% endif %}
     </nav>
@@ -90,7 +91,6 @@
         <div class="left-side screen-only">
         </div>
         <div class="middle">
-
             <div id="content" class="{% block contentclasses %}{% endblock %}">
                 {% block content %}{% endblock %}
             </div>
@@ -115,6 +115,21 @@
         </script>
     {% endif %}
 
+    {% if not LOCAL %}<!-- Piwik -->
+    <script type="text/javascript">
+      var _paq = _paq || [];
+      _paq.push(['trackPageView']);
+      _paq.push(['enableLinkTracking']);
+      (function() {
+        var u=(("https:" == document.location.protocol) ? "https" : "http") + "://stats.f-u-t-u-r-e.org/";
+        _paq.push(['setTrackerUrl', u+'piwik.php']);
+        _paq.push(['setSiteId', 1]);
+        var d=document, g=d.createElement('script'), s=d.getElementsByTagName('script')[0]; g.type='text/javascript';
+        g.defer=true; g.async=true; g.src=u+'piwik.js'; s.parentNode.insertBefore(g,s);
+      })();
+    </script>
+    <noscript><p><img src="http://stats.f-u-t-u-r-e.org/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>{% endif %}
+    <!-- End Piwik Code -->
 
 {% block scripts %}{% endblock %}
 </body>

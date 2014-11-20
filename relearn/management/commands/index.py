@@ -142,6 +142,7 @@ def query_results_to_template_articles(query_results):
                 article[new_key].append(value)
             # Otherwise it is strings
             else:
+                new_key = short_names[key]
                 article[new_key] = value
     
     template_articles.append(article)
@@ -153,7 +154,7 @@ def query_results_to_template_articles(query_results):
     # Still don’t know why we get it—but then it balks because there is no title
     # So we first check if there is a title
     # Ad hoc: remove the about page (maybe have some meta info. that determine if a page can be sniffed?)
-    template_articles = [article for article in template_articles if 'title' in article and article['title'] != "About"]
+    template_articles = [article for article in template_articles if article['title'] != "About"]
     
     return sorted(template_articles, key=lambda a: a['date'] if 'date' in a else 0, reverse=True)
 
@@ -166,6 +167,8 @@ def snif():
     start = clock()
     
     g = rdflib.Graph()
+    host = 'http://f-u-t-u-r-e.org'
+    # host = 'http://127.0.0.1:8000'
     
     i = 0
     total = Pad.objects.count()
