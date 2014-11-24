@@ -407,6 +407,11 @@ def pad_print(request, pk=None, slug=None):
 
 def home(request):
     try:
+        pub = Pad.objects.get(display_slug='pub.html')
+        padID = pub.group.groupID + '$' + urllib.quote_plus(pub.name.replace('::', '_'))
+        epclient = EtherpadLiteClient(pub.server.apikey, pub.server.apiurl)
+        pub_content = epclient.getText(padID)['text']
+
         articles = json.load(open(os.path.join(BACKUP_DIR, 'index.json')))
         sort = None
         if 'sort' in request.GET:
@@ -437,7 +442,9 @@ def home(request):
         else:
             tpl_articles = articles
         tpl_params = { 'articles': tpl_articles,
-                       'sort': sort }
+                       'sort': sort,
+                       'pub': pub_content,
+                    }
         return render_to_response("home.html", tpl_params, context_instance = RequestContext(request))
     except IOError:
             try:

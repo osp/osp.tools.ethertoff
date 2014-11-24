@@ -58,12 +58,10 @@
         {% endif %}
     {% endfor %}
     </ul>
+    {{ pub|safe }}
 {% endblock %}
 
 {% block rightside %}
-    {% if author %}
-    <p>This is the invisible part</p>
-    {% endif %}
 {% endblock %}
 
 {% block extraui %}
