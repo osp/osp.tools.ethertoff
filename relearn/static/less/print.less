@@ -108,10 +108,11 @@ div#print-interface {
         position: static;
     }
 
-    div#toc {
+    div.dropdown {
         display: inline-block;
+        position: relative;
 
-        ul#toc-pages {
+        ul {
             padding: 0.5em 0;
             display: none;
             background-color: black;
@@ -120,11 +121,12 @@ div#print-interface {
             bottom: 2em;
             height: 200pt;
             width: 80pt;
-            overflow: auto;
+            overfl-ow: auto;
 
             a {
                 padding: 0 1em;
                 color: white;
+                display: block;
 
                 &:hover {
                     background-color: white;
@@ -161,29 +163,29 @@ div#print-interface {
 
 
 html.spread {
-    width: @page-width-crop * 2;
-
     .page {
         outline: 1px solid black;
         float: left;
 
-        &:first-child {
-            margin-left: @page-width !important;
-        }
         &:nth-child(odd) {
             margin-left: -@crop * 2;
             left: 1px;
         }
     }
+    #page-1 {
+        margin-left: @page-width !important;
+    }
 }
 
 html {
     width: @page-width-crop;
+    position: absolute;
 }
 
 body {
     position: absolute;
-    width: @page-width-crop;
+    /*width: @page-width-crop;*/
+    width: 100%;
 }
 
 html,
