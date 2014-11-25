@@ -129,6 +129,15 @@ if($("body").hasClass("p-mode")){
     });
 
 
+
+    // __________________________________ SPREAD __________________________________ //
+    $("button#spread").click(function(e){
+        e.preventDefault();
+        $(this).toggleClass("button-active");
+        $("html").toggleClass("spread");
+    });
+
+
     // __________________________________ HIGH RESOLUTION __________________________________ //
     $("button#hi-res").click(function(e){
         e.preventDefault();
