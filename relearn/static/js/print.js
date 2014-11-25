@@ -91,7 +91,7 @@ if($("body").hasClass("p-mode")){
             </div>\
     ');
 
-    $("#master-page").append('<section class="header" data-title="'+ $("h2[property='dc:title']").text() + '"></section>').append('<section class="main-section"><div class="column"></div></section>').append('<section class="footer"></section>');
+    $("#master-page").append('<section class="header" data-title="'+ $("h2[property='dc:title']").text() + '"></section>').append('<section class="main-section"><div class="marginalia"></div><div class="column"></div></section>').append('<section class="footer"></section>');
 
     // OPTIONAL COLUMNS
     try {
