@@ -203,7 +203,6 @@ if($("body").hasClass("p-mode")){
         console.log(zoom);
         console.log(unzoom);
         $(".page").css("-webkit-transform", "scale(" + zoom + ")");
-        $(".page").css("margin-bottom", "-" + zoom * 10 + "em");
     });
 
 
