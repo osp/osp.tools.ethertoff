@@ -202,7 +202,7 @@ if($("body").hasClass("p-mode")){
         zoom = $(this).attr("title") / 100 ;
         console.log(zoom);
         $("#pages").css("-webkit-transform", "scale(" + zoom + ")");
-        //$("#pages").css("-webkit-transform-origin", "0 0");
+        $("#pages").css("-webkit-transform-origin", "0 0");
     });
 
     // __________________________________ FOOTNOTES __________________________________ //
