@@ -200,10 +200,13 @@ if($("body").hasClass("p-mode")){
     $("#zoom-list a").click(function(e){
         e.preventDefault();
         zoom = $(this).attr("title") / 100 ;
+        console.log(zoom);
         if (zoom == 0.5) {
+            console.log(zoom);
             $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + " -" + $("#master-page").height() + ")");
         }
         if (zoom == 1.50) {
+            console.log(zoom);
             $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(" + ($("#master-page").width() /3) +  ($("#master-page").height() / 3) + ")");
         }
     });
