@@ -202,12 +202,12 @@ if($("body").hasClass("p-mode")){
         zoom = $(this).attr("title") / 100 ;
         console.log(zoom);
         if (zoom == 0.5) {
-            console.log(zoom);
-            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + " -" + $("#master-page").height() + ")");
+            console.log("scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + "px -" + $("#master-page").height() + "px)")");
+            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + "px -" + $("#master-page").height() + "px)");
         }
         if (zoom == 1.50) {
-            console.log(zoom);
-            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(" + ($("#master-page").width() /3) +  ($("#master-page").height() / 3) + ")");
+            console.log("scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + "px -" + $("#master-page").height() + "px)")");
+            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(" + ($("#master-page").width() /3) + "px " + ($("#master-page").height() / 3) + "px)");
         }
     });
 
