@@ -190,6 +190,7 @@ if($("body").hasClass("p-mode")){
         $(this).toggleClass("button-active");
         $("#toc-pages").toggle();
     });
+
     // __________________________________ ZOOM __________________________________ //
     $("#zoom").click(function(e){
         e.preventDefault();
@@ -207,6 +208,15 @@ if($("body").hasClass("p-mode")){
         }
     });
 
+    // __________________________________ FOOTNOTES __________________________________ //
+    foot = 1;
+    $("div.footnote").each(function(){
+        ol = $("ol", $(this));
+        height = ($(ol).height() / 3) * 2;
+        $(ol).css("-webkit-flow-into", "footnotes-" + foot);
+        $(this).append("<div style='height: " + height + "px; -webkit-flow-from: footnotes-" + foot + ";' class='footnote-column'></div><div style='height: " + height + "px; -webkit-flow-from: footnotes-" + foot + ";' class='footnote-column'></div>");
+        foot += 1;
+    });
 
 }
 });
