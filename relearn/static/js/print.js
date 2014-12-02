@@ -69,7 +69,7 @@ if($("body").hasClass("p-mode")){
 
     
     // Create pages
-    $("body").append('<section id="master-page" class="page"></section>');
+    $("body").append('<div id="pages"><section id="master-page" class="page"></section></div>');
     $("#master-page").append('\
             <div class="print-marks">\
                 <div class="crop-top-left">\
@@ -201,8 +201,8 @@ if($("body").hasClass("p-mode")){
         e.preventDefault();
         zoom = $(this).attr("title") / 100 ;
         console.log(zoom);
-        $(".page").css("-webkit-transform", "scale(" + zoom + ")");
-        $(".page").css("-webkit-transform-origin", "0 0");
+        $("#pages").css("-webkit-transform", "scale(" + zoom + ")");
+        //$("#pages").css("-webkit-transform-origin", "0 0");
     });
 
     // __________________________________ FOOTNOTES __________________________________ //
