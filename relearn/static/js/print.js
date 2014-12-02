@@ -199,10 +199,12 @@ if($("body").hasClass("p-mode")){
     $("#zoom-list a").click(function(e){
         e.preventDefault();
         zoom = $(this).attr("title") / 100 ;
-        unzoom = 1 / zoom;
-        console.log(zoom);
-        console.log(unzoom);
-        $(".page").css("-webkit-transform", "scale(" + zoom + ")");
+        if (zoom == 50) {
+            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + " -" + $("#master-page").height() + ")");
+        }
+        if (zoom == 150) {
+            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(" + ($("#master-page").width() /3) +  ($("#master-page").height() / 3) + ")");
+        }
     });
 
 
