@@ -201,19 +201,8 @@ if($("body").hasClass("p-mode")){
         e.preventDefault();
         zoom = $(this).attr("title") / 100 ;
         console.log(zoom);
-        if (zoom == 0.5) {
-            //console.log("scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + "px -" + $("#master-page").height() + "px)")");
-            width = $("#master-page").width() / 2;
-            height = $("#master-page").height();
-            console.log("scale(" + zoom + ") translate(-" + width + "px, -" + height + "px)");
-            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(-" + width + "px, -" + height + "px)");
-        }
-        if (zoom == 1.50) {
-            //console.log("scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + "px -" + $("#master-page").height() + "px)")");
-            width = $("#master-page").width() / 3;
-            height = $("#master-page").height() / 3;
-            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(" + width + "px, " + height + "px)");
-        }
+        $(".page").css("-webkit-transform", "scale(" + zoom + ")");
+        $(".page").css("-webkit-transform-origin", "top");
     });
 
     // __________________________________ FOOTNOTES __________________________________ //
