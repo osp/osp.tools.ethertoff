@@ -203,11 +203,15 @@ if($("body").hasClass("p-mode")){
         console.log(zoom);
         if (zoom == 0.5) {
             //console.log("scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + "px -" + $("#master-page").height() + "px)")");
-            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + "px -" + $("#master-page").height() + "px)");
+            width = pageWidthCrop / 2;
+            height = pageHeightCrop;
+            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(-" + width + "mm -" + height + "mm)");
         }
         if (zoom == 1.50) {
             //console.log("scale(" + zoom + ") translate(-" + ($("#master-page").width() /2) + "px -" + $("#master-page").height() + "px)")");
-            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(" + ($("#master-page").width() /3) + "px " + ($("#master-page").height() / 3) + "px)");
+            width = pageWidthCrop / 3;
+            height = pageHeightCrop / 3;
+            $(".page").css("-webkit-transform", "scale(" + zoom + ") translate(" + width + "mm " + height + "mm)");
         }
     });
 
