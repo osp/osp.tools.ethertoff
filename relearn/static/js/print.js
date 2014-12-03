@@ -217,7 +217,7 @@ if($("body").hasClass("p-mode")){
             $(this).append("<div style='height: " + height + "px; -webkit-flow-from: footnotes-" + foot + ";' class='footnote-column'></div><div style='height: " + height + "px; -webkit-flow-from: footnotes-" + foot + ";' class='footnote-column'></div>");
             foot += 1;
         });
-    }, 3000);
+    }, 5000);
 
 }
 });
