@@ -212,12 +212,12 @@ if($("body").hasClass("p-mode")){
             ol = $("ol", $(this));
             console.log(foot);
             console.log(ol);
-            height = ($(ol).height() / 3) * 2;
+            height = ($(ol).height() / 4) * 3;
             $(ol).css("-webkit-flow-into", "footnotes-" + foot);
             $(this).append("<div style='height: " + height + "px; -webkit-flow-from: footnotes-" + foot + ";' class='footnote-column'></div><div style='height: " + height + "px; -webkit-flow-from: footnotes-" + foot + ";' class='footnote-column'></div>");
             foot += 1;
         });
-    }, 5000);
+    }, 10000);
 
 }
 });
