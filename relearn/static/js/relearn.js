@@ -1,8 +1,14 @@
 function remy(target) {          
+    console.log("remy");
     pattern = /(\b[A-Z].{0,2}|, .{0,3}) /g;
     text = target.html();          
     target.html(text.replace(pattern, '$1 ')); // I actually put a non-breaking space charcter after $1! You don’t see it, but it’s there. This is to not have this &nbsp; value pop up in places.
 }    
+
+$(window).load(function(){
+    // ORPHANS AND WIDOWS
+    remy($("#content"));  
+});
 
 $(document).ready(function() {
 
@@ -14,8 +20,6 @@ $(document).ready(function() {
     images = $("#content img").length;
     $("dl.meta").append("<dt>Images</dt><dd><p>" + images + "</p></dd>");
 
-    // ORPHANS AND WIDOWS
-    remy($("#content"));  
 
     // DIV WRAPPER AROUND EACH H2
     $("#content h2").each(function(){
