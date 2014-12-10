@@ -414,4 +414,8 @@ def css_slide(request):
         epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
         return HttpResponse(epclient.getText(padID)['text'], mimetype="text/css")
     except:
-        pass
+        # If there is no pad called "css", loads a default css file
+        f = open('relearn/static/css/slidy.css', 'r')
+        css = f.read()
+        f.close()
+        return HttpResponse(css, mimetype="text/css")
