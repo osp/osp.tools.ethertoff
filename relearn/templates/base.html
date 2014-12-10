@@ -58,6 +58,7 @@
                 {% if user.is_authenticated %}
                 <a class="button screen-only write-button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
                 {% endif %}
+                <a class="button screen-only slide-button" href="#">Slide</a>
             {% else %}
                 <a class="button screen-only read-button" href="{% url 'pad-read' 'r' pad.display_slug %}">Read</a>
                 <a class="active button screen-only write-button">Write</a>
@@ -68,7 +69,6 @@
             {% else %}
                 <a class="button screen-only" href="#" onclick="window.print()">Print</a>
             {% endif %}
-                <a class="button screen-only slide-button" href="#">Slide</a>
         {% else %}
                 <a class="button read-button screen-only">Read</a>
                 <a class="button screen-only write-button" href="{% url 'login' %}">Write</a>
