@@ -95,7 +95,7 @@ $(".slide-button").click(function(e) {
     e.preventDefault();
     $.getScript( "/static/js/slidy.js", function( data, textStatus, jqxhr ) {
       w3c_slidy.init();
-      $("body").append("<link rel='stylesheet' href='/static/js/slidy.css/' type='text/css' media='all' />");
+      $("body").append("<link rel='stylesheet' href='/static/js/slidy.css' type='text/css' media='all' />");
       $("body").append("<link rel='stylesheet' href='/css-slide/' type='text/css' media='all' />");
     });
 });
