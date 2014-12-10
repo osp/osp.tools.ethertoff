@@ -406,3 +406,12 @@ def offsetprint(request):
         css = f.read()
         f.close()
         return HttpResponse(css, mimetype="text/css")
+
+def css_slide(request):
+    try:
+        pad = Pad.objects.get(display_slug='slidy.css')
+        padID = pad.group.groupID + '$' + urllib.quote_plus(pad.name.replace('::', '_'))
+        epclient = EtherpadLiteClient(pad.server.apikey, pad.server.apiurl)
+        return HttpResponse(epclient.getText(padID)['text'], mimetype="text/css")
+    except:
+        pass

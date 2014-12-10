@@ -20,7 +20,7 @@ $(document).ready(function() {
     // DIV WRAPPER AROUND EACH H2
     $("#content h2").each(function(){
         h2 = $(this).attr('id');
-        $(this).nextUntil('h2').wrapAll('<div class="' + h2 + '"></div>');
+        $(this).nextUntil('h2').andSelf().wrapAll('<div class="slide ' + h2 + '"></div>');
     });
 
     // OFFSET ANCHOR BECAUSE OF FIXED MENU
@@ -91,6 +91,13 @@ $(".logged-out a.write-button").click(function(e) {
     $(".popup-wrapper").removeClass("hidden");
 });
 
+$(".slide-button").click(function(e) {
+    e.preventDefault();
+    $.getScript( "/static/js/slidy.js", function( data, textStatus, jqxhr ) {
+      w3c_slidy.init();
+    });
+});
+
 $(".popup-wrapper").click(function(e) {
     $(this).addClass("hidden");
 });
@@ -104,3 +111,4 @@ $(document).keydown(function(e) {
         $(".popup-wrapper").addClass("hidden");
     }
 });
+
