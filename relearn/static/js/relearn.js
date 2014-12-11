@@ -20,7 +20,7 @@ $(document).ready(function() {
     // DIV WRAPPER AROUND EACH H2
     $("#content h2").each(function(){
         h2 = $(this).attr('id');
-        $(this).nextUntil('h2').andSelf().wrapAll('<div class="slide ' + h2 + '" title="' + h2 + '"></div>');
+        $(this).nextUntil('h2').andSelf().wrapAll('<div class="slide ' + h2 + '"></div>');
     });
 
     // OFFSET ANCHOR BECAUSE OF FIXED MENU

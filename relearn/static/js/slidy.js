@@ -596,7 +596,7 @@ var w3c_slidy = {
     if (!node || node.nodeType != 1)
       return null;
 
-    if (node.nodeName == "H1" || node.nodeName == "h1")
+    if (node.nodeName == "H2" || node.nodeName == "h2")
       return node;
 
     var child = node.firstChild;
