@@ -1,4 +1,5 @@
 {% load wikify relearn_tags %}
+{% spaceless %}
 <div class="metadata">
     <dl>
         {% if meta.participants %}
@@ -74,3 +75,4 @@
             {{ meta.colophon.0|markdown_filter }}
         {% endif %}
 </div>
+{% endspaceless %}
