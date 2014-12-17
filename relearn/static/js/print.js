@@ -13,8 +13,8 @@ if($("body").hasClass("p-mode")){
 
     // OVERRIDES PAGE FORMAT SET ON PAD
     try{
-        var pageWidthCrop = parseInt(customPageWidth) + parseInt(crop);
-        var pageHeightCrop = parseInt(customPageHeight) + parseInt(crop);
+        var pageWidthCrop = parseInt(customPageWidth) + (parseInt(crop) *2);
+        var pageHeightCrop = parseInt(customPageHeight) + (parseInt(crop) *2);
         var pageHeightCropx = pageHeightCrop - 1;
         var styles = "                                                  \
             @page {                                                     \n \
