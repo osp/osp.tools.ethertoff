@@ -20,8 +20,7 @@ if($("body").hasClass("p-mode")){
             @page {                                                     \n \
                 size:" + pageWidthCrop + "mm " + pageHeightCrop + "mm;      \n \
             }                                                           \n \
-            html,                                                       \n \
-            body {                                                      \n \
+            html {                                                       \n \
                 width: " + pageWidthCrop + "mm;                           \n \
             }                                                           \n \
             #master-page,                                               \n \
