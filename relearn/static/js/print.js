@@ -204,19 +204,6 @@ if($("body").hasClass("p-mode")){
         $("#pages").css("-webkit-transform-origin", "0 0");
     });
 
-    // __________________________________ FOOTNOTES __________________________________ //
-    setTimeout(function() {
-        foot = 1;
-        $("div.footnote").each(function(){
-            ol = $("ol", $(this));
-            console.log(foot);
-            console.log(ol);
-            height = $(ol).height();
-            $(ol).css("-webkit-flow-into", "footnotes-" + foot);
-            $(this).append("<div style='height: " + height + "px; -webkit-flow-from: footnotes-" + foot + ";' class='footnote-column'></div><div style='height: " + height + "px; -webkit-flow-from: footnotes-" + foot + ";' class='footnote-column'></div>");
-            foot += 1;
-        });
-    }, 10000);
 
 }
 });
