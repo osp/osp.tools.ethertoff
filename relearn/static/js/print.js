@@ -148,10 +148,9 @@ if($("body").hasClass("p-mode")){
         $("img").each(function(){
             if ($("html").hasClass("export")){
                 var lores = $(this).attr("src");
-                hires = lores.split("/");
-                hires.splice(-1, 0, "HD");
-                hires = hires.join("/");
+                hires = $(this).attr("data-hires");
                 $(this).attr("src", hires);
+                $(this).attr("data-hires", lores);
         console.log("Wait for hi-res images to load");
         window.setTimeout(function(){
             console.log("Check image resolution");
@@ -169,10 +168,8 @@ if($("body").hasClass("p-mode")){
         }, 2000);
             } else {
                 var hires = $(this).attr("src");
-                lores = hires.split("/");
-                lores.splice(-2, 1);
-                lores = lores.join("/");
                 $(this).attr("src", lores);
+                $(this).attr("data-hires", hires);
                 $("img").removeClass("lo-res");
             }
         });
