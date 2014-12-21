@@ -205,22 +205,6 @@ if($("body").hasClass("p-mode")){
         $(".page").css("-webkit-transform", "scale(" + zoom + ")");
     });
 
-<<<<<<< HEAD
-=======
-    // __________________________________ FOOTNOTES __________________________________ //
-    setTimeout(function() {
-        foot = 1;
-        $("div.footnote").each(function(){
-            ol = $("ol", $(this));
-            console.log(foot);
-            console.log(ol);
-            height = $(ol).height();
-            $(ol).css("-webkit-flow-into", "footnotes-" + foot);
-            $(this).append("<div style='height: " + height + "px; -webkit-flow-from: footnotes-" + foot + ";' class='footnote-column'></div><div style='height: " + height + "px; -webkit-flow-from: footnotes-" + foot + ";' class='footnote-column'></div>");
-            foot += 1;
-        });
-    }, 10000);
->>>>>>> c9e860b... ok, let's not try to gain some space but just to put the footnotes in two columns
 
 }
 });
