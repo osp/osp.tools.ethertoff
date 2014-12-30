@@ -142,6 +142,45 @@ div#print-interface {
 }
 
 
+/* __________________________________ ABSOLUTE POSITIONNED OBJECTS __________________________________ */
+/* Adding .moveable class to an object makes it absolutely positionned on the page.
+ * You can then move it around and resize it.
+ * Copy its properties (i.e. "top: 22px; left: 101px; width: 212px; height: 244px;).
+ * Paste those properties back to the object's "style" attribute.
+ */
+.inside {
+    position: relative;
+    height: @page-height;
+}
+.moveable {
+    position: absolute;
+    overflow: hidden;
+    z-index: -1010 !important;
+
+    &.foreground {
+        z-index: 1000 !important;
+    }
+
+    figure {
+        width: 100%;
+        height: 100%;
+    }
+
+}
+.moveable .properties {
+    display: none;
+    position: absolute;
+    bottom: 0.5em;
+    right: 0.5em;
+    text-transform: none;
+    height: 2em;
+}
+.moveable:hover .properties {
+    display: block;
+}
+
+
+
 /* __________________________________ PAGE SETTINGS  __________________________________ */
 * {
     -webkit-print-color-adjust: exact;  /* Allows printing of background colors */
