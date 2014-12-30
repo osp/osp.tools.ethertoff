@@ -131,6 +131,7 @@
                 <button id="debug">Debug</button>
                 <button id="spread">Spread</button>
                 <button id="hi-res">Hi-res</button>
+                <button id="back2front">Back/Front</button>
                 <div id="toc" class="dropdown">
                     <button id="goto">Go to</button>
                     <ul id="toc-pages"> </ul>
@@ -158,4 +159,5 @@
         <script src="{{ STATIC_URL }}js/print.js" type="text/javascript" charset="utf-8"> </script>
         <!--<script src="{{ STATIC_URL }}js/css-regions-polyfill-master/cssregions.min.js" type="text/javascript" charset="utf-8"> </script>-->
     {% endifequal %}
+    <link rel="stylesheet" href="{{ STATIC_URL }}js/jquery-ui-1.10.3/css/smoothness/jquery-ui-1.10.3.custom.min.css" type="text/css" media="all" charset="utf-8">
 {% endblock %}
