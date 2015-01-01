@@ -167,8 +167,6 @@ def snif():
     start = clock()
     
     g = rdflib.Graph()
-    host = 'http://f-u-t-u-r-e.org'
-    # host = 'http://127.0.0.1:8000'
     
     i = 0
     total = Pad.objects.count()
