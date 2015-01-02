@@ -18,6 +18,7 @@ urlpatterns = patterns(
     url(r'^css-print/$', 'relearn.views.cssprint', name='css-print'),
     url(r'^offset-print/$', 'relearn.views.offsetprint', name='offset-print'),
     url(r'^$', 'relearn.views.home', name='home'),
+    url(r'^sorted/by/(?P<key>[^/]+)/$', 'relearn.views.home', name='sorted'),
     url(r'^(?P<slug>[^/]+)\.xhtml$', 'relearn.views.xhtml', name='xhtml'),
     url(r'^accounts/login$', 'django.contrib.auth.views.login',
         {'template_name': 'login.html'}, name='login'),

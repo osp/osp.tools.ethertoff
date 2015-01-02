@@ -316,7 +316,7 @@ def pad_read(request, mode="r", slug=None):
 
 
 
-def home(request):
+def home(request, key='theme'):
     try:
         articles = json.load(open(os.path.join(BACKUP_DIR, 'index.json')))
     except IOError: # If there is no index.json generated, we go to the defined homepage
@@ -326,9 +326,7 @@ def home(request):
         except Pad.DoesNotExist: # If there is no homepage defined we go to the login:
             return HttpResponseRedirect(reverse('login'))
     
-    sort = 'theme'
-    if 'sort' in request.GET:
-        sort = request.GET['sort']
+    sort = key
 
     hash = {}
     for article in articles:

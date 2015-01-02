@@ -5,7 +5,7 @@
 
     <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/fonts.css" type="text/css" media="all">
-    
+
     {% block extra_styles %}
         <link rel="stylesheet/less" href="{% url 'css' %}" type="text/css" media="screen">
         <link rel="stylesheet/less" href="{% url 'css-print' %}" type="text/css" media="print">
@@ -18,20 +18,20 @@
     {% block head_meta %}{% endblock %}
 
     <title>{{ site_name }}{% if pad %} → {{ pad.display_slug|dewikify }}{% endif %}</title>
-    
+
 </head>
 <body class="pad-{{ pad.display_name|slugify }} {{ mode }}-mode {% if user.is_authenticated and author %}logged-in{% else %}logged-out{% endif %} {% block bodyclasses %}{% endblock %}">
     <nav id="nav-left">
         <h1><a id="logo" data-article="{% block data_article %}{% endblock%}" href="/">{{ site_name }}</a></h1>
         <a class="button screen-only" href="{% url 'xhtml' 'Introduction' %}">About</a>
-        
-        
+
+
         <div id="sort-by">Sort by:
             <a class="{% if sort == 'theme' %}active{% endif %} button screen-only" href="/">Theme</a>
-            <a class="{% if sort == 'date' %}active{% endif %} button screen-only" href="/?sort=date">Date</a>
-            <a class="{% if sort == 'tags' %}active{% endif %} button screen-only" href="/?sort=tags">Tag</a>
-            <a class="{% if sort == 'participants' %}active{% endif %} button screen-only" href="/?sort=participants">Participant</a>
-            <a class="{% if sort == 'place' %}active{% endif %} button screen-only" href="/?sort=place">Location</a>
+            <a class="{% if sort == 'date' %}active{% endif %} button screen-only" href="/sorted/by/date/">Date</a>
+            <a class="{% if sort == 'tags' %}active{% endif %} button screen-only" href="/sorted/by/tags">Tag</a>
+            <a class="{% if sort == 'participants' %}active{% endif %} button screen-only" href="/sorted/by/participants">Participant</a>
+            <a class="{% if sort == 'place' %}active{% endif %} button screen-only" href="/sorted/by/place">Location</a>
         </div>
         {% block extra_nav %}{% endblock %}
 
@@ -63,7 +63,7 @@
                 <a class="button screen-only read-button" href="{% url 'pad-read' 'r' pad.display_slug %}">Read</a>
                 <a class="active button screen-only write-button">Write</a>
             {% endif %}
-             
+
             {% if user.is_authenticated %}
                 <a class="button screen-only" href="{% url 'pad-read' 'p' pad.display_slug %}">Print</a>
             {% else %}
@@ -104,7 +104,7 @@
     {% block extraui %}{% endblock %}
 
 
-    
+
 
     <script src="{{ STATIC_URL }}js/relearn.js" type="text/javascript" charset="utf-8"> </script>
     <script src="{{ STATIC_URL }}js/comments/comments.js" type="text/javascript" charset="utf-8"> </script>
