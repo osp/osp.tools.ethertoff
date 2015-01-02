@@ -1,0 +1,182 @@
+diff --git a/etherpadlite/migrations/0004_auto__add_unique_pad_name__add_unique_pad_display_slug.py b/etherpadlite/migrations/0004_auto__add_unique_pad_name__add_unique_pad_display_slug.py
+new file mode 100644
+index 0000000..1febdc2
+--- /dev/null
++++ b/etherpadlite/migrations/0004_auto__add_unique_pad_name__add_unique_pad_display_slug.py
+@@ -0,0 +1,97 @@
++# -*- coding: utf-8 -*-
++from south.utils import datetime_utils as datetime
++from south.db import db
++from south.v2 import SchemaMigration
++from django.db import models
++
++
++class Migration(SchemaMigration):
++
++    def forwards(self, orm):
++        # Adding unique constraint on 'Pad', fields ['name']
++        db.create_unique(u'etherpadlite_pad', ['name'])
++
++        # Adding unique constraint on 'Pad', fields ['display_slug']
++        db.create_unique(u'etherpadlite_pad', ['display_slug'])
++
++
++    def backwards(self, orm):
++        # Removing unique constraint on 'Pad', fields ['display_slug']
++        db.delete_unique(u'etherpadlite_pad', ['display_slug'])
++
++        # Removing unique constraint on 'Pad', fields ['name']
++        db.delete_unique(u'etherpadlite_pad', ['name'])
++
++
++    models = {
++        u'auth.group': {
++            'Meta': {'object_name': 'Group'},
++            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
++            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '80'}),
++            'permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'})
++        },
++        u'auth.permission': {
++            'Meta': {'ordering': "(u'content_type__app_label', u'content_type__model', u'codename')", 'unique_together': "((u'content_type', u'codename'),)", 'object_name': 'Permission'},
++            'codename': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
++            'content_type': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['contenttypes.ContentType']"}),
++            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
++            'name': ('django.db.models.fields.CharField', [], {'max_length': '50'})
++        },
++        u'auth.user': {
++            'Meta': {'object_name': 'User'},
++            'date_joined': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
++            'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'blank': 'True'}),
++            'first_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
++            'groups': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['auth.Group']", 'symmetrical': 'False', 'blank': 'True'}),
++            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
++            'is_active': ('django.db.models.fields.BooleanField', [], {'default': 'True'}),
++            'is_staff': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
++            'is_superuser': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
++            'last_login': ('django.db.models.fields.DateTimeField', [], {'default': 'datetime.datetime.now'}),
++            'last_name': ('django.db.models.fields.CharField', [], {'max_length': '30', 'blank': 'True'}),
++            'password': ('django.db.models.fields.CharField', [], {'max_length': '128'}),
++            'user_permissions': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['auth.Permission']", 'symmetrical': 'False', 'blank': 'True'}),
++            'username': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '30'})
++        },
++        u'contenttypes.contenttype': {
++            'Meta': {'ordering': "('name',)", 'unique_together': "(('app_label', 'model'),)", 'object_name': 'ContentType', 'db_table': "'django_content_type'"},
++            'app_label': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
++            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
++            'model': ('django.db.models.fields.CharField', [], {'max_length': '100'}),
++            'name': ('django.db.models.fields.CharField', [], {'max_length': '100'})
++        },
++        u'etherpadlite.pad': {
++            'Meta': {'ordering': "['display_slug', 'name']", 'object_name': 'Pad'},
++            'display_name': ('django.db.models.fields.CharField', [], {'max_length': '256', 'blank': 'True'}),
++            'display_slug': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '256', 'blank': 'True'}),
++            'group': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['etherpadlite.PadGroup']"}),
++            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
++            'name': ('django.db.models.fields.CharField', [], {'unique': 'True', 'max_length': '50'}),
++            'server': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['etherpadlite.PadServer']"})
++        },
++        u'etherpadlite.padauthor': {
++            'Meta': {'object_name': 'PadAuthor'},
++            'authorID': ('django.db.models.fields.CharField', [], {'max_length': '256', 'blank': 'True'}),
++            'group': ('django.db.models.fields.related.ManyToManyField', [], {'blank': 'True', 'related_name': "'authors'", 'null': 'True', 'symmetrical': 'False', 'to': u"orm['etherpadlite.PadGroup']"}),
++            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
++            'server': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['etherpadlite.PadServer']"}),
++            'user': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.User']"})
++        },
++        u'etherpadlite.padgroup': {
++            'Meta': {'object_name': 'PadGroup'},
++            'group': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['auth.Group']"}),
++            'groupID': ('django.db.models.fields.CharField', [], {'max_length': '256', 'blank': 'True'}),
++            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
++            'server': ('django.db.models.fields.related.ForeignKey', [], {'to': u"orm['etherpadlite.PadServer']"})
++        },
++        u'etherpadlite.padserver': {
++            'Meta': {'object_name': 'PadServer'},
++            'apikey': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
++            u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
++            'notes': ('django.db.models.fields.TextField', [], {'blank': 'True'}),
++            'title': ('django.db.models.fields.CharField', [], {'max_length': '256'}),
++            'url': ('django.db.models.fields.URLField', [], {'max_length': '256'})
++        }
++    }
++
++    complete_apps = ['etherpadlite']
+\ No newline at end of file
+diff --git a/etherpadlite/models.py b/etherpadlite/models.py
+index 55260d8..d0c54b0 100755
+--- a/etherpadlite/models.py
++++ b/etherpadlite/models.py
+@@ -1,6 +1,6 @@
+ # -*- coding: utf-8 -*-
+ 
+-from django.db import models
++from django.db import models, IntegrityError
+ from django.db.models.signals import pre_delete
+ from django.contrib.auth.models import User, Group
+ from django.core.urlresolvers import reverse
+@@ -12,6 +12,9 @@ from relearn.templatetags.wikify import dewikify
+ 
+ import string
+ import random
++import re
++
++regex = re.compile("column (.*) is not unique")
+ 
+ class PadServer(models.Model):
+     """Schema and methods for etherpad-lite servers
+@@ -160,8 +163,8 @@ class PadAuthor(models.Model):
+ class Pad(models.Model):
+     """Schema and methods for etherpad-lite pads
+     """
+-    name = models.CharField(max_length=50)
+-    display_slug = models.CharField(max_length=256, blank=True, verbose_name="Name as used in URL (use :: for namespacing)")
++    name = models.CharField(max_length=50, unique=True)
++    display_slug = models.CharField(max_length=256, unique=True, blank=True, verbose_name="Name as used in URL (use :: for namespacing)")
+     
+     # I’m putting this back. We don’t use it anymore, but putting in the migration is
+     # more hassle then it’s worth
+@@ -205,8 +208,42 @@ class Pad(models.Model):
+             self.Create()
+         except ValueError: # already exists (need a better check for that)
+             pass
+-        super(Pad, self).save(*args, **kwargs)
+-
++        
++        # FIXME refactor this bit:
++        try:
++            super(Pad, self).save(*args, **kwargs)
++            
++        except IntegrityError as e:
++            # Most probably because display_slug already exists
++            groups = regex.findall(str(e))
++            if len(groups) == 0:
++                pass
++            
++            column = groups[0]
++            print column
++            if column == 'display_slug':
++                self.display_slug = self.display_slug + '-2' # I know this will create slug-2-2-2-2-2 on repeated application,
++                                                             # implementing incrementation is left as an exercise
++            if column == 'name':
++                self.name = self.name + '-2'
++            try:
++                super(Pad, self).save(*args, **kwargs)
++            except IntegrityError as e:
++                # Most probably because display_slug already exists
++                groups = regex.findall(str(e))
++                if len(groups) == 0:
++                    pass
++                
++                column = groups[0]
++                print column
++                if column == 'display_slug':
++                    self.display_slug = self.display_slug + '-2' # I know this will create slug-2-2-2-2-2 on repeated application,
++                                                                 # implementing incrementation is left as an exercise
++                if column == 'name':
++                    self.name = self.name + '-2'
++                    
++                super(Pad, self).save(*args, **kwargs)
++                
+     class Meta:
+         ordering = ['display_slug', 'name']
+         

@@ -1,0 +1,38 @@
+diff --git a/relearn/views.py b/relearn/views.py
+index b701bf3..1d13f48 100644
+--- a/relearn/views.py
++++ b/relearn/views.py
+@@ -425,15 +425,30 @@ def home(request):
+                 authors = {}
+                 for article in articles:
+                     if 'authors' in article:
+-                        for author in article['authors']:
++                        for i, author in enumerate(article['authors']):
++                            print i
++                            t_a = article.copy()
++                            if i == 0:
++                                print 0, t_a['authors']
++                            if i > 0:
++                                t_a['authors'].insert(0, t_a['authors'].pop(i))
++                                print i, t_a['authors']
++                            print t_a['authors'][0] == author
++                            print "adding to", author
++                            print t_a
+                             if not author in authors:
+-                                authors[author] = [article]
++                                authors[author] = [t_a]
+                             else:
+-                                authors[author].append(article)
++                                authors[author].append(t_a)
+                 tpl_articles = []
++                print json.dumps(authors, indent=2)
++
+                 for author in sorted(authors.keys()):
+                     # Add the articles sorted by date ascending:
+                     tpl_articles += sorted(authors[author], key=lambda a: a['date'] if 'date' in a else 0)
++                print json.dumps(authors, indent=2)
++                #print json.dumps(tpl_articles, indent=2)
++
+         else:
+             tpl_articles = articles
+         tpl_params = { 'articles': tpl_articles,
