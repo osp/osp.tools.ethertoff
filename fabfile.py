@@ -18,5 +18,5 @@ def index():
 
 def archive():
     local('mkdir -p public')
-    local('wget -rk -nH -P ./public http://vj14.stdin.fr/')
+    local('wget -rk -nH -P ./public --default-page=index.xhtml http://vj14.stdin.fr/')
     
