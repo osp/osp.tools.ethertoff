@@ -3,11 +3,10 @@
 
 {% block extra_styles %}
     {% ifequal mode "p" %}
-        <link rel="stylesheet/less" href="{{ STATIC_URL }}less/print.less" type="text/css" media="all">
-        <link rel="stylesheet/less" href="/offset-print/" type="text/css" media="all">
+        <link rel="stylesheet/less" href="{{ STATIC_URL }}less/print.less" type="text/css" media="all"> <!-- html2print utility styles for the print preview -->
+        <link rel="stylesheet/less" href="{% url 'offset-print' %}" type="text/css" media="all"> <!-- Use the print styles for the screen, because this is the print preview -->
     {% else %}
-        <link rel="stylesheet/less" href="{% url 'css' %}" type="text/css" media="screen">
-        <link rel="stylesheet/less" href="{% url 'css-print' %}" type="text/css" media="print">
+        {{ block.super }}
     {% endifequal %}
 {% endblock %}
 
