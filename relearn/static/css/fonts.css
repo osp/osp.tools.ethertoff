@@ -1,132 +1,68 @@
 @font-face {
-    font-family: 'patin';
-    src: url('/static/fonts/osp_le-patin-helvete-webfont.eot');
-    src: url('/static/fonts/osp_le-patin-helvete-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/osp_le-patin-helvete-webfont.woff') format('woff'),
-         url('/static/fonts/osp_le-patin-helvete-webfont.ttf') format('truetype'),
-         url('/static/fonts/osp_le-patin-helvete-webfont.svg#osp_le-patin-helvete') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Crickx';
-    src: url('/static/fonts/crickxsharkcut-webfont.eot');
-    src: url('/static/fonts/crickxsharkcut-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/crickxsharkcut-webfont.woff') format('woff'),
-         url('/static/fonts/crickxsharkcut-webfont.ttf') format('truetype'),
-         url('/static/fonts/crickxsharkcut-webfont.svg#crickxsharkcut') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Univers Light';
-    src: url('/static/fonts/universelse-light-webfont.eot');
-    src: url('/static/fonts/universelse-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/universelse-light-webfont.woff') format('woff'),
-         url('/static/fonts/universelse-light-webfont.ttf') format('truetype'),
-         url('/static/fonts/universelse-light-webfont.svg#universelse-light') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Univers';
-    src: url('/static/fonts/universelse-regular-webfont.eot');
-    src: url('/static/fonts/universelse-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/universelse-regular-webfont.woff') format('woff'),
-         url('/static/fonts/universelse-regular-webfont.ttf') format('truetype'),
-         url('/static/fonts/universelse-regular-webfont.svg#universelse-regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'Univers';
-    src: url('/static/fonts/universelse-bold-webfont.eot');
-    src: url('/static/fonts/universelse-bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/universelse-bold-webfont.woff') format('woff'),
-         url('/static/fonts/universelse-bold-webfont.ttf') format('truetype'),
-         url('/static/fonts/universelse-bold-webfont.svg#universelse-bold') format('svg');
-    font-weight: bold;
-    font-style: normal;
-}
-@font-face {
-    font-family: 'notcouriersans';
-    src: url('/static/fonts/NotCourierSans-webfont.eot');
-    src: url('/static/fonts/NotCourierSans-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/NotCourierSans-webfont.woff') format('woff'),
-         url('/static/fonts/NotCourierSans-webfont.ttf') format('truetype'),
-         url('/static/fonts/NotCourierSans-webfont.svg#notcouriersansregular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}
-@font-face {
-    font-family: 'notcouriersansbold';
-    src: url('/static/fonts/NotCourierSans-Bold-webfont.eot');
-    src: url('/static/fonts/NotCourierSans-Bold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/NotCourierSans-Bold-webfont.woff') format('woff'),
-         url('/static/fonts/NotCourierSans-Bold-webfont.ttf') format('truetype'),
-         url('/static/fonts/NotCourierSans-Bold-webfont.svg#notcouriersansbold') format('svg');
-    font-weight: bold;
-    font-style: normal;
-
+  font-family: 'Domine';
+  font-style: normal;
+  font-weight: 400;
+  /* IE6-8 compat */
+  src: url("../fonts/domine-c69a1e0e6e7a07e608ac1e42943729209996fdf2.eot");
+  src: local("Domine"),
+    local("Domine-Regular"),
+    url("../fonts/domine-3b5d8be275d15da4cf0eb215252f0c2f6ef217b7.woff") format("woff"),
+    url("../fonts/domine-f986a076627bfb8c73bb80a2dca6e2bcc6c9b43b.svg#Domine") format("svg"),
+    url("../fonts/domine-c69a1e0e6e7a07e608ac1e42943729209996fdf2.eot") format("embedded-opentype"),
+    url("../fonts/domine-e769e952cf89dbeb6717414ee53206b647a62059.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'HerscheyTimes';
-    src: url('/static/fonts/herscheytimes-webfont.eot');
-    src: url('/static/fonts/herscheytimes-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/herscheytimes-webfont.woff') format('woff'),
-         url('/static/fonts/herscheytimes-webfont.ttf') format('truetype'),
-         url('/static/fonts/herscheytimes-webfont.svg#herscheytimes') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'Domine';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Domine Bold"),
+    local("Domine-Bold"),
+    url("../fonts/domine-1f8f876b449be15ea101002c5d138614440868fc.woff") format("woff"),
+    url("../fonts/domine-d0ba28d0dc2cba322dcb1654986b8e2e386c083b.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'HerscheyScript';
-    src: url('/static/fonts/herscheyscript-webfont.eot');
-    src: url('/static/fonts/herscheyscript-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/herscheyscript-webfont.woff') format('woff'),
-         url('/static/fonts/herscheyscript-webfont.ttf') format('truetype'),
-         url('/static/fonts/herscheyscript-webfont.svg#herscheyscript') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'Quattrocento Sans';
+  font-style: italic;
+  font-weight: 400;
+  src: local("Quattrocento Sans Italic"),
+    local("QuattrocentoSans-Italic"),
+    url("../fonts/quattrocentosans-6350f4d88eba81d10cde7eb79509a14642b61ee7.woff") format("woff"),
+    url("../fonts/quattrocentosans-1ace26d12e9bdb4a4c938e4c299d81465bb4351e.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'HerscheyFutura';
-    src: url('/static/fonts/herscheyfutura-webfont.eot');
-    src: url('/static/fonts/herscheyfutura-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/herscheyfutura-webfont.woff') format('woff'),
-         url('/static/fonts/herscheyfutura-webfont.ttf') format('truetype'),
-         url('/static/fonts/herscheyfutura-webfont.svg#herscheyfutura') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'Quattrocento Sans';
+  font-style: italic;
+  font-weight: 700;
+  src: local("Quattrocento Sans Bold Italic"),
+    local("QuattrocentoSans-BoldItalic"),
+    url("../fonts/quattrocentosans-067cdd56d2516bf9466782cf74f1ebc8365c60ca.woff") format("woff"),
+    url("../fonts/quattrocentosans-6bb654311884162b3bb31bf618d9cbea19cfc865.ttf") format("truetype");
 }
 
 @font-face {
-    font-family: 'AutopiaLight';
-    src: url('/static/fonts/autopia-c-light-webfont.eot');
-    src: url('/static/fonts/autopia-c-light-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/autopia-c-light-webfont.woff') format('woff'),
-         url('/static/fonts/autopia-c-light-webfont.ttf') format('truetype'),
-         url('/static/fonts/autopia-c-light-webfont.svg#autopia-c-light') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
-}@font-face {
-    font-family: 'Autopia';
-    src: url('/static/fonts/autopia-c-regular-webfont.eot');
-    src: url('/static/fonts/autopia-c-regular-webfont.eot?#iefix') format('embedded-opentype'),
-         url('/static/fonts/autopia-c-regular-webfont.woff') format('woff'),
-         url('/static/fonts/autopia-c-regular-webfont.ttf') format('truetype'),
-         url('/static/fonts/autopia-c-regular-webfont.svg#autopia-c-regular') format('svg');
-    font-weight: normal;
-    font-style: normal;
-
+  font-family: 'Quattrocento Sans';
+  font-style: normal;
+  font-weight: 400;
+  /* IE6-8 compat */
+  src: url("../fonts/quattrocentosans-718d4ed25a0af15377610c5af506666cecad731c.eot");
+  src: local("Quattrocento Sans"),
+    local("QuattrocentoSans"),
+    url("../fonts/quattrocentosans-f7f6a5991432a8ff02dab4c9259e38ab802cd9c4.woff") format("woff"),
+    url("../fonts/quattrocentosans-e8744d11be6bd4b94c0d75ce565e8504405da7aa.svg#QuattrocentoSans") format("svg"),
+    url("../fonts/quattrocentosans-718d4ed25a0af15377610c5af506666cecad731c.eot") format("embedded-opentype"),
+    url("../fonts/quattrocentosans-9a8584913ee3a44dff504aa0c4dfadea2103eb8c.ttf") format("truetype");
 }
 
+@font-face {
+  font-family: 'Quattrocento Sans';
+  font-style: normal;
+  font-weight: 700;
+  src: local("Quattrocento Sans Bold"),
+    local("QuattrocentoSans-Bold"),
+    url("../fonts/quattrocentosans-50be1a67969994c7e8e06311e62cc02389a33f1c.woff") format("woff"),
+    url("../fonts/quattrocentosans-f7f6db51010851cd642d6f9a2a3aac24e203dbac.ttf") format("truetype");
+}
 
