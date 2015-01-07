@@ -6,9 +6,8 @@
 
 {% block title %}
     <header>
-    <h1>
-        <span property="dc:title">Index</span>
-    </h1>
+        <h1>Are You Being Served?</h1>
+        <h2 property="dc:title">{{ sort|title }} Index</h2>
     </header>
 {% endblock %}
 
@@ -56,7 +55,7 @@
         <input id="id_password" name="password" type="password" />
 
         <input class="submit" type="submit" value="Login" />
-        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'home' %}{% endif %}" />
+        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'starter' %}{% endif %}" />
       </form>
     </div>
 </div>
