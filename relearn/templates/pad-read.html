@@ -57,7 +57,7 @@
 
 {% block title_right %}
     {% if next_page %}<div id="next">
-        <a href="{{ next_page.href }}" title="{{ next_page.title|safe }}">&rarr;<br/>
+        <a href="{{ next_page.href }}" title="{{ next_page.title|safe|striptags }}">&rarr;<br/>
         <span>{{ next_page.title|safe }}</span></a>
     </div>{% endif %}
 {% endblock %}
