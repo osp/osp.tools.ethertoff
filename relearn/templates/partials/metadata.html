@@ -58,8 +58,9 @@
 
         {% if meta.licence %}
             <dt class="meta-licence">License</dt>
-            {% if meta.licence.0 == "CC BY-ND 3.0 France" %}<dd><a href="http://creativecommons.org/licenses/by-nd/3.0/fr/" rel="license">{{ meta.licence.0 }}</a></dd>{% else %}<dd><span property="license">{{ meta.licence.0 }}</span></dd>
-            {% endif %}
+            {% for licence in meta.licence %}
+            <dd><span property="license">{{ licence }}</span></dd>
+            {% endfor %}
         {% endif %}
 
         {% if meta.pdf %}
