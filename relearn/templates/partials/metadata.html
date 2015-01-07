@@ -5,7 +5,7 @@
         {% if meta.participants %}
             <dt class="meta-participants">Participants</dt>
             {% for participant in meta.participants %}
-            <dd property="dc:contributor" content="{{ participant }}">{{ participant|un_alphabetise }}</a></dd>
+            <dd property="dc:contributor" content="{{ participant }}"><a href="/sorted/by/participants/#{{ participant|slugify }}">{{ participant|un_alphabetise }}</a></dd>
             {% endfor %}
         {% endif %}
 
