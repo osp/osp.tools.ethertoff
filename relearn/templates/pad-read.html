@@ -35,7 +35,7 @@
 
 {% block title_left %}
     {% if prev_page %}<div id="previous">
-        <a href="{{ prev_page.href }}" title="{{ prev_page.title|safe }}">&larr;<br/>
+        <a href="{{ prev_page.href }}" title="{{ prev_page.title|safe|striptags }}">&larr;<br/>
             <span>{{ prev_page.title|safe }}</span></a>
     </div>{% endif %}
 {% endblock %}
