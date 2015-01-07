@@ -47,7 +47,7 @@
         {% if meta.authors %}
             <p class="authors">{{ meta.authors|natural_join:'&' }}</p>
         {% endif %}
-        <h2 property="dc:title" content="{{ meta.title.0|default:pad.display_slug|markdown_filter|no_p }}">
+        <h2 property="dc:title" content="{{ meta.title.0|default:pad.display_slug|markdown_filter|no_p|striptags }}">
             {{ meta.title.0|default:pad.display_slug|markdown_filter|no_p }}
         </h2>
         </header>
