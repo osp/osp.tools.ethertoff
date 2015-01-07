@@ -15,7 +15,7 @@ $(document).ready(function() {
     $("dl.meta").append("<dt>Images</dt><dd><p>" + images + "</p></dd>");
 
     // ORPHANS AND WIDOWS
-    remy($("#content"));  
+    //remy($("#content"));  
 
     // DIV WRAPPER AROUND EACH H2
     $("#content h2").each(function(){
