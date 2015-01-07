@@ -13,14 +13,14 @@
         {% if meta.place %}
             <dt class="meta-place">Location</dt>
             {% for place in meta.place %}
-            <dd property="dc:Location">{{ place }}</dd>
+            <dd property="dc:Location"><a href="/sorted/by/place/#{{ place|slugify }}">{{ place }}</a></dd>
             {% endfor %}
         {% endif %}
 
         {% if meta.theme %}
             <dt class="meta-theme">Theme</dt>
             {% for theme in meta.theme %}
-            <dd property="dc:subject">{{ theme }}</dd>
+            <dd property="dc:subject"><a href="/sorted/by/theme/#{{ theme|slugify }}">{{ theme }}</a></dd>
             {% endfor %}
         {% endif %}
 
