@@ -316,7 +316,7 @@ def pad_read(request, mode="r", slug=None):
 
 
 def starter(request):
-    return pad_read(request, 'r', 'starter.html')
+    return pad_read(request, 'r', 'starter.md')
 
 def home(request, key='theme'):
     try:
