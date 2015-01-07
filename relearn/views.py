@@ -315,6 +315,8 @@ def pad_read(request, mode="r", slug=None):
     return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
 
 
+def starter(request):
+    return pad_read(request, 'r', 'starter.html')
 
 def home(request, key='theme'):
     try:

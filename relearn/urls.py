@@ -17,7 +17,7 @@ urlpatterns = patterns(
     url(r'^publish/$', 'relearn.views.publish', name='publish'),
     url(r'^dynamic/print.less$', 'relearn.views.cssprint', name='css-print'),
     url(r'^dynamic/offset.less$', 'relearn.views.offsetprint', name='offset-print'),
-    url(r'^$', 'relearn.views.home', name='home'),
+    url(r'^$', 'relearn.views.starter', name='starter'),
     url(r'^sorted/by/(?P<key>[^/]+)/$', 'relearn.views.home', name='sorted'),
     url(r'^(?P<slug>[^/]+)\.xhtml$', 'relearn.views.xhtml', name='xhtml'),
     url(r'^accounts/login$', 'django.contrib.auth.views.login',
