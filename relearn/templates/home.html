@@ -25,7 +25,7 @@
         {% endif %}
         {% endwith%}
     {% else %}
-    <h2>{{ set_of_articles.key }}</h2>
+    <h2 id="{{ set_of_articles.key|slugify}}">{{ set_of_articles.key }}</h2>
     {% endif %}
     <ul>
     {% for article in set_of_articles.values %}
@@ -54,7 +54,7 @@
         <input id="id_username" maxlength="254" name="username" type="text" />
         <label for="id_password">Password</label>
         <input id="id_password" name="password" type="password" />
-    
+
         <input class="submit" type="submit" value="Login" />
         <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'home' %}{% endif %}" />
       </form>
