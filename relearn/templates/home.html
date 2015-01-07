@@ -14,7 +14,7 @@
 {% block content %}
     {% for set_of_articles in articles %}
     {% if sort == "participants" %}
-    <h2>{{ set_of_articles.key|un_alphabetise }}</h2>
+    <h2 id="{{ set_of_articles.key|slugify}}">{{ set_of_articles.key|un_alphabetise }}</h2>
     {% elif sort == "date" %}
         {% with set_of_articles.key|to_date_obj as date %}
         {% if date.minute == 0 and date.hour == 0%}
