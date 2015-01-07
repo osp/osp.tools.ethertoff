@@ -19,7 +19,7 @@
             {{ form.password }}
     
         <input class="submit" type="submit" value="{% trans "Login" %}" />
-        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'home' %}{% endif %}" />
+        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'starter' %}{% endif %}" />
       </form>
     {% else %}
     <p>You are already logged in—welcome!</p>

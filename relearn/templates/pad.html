@@ -8,13 +8,13 @@
     {% endif %}
     <h1>
         {% ifequal pad.display_name|slugify "00md" %}
-            <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a>
+            <a href="{% url 'starter' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ left_eye }}" alt="{{ site_name }}" /></a>
         {% endifequal %}
 
         {{ meta.title.0|default:pad.display_slug }}
 
         {% ifequal pad.display_name|slugify "00md" %}
-            <a href="{% url 'home' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a>
+            <a href="{% url 'starter' %}"><img src="{{ MEDIA_URL }}images/eyes/{{ right_eye }}" alt="{{ site_name }}" /></a>
         {% endifequal %}
     </h1>
     </header>

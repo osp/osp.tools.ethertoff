@@ -55,7 +55,7 @@
         <input id="id_password" name="password" type="password" />
     
         <input class="submit" type="submit" value="Login" />
-        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'home' %}{% endif %}" />
+        <input type="hidden" name="next" value="{% if next %}{{ next }}{% else %}{% url 'starter' %}{% endif %}" />
       </form>
     </div>
 </div>
