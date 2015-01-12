@@ -48,7 +48,7 @@
         {% ifchanged article.id %}
         </li>
         <li {% if article.type %}data-type="{{ article.type }}"{% endif %}>
-                <span class="authors">{{ article.authors|natural_join:'&' }}</span> 
+                <span class="authors">{{ article.authors|natural_join:'&'|markdown_filter }}</span> 
         {% endifchanged %}
 
         <a href="{{ article.href }}" lang="{{ article.language }}">{{ article.title|markdown_filter }}</a>
