@@ -4,8 +4,6 @@ import django.conf.global_settings as DEFAULT_SETTINGS
 
 PROJECT_DIR = os.path.abspath(os.path.dirname(__file__))
 
-API_PATH = 'http://osp.constantvzw.org/api/'
-
 DEBUG = True
 TEMPLATE_DEBUG = DEBUG
 
