@@ -42,7 +42,7 @@ from relearn.management.commands.index import snif
 try:
     from relearn.settings import HOME_PAD
 except ImportError:
-    HOME_PAD = 'start'
+    HOME_PAD = 'About.md'
 try:
     from relearn.settings import BACKUP_DIR
 except ImportError:
