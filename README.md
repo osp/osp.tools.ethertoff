@@ -39,6 +39,7 @@ Infrastructures entrelacées, an exhibition by the collective Artivistic at SKOL
 
 Requires Django 1.5
 First create and install a virtual environment [1]. Then:
+    
     pip install "django<1.6" south Markdown html5tidy python-dateutil rdflib pytz
     pip install https://github.com/devjones/PyEtherpadLite/archive/master.zip
     pip install https://github.com/aleray/markdown-figures/archive/master.zip
@@ -49,7 +50,9 @@ First create and install a virtual environment [1]. Then:
     cd relearn.be      # [2]
     cd relearn
     cp local_settings.py.example local_settings.py
+
 Add database details to local_settings.py
+    
     cd ..
     python manage.py syncdb
     python manage.py migrate etherpadlite
