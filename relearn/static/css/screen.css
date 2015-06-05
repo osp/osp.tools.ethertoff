@@ -322,9 +322,6 @@ form input[type=submit]:hover {
   text-decoration: none;
     margin: 0 @line-height / 2;
 }
-.active.button {
-    border-bottom: 1px solid;
-}
 /* Style des boutons en roll over */
 .button:hover {
     background-color: none;

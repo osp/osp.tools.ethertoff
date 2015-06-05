@@ -47,10 +47,10 @@
             <a class="button screen-only" href="{% url 'pad-create' %}">Create</a>
             <a class="button screen-only" href="{% url 'all' %}">List</a>
             <a class="button screen-only" href="{% url 'publish' %}">Re-index</a>
-            <a class="button screen-only" href="/w/screen.css">screen.css</a>
-            <a class="button screen-only" href="/w/laser.css">laser.css</a>
-            <a class="button screen-only" href="/w/offset.css">offset.css</a>
-            <a class="button screen-only" href="/w/documentation.md">documentation</a>
+            <a class="button screen-only" href="/2015/w/screen.css">screen.css</a>
+            <a class="button screen-only" href="/2015/w/laser.css">laser.css</a>
+            <a class="button screen-only" href="/2015/w/offset.css">offset.css</a>
+            <a class="button screen-only" href="/2015/w/documentation.md">documentation</a>
             {#{% else %}#}
             <!--<a class="button" href="{% url 'login' %}">Log in</a>-->
         </div>
@@ -97,6 +97,12 @@
 
     <div class="wrap" style="height: 85%;">
         <div class="left-side screen-only">
+            {% load wikify %}
+            <ul id="pads_list">
+                {% for pad in pads %}
+                    <li><a data-uid="{{ pad.display_slug }}" href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.display_slug %}{% else %}{% url 'pad-read' 'r' pad.display_slug %}{% endif %}" class="pad-link">{{ pad.display_slug|dewikify }}</a></li>
+                {% endfor %}
+            </ul>
         </div>
         <div class="middle">
             <div id="content" class="{% block contentclasses %}{% endblock %}">
@@ -104,12 +110,6 @@
             </div>
         </div>
         <div class="right-side screen-only">
-            {% load wikify %}
-            <ul id="pads_list">
-                {% for pad in pads %}
-                    <li><a data-uid="{{ pad.display_slug }}" href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.display_slug %}{% else %}{% url 'pad-read' 'r' pad.display_slug %}{% endif %}" class="pad-link">{{ pad.display_slug|dewikify }}</a></li>
-                {% endfor %}
-            </ul>
         </div>
     </div>
     {% block extraui %}{% endblock %}
