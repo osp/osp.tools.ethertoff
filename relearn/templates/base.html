@@ -23,7 +23,7 @@
 </head>
 <body class="pad-{{ pad.display_name|slugify }} {{ mode }}-mode {% if user.is_authenticated and author %}logged-in{% else %}logged-out{% endif %} {% block bodyclasses %}{% endblock %}">
     <nav id="nav-left">
-        <h1><a id="logo" data-article="{% block data_article %}{% endblock%}" href="/">Relearn</a></h1>
+        <h1><a id="logo" data-article="{% block data_article %}{% endblock%}" href="/">Relearn </a></h1>
         <select onChange="window.location.href=this.value">
             <option value="http://relearn.be/2015/" selected="selected">2015</option>
             <option value="http://relearn.be/2014/">2014</option>
