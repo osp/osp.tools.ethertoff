@@ -24,6 +24,11 @@
 <body class="pad-{{ pad.display_name|slugify }} {{ mode }}-mode {% if user.is_authenticated and author %}logged-in{% else %}logged-out{% endif %} {% block bodyclasses %}{% endblock %}">
     <nav id="nav-left">
         <h1><a id="logo" data-article="{% block data_article %}{% endblock%}" href="/">{{ site_name }}</a></h1>
+        <select onChange="window.location.href=this.value">
+            <option value="http://relearn.be/2015/" selected="selected">Relearn 2015</option>
+            <option value="http://relearn.be/2014/">Relearn 2014</option>
+            <option value="http://relearn.be/2013/">Relearn 2013</option>
+        </select>
         <a class="button screen-only" href="/r/About.md">About</a>
         
         
@@ -57,7 +62,7 @@
                 {% if user.is_authenticated %}
                 <a class="button screen-only write-button" href="{% url 'pad-write' pad.display_slug %}">Write</a>
                 {% endif %}
-                <a class="button screen-only slide-button" href="#">Slide</a>
+                <!-- <a class="button screen-only slide-button" href="#">Slide</a> -->
             {% else %}
                 <a class="button screen-only read-button" href="{% url 'pad-read' 'r' pad.display_slug %}">Read</a>
                 <a class="active button screen-only write-button">Write</a>
@@ -98,7 +103,14 @@
             </div>
         </div>
         <div class="right-side screen-only">
-            {% block rightside %}{% endblock %}
+            {% block rightside %}
+            {% load wikify %}
+            <ul id="pads_list">
+                {% for pad in pads %}
+                    <li><a data-uid="{{ pad.display_slug }}" href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.display_slug %}{% else %}{% url 'pad-read' 'r' pad.display_slug %}{% endif %}" class="pad-link">{{ pad.display_slug|dewikify }}</a></li>
+                {% endfor %}
+            </ul>
+            {% endblock %}
         </div>
     </div>
     {% block extraui %}{% endblock %}

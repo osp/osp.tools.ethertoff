@@ -1,22 +1,14 @@
 from fabric.api import run, cd, env, local, sudo
 
-env.hosts = ['osp@osp.kitchen']
-env.path = '/home/osp/apps/vj14/ethertoff'
+
+env.hosts = ['osp@osp.constantvzw.org']
+env.path = '/home/osp/apps/relearn/relearn.be/'
 
 def getdb():
     pass
 
 def deploy():
     with cd(env.path):
-        run('git pull origin vj14')
-        run('/home/osp/apps/venvs/vj14/bin/python manage.py collectstatic --noinput')
-        sudo('/usr/bin/supervisorctl restart vj14')
-
-def index():
-    with cd(env.path):
-        run('/home/osp/apps/venvs/vj14/bin/python manage.py index')
-
-def archive():
-    local('mkdir -p public')
-    local('wget -rk -nH -P ./public http://vj14.stdin.fr/')
-    
+        run('git pull gh relearn-2015')
+        run('/home/osp/apps/venvs/relearn/bin/python manage.py collectstatic --noinput')
+        sudo('supervisorctl restart relearn')
