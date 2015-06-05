@@ -29,14 +29,15 @@
             <option value="http://relearn.be/2014/">Relearn 2014</option>
             <option value="http://relearn.be/2013/">Relearn 2013</option>
         </select>
+        <!--
         <a class="button screen-only" href="/r/About.md">About</a>
-        
         
         <div id="sort-by">Sort by:
             <a class="{% if sort == 'date' %}active{% endif %} button screen-only" href="/?sort=date">Date</a>
             <a class="{% if sort == 'tags' %}active{% endif %} button screen-only" href="/?sort=tags">Tag</a>
             <a class="{% if sort == 'authors' %}active{% endif %} button screen-only" href="/?sort=authors">Author</a>
         </div>
+        -->
         {% block extra_nav %}{% endblock %}
 
         {% if user.is_authenticated and author %}
