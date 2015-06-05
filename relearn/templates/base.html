@@ -91,14 +91,6 @@
 
     <div class="wrap" style="height: 85%;">
         <div class="left-side screen-only">
-        {% load wikify %}
-        {% block content %}
-            <ul id="pads_list">
-                {% for pad in pads %}
-                    <li><a data-uid="{{ pad.display_slug }}" href="{% if mode == 'write' %}{% url 'pad-write' slug=pad.display_slug %}{% else %}{% url 'pad-read' 'r' pad.display_slug %}{% endif %}" class="pad-link">{{ pad.display_slug|dewikify }}</a></li>
-                {% endfor %}
-            </ul>
-        {% endblock %}
         </div>
         <div class="middle">
             <div id="content" class="{% block contentclasses %}{% endblock %}">
