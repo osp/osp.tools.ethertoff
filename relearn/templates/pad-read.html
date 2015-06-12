@@ -82,10 +82,10 @@
 
 
     <dl>
-        <dt>Né en</dt><dd>{{ meta.birth.0|markdown_filter|no_p }}</dd>
-        <dt>Année</dt><dd>{{ meta.year.0|markdown_filter|no_p }}</dd>
-        <dt>École</dt><dd>{{ meta.schools.0|markdown_filter|no_p }}</dd>
-        <dt>Workshop</dt><dd>{{ meta.workshops.0|markdown_filter|no_p }}</dd>
+        {% if meta.birth.0 %}<dt>Né en</dt><dd>{{ meta.birth.0|markdown_filter|no_p }}</dd>{% endif %}
+        {% if meta.year.0 %}<dt>Année</dt><dd>{{ meta.year.0|markdown_filter|no_p }}</dd>{% endif %}
+        {% if meta.schools.0 %}<dt>École</dt><dd property="dc:Location">{{ meta.schools.0|markdown_filter|no_p }}</dd>{% endif %}
+        {% if meta.workshops.0 %}<dt>Workshop</dt><dd>{{ meta.workshops.0|markdown_filter|no_p }}</dd>{% endif %}
     </dl>
 
     {{ text|safe }}
