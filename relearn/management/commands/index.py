@@ -180,6 +180,9 @@ def snif():
             print "no *.md extension, probably not meant for publication"
             continue
         try:
+            sniff_url = host + pad.get_absolute_url()
+            print host
+            print sniff_url
             result = g.parse(host + pad.get_absolute_url())
             print "succesfully parsed"
         except HTTPError, e:
