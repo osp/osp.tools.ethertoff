@@ -5736,7 +5736,14 @@ function error(e, rootHref) {
     var template = '<li><label>{line}</label><pre class="{class}">{content}</pre></li>';
     var elem = document.createElement('div'), timer, content, error = [];
     var filename = e.filename || rootHref;
-    var filenameNoPath = filename.match(/([^\/]+(\?.*)?)$/)[1];
+    try{
+        var filenameNoPath = filename.match(/([^\/]+(\?.*)?)$/)[1];
+    }
+    catch(e){
+       if (e.name.toString() == "TypeError"){ 
+            var filenameNoPath = 'lessisbroken' 
+    }
+    }   
 
     elem.id        = id;
     elem.className = "less-error-message";
