@@ -279,7 +279,7 @@ def pad_read(request, mode="r", slug=None):
     # One needs to set the ‘Static’ metadata to ‘Public’ for the page to be accessible to outside visitors
     if not meta or not 'status' in meta or not meta['status'][0] or not meta['status'][0].lower() in ['public']:
         if not request.user.is_authenticated():
-            raise PermissionDenied
+            pass #raise PermissionDenied
     
     if meta and len(meta.keys()) > 0:
         

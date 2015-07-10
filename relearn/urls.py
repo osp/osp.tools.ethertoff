@@ -9,7 +9,18 @@ from django.conf.urls.static import static
 from django.contrib import admin
 admin.autodiscover()
 
-urlpatterns = patterns(
+# This is to allow the website to work under a subfolder
+# i.e. http://relearn.be/2015/
+# Define SUBFOLDER in your local_settings.py
+BASE_URL = '^'
+try:
+    BASE_URL = r'^' + settings.SUBFOLDER
+    if BASE_URL and not BASE_URL.endswith(r'/'):
+        BASE_URL += r'/'
+except AttributeError:
+    pass
+
+base_urlpatterns = patterns(
     '',
     url(r'^admin/', include(admin.site.urls)),
     url(r'^all/$', TemplateView.as_view(template_name = 'all.html'), name='all'),
@@ -29,3 +40,6 @@ urlpatterns = patterns(
     url(r'w/(?P<slug>[^/]+)$', 'relearn.views.pad', name='pad-write'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+urlpatterns = patterns('',
+    url(BASE_URL , include(base_urlpatterns)),
+)

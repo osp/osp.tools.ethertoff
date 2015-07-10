@@ -21,3 +21,6 @@ EMAIL_HOST_PASSWORD = ''
 EMAIL_USE_TLS = True
 
 HOME_PAD = 'About.md'
+
+# You can use this if you want to run the project under a subfolder
+# SUBFOLDER = '2015'
