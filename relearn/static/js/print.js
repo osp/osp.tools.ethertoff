@@ -120,6 +120,7 @@ if($("body").hasClass("p-mode")){
     $("#master-page").hide();
 
 
+    $.getScript("/static/js/css-regions-polyfill.js", function(){ });
 
     // __________________________________ DEBUG __________________________________ //
     $("button#debug").click(function(e){
