@@ -39,7 +39,8 @@ Infrastructures entrelacées, an exhibition by the collective Artivistic at SKOL
 
 Requires Django 1.5
 First create and install a virtual environment [1]. Then:
-    pip install "django<1.6" south Markdown html5tidy python-dateutil rdflib pytz
+    sudo aptitude install libxml2-dev libxslt-dev
+    pip install "django<1.6" south Markdown html5tidy python-dateutil rdflib pytz six isodate lxml
     pip install https://github.com/devjones/PyEtherpadLite/archive/master.zip
     pip install https://github.com/aleray/markdown-figures/archive/master.zip
 
@@ -49,17 +50,22 @@ First create and install a virtual environment [1]. Then:
     cd relearn.be      # [2]
     cd relearn
     cp local_settings.py.example local_settings.py
-Add database details to local_settings.py
+    # Change database details in local_settings.py
     cd ..
     python manage.py syncdb
     python manage.py migrate etherpadlite
 
-If you have the error "Site matching query does not exist", 
-open the python shell
+Change the info of your domain name and website name in the Sites section on
+<http://localhost:8000/admin>. **Do not add "http://" in your domain name,
+otherwise the Re-index function won't work.**
+
+### If you have the error "Site matching query does not exist"
+
+Open the python shell
 
     python manage.py shell
 
-And then do the following:
+And then do the following (replace the "domain" and "name" with your own info):
 
     from django.contrib.sites.models import Site
     site = Site.objects.create(domain='example.com', name='example.com')
