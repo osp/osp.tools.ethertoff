@@ -2,7 +2,10 @@
 <html xmlns="http://www.w3.org/1999/xhtml" {% if meta.language %} lang="{{ meta.language.0 }}" {% endif %} moznomarginboxes mozdisallowselectionprint>
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
 
+	
     <link rel="stylesheet" href="{{ STATIC_URL }}css/reset.css" type="text/css" media="all">
     <link rel="stylesheet" href="{{ STATIC_URL }}css/fonts.css" type="text/css" media="all">
     
@@ -24,7 +27,7 @@
 <body class="pad-{{ pad.display_name|slugify }} {{ mode }}-mode {% if user.is_authenticated and author %}logged-in{% else %}logged-out{% endif %} {% block bodyclasses %}{% endblock %}">
     <nav id="nav-left">
         <h1><a id="logo" data-article="{% block data_article %}{% endblock%}" href="/">{{ site_name }}</a></h1>
-        <a class="button screen-only" href="/r/About.md">About</a>
+        <a class="button screen-only" href="/r/foreword.md">About</a>
         
         
         <div id="sort-by">Sort by:
@@ -45,8 +48,8 @@
             <a class="button screen-only" href="/w/laser.css">laser.css</a>
             <a class="button screen-only" href="/w/offset.css">offset.css</a>
             <a class="button screen-only" href="/w/documentation.md">documentation</a>
-            {#{% else %}#}
-            <!--<a class="button" href="{% url 'login' %}">Log in</a>-->
+            {% else %}
+            <a class="button" href="{% url 'login' %}">Log in</a>
         </div>
         {% endif %}
     </nav>
