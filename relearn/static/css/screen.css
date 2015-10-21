@@ -114,31 +114,6 @@ p {
 p + p {
     text-indent: 2 * @line-height;
 }
-h2#summary,
-h2#summary_1,
-h2#summary_2,
-h2#summary_3 {
-    display: none;
-}
-.summary > p:first-of-type,
-.summary_1 > p:first-of-type,
-.summary_2 > p:first-of-type,
-.summary_3 > p:first-of-type   {
-    text-indent: 20em;
-}
-.summary > p:first-of-type:first-letter,
-.summary_1 > p:first-of-type:first-letter,
-.summary_2 > p:first-of-type:first-letter,
-.summary_3 > p:first-of-type:first-letter {
-    font-size: 2.5 * @font-size;
-    font-family: @font-lettrine;
-}
-.summary > p:first-of-type:first-line,
-.summary_1 > p:first-of-type:first-line,
-.summary_2 > p:first-of-type:first-line,
-.summary_3 > p:first-of-type:first-line {
-    font-variant: small-caps;
-}
 hr {
     border: 0;
     height: @line-height;
@@ -413,6 +388,7 @@ nav div#sort-by {
     display: inline;
     color: darkgray;
 }
+
 /* Texte précédent/suivant */
 div#previous a,
 div#next a {
@@ -471,24 +447,6 @@ ol {
 }
 .footnote ol li {
     margin-bottom: 0em;
-}
-.note {
-    margin: @line-height;
-    margin-left: 50%;
-    text-indent: 0;
-    font-family: @sans;
-    
-    & + p {
-        text-indent: 0;
-    }
-}
-.noteA {
-    width: 75%;
-    float: right;
-    margin: @line-height 0;
-}
-.noteB {
-    width: 75%;
 }
 dl.meta {
     font-family: @sans;
@@ -556,9 +514,3 @@ div#go-up {
         background-color: white;
         padding: 30px;
 }
-/* SPECIFIC PADS */
-/* AFTER-LIFE */
-.afterlife * {
-    font-family: @sans;
-}
-
