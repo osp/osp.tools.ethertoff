@@ -1,0 +1,51 @@
+{% extends "base.html" %}
+{% load wikify relearn_tags %}
+
+{% block extra_styles %}
+    <link rel='stylesheet' href='/static/js/slidy.css' type='text/css' media='all' />
+    <link rel='stylesheet' href='/css-slide/' type='text/css' media='all' />
+    <link rel="stylesheet/less" href="{% url 'css' %}" type="text/css" media="screen">
+    <link rel="stylesheet/less" href="/css-slide/" type="text/css" media="all">
+{% endblock %}
+
+
+{% block head_meta %}
+    <meta property="og:type" content="article"/>
+{% if meta %}
+
+    {% if meta.authors %}
+        {% for author in meta.authors %}
+            <meta property="dc:creator" content="{{ author }}" />
+        {% endfor %}
+    {% endif %}
+    {% if meta.language %}{% for language in meta.language %}<meta property="dc:language" content="{{ language|lower }}" />{% endfor %}{% endif %}
+
+    <meta property="dc:identifier" content="{{ meta.id.0 }}" />
+    {% if meta.type %}<meta property="dc:type" content="{{ meta.type.0 }}" />{% endif %}
+{% endif %}
+{% endblock %}
+
+
+{% block data_article %}{{ meta.authors|natural_join:'&'|markdown_filter|no_p }}, {{ meta.title.0 }}{% endblock %}
+
+{% block bodyclasses%}{% if meta.host %}{{ meta.host.0|lower }}{% endif %} {% if meta.type %}{{ meta.type.0|lower }}{% endif %}{% endblock %}
+{% block contentclasses%}{% if meta.host %}{{ meta.host.0|lower }}{% endif %} {% if meta.type %}{{ meta.type.0|lower }}{% endif %}{% endblock %}
+
+
+{% block content %}
+    {{ text|safe }}
+{% endblock %}
+
+{% block scripts %}
+    <script src="/static/js/slidy.js"> </script>
+    <script>
+    $(document).ready(function(){
+        // DIV WRAPPER AROUND EACH H2
+        $("#content h2").each(function(){
+            h2 = $(this).attr('id');
+            $(this).nextUntil('h2').andSelf().wrapAll('<div class="slide ' + h2 + '"></div>');
+        });
+    });
+    </script>
+{% endblock %}
+

@@ -1,0 +1,83 @@
+body { 
+    font-family: News Cycle;
+    src: url("/static/fonts/NewsCycle-Regular.ttf") format("truetype");
+    letter-spacing: 1px;
+    background-color: black;
+    color: white;
+    font-size: 21pt !important; 
+    //max-width: 30em;
+    margin: auto;
+}
+
+header, nav, .left-side, .right-side, .screen-only, .metadata  { 
+    display: none;
+}
+
+p, pre, ul, ol, blockquote, h2, h3, h4, h5, h6,dl, table {
+    margin-left: 0;
+    margin-right: 0;
+}
+
+h2 {
+    margin-top: 0;
+    font-size: 36pt;
+    text-transform: none;
+    line-height: 1.2em !important;
+}
+
+h2.title {
+    margin-top: 25%;
+}
+
+h3 { 
+    font-size: 18pt;
+}
+
+.slide {
+    line-height: 1.5em !important;
+}
+
+img {
+    max-width: 100%;
+}
+
+li {
+    list-style-type: none !important;
+}
+
+div.slidy_toc {
+    background-color: black;
+}
+
+div.toolbar {
+    height: auto;
+}
+
+a, a:visited {
+    color: inherit !important;
+}
+
+p + p {
+    text-indent: 0;
+    margin-top: 1.2em;
+}
+
+.comment {
+    display: none;
+}
+
+pre {
+    background-color: white;
+    color: inherit;
+    font-weight: normal;
+    border: 0;
+    width: 100%;
+    font-family: NotCourierSans;
+    padding: 1em;
+}
+
+code {
+    font-family: NotCourierSans;
+}
+
+

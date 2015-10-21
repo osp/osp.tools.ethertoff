@@ -17,11 +17,6 @@ $(document).ready(function() {
     // ORPHANS AND WIDOWS
     remy($("#content"));  
 
-    // DIV WRAPPER AROUND EACH H2
-    $("#content h2").each(function(){
-        h2 = $(this).attr('id');
-        $(this).nextUntil('h2').andSelf().wrapAll('<div class="slide ' + h2 + '"></div>');
-    });
 
     // OFFSET ANCHOR BECAUSE OF FIXED MENU
     $('a.footnote-ref, a.footnote-backref').click(function(e){
@@ -89,15 +84,6 @@ $("a[href]").each(
 $(".logged-out a.write-button").click(function(e) {
     e.preventDefault();
     $(".popup-wrapper").removeClass("hidden");
-});
-
-$(".slide-button").click(function(e) {
-    e.preventDefault();
-    $.getScript( "/static/js/slidy.js", function( data, textStatus, jqxhr ) {
-      w3c_slidy.init();
-      $("body").append("<link rel='stylesheet' href='/static/js/slidy.css' type='text/css' media='all' />");
-      $("body").append("<link rel='stylesheet' href='/css-slide/' type='text/css' media='all' />");
-    });
 });
 
 $(".popup-wrapper").click(function(e) {

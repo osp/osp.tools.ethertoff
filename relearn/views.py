@@ -312,7 +312,12 @@ def pad_read(request, mode="r", slug=None):
         request.session.set_test_cookie()
         tpl_params['next'] = reverse('pad-write', args=(slug,) )
 
-    return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
+    if mode == "r":
+        return render_to_response("pad-read.html", tpl_params, context_instance = RequestContext(request))
+    elif mode == "s":
+        return render_to_response("pad-slide.html", tpl_params, context_instance = RequestContext(request))
+    elif mode == "p":
+        return render_to_response("pad-print.html", tpl_params, context_instance = RequestContext(request))
 
 
 

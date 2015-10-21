@@ -36,7 +36,10 @@ base_urlpatterns = patterns(
     url(r'^accounts/logout$', 'django.contrib.auth.views.logout',
         {'template_name': 'logout.html'}, name='logout'),
     url(r'^create/$', 'relearn.views.padCreate', name='pad-create'),
-    url(r'(?P<mode>[r|p])/(?P<slug>[^/]+)$', 'relearn.views.pad_read', name='pad-read'),
+    url(r'(?P<mode>[r|s|p])/(?P<slug>[^/]+)$', 'relearn.views.pad_read', name='pad-read'),
+    #url(r'r/(?P<slug>[^/]+)$', 'relearn.views.pad', name='pad-read'),
+    #url(r's/(?P<slug>[^/]+)$', 'relearn.views.pad', name='pad-slide'),
+    #url(r'p/(?P<slug>[^/]+)$', 'relearn.views.pad', name='pad-print'),
     url(r'w/(?P<slug>[^/]+)$', 'relearn.views.pad', name='pad-write'),
 ) + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
