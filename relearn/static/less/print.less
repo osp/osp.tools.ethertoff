@@ -317,7 +317,7 @@ section.main-section {
 
 }
 div.column {
-    -webkit-flow-from: myFlow;
+    //-webkit-flow-from: myFlow;
     flow-from: myFlow;
     height: 100%;
     float: left;
@@ -325,13 +325,13 @@ div.column {
 }
 #content,
 div.footnote {
-    -webkit-flow-into: myFlow;
+    //-webkit-flow-into: myFlow;
     flow-into: myFlow;
     width: 100%;
 }
 .include #content,
 .include div.footnote {
-    -webkit-flow-into: none;
+    //-webkit-flow-into: none;
     flow-into: none;
 }
 
