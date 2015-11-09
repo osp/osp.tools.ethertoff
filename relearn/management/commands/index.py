@@ -95,7 +95,7 @@ short_names = {
     "http://commontag.org/ns#Tag" : "tags",
     "http://purl.org/dc/terms/subject" : "theme",
     "http://purl.org/dc/terms/contributor" : "participants",
-    "http://purl.org/dc/terms/Location" : "place",
+    "http://purl.org/dc/terms/Location" : "schools",
 }
 
 HOST = None
